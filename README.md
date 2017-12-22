@@ -1,7 +1,8 @@
 ![Logo](/logo.png)
 
-# 30 seconds of code [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/30-seconds-of-code/Lobby)
+# 30 seconds of code [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/30-seconds-of-code/Lobby) [![Travis Build](https://travis-ci.org/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.org/Chalarangelo/30-seconds-of-code)
 > Curated collection of useful Javascript snippets that you can understand in 30 seconds or less.
+
 
 - Use <kbd>Ctrl</kbd> + <kbd>F</kbd> or <kbd>command</kbd> + <kbd>F</kbd> to search for a snippet.
 - Contributions welcome, please read the [contribution guide](CONTRIBUTING.md).
@@ -12,6 +13,7 @@
 
 ### Array
 * [`arrayGcd`](#arraygcd)
+* [`arrayLcm`](#arraylcm)
 * [`arrayMax`](#arraymax)
 * [`arrayMin`](#arraymin)
 * [`chunk`](#chunk)
@@ -52,6 +54,7 @@
 * [`union`](#union)
 * [`without`](#without)
 * [`zip`](#zip)
+* [`zipObject`](#zipobject)
 
 ### Browser
 * [`arrayToHtmlList`](#arraytohtmllist)
@@ -60,6 +63,7 @@
 * [`elementIsVisibleInViewport`](#elementisvisibleinviewport)
 * [`getScrollPosition`](#getscrollposition)
 * [`getURLParameters`](#geturlparameters)
+* [`httpsRedirect`](#httpsredirect)
 * [`redirect`](#redirect)
 * [`scrollToTop`](#scrolltotop)
 
@@ -81,6 +85,7 @@
 ### Math
 * [`arrayAverage`](#arrayaverage)
 * [`arraySum`](#arraysum)
+* [`clampNumber`](#clampnumber)
 * [`collatz`](#collatz)
 * [`digitize`](#digitize)
 * [`distance`](#distance)
@@ -88,6 +93,7 @@
 * [`fibonacci`](#fibonacci)
 * [`gcd`](#gcd)
 * [`hammingDistance`](#hammingdistance)
+* [`inRange`](#inrange)
 * [`isArmstrongNumber`](#isarmstrongnumber)
 * [`isDivisible`](#isdivisible)
 * [`isEven`](#iseven)
@@ -97,6 +103,7 @@
 * [`palindrome`](#palindrome)
 * [`percentile`](#percentile)
 * [`powerset`](#powerset)
+* [`primes`](#primes)
 * [`randomIntegerInRange`](#randomintegerinrange)
 * [`randomNumberInRange`](#randomnumberinrange)
 * [`round`](#round)
@@ -127,9 +134,9 @@
 * [`fromCamelCase`](#fromcamelcase)
 * [`reverseString`](#reversestring)
 * [`sortCharactersInString`](#sortcharactersinstring)
-* [`stringToArrayOfWords`](#stringtoarrayofwords)
 * [`toCamelCase`](#tocamelcase)
 * [`truncateString`](#truncatestring)
+* [`words`](#words)
 
 ### Utility
 * [`coalesce`](#coalesce)
@@ -145,9 +152,9 @@
 * [`isSymbol`](#issymbol)
 * [`RGBToHex`](#rgbtohex)
 * [`timeTaken`](#timetaken)
+* [`toDecimalMark`](#todecimalmark)
 * [`toOrdinalSuffix`](#toordinalsuffix)
 * [`UUIDGenerator`](#uuidgenerator)
-* [`validateEmail`](#validateemail)
 * [`validateNumber`](#validatenumber)
 
 ## Array
@@ -165,6 +172,24 @@ const arrayGcd = arr =>{
 }
 // arrayGcd([1,2,3,4,5]) -> 1
 // arrayGcd([4,8,12]) -> 4
+```
+
+[⬆ back to top](#table-of-contents)
+
+### arrayLcm
+
+Calculates the lowest  common multiple  (lcm) of an array of numbers.
+
+Use `Array.reduce()` and the `lcm` formula (uses recursion) to calculate the lowest  common multiple  of an array of numbers.
+
+```js
+const arrayLcm = arr =>{
+  const gcd = (x, y) => !y ? x : gcd(y, x % y);
+  const lcm = (x, y) => (x*y)/gcd(x, y) 
+  return arr.reduce((a,b) => lcm(a,b));
+}
+// arrayLcm([1,2,3,4,5]) -> 60
+// arrayLcm([4,8,12]) -> 24
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -218,7 +243,7 @@ Removes falsey values from an array.
 Use `Array.filter()` to filter out falsey values (`false`, `null`, `0`, `""`, `undefined`, and `NaN`).
 
 ```js
-const compact = (arr) => arr.filter(Boolean);
+const compact = arr => arr.filter(Boolean);
 // compact([0, 1, false, 2, '', 3, 'a', 'e'*23, NaN, 's', 34]) -> [ 1, 2, 3, 'a', 's', 34 ]
 ```
 
@@ -330,8 +355,8 @@ Returns every nth element in an array.
 Use `Array.filter()` to create a new array that contains every nth element of a given array.
 
 ```js
-const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === 0);
-// everyNth([1,2,3,4,5,6], 2) -> [ 1, 3, 5 ]
+const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
+// everyNth([1,2,3,4,5,6], 2) -> [ 2, 4, 6 ]
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -550,8 +575,10 @@ _(For a snippet that does not mutate the original array see [`without`](#without
 
 ```js
 const pull = (arr, ...args) => {
-  let pulled = arr.filter((v, i) => !args.toString().split(',').includes(v));
-  arr.length = 0; pulled.forEach(v => arr.push(v));
+  let argState = Array.isArray(args[0]) ? args[0] : args;
+  let pulled = arr.filter((v, i) => !argState.includes(v));
+  arr.length = 0; 
+  pulled.forEach(v => arr.push(v));
 };
 
 // let myArray1 = ['a', 'b', 'c', 'a', 'b', 'c'];
@@ -783,6 +810,20 @@ const zip = (...arrays) => {
 ```
 
 [⬆ back to top](#table-of-contents)
+
+### zipObject
+
+Given an array of valid property identifiers and an array of values, return an object associating the properties to the values.
+
+Since an object can have undefined values but not undefined property pointers, the array of properties is used to decide the structure of the resulting object using `Array.reduce()`.
+
+```js
+const zipObject = ( props, values ) => props.reduce( ( obj, prop, index ) => ( obj[prop] = values[index], obj ), {} )
+// zipObject(['a','b','c'], [1,2]) -> {a: 1, b: 2, c: undefined}
+// zipObject(['a','b'], [1,2,3]) -> {a: 1, b: 2}
+```
+
+[⬆ back to top](#table-of-contents)
 ## Browser
 
 ### arrayToHtmlList
@@ -878,6 +919,20 @@ const getURLParameters = url =>
     (a, v) => (a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1), a), {}
   );
 // getURLParameters('http://url.com/page?name=Adam&surname=Smith') -> {name: 'Adam', surname: 'Smith'}
+```
+
+[⬆ back to top](#table-of-contents)
+
+### httpsRedirect
+
+Redirects the page to HTTPS if its currently in HTTP. Also, pressing the back button doesn't take it back to the HTTP page as its replaced in the history.
+
+Use `location.protocol` to get the protocol currently being used. If it's not HTTPS, use `location.replace()` to replace the existing page with the HTTPS version of the page. Use `location.href` to get the full address, split it with `String.split()` and remove the protocol part of the URL.  
+
+```js
+const httpsRedirect = () => {
+  if(location.protocol !== "https:") location.replace("https://" + location.href.split("//")[1]);
+}
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1135,6 +1190,26 @@ const arraySum = arr => arr.reduce((acc, val) => acc + val, 0);
 
 [⬆ back to top](#table-of-contents)
 
+### clampNumber
+
+Clamps `num` within the inclusive `lower` and `upper` bounds.
+
+If `lower` is greater than `upper`, swap them. 
+If `num` falls within the range, return `num`. 
+Otherwise return the nearest number in the range.
+
+```js
+const clampNumber = (num, lower, upper) => {
+  if(lower > upper) upper = [lower, lower = upper][0];
+  return (num>=lower && num<=upper) ? num : ((num < lower) ? lower : upper) 
+}
+// clampNumber(2, 3, 5) -> 3
+// clampNumber(1, -1, -5) -> -1
+// clampNumber(3, 2, 4) -> 3
+```
+
+[⬆ back to top](#table-of-contents)
+
 ### collatz
 
 Applies the Collatz algorithm.
@@ -1203,7 +1278,7 @@ Use `Array.reduce()` to add values into the array, using the sum of the last two
 
 ```js
 const fibonacci = n =>
-  Array(n).fill(0).reduce((acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i), []);
+  Array.from({ length: n}).map(v => 0).reduce((acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i), []);
 // fibonacci(5) -> [0,1,1,2,3]
 ```
 
@@ -1235,6 +1310,26 @@ Count and return the number of `1`s in the string, using `match(/1/g)`.
 const hammingDistance = (num1, num2) =>
   ((num1 ^ num2).toString(2).match(/1/g) || '').length;
 // hammingDistance(2,3) -> 1
+```
+
+[⬆ back to top](#table-of-contents)
+
+### inRange
+
+Checks if the given number falls in the given range. 
+
+Use arithmetic comparison to check if the given number is in the specified range.
+If the second parameter, `end`, is not specified, the reange is considered to be from `0` to `start`.
+
+```js
+const inRange = (n, start, end=null) => {
+  if(end && start > end) end = [start, start=end][0];
+  return (end == null) ? (n>=0 && n<start) : (n>=start && n<end);
+}
+// inRange(3, 2, 5) -> true
+// inRange(3, 4) -> true
+// inRange(2, 3, 5) -> false
+// inrange(3, 2) -> false
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1290,12 +1385,11 @@ Returns `false` if the provided number has positive divisors other than 1 and it
 
 ```js
 const isPrime = num => {
-  for (var i = 2; i < num; i++) if (num % i == 0) return false;
+  for (var i = 2; i * i <= num; i++) if (num % i == 0) return false;
   return num >= 2;
-}
+};
 // isPrime(11) -> true
 // isPrime(12) -> false
-// isPrime(1) -> false
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1376,6 +1470,25 @@ Use `Array.reduce()` combined with `Array.map()` to iterate over elements and co
 const powerset = arr =>
   arr.reduce((a, v) => a.concat(a.map(r => [v].concat(r))), [[]]);
 // powerset([1,2]) -> [[], [1], [2], [2,1]]
+```
+
+[⬆ back to top](#table-of-contents)
+
+### primes 
+
+Generates primes up to a given number, using the Sieve of Eratosthenes.
+
+Generate an array from `2` to the given number. Use `Array.filter()` to filter out the values divisible by any number from `2` to the square root of the provided number.
+
+```js
+const primes = num => {
+  let arr =  Array.from({length:num-1}).map((x,i)=> i+2), 
+    sqroot  = Math.floor(Math.sqrt(num)),
+    numsTillSqroot  = Array.from({length:sqroot-1}).map((x,i)=> i+2);
+  numsTillSqroot.forEach(x => arr = arr.filter(y => ((y%x)!==0)||(y==x)));
+  return arr; 
+}
+// primes(10) -> [2,3,5,7] 
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1753,21 +1866,6 @@ const sortCharactersInString = str =>
 
 [⬆ back to top](#table-of-contents)
 
-### stringToArrayOfWords
-
-Converts a given string into an array of words.
-
-Use `String.split()` with a supplied pattern (defaults to non alpha as a regex) to convert to an array of strings. Use `Array.filter()` to remove any empty strings.
-Omit the second argument to use the default regex.
-
-```js
-const stringToArrayOfWords = (str, pattern = /[^a-zA-Z-]+/) => str.split(pattern).filter(Boolean);
-// stringToArrayOfWords("I love javaScript!!") -> ["I", "love", "javaScript"]
-// stringToArrayOfWords("python, javaScript & coffee") -> ["python", "javaScript", "coffee"]
-```
-
-[⬆ back to top](#table-of-contents)
-
 ### toCamelCase
 
 Converts a string to camelcase.
@@ -1796,6 +1894,21 @@ Return the string truncated to the desired length, with `...` appended to the en
 const truncateString = (str, num) =>
   str.length > num ? str.slice(0, num > 3 ? num - 3 : num) + '...' : str;
 // truncateString('boomerang', 7) -> 'boom...'
+```
+
+[⬆ back to top](#table-of-contents)
+
+### words
+
+Converts a given string into an array of words.
+
+Use `String.split()` with a supplied pattern (defaults to non alpha as a regex) to convert to an array of strings. Use `Array.filter()` to remove any empty strings.
+Omit the second argument to use the default regex.
+
+```js
+const words = (str, pattern = /[^a-zA-Z-]+/) => str.split(pattern).filter(Boolean);
+// words("I love javaScript!!") -> ["I", "love", "javaScript"]
+// words("python, javaScript & coffee") -> ["python", "javaScript", "coffee"]
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1997,6 +2110,26 @@ const timeTaken = callback => {
 
 [⬆ back to top](#table-of-contents)
 
+### toDecimalMark
+
+Convert a float-point arithmetic to the [Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark) form.
+
+Use `toString()` to convert the float `num` to a string, then use regex to separate every three characters of the integer part with a comma.
+
+ ```js
+const toDecimalMark = (num) => {
+  let cleanNum = num.toString().split('').filter(n => '0123456789.'.includes(n)).join('') 
+  let wholeNum = cleanNum.split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  let decNum = `.${cleanNum.split('.')[1]}`
+  return wholeNum + decNum;
+}
+// toDecimalMark(12305030388.9087) //-> '12,305,030,388.9087'
+// toDecimalMark(123.889087e2) //-> '12,388.9087'
+// toDecimalMark('12305abc030388.9087') // -> '12,305,030,388.9087'
+```
+
+[⬆ back to top](#table-of-contents)
+
 ### toOrdinalSuffix
 
 Adds an ordinal suffix to a number.
@@ -2029,21 +2162,6 @@ const UUIDGenerator = () =>
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
   );
 // UUIDGenerator() -> '7982fcfe-5721-4632-bede-6000885be57d'
-```
-
-[⬆ back to top](#table-of-contents)
-
-### validateEmail
-
-Returns `true` if the given string is a valid  email, `false` otherwise.
-
-Use a regular expression to check if the email is valid.
-Returns `true` if email is valid, `false` if not.
-
-```js
-const validateEmail = str =>
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(str);
-// validateEmail(mymail@gmail.com) -> true
 ```
 
 [⬆ back to top](#table-of-contents)
