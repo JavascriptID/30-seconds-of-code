@@ -1,6 +1,8 @@
 ![Logo](/logo.png)
 
-# 30 seconds of code [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/30-seconds-of-code/Lobby) [![Travis Build](https://travis-ci.org/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.org/Chalarangelo/30-seconds-of-code)
+# 30 seconds of code 
+[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/LICENSE) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Travis Build](https://travis-ci.org/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.org/Chalarangelo/30-seconds-of-code) [![Insight.io](https://img.shields.io/badge/insight.io-Ready-brightgreen.svg)](https://insight.io/github.com/Chalarangelo/30-seconds-of-code/tree/master/?source=0) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+
 > Curated collection of useful Javascript snippets that you can understand in 30 seconds or less.
 
 
@@ -10,6 +12,13 @@
 - You can import these snippets into Alfred 3, using [this file](https://github.com/lslvxy/30-seconds-of-code-alfredsnippets).
 
 ## Table of Contents
+
+### Adapter
+* [`call`](#call)
+* [`collectInto`](#collectinto)
+* [`flip`](#flip)
+* [`promisify`](#promisify)
+* [`spreadOver`](#spreadover)
 
 ### Array
 * [`arrayGcd`](#arraygcd)
@@ -78,7 +87,6 @@
 * [`curry`](#curry)
 * [`functionName`](#functionname)
 * [`pipe`](#pipe)
-* [`promisify`](#promisify)
 * [`runPromisesInSeries`](#runpromisesinseries)
 * [`sleep`](#sleep)
 
@@ -157,6 +165,103 @@
 * [`UUIDGenerator`](#uuidgenerator)
 * [`validateNumber`](#validatenumber)
 
+## Adapter
+
+### call
+
+Given a key and a set of arguments, call them when given a context. Primarily useful in composition.
+
+Use a closure to call a stored key with stored arguments.
+
+```js
+const call = ( key, ...args ) => context => context[ key ]( ...args );
+/*
+Promise.resolve( [ 1, 2, 3 ] ).then( call('map', x => 2 * x ) ).then( console.log ) //[ 2, 4, 6 ]
+const map = call.bind(null, 'map')
+Promise.resolve( [ 1, 2, 3 ] ).then( map( x => 2 * x ) ).then( console.log ) //[ 2, 4, 6 ]
+*/
+```
+
+[⬆ back to top](#table-of-contents)
+
+### collectInto
+
+Changes a function that accepts an array into a variadic function.
+
+Given a function, return a closure that collects all inputs into an array-accepting function.
+
+```js
+const collectInto = fn => ( ...args ) => fn( args );
+/*
+const Pall = collectInto( Promise.all.bind(Promise) )
+let p1 = Promise.resolve(1)
+let p2 = Promise.resolve(2)
+let p3 = new Promise((resolve) => setTimeout(resolve,2000,3))
+Pall(p1, p2, p3).then(console.log)
+*/
+```
+
+[⬆ back to top](#table-of-contents)
+
+### flip
+
+Flip takes a function as an argument, then makes the first argument the last
+
+Return a closure that takes variadic inputs, and splices the last argument to make it the first argument before applying the rest.
+
+```js
+const flip = fn => (...args) => fn(args.pop(), ...args)
+/*
+let a = {name: 'John Smith'}
+let b = {}
+const mergeFrom = flip(Object.assign)
+let mergePerson = mergeFrom.bind(a)
+mergePerson(b) // == b
+b = {}
+Object.assign(b, a) // == b
+*/
+```
+
+[⬆ back to top](#table-of-contents)
+
+### promisify
+
+Converts an asynchronous function to return a promise.
+
+Use currying to return a function returning a `Promise` that calls the original function.
+Use the `...rest` operator to pass in all the parameters.
+
+*In Node 8+, you can use [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original)*
+
+```js
+const promisify = func =>
+  (...args) =>
+    new Promise((resolve, reject) =>
+      func(...args, (err, result) =>
+        err ? reject(err) : resolve(result))
+    );
+// const delay = promisify((d, cb) => setTimeout(cb, d))
+// delay(2000).then(() => console.log('Hi!')) -> Promise resolves after 2s
+```
+
+[⬆ back to top](#table-of-contents)
+
+### spreadOver
+
+Takes a variadic function and returns a closure that accepts an array of arguments to map to the inputs of the function.
+
+Use closures and the spread operator (`...`) to map the array of arguments to the inputs of the function.
+
+```js
+const spreadOver = fn => argsArr => fn(...argsArr);
+/*
+const arrayMax = spreadOver(Math.max)
+arrayMax([1,2,3]) // -> 3
+arrayMax([1,2,4]) // -> 4
+*/
+```
+
+[⬆ back to top](#table-of-contents)
 ## Array
 
 ### arrayGcd
@@ -178,9 +283,9 @@ const arrayGcd = arr =>{
 
 ### arrayLcm
 
-Calculates the lowest  common multiple  (lcm) of an array of numbers.
+Calculates the lowest common multiple (lcm) of an array of numbers.
 
-Use `Array.reduce()` and the `lcm` formula (uses recursion) to calculate the lowest  common multiple  of an array of numbers.
+Use `Array.reduce()` and the `lcm` formula (uses recursion) to calculate the lowest common multiple of an array of numbers.
 
 ```js
 const arrayLcm = arr =>{
@@ -407,7 +512,7 @@ const flattenDepth = (arr, depth = 1) =>
 
 ### groupBy
 
-Groups the element of an array based on the given function.
+Groups the elements of an array based on the given function.
 
 Use `Array.map()` to map the values of an array to a function or property name.
 Use `Array.reduce()` to create an object, where the keys are produced from the mapped results.
@@ -439,7 +544,7 @@ const head = arr => arr[0];
 
 Returns all the elements of an array except the last one.
 
-Use `arr.slice(0,-1)`to return all but the last element of the array.
+Use `arr.slice(0,-1)` to return all but the last element of the array.
 
 ```js
 const initial = arr => arr.slice(0, -1);
@@ -450,9 +555,9 @@ const initial = arr => arr.slice(0, -1);
 
 ### initialize2DArray
 
-Initializes an 2D array of given width and height and value.
+Initializes a 2D array of given width and height and value.
 
-Use `Array.map()` to generate h rows where each is a new array of size w initialize with value. If value is not provided, default to `null`.
+Use `Array.map()` to generate h rows where each is a new array of size w initialize with value. If the value is not provided, default to `null`.
 
 ```js
 const initialize2DArray = (w, h, val = null) => Array(h).fill().map(() => Array(w).fill(val));
@@ -508,7 +613,7 @@ const intersection = (a, b) => { const s = new Set(b); return a.filter(x => s.ha
 
 Returns the last element in an array.
 
-Use `arr.length - 1` to compute index of the last element of the given array and returning it.
+Use `arr.length - 1` to compute the index of the last element of the given array and returning it.
 
 ```js
 const last = arr => arr[arr.length - 1];
@@ -521,7 +626,7 @@ const last = arr => arr[arr.length - 1];
 
 Maps the values of an array to an object using a function, where the key-value pairs consist of the original value as the key and the mapped value.
 
-Use an anonymous inner function scope to declare an undefined memory space, using closures to store a return value. Use a new `Array` to stor the array with a map of the function over its data set and a comma operator to return a second step, without needing to move from one context to another (due to closures and order of operations).
+Use an anonymous inner function scope to declare an undefined memory space, using closures to store a return value. Use a new `Array` to store the array with a map of the function over its data set and a comma operator to return a second step, without needing to move from one context to another (due to closures and order of operations).
 
 ```js
 const mapObject = (arr, fn) => 
@@ -554,7 +659,7 @@ const nthElement = (arr, n=0) => (n>0? arr.slice(n,n+1) : arr.slice(n))[0];
 
 Picks the key-value pairs corresponding to the given keys from an object.
 
-Use `Array.reduce()` to convert the filtered/picked keys back to a object with the corresponding key-value pair if the key exist in the obj.
+Use `Array.reduce()` to convert the filtered/picked keys back to an object with the corresponding key-value pair if the key exists in the obj.
 
 ```js
 const pick = (obj, arr) =>
@@ -569,7 +674,7 @@ const pick = (obj, arr) =>
 Mutates the original array to filter out the values specified.
 
 Use `Array.filter()` and `Array.includes()` to pull out the values that are not needed.
-Use `Array.length = 0` to mutate the passed in array by resetting it's length to zero and `Array.push()` to re-populate it with only the pulled values.
+Use `Array.length = 0` to mutate the passed in an array by resetting it's length to zero and `Array.push()` to re-populate it with only the pulled values.
 
 _(For a snippet that does not mutate the original array see [`without`](#without))_
 
@@ -597,7 +702,7 @@ const pull = (arr, ...args) => {
 Mutates the original array to filter out the values at the specified indexes.
 
 Use `Array.filter()` and `Array.includes()` to pull out the values that are not needed.
-Use `Array.length = 0` to mutate the passed in array by resetting it's length to zero and `Array.push()` to re-populate it with only the pulled values.
+Use `Array.length = 0` to mutate the passed in an array by resetting it's length to zero and `Array.push()` to re-populate it with only the pulled values.
 Use `Array.push()` to keep track of pulled values 
 
 ```js
@@ -624,7 +729,7 @@ const pullAtIndex = (arr, pullArr) => {
 Mutates the original array to filter out the values specified. Returns the removed elements.
 
 Use `Array.filter()` and `Array.includes()` to pull out the values that are not needed.
-Use `Array.length = 0` to mutate the passed in array by resetting it's length to zero and `Array.push()` to re-populate it with only the pulled values.
+Use `Array.length = 0` to mutate the passed in an array by resetting it's length to zero and `Array.push()` to re-populate it with only the pulled values.
 Use `Array.push()` to keep track of pulled values 
 
 ```js
@@ -668,7 +773,7 @@ const remove = (arr, func) =>
 
 Returns a random element from an array.
 
-Use `Math.random()` to generate a random number, multiply it with `length` and round it of to the nearest whole number using `Math.floor()`.
+Use `Math.random()` to generate a random number, multiply it by `length` and round it of to the nearest whole number using `Math.floor()`.
 This method also works with strings.
 
 ```js
@@ -724,7 +829,7 @@ const symmetricDifference = (a, b) => {
 
 Returns all elements in an array except for the first one.
 
-Return `arr.slice(1)` if the array's `length` is more than `1`, otherwise return the whole array.
+Return `arr.slice(1)` if the array's `length` is more than `1`, otherwise, return the whole array.
 
 ```js
 const tail = arr => arr.length > 1 ? arr.slice(1) : arr;
@@ -878,6 +983,7 @@ it is partially visible.
 ```js
 const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
   const { top, left, bottom, right } = el.getBoundingClientRect();
+  const { innerHeight, innerWidth } = window;
   return partiallyVisible
     ? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&
       ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
@@ -957,7 +1063,7 @@ const redirect = (url, asLink = true) =>
 Smooth-scrolls to the top of the page.
 
 Get distance from top using `document.documentElement.scrollTop` or `document.body.scrollTop`.
-Scroll by a fraction of the distance from top. Use `window.requestAnimationFrame()` to animate the scrolling.
+Scroll by a fraction of the distance from the top. Use `window.requestAnimationFrame()` to animate the scrolling.
 
 ```js
 const scrollToTop = () => {
@@ -977,7 +1083,7 @@ const scrollToTop = () => {
 
 Returns the difference (in days) between two dates.
 
-Calculate the difference (in days) between to `Date` objects.
+Calculate the difference (in days) between two `Date` objects.
 
 ```js
 const getDaysDiffBetweenDates = (dateInitial, dateFinal) => (dateFinal - dateInitial) / (1000 * 3600 * 24);
@@ -1006,7 +1112,7 @@ const JSONToDate = arr => {
 
 Converts a date from American format to English format.
 
-Use `Date.toISOString()`, `split('T')` and `replace()` to convert a date from American format to English format.
+Use `Date.toISOString()`, `split('T')` and `replace()` to convert a date from American format to the English format.
 Throws an error if the passed time cannot be converted to a date.
 
 ```js
@@ -1062,7 +1168,7 @@ Curries a function.
 
 Use recursion.
 If the number of provided arguments (`args`) is sufficient, call the passed function `f`.
-Otherwise return a curried function `f` that expects the rest of the arguments.
+Otherwise, return a curried function `f` that expects the rest of the arguments.
 If you want to curry a function that accepts a variable number of arguments (a variadic function, e.g. `Math.min()`), you can optionally pass the number of arguments to the second parameter `arity`.
 
 ```js
@@ -1104,28 +1210,6 @@ const multiply = (x, y) => x * y
 const multiplyAndAdd5 = pipeFunctions(multiply, add5)
 multiplyAndAdd5(5, 2) -> 15
 */
-```
-
-[⬆ back to top](#table-of-contents)
-
-### promisify
-
-Converts an asynchronous function to return a promise.
-
-Use currying to return a function returning a `Promise` that calls the original function.
-Use the `...rest` operator to pass in all the parameters.
-
-*In Node 8+, you can use [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original)*
-
-```js
-const promisify = func =>
-  (...args) =>
-    new Promise((resolve, reject) =>
-      func(...args, (err, result) =>
-        err ? reject(err) : resolve(result))
-    );
-// const delay = promisify((d, cb) => setTimeout(cb, d))
-// delay(2000).then(() => console.log('Hi!')) -> Promise resolves after 2s
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1196,7 +1280,7 @@ Clamps `num` within the inclusive `lower` and `upper` bounds.
 
 If `lower` is greater than `upper`, swap them. 
 If `num` falls within the range, return `num`. 
-Otherwise return the nearest number in the range.
+Otherwise, return the nearest number in the range.
 
 ```js
 const clampNumber = (num, lower, upper) => {
@@ -1214,7 +1298,7 @@ const clampNumber = (num, lower, upper) => {
 
 Applies the Collatz algorithm.
 
-If `n` is even, return `n/2`. Otherwise  return `3n+1`.
+If `n` is even, return `n/2`. Otherwise, return `3n+1`.
 
 ```js
 const collatz = n => (n % 2 == 0) ? (n / 2) : (3 * n + 1);
@@ -1278,7 +1362,7 @@ Use `Array.reduce()` to add values into the array, using the sum of the last two
 
 ```js
 const fibonacci = n =>
-  Array.from({ length: n}).map(v => 0).reduce((acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i), []);
+  Array.from({ length: n}).reduce((acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i), []);
 // fibonacci(5) -> [0,1,1,2,3]
 ```
 
@@ -1303,7 +1387,7 @@ const gcd = (x, y) => !y ? x : gcd(y, x % y);
 
 Calculates the Hamming distance between two values.
 
-Use XOR operator (`^`) to find the bit difference between the two numbers, convert to binary string using `toString(2)`.
+Use XOR operator (`^`) to find the bit difference between the two numbers, convert to a binary string using `toString(2)`.
 Count and return the number of `1`s in the string, using `match(/1/g)`.
 
 ```js
@@ -1316,10 +1400,10 @@ const hammingDistance = (num1, num2) =>
 
 ### inRange
 
-Checks if the given number falls in the given range. 
+Checks if the given number falls within the given range. 
 
 Use arithmetic comparison to check if the given number is in the specified range.
-If the second parameter, `end`, is not specified, the reange is considered to be from `0` to `start`.
+If the second parameter, `end`, is not specified, the range is considered to be from `0` to `start`.
 
 ```js
 const inRange = (n, start, end=null) => {
@@ -1336,9 +1420,9 @@ const inRange = (n, start, end=null) => {
 
 ### isArmstrongNumber
 
-Checks if the given number is an armstrong number or not.
+Checks if the given number is an Armstrong number or not.
 
-Convert the given number into array of digits. Use `Math.pow()` to get the appropriate power for each digit and sum them up. If the sum is equal to the number itself, return `true` otherwise `false`.
+Convert the given number into an array of digits. Use `Math.pow()` to get the appropriate power for each digit and sum them up. If the sum is equal to the number itself, return `true` otherwise `false`.
 
 ```js
 const isArmstrongNumber = digits => 
@@ -1381,11 +1465,13 @@ const isEven = num => num % 2 === 0;
 
 Checks if the provided integer is a prime number.
 
-Returns `false` if the provided number has positive divisors other than 1 and itself or if the number itself is less than 2.
+Check numbers from `2` to the square root of the given number. 
+Return `false` if any of them divides the given number, else return `true`, unless the number is less than `2`.
 
 ```js
 const isPrime = num => {
-  for (var i = 2; i * i <= num; i++) if (num % i == 0) return false;
+  const boundary = Math.floor(Math.sqrt(num));
+  for (var i = 2; i * i <= boundary; i++) if (num % i == 0) return false;
   return num >= 2;
 };
 // isPrime(11) -> true
@@ -1620,7 +1706,7 @@ const readFileLines = filename => fs.readFileSync(filename).toString('UTF8').spl
 
 Removes any properties except the ones specified from a JSON object.
 
-Use `Object.keys()` method to loop over given json object and deleting keys that are not `include`d in given array.
+Use `Object.keys()` method to loop over given JSON object and deleting keys that are not `include`d in given array.
 Also if you give it a special key (`childIndicator`) it will search deeply inside it to apply function to inner objects too.
 
 ```js
@@ -1694,14 +1780,13 @@ orderby(users, ['name', 'age']) -> [{name: 'barney', age: 34}, {name: 'barney', 
 */
 ```
 
-
 [⬆ back to top](#table-of-contents)
 
 ### select
 
-Retrieve a property that indicated by the selector from object.
+Retrieve a property that indicated by the selector from an object.
 
-If property not exists returns `undefined`.
+If the property does not exists returns `undefined`.
 
 ```js
 const select = (from, selector) =>
@@ -1797,7 +1882,7 @@ const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperC
 
 Retuns `number` of vowels in provided string.
 
-Use a regular expression to count number of vowels `(A, E, I, O, U)` in a `string`.
+Use a regular expression to count the number of vowels `(A, E, I, O, U)` in a `string`.
 
 ```js
 const countVowels = str => (str.match(/[aeiou]/ig) || []).length;
@@ -1824,7 +1909,7 @@ const escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 Converts a string from camelcase.
 
-Use `replace()` to remove underscores, hyphens and spaces and convert words to camelcase.
+Use `replace()` to remove underscores, hyphens, and spaces and convert words to camelcase.
 Omit the second argument to use a default separator of `_`.
 
 ```js
@@ -1870,7 +1955,7 @@ const sortCharactersInString = str =>
 
 Converts a string to camelcase.
 
-Use `replace()` to remove underscores, hyphens and spaces and convert words to camelcase.
+Use `replace()` to remove underscores, hyphens, and spaces and convert words to camelcase.
 
 ```js
 const toCamelCase = str =>
@@ -1902,7 +1987,7 @@ const truncateString = (str, num) =>
 
 Converts a given string into an array of words.
 
-Use `String.split()` with a supplied pattern (defaults to non alpha as a regex) to convert to an array of strings. Use `Array.filter()` to remove any empty strings.
+Use `String.split()` with a supplied pattern (defaults to non-alpha as a regex) to convert to an array of strings. Use `Array.filter()` to remove any empty strings.
 Omit the second argument to use the default regex.
 
 ```js
@@ -1974,7 +2059,7 @@ const getType = v =>
 
 Converts a color code to a `rgb()` or `rgba()` string if alpha value is provided.
 
-Use bitwise right-shift operator and mask bits with `&` (and) operator to convert a hexadecimal color code (with or without prefixed with `#`) to a string with the RGB values. If it's 3-digit color code, first convert to 6-digit version. If any alpha value is provided alongside 6-digit hex, give `rgba()` string in return.
+Use bitwise right-shift operator and mask bits with `&` (and) operator to convert a hexadecimal color code (with or without prefixed with `#`) to a string with the RGB values. If it's 3-digit color code, first convert to 6-digit version. If an alpha value is provided alongside 6-digit hex, give `rgba()` string in return.
 
 ```js
 const hexToRGB = hex => {
@@ -2082,7 +2167,7 @@ const isSymbol = val => typeof val === 'symbol';
 
 ### RGBToHex
 
-Converts the values of RGB components to a colorcode.
+Converts the values of RGB components to a color code.
 
 Convert given RGB parameters to hexadecimal string using bitwise left-shift operator (`<<`) and `toString(16)`, then `padStart(6,'0')` to get a 6-digit hexadecimal value.
 
@@ -2112,20 +2197,11 @@ const timeTaken = callback => {
 
 ### toDecimalMark
 
-Convert a float-point arithmetic to the [Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark) form.
-
-Use `toString()` to convert the float `num` to a string, then use regex to separate every three characters of the integer part with a comma.
+Use `toLocaleString()` to convert a float-point arithmetic to the [Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark) form. It makes a comma separated string from a number.
 
  ```js
-const toDecimalMark = (num) => {
-  let cleanNum = num.toString().split('').filter(n => '0123456789.'.includes(n)).join('') 
-  let wholeNum = cleanNum.split('.')[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  let decNum = `.${cleanNum.split('.')[1]}`
-  return wholeNum + decNum;
-}
-// toDecimalMark(12305030388.9087) //-> '12,305,030,388.9087'
-// toDecimalMark(123.889087e2) //-> '12,388.9087'
-// toDecimalMark('12305abc030388.9087') // -> '12,305,030,388.9087'
+const toDecimalMark = num => num.toLocaleString("en-US");
+// toDecimalMark(12305030388.9087) -> "12,305,030,388.9087"
 ```
 
 [⬆ back to top](#table-of-contents)

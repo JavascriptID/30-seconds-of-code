@@ -7,6 +7,7 @@ arrayMin:array
 arraySum:math
 arrayToHtmlList:browser
 bottomVisible:browser
+call:adapter
 capitalize:string
 capitalizeEveryWord:string
 chainAsync:function
@@ -16,6 +17,7 @@ cleanObj:object
 coalesce:utility
 coalesceFactory:utility
 collatz:math
+collectInto:adapter
 compact:array
 compose:function
 countOccurrences:array
@@ -39,6 +41,7 @@ fibonacci:math
 filterNonUnique:array
 flatten:array
 flattenDepth:array
+flip:adapter
 fromCamelCase:string
 functionName:function
 gcd:math
@@ -83,7 +86,7 @@ pick:array
 pipe:function
 powerset:math
 primes:math
-promisify:function
+promisify:adapter
 pull:array
 pullAtIndex:array
 pullAtValue:array
@@ -105,6 +108,7 @@ similarity:array
 sleep:function
 sortCharactersInString:string
 speechSynthesis:media
+spreadOver:adapter
 standardDeviation:math
 symmetricDifference:array
 tail:array
