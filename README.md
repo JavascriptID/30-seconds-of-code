@@ -69,6 +69,7 @@
 * [`arrayToHtmlList`](#arraytohtmllist)
 * [`bottomVisible`](#bottomvisible)
 * [`currentURL`](#currenturl)
+* [`detectDeviceType`](#detectdevicetype)
 * [`elementIsVisibleInViewport`](#elementisvisibleinviewport)
 * [`getScrollPosition`](#getscrollposition)
 * [`getURLParameters`](#geturlparameters)
@@ -90,6 +91,9 @@
 * [`runPromisesInSeries`](#runpromisesinseries)
 * [`sleep`](#sleep)
 
+### Logic
+* [`negate`](#negate)
+
 ### Math
 * [`arrayAverage`](#arrayaverage)
 * [`arraySum`](#arraysum)
@@ -99,6 +103,8 @@
 * [`distance`](#distance)
 * [`factorial`](#factorial)
 * [`fibonacci`](#fibonacci)
+* [`fibonacciCountUntilNum`](#fibonaccicountuntilnum)
+* [`fibonacciUntilNum`](#fibonacciuntilnum)
 * [`gcd`](#gcd)
 * [`hammingDistance`](#hammingdistance)
 * [`inRange`](#inrange)
@@ -140,9 +146,12 @@
 * [`countVowels`](#countvowels)
 * [`escapeRegExp`](#escaperegexp)
 * [`fromCamelCase`](#fromcamelcase)
+* [`repeatString`](#repeatstring)
 * [`reverseString`](#reversestring)
 * [`sortCharactersInString`](#sortcharactersinstring)
 * [`toCamelCase`](#tocamelcase)
+* [`toKebabCase`](#tokebabcase)
+* [`toSnakeCase`](#tosnakecase)
 * [`truncateString`](#truncatestring)
 * [`words`](#words)
 
@@ -158,6 +167,7 @@
 * [`isNumber`](#isnumber)
 * [`isString`](#isstring)
 * [`isSymbol`](#issymbol)
+* [`randomHexColorCode`](#randomhexcolorcode)
 * [`RGBToHex`](#rgbtohex)
 * [`timeTaken`](#timetaken)
 * [`toDecimalMark`](#todecimalmark)
@@ -215,7 +225,7 @@ const flip = fn => (...args) => fn(args.pop(), ...args)
 let a = {name: 'John Smith'}
 let b = {}
 const mergeFrom = flip(Object.assign)
-let mergePerson = mergeFrom.bind(a)
+let mergePerson = mergeFrom.bind(null, a)
 mergePerson(b) // == b
 b = {}
 Object.assign(b, a) // == b
@@ -290,7 +300,7 @@ Use `Array.reduce()` and the `lcm` formula (uses recursion) to calculate the low
 ```js
 const arrayLcm = arr =>{
   const gcd = (x, y) => !y ? x : gcd(y, x % y);
-  const lcm = (x, y) => (x*y)/gcd(x, y) 
+  const lcm = (x, y) => (x*y)/gcd(x, y); 
   return arr.reduce((a,b) => lcm(a,b));
 }
 // arrayLcm([1,2,3,4,5]) -> 60
@@ -440,12 +450,12 @@ const dropElements = (arr, func) => {
 
 ### dropRight
 
-Returns a new array with `n` elements removed from the right
+Returns a new array with `n` elements removed from the right.
 
-Check if `n` is shorter than the given array and use `Array.slice()` to slice it accordingly or return an empty array.
+Use `Array.slice()` to slice the remove the specified number of elements from the right.
 
 ```js
-const dropRight = (arr, n = 1) => n < arr.length ? arr.slice(0, arr.length - n) : []
+const dropRight = (arr, n = 1) => arr.slice(0, -n);
 //dropRight([1,2,3]) -> [1,2]
 //dropRight([1,2,3], 2) -> [1]
 //dropRight([1,2,3], 42) -> []
@@ -483,10 +493,10 @@ const filterNonUnique = arr => arr.filter(i => arr.indexOf(i) === arr.lastIndexO
 
 Flattens an array.
 
-Use `Array.reduce()` to get all elements inside the array and `concat()` to flatten them.
+Use a new array and concatenate it with the spread input array causing a shallow denesting of any contained arrays.
 
 ```js
-const flatten = arr => arr.reduce((a, v) => a.concat(v), []);
+const flatten = arr => [ ].concat( ...arr );
 // flatten([1,[2],3,4]) -> [1,2,3,4]
 ```
 
@@ -971,6 +981,20 @@ const currentURL = () => window.location.href;
 
 [⬆ back to top](#table-of-contents)
 
+### detectDeviceType
+
+Detects wether the website is being opened in a mobile device or a desktop/laptop.
+
+Use a regular expression to test the `navigator.userAgent` property to figure out if the device is a mobile device or a desktop/laptop.
+
+```js
+const detectDeviceType = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? "Mobile" : "Desktop";
+// detectDeviceType() -> "Mobile"
+// detectDeviceType() -> "Desktop"
+```
+
+[⬆ back to top](#table-of-contents)
+
 ### elementIsVisibleInViewport
 
 Returns `true` if the element specified is visible in the viewport, `false` otherwise.
@@ -1246,6 +1270,21 @@ async function sleepyWork() {
 ```
 
 [⬆ back to top](#table-of-contents)
+## Logic
+
+### negate
+
+Negates a predicate function.
+
+Take a predicate function and apply `not` to it with its arguments.
+
+```js
+const negate = func => (...args) => !func(...args);
+// filter([1, 2, 3, 4, 5, 6], negate(isEven)) -> [1, 3, 5]
+// negate(isOdd)(1) -> false
+```
+
+[⬆ back to top](#table-of-contents)
 ## Math
 
 ### arrayAverage
@@ -1364,6 +1403,38 @@ Use `Array.reduce()` to add values into the array, using the sum of the last two
 const fibonacci = n =>
   Array.from({ length: n}).reduce((acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i), []);
 // fibonacci(5) -> [0,1,1,2,3]
+```
+
+[⬆ back to top](#table-of-contents)
+
+### fibonacciCountUntilNum
+
+Returns the number of fibonnacci numbers up to `num`(`0` and `num` inclusive).
+
+Use a mathematical formula to calculate the number of fibonacci numbers until `num`.
+
+```js
+const fibonacciCountUntilNum = num =>
+  Math.ceil(Math.log(num * Math.sqrt(5) + 1/2) / Math.log((Math.sqrt(5)+1)/2));
+// fibonacciCountUntilNum(10) -> 7
+```
+
+[⬆ back to top](#table-of-contents)
+
+### fibonacciUntilNum
+
+Generates an array, containing the Fibonacci sequence, up until the nth term.
+
+Create an empty array of the specific length, initializing the first two values (`0` and `1`).
+Use `Array.reduce()` to add values into the array, using the sum of the last two values, except for the first two.
+Uses a mathematical formula to calculate the length of the array required.
+
+```js
+const fibonacciUntilNum = num => {
+  let n = Math.ceil(Math.log(num * Math.sqrt(5) + 1/2) / Math.log((Math.sqrt(5)+1)/2));
+  return Array.from({ length: n}).reduce((acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i), []);
+}
+// fibonacciUntilNum(15) -> [0,1,1,2,3,5,8,13]
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1923,6 +1994,22 @@ const fromCamelCase = (str, separator = '_') =>
 
 [⬆ back to top](#table-of-contents)
 
+### repeatString
+
+Repeats a string n times using `String.repeat()`
+
+If no string is provided the default is `""` and the default number of times is 2.
+
+```js
+const repeatString = (str="",num=2) => {
+    return num >= 0 ? str.repeat(num) : str;
+}
+// repeatString("abc",3) -> 'abcabcabc'
+// repeatString("abc") -> 'abcabc'
+```
+
+[⬆ back to top](#table-of-contents)
+
 ### reverseString
 
 Reverses a string.
@@ -1955,15 +2042,63 @@ const sortCharactersInString = str =>
 
 Converts a string to camelcase.
 
-Use `replace()` to remove underscores, hyphens, and spaces and convert words to camelcase.
+Break the string into words and combine them capitalizing the first letter of each word.
+For more detailed explanation of this Regex, [visit this Site](https://regex101.com/r/bMCgAB/1).
 
 ```js
-const toCamelCase = str =>
-  str.replace(/^([A-Z])|[\s-_]+(\w)/g, (match, p1, p2, offset) =>  p2 ? p2.toUpperCase() : p1.toLowerCase());
+const toCamelCase = str => {
+  let s = str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.slice(0,1).toUpperCase() + x.slice(1).toLowerCase())
+    .join('');
+  return s.slice(0,1).toLowerCase() + s.slice(1)
+  }
 // toCamelCase("some_database_field_name") -> 'someDatabaseFieldName'
 // toCamelCase("Some label that needs to be camelized") -> 'someLabelThatNeedsToBeCamelized'
 // toCamelCase("some-javascript-property") -> 'someJavascriptProperty'
 // toCamelCase("some-mixed_string with spaces_underscores-and-hyphens") -> 'someMixedStringWithSpacesUnderscoresAndHyphens'
+```
+
+[⬆ back to top](#table-of-contents)
+
+### toKebabCase
+
+Converts a string to kebab case.
+
+Break the string into words and combine them using `-` as a separator.
+For more detailed explanation of this Regex, [visit this Site](https://regex101.com/r/bMCgAB/1).
+
+```js
+const toKebabCase = str =>
+  str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('-');
+// toKebabCase("camelCase") -> 'camel-case'
+// toKebabCase("some text") -> 'some-text'
+// toKebabCase("some-mixed_string With spaces_underscores-and-hyphens") -> 'some-mixed-string-with-spaces-underscores-and-hyphens'
+// toKebabCase("AllThe-small Things") -> "all-the-small-things"
+// toKebabCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAndHTML') -> "i-am-listening-to-fm-while-loading-different-url-on-my-browser-and-also-editing-xml-and-html"
+```
+
+[⬆ back to top](#table-of-contents)
+
+### toSnakeCase
+
+Converts a string to snake case.
+
+Break the string into words and combine them using `_` as a separator.
+For more detailed explanation of this Regex, [visit this Site](https://regex101.com/r/bMCgAB/1).
+
+```js
+const toSnakeCase = str =>{
+  str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('_');
+// toSnakeCase("camelCase") -> 'camel_case'
+// toSnakeCase("some text") -> 'some_text'
+// toSnakeCase("some-javascript-property") -> 'some_javascript_property'
+// toSnakeCase("some-mixed_string With spaces_underscores-and-hyphens") -> 'some_mixed_string_with_spaces_underscores_and_hyphens'
+// toKebabCase("AllThe-small Things") -> "all_the_smal_things"
+// toKebabCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAndHTML') -> "i_am_listening_to_fm_while_loading_different_url_on_my_browser_and_also_editing_some_xml_and_html"
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -2031,7 +2166,7 @@ const coalesceFactory = valid => (...args) => args.find(valid);
 Extends a 3-digit color code to a 6-digit color code.
 
 Use `Array.map()`, `split()` and `Array.join()` to join the mapped array for converting a 3-digit RGB notated hexadecimal color-code to the 6-digit form.
-`Array.slice()` is used to remove `#` from string start since it's added once.
+`String.slice()` is used to remove `#` from string start since it's added once.
 ```js
 const extendHex = shortHex =>
   '#' + shortHex.slice(shortHex.startsWith('#') ? 1 : 0).split('').map(x => x+x).join('')
@@ -2161,6 +2296,21 @@ Use `typeof` to check if a value is classified as a symbol primitive.
 const isSymbol = val => typeof val === 'symbol';
 // isSymbol('x') -> false
 // isSymbol(Symbol('x')) -> true
+```
+
+[⬆ back to top](#table-of-contents)
+
+### randomHexColorCode
+
+Generates a random hexadecimal color code.
+
+Use `Math.random` to generate a random 24-bit(6x4bits) hexadecimal number. Use bit shifting and then convert it to an hexadecimal String using `toString(16)`. 
+
+```js
+const randomHexColorCode = () => '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+// randomHexColorCode() -> "#e34155"
+// randomHexColorCode() -> "#fd73a6"
+// randomHexColorCode() -> "#4144c6"
 ```
 
 [⬆ back to top](#table-of-contents)

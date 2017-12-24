@@ -25,6 +25,7 @@ countVowels:string
 currentURL:browser
 curry:function
 deepFlatten:array
+detectDeviceType:browser
 difference:array
 differenceWith:array
 digitize:math
@@ -38,6 +39,8 @@ everyNth:array
 extendHex:utility
 factorial:math
 fibonacci:math
+fibonacciCountUntilNum:math
+fibonacciUntilNum:math
 filterNonUnique:array
 flatten:array
 flattenDepth:array
@@ -76,6 +79,7 @@ last:array
 lcm:math
 mapObject:array
 median:math
+negate:logic
 nthElement:array
 objectFromPairs:object
 objectToPairs:object
@@ -90,11 +94,13 @@ promisify:adapter
 pull:array
 pullAtIndex:array
 pullAtValue:array
+randomHexColorCode:utility
 randomIntegerInRange:math
 randomNumberInRange:math
 readFileLines:node
 redirect:browser
 remove:array
+repeatString:string
 reverseString:string
 RGBToHex:utility
 round:math
@@ -118,7 +124,9 @@ timeTaken:utility
 toCamelCase:string
 toDecimalMark:utility
 toEnglishDate:date
+toKebabCase:string
 toOrdinalSuffix:utility
+toSnakeCase:string
 truncateString:string
 truthCheckCollection:object
 union:array
