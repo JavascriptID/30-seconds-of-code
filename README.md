@@ -17,6 +17,7 @@
 * [`call`](#call)
 * [`collectInto`](#collectinto)
 * [`flip`](#flip)
+* [`pipeFunctions`](#pipefunctions)
 * [`promisify`](#promisify)
 * [`spreadOver`](#spreadover)
 
@@ -81,13 +82,13 @@
 * [`getDaysDiffBetweenDates`](#getdaysdiffbetweendates)
 * [`JSONToDate`](#jsontodate)
 * [`toEnglishDate`](#toenglishdate)
+* [`tomorrow`](#tomorrow)
 
 ### Function
 * [`chainAsync`](#chainasync)
 * [`compose`](#compose)
 * [`curry`](#curry)
 * [`functionName`](#functionname)
-* [`pipe`](#pipe)
 * [`runPromisesInSeries`](#runpromisesinseries)
 * [`sleep`](#sleep)
 
@@ -121,6 +122,7 @@
 * [`randomIntegerInRange`](#randomintegerinrange)
 * [`randomNumberInRange`](#randomnumberinrange)
 * [`round`](#round)
+* [`sdbmHashAlgorithm`](#sdbmhashalgorithm)
 * [`standardDeviation`](#standarddeviation)
 
 ### Media
@@ -167,7 +169,7 @@
 * [`isNumber`](#isnumber)
 * [`isString`](#isstring)
 * [`isSymbol`](#issymbol)
-* [`randomHexColorCode`](#randomhexcolorcode)
+* [`randomHexColor`](#randomhexcolor)
 * [`RGBToHex`](#rgbtohex)
 * [`timeTaken`](#timetaken)
 * [`toDecimalMark`](#todecimalmark)
@@ -184,7 +186,7 @@ Given a key and a set of arguments, call them when given a context. Primarily us
 Use a closure to call a stored key with stored arguments.
 
 ```js
-const call = ( key, ...args ) => context => context[ key ]( ...args );
+const call = (key, ...args) => context => context[ key ](...args);
 /*
 Promise.resolve( [ 1, 2, 3 ] ).then( call('map', x => 2 * x ) ).then( console.log ) //[ 2, 4, 6 ]
 const map = call.bind(null, 'map')
@@ -201,7 +203,7 @@ Changes a function that accepts an array into a variadic function.
 Given a function, return a closure that collects all inputs into an array-accepting function.
 
 ```js
-const collectInto = fn => ( ...args ) => fn( args );
+const collectInto = fn => (...args) => fn(args);
 /*
 const Pall = collectInto( Promise.all.bind(Promise) )
 let p1 = Promise.resolve(1)
@@ -220,7 +222,7 @@ Flip takes a function as an argument, then makes the first argument the last
 Return a closure that takes variadic inputs, and splices the last argument to make it the first argument before applying the rest.
 
 ```js
-const flip = fn => (...args) => fn(args.pop(), ...args)
+const flip = fn => (...args) => fn(args.pop(), ...args);
 /*
 let a = {name: 'John Smith'}
 let b = {}
@@ -229,6 +231,25 @@ let mergePerson = mergeFrom.bind(null, a)
 mergePerson(b) // == b
 b = {}
 Object.assign(b, a) // == b
+*/
+```
+
+[⬆ back to top](#table-of-contents)
+
+### pipeFunctions
+
+Performs left-to-right function composition.
+
+Use `Array.reduce()` with the spread operator (`...`) to perform left-to-right function composition.
+The first (leftmost) function can accept one or more arguments; the remaining functions must be unary.
+
+```js
+const pipeFunctions = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
+/*
+const add5 = x => x + 5
+const multiply = (x, y) => x * y
+const multiplyAndAdd5 = pipeFunctions(multiply, add5)
+multiplyAndAdd5(5, 2) -> 15
 */
 ```
 
@@ -281,10 +302,10 @@ Calculates the greatest common denominator (gcd) of an array of numbers.
 Use `Array.reduce()` and the `gcd` formula (uses recursion) to calculate the greatest common denominator of an array of numbers.
 
 ```js
-const arrayGcd = arr =>{
+const arrayGcd = arr => {
   const gcd = (x, y) => !y ? x : gcd(y, x % y);
-  return arr.reduce((a,b) => gcd(a,b));
-}
+  return arr.reduce((a, b) => gcd(a, b));
+};
 // arrayGcd([1,2,3,4,5]) -> 1
 // arrayGcd([4,8,12]) -> 4
 ```
@@ -298,11 +319,11 @@ Calculates the lowest common multiple (lcm) of an array of numbers.
 Use `Array.reduce()` and the `lcm` formula (uses recursion) to calculate the lowest common multiple of an array of numbers.
 
 ```js
-const arrayLcm = arr =>{
+const arrayLcm = arr => {
   const gcd = (x, y) => !y ? x : gcd(y, x % y);
-  const lcm = (x, y) => (x*y)/gcd(x, y); 
-  return arr.reduce((a,b) => lcm(a,b));
-}
+  const lcm = (x, y) => (x * y) / gcd(x, y);
+  return arr.reduce((a, b) => lcm(a, b));
+};
 // arrayLcm([1,2,3,4,5]) -> 60
 // arrayLcm([4,8,12]) -> 24
 ```
@@ -412,7 +433,7 @@ Filters out all values from an array for which the comparator function does not 
 Use `Array.filter()` and `Array.find()` to find the appropriate values.
 
 ```js
-const differenceWith = (arr, val, comp) => arr.filter(a => !val.find(b => comp(a, b)))
+const differenceWith = (arr, val, comp) => arr.filter(a => !val.find(b => comp(a, b)));
 // differenceWith([1, 1.2, 1.5, 3], [1.9, 3], (a,b) => Math.round(a) == Math.round(b)) -> [1, 1.2]
 ```
 
@@ -456,9 +477,9 @@ Use `Array.slice()` to slice the remove the specified number of elements from th
 
 ```js
 const dropRight = (arr, n = 1) => arr.slice(0, -n);
-//dropRight([1,2,3]) -> [1,2]
-//dropRight([1,2,3], 2) -> [1]
-//dropRight([1,2,3], 42) -> []
+// dropRight([1,2,3]) -> [1,2]
+// dropRight([1,2,3], 2) -> [1]
+// dropRight([1,2,3], 42) -> []
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -496,7 +517,7 @@ Flattens an array.
 Use a new array and concatenate it with the spread input array causing a shallow denesting of any contained arrays.
 
 ```js
-const flatten = arr => [ ].concat( ...arr );
+const flatten = arr => [ ].concat(...arr);
 // flatten([1,[2],3,4]) -> [1,2,3,4]
 ```
 
@@ -584,7 +605,7 @@ Use `Array((end + 1) - start)` to create an array of the desired length, `Array.
 You can omit `start` to use a default value of `0`.
 
 ```js
-const initializeArrayWithRange = (end, start = 0) => 
+const initializeArrayWithRange = (end, start = 0) =>
   Array.from({ length: (end + 1) - start }).map((v, i) => i + start);
 // initializeArrayWithRange(5) -> [0,1,2,3,4,5]
 // initializeArrayWithRange(7, 3) -> [3,4,5,6,7]
@@ -639,8 +660,8 @@ Maps the values of an array to an object using a function, where the key-value p
 Use an anonymous inner function scope to declare an undefined memory space, using closures to store a return value. Use a new `Array` to store the array with a map of the function over its data set and a comma operator to return a second step, without needing to move from one context to another (due to closures and order of operations).
 
 ```js
-const mapObject = (arr, fn) => 
-  (a => (a = [arr, arr.map(fn)], a[0].reduce( (acc,val,ind) => (acc[val] = a[1][ind], acc), {}) )) ( );
+const mapObject = (arr, fn) =>
+  (a => (a = [arr, arr.map(fn)], a[0].reduce((acc, val, ind) => (acc[val] = a[1][ind], acc), {})))();
 /*
 const squareIt = arr => mapObject(arr, a => a*a)
 squareIt([1,2,3]) // { 1: 1, 2: 4, 3: 9 }
@@ -658,7 +679,7 @@ If the index is out of bounds, return `[]`.
 Omit the second argument, `n`, to get the first element of the array.
 
 ```js
-const nthElement = (arr, n=0) => (n>0? arr.slice(n,n+1) : arr.slice(n))[0];
+const nthElement = (arr, n = 0) => (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
 // nthElement(['a','b','c'],1) -> 'b'
 // nthElement(['a','b','b'],-3) -> 'a'
 ```
@@ -692,7 +713,7 @@ _(For a snippet that does not mutate the original array see [`without`](#without
 const pull = (arr, ...args) => {
   let argState = Array.isArray(args[0]) ? args[0] : args;
   let pulled = arr.filter((v, i) => !argState.includes(v));
-  arr.length = 0; 
+  arr.length = 0;
   pulled.forEach(v => arr.push(v));
 };
 
@@ -719,11 +740,11 @@ Use `Array.push()` to keep track of pulled values
 const pullAtIndex = (arr, pullArr) => {
   let removed = [];
   let pulled = arr.map((v, i) => pullArr.includes(i) ? removed.push(v) : v)
-                  .filter((v, i) => !pullArr.includes(i))
-  arr.length = 0; 
+                  .filter((v, i) => !pullArr.includes(i));
+  arr.length = 0;
   pulled.forEach(v => arr.push(v));
   return removed;
-}
+};
 
 // let myArray = ['a', 'b', 'c', 'd'];
 // let pulled = pullAtIndex(myArray, [1, 3]);
@@ -744,13 +765,13 @@ Use `Array.push()` to keep track of pulled values
 
 ```js
 const pullAtValue = (arr, pullArr) => {
-  let removed = [], 
+  let removed = [],
     pushToRemove = arr.forEach((v, i) => pullArr.includes(v) ? removed.push(v) : v),
     mutateTo = arr.filter((v, i) => !pullArr.includes(v));
   arr.length = 0;
   mutateTo.forEach(v => arr.push(v));
   return removed;
-}
+};
 /*
 let myArray = ['a', 'b', 'c', 'd'];
 let pulled = pullAtValue(myArray, ['b', 'd']);
@@ -772,7 +793,7 @@ The `func` is invoked with three arguments (`value, index, array`).
 const remove = (arr, func) =>
   Array.isArray(arr) ? arr.filter(func).reduce((acc, val) => {
     arr.splice(arr.indexOf(val), 1); return acc.concat(val);
-    }, [])
+  }, [])
   : [];
 // remove([1, 2, 3, 4], n => n % 2 == 0) -> [2, 4]
 ```
@@ -795,13 +816,22 @@ const sample = arr => arr[Math.floor(Math.random() * arr.length)];
 
 ### shuffle
 
-Randomizes the order of the values of an array.
+Randomizes the order of the values of an array, returning a new array.
 
-Use `Array.sort()` to reorder elements, using `Math.random()` in the comparator.
+Uses the Fisher-Yates algoritm to reorder the elements of the array, based on the [Lodash implementation](https://github.com/lodash/lodash/blob/b2ea6b1cd251796dcb5f9700c4911a7b6223920b/shuffle.js), but as a pure function.
 
 ```js
-const shuffle = arr => arr.sort(() => Math.random() - 0.5);
-// shuffle([1,2,3]) -> [2,3,1]
+const shuffle = ([...arr]) => {
+  let m = arr.length;
+  while (m) {
+    const i = Math.floor(Math.random() * m--);
+    [arr[m], arr[i]] = [arr[i], arr[m]];
+  }
+  return arr;
+};
+// const foo = [1,2,3]
+// shuffle(foo) -> [2,3,1]
+// console.log(foo) -> [1,2,3]
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -829,7 +859,7 @@ Create a `Set` from each array, then use `Array.filter()` on each of them to onl
 const symmetricDifference = (a, b) => {
   const sA = new Set(a), sB = new Set(b);
   return [...a.filter(x => !sB.has(x)), ...b.filter(x => !sA.has(x))];
-}
+};
 // symmetricDifference([1,2,3], [1,2,4]) -> [3,4]
 ```
 
@@ -917,11 +947,11 @@ If lengths of the argument-arrays vary, `undefined` is used where no value could
 const zip = (...arrays) => {
   const maxLength = Math.max(...arrays.map(x => x.length));
   return Array.from({length: maxLength}).map((_, i) => {
-   return Array.from({length: arrays.length}, (_, k) => arrays[k][i]);
-  })
-}
-//zip(['a', 'b'], [1, 2], [true, false]); -> [['a', 1, true], ['b', 2, false]]
-//zip(['a'], [1, 2], [true, false]); -> [['a', 1, true], [undefined, 2, false]]
+    return Array.from({length: arrays.length}, (_, k) => arrays[k][i]);
+  });
+};
+// zip(['a', 'b'], [1, 2], [true, false]); -> [['a', 1, true], ['b', 2, false]]
+// zip(['a'], [1, 2], [true, false]); -> [['a', 1, true], [undefined, 2, false]]
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -933,7 +963,7 @@ Given an array of valid property identifiers and an array of values, return an o
 Since an object can have undefined values but not undefined property pointers, the array of properties is used to decide the structure of the resulting object using `Array.reduce()`.
 
 ```js
-const zipObject = ( props, values ) => props.reduce( ( obj, prop, index ) => ( obj[prop] = values[index], obj ), {} )
+const zipObject = (props, values) => props.reduce((obj, prop, index) => (obj[prop] = values[index], obj), {});
 // zipObject(['a','b','c'], [1,2]) -> {a: 1, b: 2, c: undefined}
 // zipObject(['a','b'], [1,2,3]) -> {a: 1, b: 2}
 ```
@@ -948,7 +978,7 @@ Converts the given array elements into `<li>` tags and appends them to the list 
 Use `Array.map()` and `document.querySelector()` to create a list of html tags.
 
 ```js
-const arrayToHtmlList = (arr, listID) => arr.map(item => document.querySelector("#"+listID).innerHTML+=`<li>${item}</li>`);
+const arrayToHtmlList = (arr, listID) => arr.map(item => document.querySelector('#' + listID).innerHTML += `<li>${item}</li>`);
 // arrayToHtmlList(['item 1', 'item 2'],'myListID')
 ```
 
@@ -988,7 +1018,7 @@ Detects wether the website is being opened in a mobile device or a desktop/lapto
 Use a regular expression to test the `navigator.userAgent` property to figure out if the device is a mobile device or a desktop/laptop.
 
 ```js
-const detectDeviceType = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? "Mobile" : "Desktop";
+const detectDeviceType = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
 // detectDeviceType() -> "Mobile"
 // detectDeviceType() -> "Desktop"
 ```
@@ -1061,8 +1091,8 @@ Use `location.protocol` to get the protocol currently being used. If it's not HT
 
 ```js
 const httpsRedirect = () => {
-  if(location.protocol !== "https:") location.replace("https://" + location.href.split("//")[1]);
-}
+  if (location.protocol !== 'https:') location.replace('https://' + location.href.split('//')[1]);
+};
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1125,7 +1155,7 @@ Use `Date()`, to convert dates in JSON format to readable format (`dd/mm/yyyy`).
 ```js
 const JSONToDate = arr => {
   const dt = new Date(parseInt(arr.toString().substr(6)));
-  return `${ dt.getDate() }/${ dt.getMonth() + 1 }/${ dt.getFullYear() }`
+  return `${dt.getDate()}/${dt.getMonth() + 1}/${dt.getFullYear()}`;
 };
 // JSONToDate(/Date(1489525200000)/) -> "14/3/2017"
 ```
@@ -1140,9 +1170,20 @@ Use `Date.toISOString()`, `split('T')` and `replace()` to convert a date from Am
 Throws an error if the passed time cannot be converted to a date.
 
 ```js
-const toEnglishDate  = (time) =>
-  {try{return new Date(time).toISOString().split('T')[0].replace(/-/g, '/')}catch(e){return}};
+const toEnglishDate = (time) => { try { return new Date(time).toISOString().split('T')[0].replace(/-/g, '/'); } catch (e) {} };
 // toEnglishDate('09/21/2010') -> '21/09/2010'
+```
+
+[⬆ back to top](#table-of-contents)
+
+### tomorrow
+
+Results in a string representation of tomorrow's date.
+Use `new Date()` to get today's date, adding `86400000` of seconds to it(24 hours), using `toISOString` to convert Date object to string.
+
+```js
+const tomorrow = () => new Date(new Date().getTime() + 86400000).toISOString().split('T')[0];
+// tomorrow() -> 2017-12-27 (if current date is 2017-12-26)
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1215,25 +1256,6 @@ Use `console.debug()` and the `name` property of the passed method to log the me
 ```js
 const functionName = fn => (console.debug(fn.name), fn);
 // functionName(Math.max) -> max (logged in debug channel of console)
-```
-
-[⬆ back to top](#table-of-contents)
-
-### pipe
-
-Performs left-to-right function composition.
-
-Use `Array.reduce()` with the spread operator (`...`) to perform left-to-right function composition.
-The first (leftmost) function can accept one or more arguments; the remaining functions must be unary.
-
-```js
-const pipeFunctions = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
-/*
-const add5 = x => x + 5
-const multiply = (x, y) => x * y
-const multiplyAndAdd5 = pipeFunctions(multiply, add5)
-multiplyAndAdd5(5, 2) -> 15
-*/
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1315,17 +1337,13 @@ const arraySum = arr => arr.reduce((acc, val) => acc + val, 0);
 
 ### clampNumber
 
-Clamps `num` within the inclusive `lower` and `upper` bounds.
+Clamps `num` within the inclusive range specified by the boundary values `a` and `b`
 
-If `lower` is greater than `upper`, swap them. 
 If `num` falls within the range, return `num`. 
 Otherwise, return the nearest number in the range.
 
 ```js
-const clampNumber = (num, lower, upper) => {
-  if(lower > upper) upper = [lower, lower = upper][0];
-  return (num>=lower && num<=upper) ? num : ((num < lower) ? lower : upper) 
-}
+const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a,b)),Math.min(a,b));
 // clampNumber(2, 3, 5) -> 3
 // clampNumber(1, -1, -5) -> -1
 // clampNumber(3, 2, 4) -> 3
@@ -1355,7 +1373,7 @@ Convert the number to a string, using spread operators in ES6(`[...string]`) bui
 Use `Array.map()` and `parseInt()` to transform each value to an integer.
 
 ```js
-const digitize = n => [...''+n].map(i => parseInt(i));
+const digitize = n => [...'' + n].map(i => parseInt(i));
 // digitize(2334) -> [2, 3, 3, 4]
 ```
 
@@ -1385,7 +1403,7 @@ Throws an exception if `n` is a negative number.
 
 ```js
 const factorial = n =>
-  n < 0 ? (() => { throw new TypeError('Negative numbers are not allowed!') })()
+  n < 0 ? (() => { throw new TypeError('Negative numbers are not allowed!'); })()
   : n <= 1 ? 1 : n * factorial(n - 1);
 // factorial(6) -> 720
 ```
@@ -1415,7 +1433,7 @@ Use a mathematical formula to calculate the number of fibonacci numbers until `n
 
 ```js
 const fibonacciCountUntilNum = num =>
-  Math.ceil(Math.log(num * Math.sqrt(5) + 1/2) / Math.log((Math.sqrt(5)+1)/2));
+  Math.ceil(Math.log(num * Math.sqrt(5) + 1 / 2) / Math.log((Math.sqrt(5) + 1) / 2));
 // fibonacciCountUntilNum(10) -> 7
 ```
 
@@ -1431,9 +1449,9 @@ Uses a mathematical formula to calculate the length of the array required.
 
 ```js
 const fibonacciUntilNum = num => {
-  let n = Math.ceil(Math.log(num * Math.sqrt(5) + 1/2) / Math.log((Math.sqrt(5)+1)/2));
+  let n = Math.ceil(Math.log(num * Math.sqrt(5) + 1 / 2) / Math.log((Math.sqrt(5) + 1) / 2));
   return Array.from({ length: n}).reduce((acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i), []);
-}
+};
 // fibonacciUntilNum(15) -> [0,1,1,2,3,5,8,13]
 ```
 
@@ -1477,10 +1495,10 @@ Use arithmetic comparison to check if the given number is in the specified range
 If the second parameter, `end`, is not specified, the range is considered to be from `0` to `start`.
 
 ```js
-const inRange = (n, start, end=null) => {
-  if(end && start > end) end = [start, start=end][0];
-  return (end == null) ? (n>=0 && n<start) : (n>=start && n<end);
-}
+const inRange = (n, start, end = null) => {
+  if (end && start > end) end = [start, start = end][0];
+  return (end == null) ? (n >= 0 && n < start) : (n >= start && n < end);
+};
 // inRange(3, 2, 5) -> true
 // inRange(3, 4) -> true
 // inRange(2, 3, 5) -> false
@@ -1496,8 +1514,8 @@ Checks if the given number is an Armstrong number or not.
 Convert the given number into an array of digits. Use `Math.pow()` to get the appropriate power for each digit and sum them up. If the sum is equal to the number itself, return `true` otherwise `false`.
 
 ```js
-const isArmstrongNumber = digits => 
-  ( arr => arr.reduce( ( a, d ) => a + Math.pow( parseInt( d ), arr.length ), 0 ) == digits ? true : false )( ( digits+'' ).split( '' ) );
+const isArmstrongNumber = digits =>
+  (arr => arr.reduce((a, d) => a + Math.pow(parseInt(d), arr.length), 0) == digits)((digits + '').split(''));
 // isArmstrongNumber(1634) -> true
 // isArmstrongNumber(371) -> true
 // isArmstrongNumber(56) -> false
@@ -1559,9 +1577,9 @@ Use the greatest common divisor (GCD) formula and `Math.abs()` to determine the 
 The GCD formula uses recursion.
 
 ```js
-const lcm = (x,y) => {
+const lcm = (x, y) => {
   const gcd = (x, y) => !y ? x : gcd(y, x % y);
-  return Math.abs(x*y)/(gcd(x,y));
+  return Math.abs(x * y) / (gcd(x, y));
 };
 // lcm(12,7) -> 84
 ```
@@ -1639,13 +1657,13 @@ Generate an array from `2` to the given number. Use `Array.filter()` to filter o
 
 ```js
 const primes = num => {
-  let arr =  Array.from({length:num-1}).map((x,i)=> i+2), 
-    sqroot  = Math.floor(Math.sqrt(num)),
-    numsTillSqroot  = Array.from({length:sqroot-1}).map((x,i)=> i+2);
-  numsTillSqroot.forEach(x => arr = arr.filter(y => ((y%x)!==0)||(y==x)));
-  return arr; 
-}
-// primes(10) -> [2,3,5,7] 
+  let arr = Array.from({length: num - 1}).map((x, i) => i + 2),
+    sqroot = Math.floor(Math.sqrt(num)),
+    numsTillSqroot = Array.from({length: sqroot - 1}).map((x, i) => i + 2);
+  numsTillSqroot.forEach(x => arr = arr.filter(y => ((y % x) !== 0) || (y == x)));
+  return arr;
+};
+// primes(10) -> [2,3,5,7]
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1684,8 +1702,27 @@ Use `Math.round()` and template literals to round the number to the specified nu
 Omit the second argument, `decimals` to round to an integer.
 
 ```js
-const round = (n, decimals=0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);
+const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);
 // round(1.005, 2) -> 1.01
+```
+
+[⬆ back to top](#table-of-contents)
+
+### sdbmHashAlgorithm
+
+This algorithm is a simple hash-algorithm that hashes it input string `s` into a whole number.
+
+Use `split('')` and `Array.reduce()` to create a hash of the input string, utilizing bit shifting.
+
+``` js
+const sdbm = str => {
+  let arr = str.split('');
+  return arr.reduce((hashCode, currentVal) =>
+    hashCode = currentVal.charCodeAt(0) + (hashCode << 6) + (hashCode << 16)  - hashCode
+  ,0)
+}
+// console.log(sdbm("name")) // -3521204949
+// console.log(sdbm("age")) // 808122783
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -1742,7 +1779,7 @@ Use `fs.writeFile()`, template literals and `JSON.stringify()` to write a `json`
 
 ```js
 const fs = require('fs');
-const JSONToFile = (obj, filename) => fs.writeFile(`${filename}.json`, JSON.stringify(obj, null, 2))
+const JSONToFile = (obj, filename) => fs.writeFile(`${filename}.json`, JSON.stringify(obj, null, 2));
 // JSONToFile({test: "is passed"}, 'testJsonFile') -> writes the object to 'testJsonFile.json'
 ```
 
@@ -1756,9 +1793,9 @@ Use `readFileSync` function in `fs` node package to create a `Buffer` from a fil
 convert buffer to string using `toString(encoding)` function.
 creating an array from contents of file by `split`ing file content line by line (each `\n`).
 
-  ```js
+```js
 const fs = require('fs');
-const readFileLines = filename => fs.readFileSync(filename).toString('UTF8').split('\n');
+const readFileLines = filename => fs.readFileSync(filename).toString('UTF8').split(/\r?\n/);
 /*
   contents of test.txt :
     line1
@@ -1788,12 +1825,12 @@ const cleanObj = (obj, keysToKeep = [], childIndicator) => {
     } else if (!keysToKeep.includes(key)) {
       delete obj[key];
     }
-  })
-}
+   });
+  return obj;
+};
 /*
   const testObj = {a: 1, b: 2, children: {a: 1, b: 2}}
-  cleanObj(testObj, ["a"],"children")
-  console.log(testObj)// { a: 1, children : { a: 1}}
+  cleanObj(testObj, ["a"],"children") // { a: 1, children : { a: 1}}
 */
 ```
 
@@ -1928,7 +1965,7 @@ Use destructuring and `toUpperCase()` to capitalize first letter, `...rest` to g
 Omit the `lowerRest` parameter to keep the rest of the string intact, or set it to `true` to convert to lowercase.
 
 ```js
-const capitalize = ([first,...rest], lowerRest = false) =>
+const capitalize = ([first, ...rest], lowerRest = false) =>
   first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
 // capitalize('myName') -> 'MyName'
 // capitalize('myName', true) -> 'Myname'
@@ -2001,9 +2038,9 @@ Repeats a string n times using `String.repeat()`
 If no string is provided the default is `""` and the default number of times is 2.
 
 ```js
-const repeatString = (str="",num=2) => {
-    return num >= 0 ? str.repeat(num) : str;
-}
+const repeatString = (str = '', num = 2) => {
+  return num >= 0 ? str.repeat(num) : str;
+};
 // repeatString("abc",3) -> 'abcabcabc'
 // repeatString("abc") -> 'abcabc'
 ```
@@ -2048,10 +2085,10 @@ For more detailed explanation of this Regex, [visit this Site](https://regex101.
 ```js
 const toCamelCase = str => {
   let s = str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map(x => x.slice(0,1).toUpperCase() + x.slice(1).toLowerCase())
+    .map(x => x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase())
     .join('');
-  return s.slice(0,1).toLowerCase() + s.slice(1)
-  }
+  return s.slice(0, 1).toLowerCase() + s.slice(1);
+};
 // toCamelCase("some_database_field_name") -> 'someDatabaseFieldName'
 // toCamelCase("Some label that needs to be camelized") -> 'someLabelThatNeedsToBeCamelized'
 // toCamelCase("some-javascript-property") -> 'someJavascriptProperty'
@@ -2089,16 +2126,17 @@ Break the string into words and combine them using `_` as a separator.
 For more detailed explanation of this Regex, [visit this Site](https://regex101.com/r/bMCgAB/1).
 
 ```js
-const toSnakeCase = str =>{
+const toSnakeCase = str => {
   str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
     .map(x => x.toLowerCase())
     .join('_');
+};
 // toSnakeCase("camelCase") -> 'camel_case'
 // toSnakeCase("some text") -> 'some_text'
 // toSnakeCase("some-javascript-property") -> 'some_javascript_property'
 // toSnakeCase("some-mixed_string With spaces_underscores-and-hyphens") -> 'some_mixed_string_with_spaces_underscores_and_hyphens'
-// toKebabCase("AllThe-small Things") -> "all_the_smal_things"
-// toKebabCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAndHTML') -> "i_am_listening_to_fm_while_loading_different_url_on_my_browser_and_also_editing_some_xml_and_html"
+// toSnakeCase("AllThe-small Things") -> "all_the_small_things"
+// toSnakeCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAndHTML') -> "i_am_listening_to_fm_while_loading_different_url_on_my_browser_and_also_editing_some_xml_and_html"
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -2141,7 +2179,7 @@ Returns the first non-null/undefined argument.
 Use `Array.find()` to return the first non `null`/`undefined` argument.
 
 ```js
-const coalesce = (...args) => args.find(_ => ![undefined, null].includes(_))
+const coalesce = (...args) => args.find(_ => ![undefined, null].includes(_));
 // coalesce(null,undefined,"",NaN, "Waldo") -> ""
 ```
 
@@ -2169,7 +2207,7 @@ Use `Array.map()`, `split()` and `Array.join()` to join the mapped array for con
 `String.slice()` is used to remove `#` from string start since it's added once.
 ```js
 const extendHex = shortHex =>
-  '#' + shortHex.slice(shortHex.startsWith('#') ? 1 : 0).split('').map(x => x+x).join('')
+  '#' + shortHex.slice(shortHex.startsWith('#') ? 1 : 0).split('').map(x => x + x).join('');
 // extendHex('#03f') -> '#0033ff'
 // extendHex('05a') -> '#0055aa'
 ```
@@ -2202,16 +2240,15 @@ const hexToRGB = hex => {
   if (h.length === 3) h = [...h].map(x => x + x).join('');
   else if (h.length === 8) alpha = true;
   h = parseInt(h, 16);
-  return 'rgb' + (alpha ? 'a' : '') + '('
-    + (h >>> (alpha ? 24 : 16)) + ', '
-    + ((h & (alpha ? 0x00ff0000 : 0x00ff00)) >>> (alpha ? 16 : 8)) + ', '
-    + ((h & (alpha ? 0x0000ff00 : 0x0000ff)) >>> (alpha ? 8 : 0))
-    + (alpha ? `, ${(h & 0x000000ff)}` : '') + ')';
+  return 'rgb' + (alpha ? 'a' : '') + '(' +
+    (h >>> (alpha ? 24 : 16)) + ', ' +
+    ((h & (alpha ? 0x00ff0000 : 0x00ff00)) >>> (alpha ? 16 : 8)) + ', ' +
+    ((h & (alpha ? 0x0000ff00 : 0x0000ff)) >>> (alpha ? 8 : 0)) +
+    (alpha ? `, ${(h & 0x000000ff)}` : '') + ')';
 };
 // hexToRGB('#27ae60ff') -> 'rgba(39, 174, 96, 255)'
 // hexToRGB('27ae60') -> 'rgb(39, 174, 96)'
 // hexToRGB('#fff') -> 'rgb(255, 255, 255)'
-
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -2300,7 +2337,7 @@ const isSymbol = val => typeof val === 'symbol';
 
 [⬆ back to top](#table-of-contents)
 
-### randomHexColorCode
+### randomHexColor
 
 Generates a random hexadecimal color code.
 
@@ -2308,10 +2345,10 @@ Use `Math.random` to generate a random 24-bit(6x4bits) hexadecimal number. Use b
 
 ```js
 const randomHexColor = () => {
-    let n = (Math.random()*0xfffff|0).toString(16);
-    return '#' + (n.length !== 6
-        ? (Math.random()*0xf|0).toString(16) + n : n);
-}
+  let n = (Math.random() * 0xfffff | 0).toString(16);
+  return '#' + (n.length !== 6
+        ? (Math.random() * 0xf | 0).toString(16) + n : n);
+};
 // randomHexColorCode() -> "#e34155"
 // randomHexColorCode() -> "#fd73a6"
 // randomHexColorCode() -> "#4144c6"
@@ -2340,8 +2377,8 @@ Use `console.time()` and `console.timeEnd()` to measure the difference between t
 
 ```js
 const timeTaken = callback => {
-  console.time('timeTaken');  const r = callback();
-  console.timeEnd('timeTaken');  return r;
+  console.time('timeTaken'); const r = callback();
+  console.timeEnd('timeTaken'); return r;
 };
 // timeTaken(() => Math.pow(2, 10)) -> 1024
 // (logged): timeTaken: 0.02099609375ms
@@ -2354,7 +2391,7 @@ const timeTaken = callback => {
 Use `toLocaleString()` to convert a float-point arithmetic to the [Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark) form. It makes a comma separated string from a number.
 
  ```js
-const toDecimalMark = num => num.toLocaleString("en-US");
+const toDecimalMark = num => num.toLocaleString('en-US');
 // toDecimalMark(12305030388.9087) -> "12,305,030,388.9087"
 ```
 
