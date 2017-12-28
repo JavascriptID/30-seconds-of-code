@@ -7,5 +7,8 @@ Use `Array.map()` and `parseInt()` to transform each value to an integer.
 
 ```js
 const digitize = n => [...'' + n].map(i => parseInt(i));
-// digitize(2334) -> [2, 3, 3, 4]
+```
+
+```js
+digitize(123) // [1, 2, 3]
 ```
