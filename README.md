@@ -1,7 +1,7 @@
 ![Logo](/logo.png)
 
-# 30 seconds of code 
-[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/LICENSE) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![Travis Build](https://travis-ci.org/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.org/Chalarangelo/30-seconds-of-code) [![Insight.io](https://img.shields.io/badge/insight.io-Ready-brightgreen.svg)](https://insight.io/github.com/Chalarangelo/30-seconds-of-code/tree/master/?source=0) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+# 30 seconds of code
+[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/LICENSE) [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-4FB999.svg)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis Build](https://travis-ci.org/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.org/Chalarangelo/30-seconds-of-code) [![Insight.io](https://img.shields.io/badge/insight.io-Ready-brightgreen.svg)](https://insight.io/github.com/Chalarangelo/30-seconds-of-code/tree/master/?source=0) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard)
 
 > Curated collection of useful Javascript snippets that you can understand in 30 seconds or less.
 
@@ -14,6 +14,10 @@
 ## Table of Contents
 
 ### Adapter
+
+<details>
+<summary>View contents</summary>
+
 * [`call`](#call)
 * [`collectInto`](#collectinto)
 * [`flip`](#flip)
@@ -21,11 +25,13 @@
 * [`promisify`](#promisify)
 * [`spreadOver`](#spreadover)
 
+</details>
+
 ### Array
-* [`arrayGcd`](#arraygcd)
-* [`arrayLcm`](#arraylcm)
-* [`arrayMax`](#arraymax)
-* [`arrayMin`](#arraymin)
+
+<details>
+<summary>View contents</summary>
+
 * [`chunk`](#chunk)
 * [`compact`](#compact)
 * [`countOccurrences`](#countoccurrences)
@@ -53,6 +59,7 @@
 * [`pull`](#pull)
 * [`pullAtIndex`](#pullatindex)
 * [`pullAtValue`](#pullatvalue)
+* [`quickSort`](#quicksort)
 * [`remove`](#remove)
 * [`sample`](#sample)
 * [`shuffle`](#shuffle)
@@ -66,25 +73,50 @@
 * [`zip`](#zip)
 * [`zipObject`](#zipobject)
 
+</details>
+
 ### Browser
+
+<details>
+<summary>View contents</summary>
+
 * [`arrayToHtmlList`](#arraytohtmllist)
 * [`bottomVisible`](#bottomvisible)
 * [`currentURL`](#currenturl)
 * [`detectDeviceType`](#detectdevicetype)
 * [`elementIsVisibleInViewport`](#elementisvisibleinviewport)
 * [`getScrollPosition`](#getscrollposition)
+* [`getStyle`](#getstyle)
 * [`getURLParameters`](#geturlparameters)
+* [`hasClass`](#hasclass)
+* [`hide`](#hide)
 * [`httpsRedirect`](#httpsredirect)
 * [`redirect`](#redirect)
 * [`scrollToTop`](#scrolltotop)
+* [`setStyle`](#setstyle)
+* [`show`](#show)
+* [`toggleClass`](#toggleclass)
+* [`UUIDGeneratorBrowser`](#uuidgeneratorbrowser)
+
+</details>
 
 ### Date
+
+<details>
+<summary>View contents</summary>
+
 * [`getDaysDiffBetweenDates`](#getdaysdiffbetweendates)
 * [`JSONToDate`](#jsontodate)
 * [`toEnglishDate`](#toenglishdate)
 * [`tomorrow`](#tomorrow)
 
+</details>
+
 ### Function
+
+<details>
+<summary>View contents</summary>
+
 * [`chainAsync`](#chainasync)
 * [`compose`](#compose)
 * [`curry`](#curry)
@@ -92,12 +124,23 @@
 * [`runPromisesInSeries`](#runpromisesinseries)
 * [`sleep`](#sleep)
 
+</details>
+
 ### Logic
+
+<details>
+<summary>View contents</summary>
+
 * [`negate`](#negate)
 
+</details>
+
 ### Math
-* [`arrayAverage`](#arrayaverage)
-* [`arraySum`](#arraysum)
+
+<details>
+<summary>View contents</summary>
+
+* [`average`](#average)
 * [`clampNumber`](#clampnumber)
 * [`collatz`](#collatz)
 * [`digitize`](#digitize)
@@ -114,7 +157,9 @@
 * [`isEven`](#iseven)
 * [`isPrime`](#isprime)
 * [`lcm`](#lcm)
+* [`max`](#max)
 * [`median`](#median)
+* [`min`](#min)
 * [`palindrome`](#palindrome)
 * [`percentile`](#percentile)
 * [`powerset`](#powerset)
@@ -123,16 +168,37 @@
 * [`randomNumberInRange`](#randomnumberinrange)
 * [`round`](#round)
 * [`standardDeviation`](#standarddeviation)
+* [`sum`](#sum)
+
+</details>
 
 ### Media
+
+<details>
+<summary>View contents</summary>
+
 * [`speechSynthesis`](#speechsynthesis)
 
+</details>
+
 ### Node
+
+<details>
+<summary>View contents</summary>
+
 * [`JSONToFile`](#jsontofile)
 * [`readFileLines`](#readfilelines)
+* [`UUIDGeneratorNode`](#uuidgeneratornode)
+
+</details>
 
 ### Object
+
+<details>
+<summary>View contents</summary>
+
 * [`cleanObj`](#cleanobj)
+* [`lowercaseKeys`](#lowercasekeys)
 * [`objectFromPairs`](#objectfrompairs)
 * [`objectToPairs`](#objecttopairs)
 * [`orderBy`](#orderby)
@@ -140,23 +206,38 @@
 * [`shallowClone`](#shallowclone)
 * [`truthCheckCollection`](#truthcheckcollection)
 
+</details>
+
 ### String
+
+<details>
+<summary>View contents</summary>
+
 * [`anagrams`](#anagrams)
 * [`capitalize`](#capitalize)
 * [`capitalizeEveryWord`](#capitalizeeveryword)
 * [`countVowels`](#countvowels)
+* [`escapeHTML`](#escapehtml)
 * [`escapeRegExp`](#escaperegexp)
 * [`fromCamelCase`](#fromcamelcase)
 * [`repeatString`](#repeatstring)
 * [`reverseString`](#reversestring)
 * [`sortCharactersInString`](#sortcharactersinstring)
+* [`splitLines`](#splitlines)
 * [`toCamelCase`](#tocamelcase)
 * [`toKebabCase`](#tokebabcase)
 * [`toSnakeCase`](#tosnakecase)
 * [`truncateString`](#truncatestring)
+* [`unescapeHTML`](#unescapehtml)
 * [`words`](#words)
 
+</details>
+
 ### Utility
+
+<details>
+<summary>View contents</summary>
+
 * [`coalesce`](#coalesce)
 * [`coalesceFactory`](#coalescefactory)
 * [`extendHex`](#extendhex)
@@ -174,8 +255,9 @@
 * [`timeTaken`](#timetaken)
 * [`toDecimalMark`](#todecimalmark)
 * [`toOrdinalSuffix`](#toordinalsuffix)
-* [`UUIDGenerator`](#uuidgenerator)
 * [`validateNumber`](#validatenumber)
+
+</details>
 
 ## Adapter
 
@@ -186,16 +268,26 @@ Given a key and a set of arguments, call them when given a context. Primarily us
 Use a closure to call a stored key with stored arguments.
 
 ```js
-const call = (key, ...args) => context => context[ key ](...args);
+const call = (key, ...args) => context => context[key](...args);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-Promise.resolve( [ 1, 2, 3 ] ).then( call('map', x => 2 * x ) ).then( console.log ) //[ 2, 4, 6 ]
-const map = call.bind(null, 'map')
-Promise.resolve( [ 1, 2, 3 ] ).then( map( x => 2 * x ) ).then( console.log ) //[ 2, 4, 6 ]
+Promise.resolve([1, 2, 3])
+  .then(call('map', x => 2 * x))
+  .then(console.log); //[ 2, 4, 6 ]
+const map = call.bind(null, 'map');
+Promise.resolve([1, 2, 3])
+  .then(map(x => 2 * x))
+  .then(console.log); //[ 2, 4, 6 ]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### collectInto
 
@@ -207,15 +299,21 @@ Given a function, return a closure that collects all inputs into an array-accept
 const collectInto = fn => (...args) => fn(args);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const Pall = collectInto( Promise.all.bind(Promise) )
-let p1 = Promise.resolve(1)
-let p2 = Promise.resolve(2)
-let p3 = new Promise((resolve) => setTimeout(resolve,2000,3))
-Pall(p1, p2, p3).then(console.log)
+const Pall = collectInto(Promise.all.bind(Promise));
+let p1 = Promise.resolve(1);
+let p2 = Promise.resolve(2);
+let p3 = new Promise(resolve => setTimeout(resolve, 2000, 3));
+Pall(p1, p2, p3).then(console.log);
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### flip
 
@@ -227,17 +325,23 @@ Return a closure that takes variadic inputs, and splices the last argument to ma
 const flip = fn => (...args) => fn(args.pop(), ...args);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-let a = {name: 'John Smith'}
-let b = {}
-const mergeFrom = flip(Object.assign)
-let mergePerson = mergeFrom.bind(null, a)
-mergePerson(b) // == b
-b = {}
-Object.assign(b, a) // == b
+let a = { name: 'John Smith' };
+let b = {};
+const mergeFrom = flip(Object.assign);
+let mergePerson = mergeFrom.bind(null, a);
+mergePerson(b); // == b
+b = {};
+Object.assign(b, a); // == b
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### pipeFunctions
 
@@ -250,14 +354,20 @@ The first (leftmost) function can accept one or more arguments; the remaining fu
 const pipeFunctions = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const add5 = x => x + 5
-const multiply = (x, y) => x * y
-const multiplyAndAdd5 = pipeFunctions(multiply, add5)
-multiplyAndAdd5(5, 2) // 15
+const add5 = x => x + 5;
+const multiply = (x, y) => x * y;
+const multiplyAndAdd5 = pipeFunctions(multiply, add5);
+multiplyAndAdd5(5, 2); // 15
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### promisify
 
@@ -269,20 +379,24 @@ Use the `...rest` operator to pass in all the parameters.
 *In Node 8+, you can use [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original)*
 
 ```js
-const promisify = func =>
-  (...args) =>
-    new Promise((resolve, reject) =>
-      func(...args, (err, result) =>
-        err ? reject(err) : resolve(result))
-    );
+const promisify = func => (...args) =>
+  new Promise((resolve, reject) =>
+    func(...args, (err, result) => (err ? reject(err) : resolve(result)))
+  );
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-const delay = promisify((d, cb) => setTimeout(cb, d))
-delay(2000).then(() => console.log('Hi!')) // // Promise resolves after 2s
+const delay = promisify((d, cb) => setTimeout(cb, d));
+delay(2000).then(() => console.log('Hi!')); // // Promise resolves after 2s
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### spreadOver
 
@@ -294,87 +408,20 @@ Use closures and the spread operator (`...`) to map the array of arguments to th
 const spreadOver = fn => argsArr => fn(...argsArr);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const arrayMax = spreadOver(Math.max)
-arrayMax([1,2,3]) // 3
-arrayMax([1,2,4])  // 4
+const arrayMax = spreadOver(Math.max);
+arrayMax([1, 2, 3]); // 3
+arrayMax([1, 2, 4]); // 4
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Array
-
-### arrayGcd
-
-Calculates the greatest common denominator (gcd) of an array of numbers.
-
-Use `Array.reduce()` and the `gcd` formula (uses recursion) to calculate the greatest common denominator of an array of numbers.
-
-```js
-const arrayGcd = arr => {
-  const gcd = (x, y) => !y ? x : gcd(y, x % y);
-  return arr.reduce((a, b) => gcd(a, b));
-};
-```
-
-```js
-arrayGcd([1,2,3,4,5]) // 1
-arrayGcd([4,8,12]) // 4
-```
-
-[⬆ back to top](#table-of-contents)
-
-### arrayLcm
-
-Calculates the lowest common multiple (lcm) of an array of numbers.
-
-Use `Array.reduce()` and the `lcm` formula (uses recursion) to calculate the lowest common multiple of an array of numbers.
-
-```js
-const arrayLcm = arr => {
-  const gcd = (x, y) => !y ? x : gcd(y, x % y);
-  const lcm = (x, y) => (x * y) / gcd(x, y);
-  return arr.reduce((a, b) => lcm(a, b));
-};
-```
-
-```js
-arrayLcm([1,2,3,4,5]) // 60
-arrayLcm([4,8,12]) // 24
-```
-
-[⬆ back to top](#table-of-contents)
-
-### arrayMax
-
-Returns the maximum value in an array.
-
-Use `Math.max()` combined with the spread operator (`...`) to get the maximum value in the array.
-
-```js
-const arrayMax = arr => Math.max(...arr);
-```
-
-```js
-arrayMax([10, 1, 5]) // 10
-```
-
-[⬆ back to top](#table-of-contents)
-
-### arrayMin
-
-Returns the minimum value in an array.
-
-Use `Math.min()` combined with the spread operator (`...`) to get the minimum value in the array.
-
-```js
-const arrayMin = arr => Math.min(...arr);
-```
-
-```js
-arrayMin([10, 1, 5]) // 1
-```
-
-[⬆ back to top](#table-of-contents)
 
 ### chunk
 
@@ -386,14 +433,22 @@ If the original array can't be split evenly, the final chunk will contain the re
 
 ```js
 const chunk = (arr, size) =>
-  Array.from({length: Math.ceil(arr.length / size)}, (v, i) => arr.slice(i * size, i * size + size));
+  Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+    arr.slice(i * size, i * size + size)
+  );
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-chunk([1,2,3,4,5], 2) // [[1,2],[3,4],[5]]
+chunk([1, 2, 3, 4, 5], 2); // [[1,2],[3,4],[5]]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### compact
 
@@ -405,11 +460,17 @@ Use `Array.filter()` to filter out falsey values (`false`, `null`, `0`, `""`, `u
 const compact = arr => arr.filter(Boolean);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-compact([0, 1, false, 2, '', 3, 'a', 'e'*23, NaN, 's', 34]) // [ 1, 2, 3, 'a', 's', 34 ]
+compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34]); // [ 1, 2, 3, 'a', 's', 34 ]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### countOccurrences
 
@@ -418,14 +479,20 @@ Counts the occurrences of a value in an array.
 Use `Array.reduce()` to increment a counter each time you encounter the specific value inside the array.
 
 ```js
-const countOccurrences = (arr, value) => arr.reduce((a, v) => v === value ? a + 1 : a + 0, 0);
+const countOccurrences = (arr, value) => arr.reduce((a, v) => (v === value ? a + 1 : a + 0), 0);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-countOccurrences([1,1,2,1,2,3], 1) // 3
+countOccurrences([1, 1, 2, 1, 2, 3], 1); // 3
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### deepFlatten
 
@@ -436,14 +503,20 @@ Use `Array.concat()` with an empty array (`[]`) and the spread operator (`...`) 
 Recursively flatten each element that is an array.
 
 ```js
-const deepFlatten = arr => [].concat(...arr.map(v => Array.isArray(v) ? deepFlatten(v) : v));
+const deepFlatten = arr => [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-deepFlatten([1,[2],[[3],4],5]) // [1,2,3,4,5]
+deepFlatten([1, [2], [[3], 4], 5]); // [1,2,3,4,5]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### difference
 
@@ -452,14 +525,23 @@ Returns the difference between two arrays.
 Create a `Set` from `b`, then use `Array.filter()` on `a` to only keep values not contained in `b`.
 
 ```js
-const difference = (a, b) => { const s = new Set(b); return a.filter(x => !s.has(x)); };
+const difference = (a, b) => {
+  const s = new Set(b);
+  return a.filter(x => !s.has(x));
+};
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-difference([1,2,3], [1,2,4]) // [3]
+difference([1, 2, 3], [1, 2, 4]); // [3]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### differenceWith
 
@@ -471,11 +553,17 @@ Use `Array.filter()` and `Array.find()` to find the appropriate values.
 const differenceWith = (arr, val, comp) => arr.filter(a => !val.find(b => comp(a, b)));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-differenceWith([1, 1.2, 1.5, 3], [1.9, 3], (a,b) => Math.round(a) == Math.round(b)) // [1, 1.2]
+differenceWith([1, 1.2, 1.5, 3], [1.9, 3], (a, b) => Math.round(a) == Math.round(b)); // [1, 1.2]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### distinctValuesOfArray
 
@@ -487,11 +575,17 @@ Use ES6 `Set` and the `...rest` operator to discard all duplicated values.
 const distinctValuesOfArray = arr => [...new Set(arr)];
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-distinctValuesOfArray([1,2,2,3,4,4,5]) // [1,2,3,4,5]
+distinctValuesOfArray([1, 2, 2, 3, 4, 4, 5]); // [1,2,3,4,5]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### dropElements
 
@@ -507,11 +601,17 @@ const dropElements = (arr, func) => {
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-dropElements([1, 2, 3, 4], n => n >= 3) // [3,4]
+dropElements([1, 2, 3, 4], n => n >= 3); // [3,4]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### dropRight
 
@@ -523,13 +623,19 @@ Use `Array.slice()` to slice the remove the specified number of elements from th
 const dropRight = (arr, n = 1) => arr.slice(0, -n);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-dropRight([1,2,3]) // [1,2]
-dropRight([1,2,3], 2) // [1]
-dropRight([1,2,3], 42) // []
+dropRight([1, 2, 3]); // [1,2]
+dropRight([1, 2, 3], 2); // [1]
+dropRight([1, 2, 3], 42); // []
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### everyNth
 
@@ -541,11 +647,17 @@ Use `Array.filter()` to create a new array that contains every nth element of a 
 const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-everyNth([1,2,3,4,5,6], 2) // [ 2, 4, 6 ]
+everyNth([1, 2, 3, 4, 5, 6], 2); // [ 2, 4, 6 ]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### filterNonUnique
 
@@ -557,11 +669,17 @@ Use `Array.filter()` for an array containing only the unique values.
 const filterNonUnique = arr => arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-filterNonUnique([1,2,2,3,4,4,5]) // [1,3,5]
+filterNonUnique([1, 2, 2, 3, 4, 4, 5]); // [1,3,5]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### flatten
 
@@ -570,14 +688,20 @@ Flattens an array.
 Use a new array and concatenate it with the spread input array causing a shallow denesting of any contained arrays.
 
 ```js
-const flatten = arr => [ ].concat(...arr);
+const flatten = arr => [].concat(...arr);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-flatten([1,[2],3,4]) // [1,2,3,4]
+flatten([1, [2], 3, 4]); // [1,2,3,4]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### flattenDepth
 
@@ -590,15 +714,22 @@ Omit the second element, `depth` to flatten only to a depth of `1` (single flatt
 
 ```js
 const flattenDepth = (arr, depth = 1) =>
-  depth != 1 ? arr.reduce((a, v) => a.concat(Array.isArray(v) ? flattenDepth(v, depth - 1) : v), [])
-  : arr.reduce((a, v) => a.concat(v), []);
+  depth != 1
+    ? arr.reduce((a, v) => a.concat(Array.isArray(v) ? flattenDepth(v, depth - 1) : v), [])
+    : arr.reduce((a, v) => a.concat(v), []);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-flattenDepth([1,[2],3,4]) // [1,2,3,4]
+flattenDepth([1, [2], 3, 4]); // [1,2,3,4]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### groupBy
 
@@ -609,16 +740,24 @@ Use `Array.reduce()` to create an object, where the keys are produced from the m
 
 ```js
 const groupBy = (arr, func) =>
-  arr.map(typeof func === 'function' ? func : val => val[func])
-    .reduce((acc, val, i) => { acc[val] = (acc[val] || []).concat(arr[i]); return acc; }, {});
+  arr.map(typeof func === 'function' ? func : val => val[func]).reduce((acc, val, i) => {
+    acc[val] = (acc[val] || []).concat(arr[i]);
+    return acc;
+  }, {});
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-groupBy([6.1, 4.2, 6.3], Math.floor) // {4: [4.2], 6: [6.1, 6.3]}
-groupBy(['one', 'two', 'three'], 'length') // {3: ['one', 'two'], 5: ['three']}
+groupBy([6.1, 4.2, 6.3], Math.floor); // {4: [4.2], 6: [6.1, 6.3]}
+groupBy(['one', 'two', 'three'], 'length'); // {3: ['one', 'two'], 5: ['three']}
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### head
 
@@ -630,11 +769,17 @@ Use `arr[0]` to return the first element of the passed array.
 const head = arr => arr[0];
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-head([1,2,3]) // 1
+head([1, 2, 3]); // 1
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### initial
 
@@ -646,11 +791,17 @@ Use `arr.slice(0,-1)` to return all but the last element of the array.
 const initial = arr => arr.slice(0, -1);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-initial([1,2,3]) // [1,2]
+initial([1, 2, 3]); // [1,2]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### initialize2DArray
 
@@ -659,14 +810,23 @@ Initializes a 2D array of given width and height and value.
 Use `Array.map()` to generate h rows where each is a new array of size w initialize with value. If the value is not provided, default to `null`.
 
 ```js
-const initialize2DArray = (w, h, val = null) => Array(h).fill().map(() => Array(w).fill(val));
+const initialize2DArray = (w, h, val = null) =>
+  Array(h)
+    .fill()
+    .map(() => Array(w).fill(val));
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-initialize2DArray(2, 2, 0) // [[0,0], [0,0]]
+initialize2DArray(2, 2, 0); // [[0,0], [0,0]]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### initializeArrayWithRange
 
@@ -677,15 +837,21 @@ You can omit `start` to use a default value of `0`.
 
 ```js
 const initializeArrayWithRange = (end, start = 0) =>
-  Array.from({ length: (end + 1) - start }).map((v, i) => i + start);
+  Array.from({ length: end + 1 - start }).map((v, i) => i + start);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-initializeArrayWithRange(5) // [0,1,2,3,4,5]
-initializeArrayWithRange(7, 3) // [3,4,5,6,7]
+initializeArrayWithRange(5); // [0,1,2,3,4,5]
+initializeArrayWithRange(7, 3); // [3,4,5,6,7]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### initializeArrayWithValues
 
@@ -698,11 +864,17 @@ You can omit `value` to use a default value of `0`.
 const initializeArrayWithValues = (n, value = 0) => Array(n).fill(value);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-initializeArrayWithValues(5, 2) // [2,2,2,2,2]
+initializeArrayWithValues(5, 2); // [2,2,2,2,2]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### intersection
 
@@ -711,14 +883,23 @@ Returns a list of elements that exist in both arrays.
 Create a `Set` from `b`, then use `Array.filter()` on `a` to only keep values contained in `b`.
 
 ```js
-const intersection = (a, b) => { const s = new Set(b); return a.filter(x => s.has(x)); };
+const intersection = (a, b) => {
+  const s = new Set(b);
+  return a.filter(x => s.has(x));
+};
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-intersection([1,2,3], [4,3,2]) // [2,3]
+intersection([1, 2, 3], [4, 3, 2]); // [2,3]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### last
 
@@ -730,11 +911,17 @@ Use `arr.length - 1` to compute the index of the last element of the given array
 const last = arr => arr[arr.length - 1];
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-last([1,2,3]) // 3
+last([1, 2, 3]); // 3
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### mapObject
 
@@ -744,15 +931,23 @@ Use an anonymous inner function scope to declare an undefined memory space, usin
 
 ```js
 const mapObject = (arr, fn) =>
-  (a => (a = [arr, arr.map(fn)], a[0].reduce((acc, val, ind) => (acc[val] = a[1][ind], acc), {})))();
+  (a => (
+    (a = [arr, arr.map(fn)]), a[0].reduce((acc, val, ind) => ((acc[val] = a[1][ind]), acc), {})
+  ))();
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-const squareIt = arr => mapObject(arr, a => a*a)
-squareIt([1,2,3]) // { 1: 1, 2: 4, 3: 9 }
+const squareIt = arr => mapObject(arr, a => a * a);
+squareIt([1, 2, 3]); // { 1: 1, 2: 4, 3: 9 }
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### nthElement
 
@@ -766,12 +961,18 @@ Omit the second argument, `n`, to get the first element of the array.
 const nthElement = (arr, n = 0) => (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-nthElement(['a','b','c'],1) // 'b'
-nthElement(['a','b','b'],-3) // 'a'
+nthElement(['a', 'b', 'c'], 1); // 'b'
+nthElement(['a', 'b', 'b'], -3); // 'a'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### pick
 
@@ -784,11 +985,17 @@ const pick = (obj, arr) =>
   arr.reduce((acc, curr) => (curr in obj && (acc[curr] = obj[curr]), acc), {});
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-pick({ 'a': 1, 'b': '2', 'c': 3 }, ['a', 'c']) // { 'a': 1, 'c': 3 }
+pick({ a: 1, b: '2', c: 3 }, ['a', 'c']); // { 'a': 1, 'c': 3 }
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### pull
 
@@ -808,17 +1015,23 @@ const pull = (arr, ...args) => {
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
 let myArray1 = ['a', 'b', 'c', 'a', 'b', 'c'];
 pull(myArray1, 'a', 'c');
-console.log(myArray1) // [ 'b', 'b' ]
+console.log(myArray1); // [ 'b', 'b' ]
 
 let myArray2 = ['a', 'b', 'c', 'a', 'b', 'c'];
 pull(myArray2, ['a', 'c']);
-console.log(myArray2) // [ 'b', 'b' ]
+console.log(myArray2); // [ 'b', 'b' ]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### pullAtIndex
 
@@ -831,13 +1044,17 @@ Use `Array.push()` to keep track of pulled values
 ```js
 const pullAtIndex = (arr, pullArr) => {
   let removed = [];
-  let pulled = arr.map((v, i) => pullArr.includes(i) ? removed.push(v) : v)
-                  .filter((v, i) => !pullArr.includes(i));
+  let pulled = arr
+    .map((v, i) => (pullArr.includes(i) ? removed.push(v) : v))
+    .filter((v, i) => !pullArr.includes(i));
   arr.length = 0;
   pulled.forEach(v => arr.push(v));
   return removed;
 };
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
 let myArray = ['a', 'b', 'c', 'd'];
@@ -847,7 +1064,10 @@ console.log(myArray); // [ 'a', 'c' ]
 console.log(pulled); // [ 'b', 'd' ]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### pullAtValue
 
@@ -860,13 +1080,16 @@ Use `Array.push()` to keep track of pulled values
 ```js
 const pullAtValue = (arr, pullArr) => {
   let removed = [],
-    pushToRemove = arr.forEach((v, i) => pullArr.includes(v) ? removed.push(v) : v),
+    pushToRemove = arr.forEach((v, i) => (pullArr.includes(v) ? removed.push(v) : v)),
     mutateTo = arr.filter((v, i) => !pullArr.includes(v));
   arr.length = 0;
   mutateTo.forEach(v => arr.push(v));
   return removed;
 };
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
 let myArray = ['a', 'b', 'c', 'd'];
@@ -875,7 +1098,42 @@ console.log(myArray); // [ 'a', 'c' ]
 console.log(pulled); // [ 'b', 'd' ]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### quickSort
+
+QuickSort an Array (ascending sort by default).
+
+Use recursion. 
+Use `Array.filter` and spread operator (`...`) to create an array that all elements with values less than the pivot come before the pivot, and all elements with values greater than the pivot come after it. 
+If the parameter `desc` is truthy, return array sorts in descending order.
+
+```js
+const quickSort = ([n, ...nums], desc) =>
+  isNaN(n)
+    ? []
+    : [
+        ...quickSort(nums.filter(v => (desc ? v > n : v <= n)), desc),
+        n,
+        ...quickSort(nums.filter(v => (!desc ? v > n : v <= n)), desc)
+      ];
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+quickSort([4, 1, 3, 2]); // [1,2,3,4]
+quickSort([4, 1, 3, 2], true); // [4,3,2,1]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### remove
 
@@ -886,17 +1144,25 @@ The `func` is invoked with three arguments (`value, index, array`).
 
 ```js
 const remove = (arr, func) =>
-  Array.isArray(arr) ? arr.filter(func).reduce((acc, val) => {
-    arr.splice(arr.indexOf(val), 1); return acc.concat(val);
-  }, [])
-  : [];
+  Array.isArray(arr)
+    ? arr.filter(func).reduce((acc, val) => {
+        arr.splice(arr.indexOf(val), 1);
+        return acc.concat(val);
+      }, [])
+    : [];
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-remove([1, 2, 3, 4], n => n % 2 == 0) // [2, 4]
+remove([1, 2, 3, 4], n => n % 2 == 0); // [2, 4]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### sample
 
@@ -909,11 +1175,17 @@ This method also works with strings.
 const sample = arr => arr[Math.floor(Math.random() * arr.length)];
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-sample([3, 7, 9, 11]) // 9
+sample([3, 7, 9, 11]); // 9
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### shuffle
 
@@ -932,13 +1204,19 @@ const shuffle = ([...arr]) => {
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const foo = [1,2,3]
-shuffle(foo) // [2,3,1]
-console.log(foo) // [1,2,3]
+const foo = [1, 2, 3];
+shuffle(foo); // [2,3,1]
+console.log(foo); // [1,2,3]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### similarity
 
@@ -950,11 +1228,17 @@ Use `filter()` to remove values that are not part of `values`, determined using 
 const similarity = (arr, values) => arr.filter(v => values.includes(v));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-similarity([1,2,3], [1,2,4]) // [1,2]
+similarity([1, 2, 3], [1, 2, 4]); // [1,2]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### symmetricDifference
 
@@ -964,16 +1248,23 @@ Create a `Set` from each array, then use `Array.filter()` on each of them to onl
 
 ```js
 const symmetricDifference = (a, b) => {
-  const sA = new Set(a), sB = new Set(b);
+  const sA = new Set(a),
+    sB = new Set(b);
   return [...a.filter(x => !sB.has(x)), ...b.filter(x => !sA.has(x))];
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-symmetricDifference([1,2,3], [1,2,4]) // [3,4]
+symmetricDifference([1, 2, 3], [1, 2, 4]); // [3,4]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### tail
 
@@ -982,15 +1273,21 @@ Returns all elements in an array except for the first one.
 Return `arr.slice(1)` if the array's `length` is more than `1`, otherwise, return the whole array.
 
 ```js
-const tail = arr => arr.length > 1 ? arr.slice(1) : arr;
+const tail = arr => (arr.length > 1 ? arr.slice(1) : arr);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-tail([1,2,3]) // [2,3]
-tail([1]) // [1]
+tail([1, 2, 3]); // [2,3]
+tail([1]); // [1]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### take
 
@@ -1002,12 +1299,18 @@ Use `Array.slice()` to create a slice of the array with `n` elements taken from 
 const take = (arr, n = 1) => arr.slice(0, n);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-take([1, 2, 3], 5) // [1, 2, 3]
-take([1, 2, 3], 0) // []
+take([1, 2, 3], 5); // [1, 2, 3]
+take([1, 2, 3], 0); // []
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### takeRight
 
@@ -1019,12 +1322,18 @@ Use `Array.slice()` to create a slice of the array with `n` elements taken from 
 const takeRight = (arr, n = 1) => arr.slice(arr.length - n, arr.length);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-takeRight([1, 2, 3], 2) // [ 2, 3 ]
-takeRight([1, 2, 3]) // [3]
+takeRight([1, 2, 3], 2); // [ 2, 3 ]
+takeRight([1, 2, 3]); // [3]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### union
 
@@ -1036,11 +1345,17 @@ Create a `Set` with all values of `a` and `b` and convert to an array.
 const union = (a, b) => Array.from(new Set([...a, ...b]));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-union([1,2,3], [4,3,2]) // [1,2,3,4]
+union([1, 2, 3], [4, 3, 2]); // [1,2,3,4]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### without
 
@@ -1054,11 +1369,17 @@ _(For a snippet that mutates the original array see [`pull`](#pull))_
 const without = (arr, ...args) => arr.filter(v => !args.includes(v));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-without([2, 1, 2, 3], 1, 2) // [3]
+without([2, 1, 2, 3], 1, 2); // [3]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### zip
 
@@ -1071,18 +1392,24 @@ If lengths of the argument-arrays vary, `undefined` is used where no value could
 ```js
 const zip = (...arrays) => {
   const maxLength = Math.max(...arrays.map(x => x.length));
-  return Array.from({length: maxLength}).map((_, i) => {
-    return Array.from({length: arrays.length}, (_, k) => arrays[k][i]);
+  return Array.from({ length: maxLength }).map((_, i) => {
+    return Array.from({ length: arrays.length }, (_, k) => arrays[k][i]);
   });
 };
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
 zip(['a', 'b'], [1, 2], [true, false]); // [['a', 1, true], ['b', 2, false]]
 zip(['a'], [1, 2], [true, false]); // [['a', 1, true], [undefined, 2, false]]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### zipObject
 
@@ -1091,15 +1418,22 @@ Given an array of valid property identifiers and an array of values, return an o
 Since an object can have undefined values but not undefined property pointers, the array of properties is used to decide the structure of the resulting object using `Array.reduce()`.
 
 ```js
-const zipObject = (props, values) => props.reduce((obj, prop, index) => (obj[prop] = values[index], obj), {});
+const zipObject = (props, values) =>
+  props.reduce((obj, prop, index) => ((obj[prop] = values[index]), obj), {});
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-zipObject(['a','b','c'], [1,2]) // {a: 1, b: 2, c: undefined}
-zipObject(['a','b'], [1,2,3]) // {a: 1, b: 2}
+zipObject(['a', 'b', 'c'], [1, 2]); // {a: 1, b: 2, c: undefined}
+zipObject(['a', 'b'], [1, 2, 3]); // {a: 1, b: 2}
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Browser
 
 ### arrayToHtmlList
@@ -1109,14 +1443,21 @@ Converts the given array elements into `<li>` tags and appends them to the list 
 Use `Array.map()` and `document.querySelector()` to create a list of html tags.
 
 ```js
-const arrayToHtmlList = (arr, listID) => arr.map(item => document.querySelector('#' + listID).innerHTML += `<li>${item}</li>`);
+const arrayToHtmlList = (arr, listID) =>
+  arr.map(item => (document.querySelector('#' + listID).innerHTML += `<li>${item}</li>`));
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-arrayToHtmlList(['item 1', 'item 2'],'myListID')
+arrayToHtmlList(['item 1', 'item 2'], 'myListID');
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### bottomVisible
 
@@ -1126,14 +1467,21 @@ Use `scrollY`, `scrollHeight` and `clientHeight` to determine if the bottom of t
 
 ```js
 const bottomVisible = () =>
-  document.documentElement.clientHeight + window.scrollY >= (document.documentElement.scrollHeight || document.documentElement.clientHeight);
+  document.documentElement.clientHeight + window.scrollY >=
+  (document.documentElement.scrollHeight || document.documentElement.clientHeight);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-bottomVisible() // true
+bottomVisible(); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### currentURL
 
@@ -1145,11 +1493,17 @@ Use `window.location.href` to get current URL.
 const currentURL = () => window.location.href;
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-currentURL() // 'https://google.com'
+currentURL(); // 'https://google.com'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### detectDeviceType
 
@@ -1158,15 +1512,24 @@ Detects wether the website is being opened in a mobile device or a desktop/lapto
 Use a regular expression to test the `navigator.userAgent` property to figure out if the device is a mobile device or a desktop/laptop.
 
 ```js
-const detectDeviceType = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+const detectDeviceType = () =>
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    ? 'Mobile'
+    : 'Desktop';
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-detectDeviceType() // "Mobile"
-detectDeviceType() // "Desktop"
+detectDeviceType(); // "Mobile"
+detectDeviceType(); // "Desktop"
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### elementIsVisibleInViewport
 
@@ -1183,18 +1546,24 @@ const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
   const { innerHeight, innerWidth } = window;
   return partiallyVisible
     ? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&
-      ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
+        ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
     : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
 // e.g. 100x100 viewport and a 10x10px element at position {top: -1, left: 0, bottom: 9, right: 10}
-elementIsVisibleInViewport(el) // false // (not fully visible)
-elementIsVisibleInViewport(el, true) // true // (partially visible)
+elementIsVisibleInViewport(el); // false // (not fully visible)
+elementIsVisibleInViewport(el, true); // true // (partially visible)
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### getScrollPosition
 
@@ -1204,16 +1573,45 @@ Use `pageXOffset` and `pageYOffset` if they are defined, otherwise `scrollLeft` 
 You can omit `el` to use a default value of `window`.
 
 ```js
-const getScrollPosition = (el = window) =>
-  ({x: (el.pageXOffset !== undefined) ? el.pageXOffset : el.scrollLeft,
-    y: (el.pageYOffset !== undefined) ? el.pageYOffset : el.scrollTop});
+const getScrollPosition = (el = window) => ({
+  x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
+  y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
+});
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-getScrollPosition() // {x: 0, y: 200}
+getScrollPosition(); // {x: 0, y: 200}
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### getStyle
+
+Returns the value of a CSS rule for the specified element.
+
+Use `Window.getComputedStyle()` to get the value of the CSS rule for the specified element.
+
+```js
+const getStyle = (el, ruleName) => getComputedStyle(el)[ruleName];
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+getStyle(document.querySelector('p'), 'font-size'); // '16px'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### getURLParameters
 
@@ -1224,16 +1622,66 @@ Pass `location.search` as the argument to apply to the current `url`.
 
 ```js
 const getURLParameters = url =>
-  url.match(/([^?=&]+)(=([^&]*))/g).reduce(
-    (a, v) => (a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1), a), {}
-  );
+  url
+    .match(/([^?=&]+)(=([^&]*))/g)
+    .reduce((a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a), {});
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-getURLParameters('http://url.com/page?name=Adam&surname=Smith') // {name: 'Adam', surname: 'Smith'}
+getURLParameters('http://url.com/page?name=Adam&surname=Smith'); // {name: 'Adam', surname: 'Smith'}
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### hasClass
+
+Returns `true` if the element has the specified class, `false` otherwise.
+
+Use `element.classList.contains()` to check if the element has the specified class.
+
+```js
+const hasClass = (el, className) => el.classList.contains(className);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+hasClass(document.querySelector('p.special'), 'special'); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### hide
+
+Hides all the elements specified.
+
+Use the spread operator (`...`) and `Array.forEach()` to apply `display: none` to each element specified.
+
+```js
+const hide = (...el) => [...el].forEach(e => (e.style.display = 'none'));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+hide(document.querySelectorAll('img')); // Hides all <img> elements on the page
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### httpsRedirect
 
@@ -1241,13 +1689,19 @@ Redirects the page to HTTPS if its currently in HTTP. Also, pressing the back bu
 
 Use `location.protocol` to get the protocol currently being used. If it's not HTTPS, use `location.replace()` to replace the existing page with the HTTPS version of the page. Use `location.href` to get the full address, split it with `String.split()` and remove the protocol part of the URL.  
 
+<details>
+<summary>Examples</summary>
+
 ```js
 const httpsRedirect = () => {
   if (location.protocol !== 'https:') location.replace('https://' + location.href.split('//')[1]);
 };
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### redirect
 
@@ -1258,14 +1712,20 @@ Pass a second argument to simulate a link click (`true` - default) or an HTTP re
 
 ```js
 const redirect = (url, asLink = true) =>
-  asLink ? window.location.href = url : window.location.replace(url);
+  asLink ? (window.location.href = url) : window.location.replace(url);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-redirect('https://google.com')
+redirect('https://google.com');
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### scrollToTop
 
@@ -1284,11 +1744,108 @@ const scrollToTop = () => {
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-scrollToTop()
+scrollToTop();
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### setStyle
+
+Sets the value of a CSS rule for the specified element.
+
+Use `element.style` to set the value of the CSS rule for the specified element to `value`.
+
+```js
+const setStyle = (el, ruleName, value) => (el.style[ruleName] = value);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+setStyle(document.querySelector('p'), 'font-size', '20px'); // The first <p> element on the page will have a font-size of 20px
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### show
+
+Shows all the elements specified.
+
+Use the spread operator (`...`) and `Array.forEach()` to clear the `display` property for each element specified.
+
+```js
+const show = (...el) => [...el].forEach(e => (e.style.display = ''));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+show(document.querySelectorAll('img')); // Shows all <img> elements on the page
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### toggleClass
+
+Toggle a class for an element.
+
+Use `element.classList.toggle()` to toggle the specified class for the element.
+
+```js
+const toggleClass = (el, className) => el.classList.toggle(className);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+toggleClass(document.querySelector('p.special'), 'special'); // The paragraph will not have the 'special' class anymore
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### UUIDGeneratorBrowser
+
+Generates a UUID in a browser.
+
+Use `crypto` API to generate a UUID, compliant with [RFC4122](https://www.ietf.org/rfc/rfc4122.txt) version 4.
+
+```js
+const UUIDGeneratorBrowser = () =>
+  ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+    (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+UUIDGeneratorBrowser(); // '7982fcfe-5721-4632-bede-6000885be57d'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Date
 
 ### getDaysDiffBetweenDates
@@ -1298,14 +1855,21 @@ Returns the difference (in days) between two dates.
 Calculate the difference (in days) between two `Date` objects.
 
 ```js
-const getDaysDiffBetweenDates = (dateInitial, dateFinal) => (dateFinal - dateInitial) / (1000 * 3600 * 24);
+const getDaysDiffBetweenDates = (dateInitial, dateFinal) =>
+  (dateFinal - dateInitial) / (1000 * 3600 * 24);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-getDaysDiffBetweenDates(new Date("2017-12-13"), new Date("2017-12-22")) // 9
+getDaysDiffBetweenDates(new Date('2017-12-13'), new Date('2017-12-22')); // 9
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### JSONToDate
 
@@ -1320,11 +1884,17 @@ const JSONToDate = arr => {
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-JSONToDate(/Date(1489525200000)/) // "14/3/2017"
+JSONToDate(/Date(1489525200000)/); // "14/3/2017"
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### toEnglishDate
 
@@ -1334,14 +1904,27 @@ Use `Date.toISOString()`, `split('T')` and `replace()` to convert a date from Am
 Throws an error if the passed time cannot be converted to a date.
 
 ```js
-const toEnglishDate = (time) => { try { return new Date(time).toISOString().split('T')[0].replace(/-/g, '/'); } catch (e) {} };
+const toEnglishDate = time => {
+  try {
+    return new Date(time)
+      .toISOString()
+      .split('T')[0]
+      .replace(/-/g, '/');
+  } catch (e) {}
+};
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-toEnglishDate('09/21/2010') // '21/09/2010'
+toEnglishDate('09/21/2010'); // '21/09/2010'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### tomorrow
 
@@ -1352,11 +1935,17 @@ Use `new Date()` to get today's date, adding `86400000` of seconds to it(24 hour
 const tomorrow = () => new Date(new Date().getTime() + 86400000).toISOString().split('T')[0];
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-tomorrow() // 2017-12-27 (if current date is 2017-12-26)
+tomorrow(); // 2017-12-27 (if current date is 2017-12-26)
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Function
 
 ### chainAsync
@@ -1366,18 +1955,36 @@ Chains asynchronous functions.
 Loop through an array of functions containing asynchronous events, calling `next` when each asynchronous event has completed.
 
 ```js
-const chainAsync = fns => { let curr = 0; const next = () => fns[curr++](next); next(); };
+const chainAsync = fns => {
+  let curr = 0;
+  const next = () => fns[curr++](next);
+  next();
+};
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
 chainAsync([
-  next => { console.log('0 seconds'); setTimeout(next, 1000); },
-  next => { console.log('1 second');  setTimeout(next, 1000); },
-  next => { console.log('2 seconds'); }
-])
+  next => {
+    console.log('0 seconds');
+    setTimeout(next, 1000);
+  },
+  next => {
+    console.log('1 second');
+    setTimeout(next, 1000);
+  },
+  next => {
+    console.log('2 seconds');
+  }
+]);
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### compose
 
@@ -1390,14 +1997,20 @@ The last (rightmost) function can accept one or more arguments; the remaining fu
 const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const add5 = x => x + 5
-const multiply = (x, y) => x * y
-const multiplyAndAdd5 = compose(add5, multiply)
-multiplyAndAdd5(5, 2) // 15
+const add5 = x => x + 5;
+const multiply = (x, y) => x * y;
+const multiplyAndAdd5 = compose(add5, multiply);
+multiplyAndAdd5(5, 2); // 15
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### curry
 
@@ -1410,17 +2023,21 @@ If you want to curry a function that accepts a variable number of arguments (a v
 
 ```js
 const curry = (fn, arity = fn.length, ...args) =>
-  arity <= args.length
-    ? fn(...args)
-    : curry.bind(null, fn, arity, ...args);
+  arity <= args.length ? fn(...args) : curry.bind(null, fn, arity, ...args);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-curry(Math.pow)(2)(10) // 1024
-curry(Math.min, 3)(10)(50)(2) // 2
+curry(Math.pow)(2)(10); // 1024
+curry(Math.min, 3)(10)(50)(2); // 2
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### functionName
 
@@ -1432,11 +2049,17 @@ Use `console.debug()` and the `name` property of the passed method to log the me
 const functionName = fn => (console.debug(fn.name), fn);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-functionName(Math.max) // max (logged in debug channel of console)
+functionName(Math.max); // max (logged in debug channel of console)
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### runPromisesInSeries
 
@@ -1448,12 +2071,18 @@ Use `Array.reduce()` to create a promise chain, where each promise returns the n
 const runPromisesInSeries = ps => ps.reduce((p, next) => p.then(next), Promise.resolve());
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const delay = (d) => new Promise(r => setTimeout(r, d))
-runPromisesInSeries([() => delay(1000), () => delay(2000)]) // //executes each promise sequentially, taking a total of 3 seconds to complete
+const delay = d => new Promise(r => setTimeout(r, d));
+runPromisesInSeries([() => delay(1000), () => delay(2000)]); // //executes each promise sequentially, taking a total of 3 seconds to complete
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### sleep
 
@@ -1465,15 +2094,21 @@ Delay executing part of an `async` function, by putting it to sleep, returning a
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
 async function sleepyWork() {
-  console.log('I\'m going to sleep for 1 second.');
+  console.log("I'm going to sleep for 1 second.");
   await sleep(1000);
   console.log('I woke up after 1 second.');
 }
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Logic
 
 ### negate
@@ -1486,45 +2121,45 @@ Take a predicate function and apply `not` to it with its arguments.
 const negate = func => (...args) => !func(...args);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-filter([1, 2, 3, 4, 5, 6], negate(isEven)) // [1, 3, 5]
-negate(isOdd)(1) // false
+filter([1, 2, 3, 4, 5, 6], negate(isEven)); // [1, 3, 5]
+negate(isOdd)(1); // false
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Math
 
-### arrayAverage
+### average
 
-Returns the average of an array of numbers.
+Returns the average of an of two or more numbers/arrays.
 
 Use `Array.reduce()` to add each value to an accumulator, initialized with a value of `0`, divide by the `length` of the array.
 
 ```js
-const arrayAverage = arr => arr.reduce((acc, val) => acc + val, 0) / arr.length;
+const average = (...arr) => {
+  const nums = [].concat(...arr);
+  return nums.reduce((acc, val) => acc + val, 0) / nums.length;
+};
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-arrayAverage([1,2,3]) // 2
+average([1, 2, 3]); // 2
+average(1, 2, 3); // 2
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
 
-### arraySum
+<br>[⬆ Back to top](#table-of-contents)
 
-Returns the sum of an array of numbers.
-
-Use `Array.reduce()` to add each value to an accumulator, initialized with a value of `0`.
-
-```js
-const arraySum = arr => arr.reduce((acc, val) => acc + val, 0);
-```
-
-```js
-arraySum([1,2,3,4]) // 10
-```
-
-[⬆ back to top](#table-of-contents)
 
 ### clampNumber
 
@@ -1537,13 +2172,19 @@ Otherwise, return the nearest number in the range.
 const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-clampNumber(2, 3, 5) // 3
-clampNumber(1, -1, -5) // -1
-clampNumber(3, 2, 4) // 3
+clampNumber(2, 3, 5); // 3
+clampNumber(1, -1, -5); // -1
+clampNumber(3, 2, 4); // 3
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### collatz
 
@@ -1552,15 +2193,21 @@ Applies the Collatz algorithm.
 If `n` is even, return `n/2`. Otherwise, return `3n+1`.
 
 ```js
-const collatz = n => (n % 2 == 0) ? (n / 2) : (3 * n + 1);
+const collatz = n => (n % 2 == 0 ? n / 2 : 3 * n + 1);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-collatz(8) // 4
-collatz(5) // 16
+collatz(8); // 4
+collatz(5); // 16
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### digitize
 
@@ -1570,14 +2217,20 @@ Convert the number to a string, using spread operators in ES6(`[...string]`) bui
 Use `Array.map()` and `parseInt()` to transform each value to an integer.
 
 ```js
-const digitize = n => [...'' + n].map(i => parseInt(i));
+const digitize = n => [...('' + n)].map(i => parseInt(i));
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-digitize(123) // [1, 2, 3]
+digitize(123); // [1, 2, 3]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### distance
 
@@ -1589,11 +2242,17 @@ Use `Math.hypot()` to calculate the Euclidean distance between two points.
 const distance = (x0, y0, x1, y1) => Math.hypot(x1 - x0, y1 - y0);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-distance(1,1, 2,3) // 2.23606797749979
+distance(1, 1, 2, 3); // 2.23606797749979
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### factorial
 
@@ -1606,15 +2265,24 @@ Throws an exception if `n` is a negative number.
 
 ```js
 const factorial = n =>
-  n < 0 ? (() => { throw new TypeError('Negative numbers are not allowed!'); })()
-  : n <= 1 ? 1 : n * factorial(n - 1);
+  n < 0
+    ? (() => {
+        throw new TypeError('Negative numbers are not allowed!');
+      })()
+    : n <= 1 ? 1 : n * factorial(n - 1);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-factorial(6) // 720
+factorial(6); // 720
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### fibonacci
 
@@ -1625,14 +2293,23 @@ Use `Array.reduce()` to add values into the array, using the sum of the last two
 
 ```js
 const fibonacci = n =>
-  Array.from({ length: n}).reduce((acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i), []);
+  Array.from({ length: n }).reduce(
+    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),
+    []
+  );
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-fibonacci(6) // 720
+fibonacci(6); // 720
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### fibonacciCountUntilNum
 
@@ -1645,11 +2322,17 @@ const fibonacciCountUntilNum = num =>
   Math.ceil(Math.log(num * Math.sqrt(5) + 1 / 2) / Math.log((Math.sqrt(5) + 1) / 2));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-fibonacciCountUntilNum(10) // 7
+fibonacciCountUntilNum(10); // 7
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### fibonacciUntilNum
 
@@ -1662,33 +2345,52 @@ Uses a mathematical formula to calculate the length of the array required.
 ```js
 const fibonacciUntilNum = num => {
   let n = Math.ceil(Math.log(num * Math.sqrt(5) + 1 / 2) / Math.log((Math.sqrt(5) + 1) / 2));
-  return Array.from({ length: n}).reduce((acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i), []);
+  return Array.from({ length: n }).reduce(
+    (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i),
+    []
+  );
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-fibonacciCountUntilNum(10) // 7
+fibonacciCountUntilNum(10); // 7
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### gcd
 
-Calculates the greatest common divisor between two numbers.
+Calculates the greatest common divisor between two or more numbers/arrays.
 
-Use recursion.
+The `helperGcd `function uses recursion.
 Base case is when `y` equals `0`. In this case, return `x`.
 Otherwise, return the GCD of `y` and the remainder of the division `x/y`.
 
 ```js
-const gcd = (x, y) => !y ? x : gcd(y, x % y);
+const gcd = (...arr) => {
+  let data = [].concat(...arr);
+  const helperGcd = (x, y) => (!y ? x : gcd(y, x % y));
+  return data.reduce((a, b) => helperGcd(a, b));
+};
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-gcd (8, 36) // 4
+gcd(8, 36); // 4
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### hammingDistance
 
@@ -1698,15 +2400,20 @@ Use XOR operator (`^`) to find the bit difference between the two numbers, conve
 Count and return the number of `1`s in the string, using `match(/1/g)`.
 
 ```js
-const hammingDistance = (num1, num2) =>
-  ((num1 ^ num2).toString(2).match(/1/g) || '').length;
+const hammingDistance = (num1, num2) => ((num1 ^ num2).toString(2).match(/1/g) || '').length;
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-hammingDistance(2,3) // 1
+hammingDistance(2, 3); // 1
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### inRange
 
@@ -1717,19 +2424,25 @@ If the second parameter, `end`, is not specified, the range is considered to be 
 
 ```js
 const inRange = (n, start, end = null) => {
-  if (end && start > end) end = [start, start = end][0];
-  return (end == null) ? (n >= 0 && n < start) : (n >= start && n < end);
+  if (end && start > end) end = [start, (start = end)][0];
+  return end == null ? n >= 0 && n < start : n >= start && n < end;
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-inRange(3, 2, 5) // true
-inRange(3, 4) // true
-inRange(2, 3, 5) // false
-inrange(3, 2) // false
+inRange(3, 2, 5); // true
+inRange(3, 4); // true
+inRange(2, 3, 5); // false
+inrange(3, 2); // false
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isArmstrongNumber
 
@@ -1739,16 +2452,24 @@ Convert the given number into an array of digits. Use `Math.pow()` to get the ap
 
 ```js
 const isArmstrongNumber = digits =>
-  (arr => arr.reduce((a, d) => a + Math.pow(parseInt(d), arr.length), 0) == digits)((digits + '').split(''));
+  (arr => arr.reduce((a, d) => a + Math.pow(parseInt(d), arr.length), 0) == digits)(
+    (digits + '').split('')
+  );
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-isArmstrongNumber(1634) // true
-isArmstrongNumber(371) // true
-isArmstrongNumber(56) // false
+isArmstrongNumber(1634); // true
+isArmstrongNumber(371); // true
+isArmstrongNumber(56); // false
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isDivisible
 
@@ -1760,11 +2481,17 @@ Use the modulo operator (`%`) to check if the remainder is equal to `0`.
 const isDivisible = (dividend, divisor) => dividend % divisor === 0;
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-isDivisible(6,3) // true
+isDivisible(6, 3); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isEven
 
@@ -1777,11 +2504,17 @@ Returns `true` if the number is even, `false` if the number is odd.
 const isEven = num => num % 2 === 0;
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-isEven(3) // false
+isEven(3); // false
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isPrime
 
@@ -1798,32 +2531,68 @@ const isPrime = num => {
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-isPrime(11) // true
-isPrime(12) // false
+isPrime(11); // true
+isPrime(12); // false
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### lcm
 
-Returns the least common multiple of two numbers.
+Returns the least common multiple of two or more numbers/arrays.
 
 Use the greatest common divisor (GCD) formula and `Math.abs()` to determine the least common multiple.
 The GCD formula uses recursion.
 
 ```js
-const lcm = (x, y) => {
-  const gcd = (x, y) => !y ? x : gcd(y, x % y);
-  return Math.abs(x * y) / (gcd(x, y));
+const lcm = (...arr) => {
+  const gcd = (x, y) => (!y ? x : gcd(y, x % y));
+  const _lcm = (x, y) => x * y / gcd(x, y);
+  return [].concat(...arr).reduce((a, b) => _lcm(a, b));
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-lcm(12,7) // 84
+lcm(12, 7); // 84
+lcm([1, 3, 4], 5); // 60
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### max
+
+Returns the maximum value out of two or more numbers/arrays.
+
+Use `Math.max()` combined with the spread operator (`...`) to get the maximum value in the array.
+
+```js
+const max = (...arr) => Math.max(...[].concat(...arr));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+max([10, 1, 5]); // 10
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### median
 
@@ -1834,17 +2603,46 @@ Return the number at the midpoint if `length` is odd, otherwise the average of t
 
 ```js
 const median = arr => {
-  const mid = Math.floor(arr.length / 2), nums = [...arr].sort((a, b) => a - b);
+  const mid = Math.floor(arr.length / 2),
+    nums = [...arr].sort((a, b) => a - b);
   return arr.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-median([5,6,50,1,-5]) // 5
-median([0,10,-2,7]) // 3.5
+median([5, 6, 50, 1, -5]); // 5
+median([0, 10, -2, 7]); // 3.5
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### min
+
+Returns the minimum value in an array.
+
+Use `Math.min()` combined with the spread operator (`...`) to get the minimum value in the array.
+
+```js
+const min = arr => Math.min(...[].concat(...arr));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+min([10, 1, 5]); // 1
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### palindrome
 
@@ -1856,15 +2654,27 @@ Then, `split('')` into individual characters, `reverse()`, `join('')` and compar
 ```js
 const palindrome = str => {
   const s = str.toLowerCase().replace(/[\W_]/g, '');
-  return s === s.split('').reverse().join('');
+  return (
+    s ===
+    s
+      .split('')
+      .reverse()
+      .join('')
+  );
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-palindrome('taco cat') // true
+palindrome('taco cat'); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### percentile
 
@@ -1877,11 +2687,17 @@ const percentile = (arr, val) =>
   100 * arr.reduce((acc, v) => acc + (v < val ? 1 : 0) + (v === val ? 0.5 : 0), 0) / arr.length;
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-percentile([1,2,3,4,5,6,7,8,9,10], 6) // 55
+percentile([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 6); // 55
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### powerset
 
@@ -1890,15 +2706,20 @@ Returns the powerset of a given array of numbers.
 Use `Array.reduce()` combined with `Array.map()` to iterate over elements and combine into an array containing all combinations.
 
 ```js
-const powerset = arr =>
-  arr.reduce((a, v) => a.concat(a.map(r => [v].concat(r))), [[]]);
+const powerset = arr => arr.reduce((a, v) => a.concat(a.map(r => [v].concat(r))), [[]]);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-powerset([1,2]) // [[], [1], [2], [2,1]]
+powerset([1, 2]); // [[], [1], [2], [2,1]]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### primes
 
@@ -1908,19 +2729,25 @@ Generate an array from `2` to the given number. Use `Array.filter()` to filter o
 
 ```js
 const primes = num => {
-  let arr = Array.from({length: num - 1}).map((x, i) => i + 2),
+  let arr = Array.from({ length: num - 1 }).map((x, i) => i + 2),
     sqroot = Math.floor(Math.sqrt(num)),
-    numsTillSqroot = Array.from({length: sqroot - 1}).map((x, i) => i + 2);
-  numsTillSqroot.forEach(x => arr = arr.filter(y => ((y % x) !== 0) || (y == x)));
+    numsTillSqroot = Array.from({ length: sqroot - 1 }).map((x, i) => i + 2);
+  numsTillSqroot.forEach(x => (arr = arr.filter(y => y % x !== 0 || y == x)));
   return arr;
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-primes(10) // [2,3,5,7]
+primes(10); // [2,3,5,7]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### randomIntegerInRange
 
@@ -1932,11 +2759,17 @@ Use `Math.random()` to generate a random number and map it to the desired range,
 const randomIntegerInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-randomIntegerInRange(0, 5) // 2
+randomIntegerInRange(0, 5); // 2
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### randomNumberInRange
 
@@ -1948,11 +2781,17 @@ Use `Math.random()` to generate a random value, map it to the desired range usin
 const randomNumberInRange = (min, max) => Math.random() * (max - min) + min;
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-randomNumberInRange(2,10) // 6.0211363285087005
+randomNumberInRange(2, 10); // 6.0211363285087005
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### round
 
@@ -1965,11 +2804,17 @@ Omit the second argument, `decimals` to round to an integer.
 const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-round(1.005, 2) // 1.01
+round(1.005, 2); // 1.01
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### standardDeviation
 
@@ -1983,18 +2828,48 @@ You can omit the second argument to get the sample standard deviation or set it 
 const standardDeviation = (arr, usePopulation = false) => {
   const mean = arr.reduce((acc, val) => acc + val, 0) / arr.length;
   return Math.sqrt(
-    arr.reduce((acc, val) => acc.concat(Math.pow(val - mean, 2)), [])
-       .reduce((acc, val) => acc + val, 0) / (arr.length - (usePopulation ? 0 : 1))
+    arr
+      .reduce((acc, val) => acc.concat(Math.pow(val - mean, 2)), [])
+      .reduce((acc, val) => acc + val, 0) /
+      (arr.length - (usePopulation ? 0 : 1))
   );
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-standardDeviation([10,2,38,23,38,23,21]) // 13.284434142114991 (sample)
-standardDeviation([10,2,38,23,38,23,21], true) // 12.29899614287479 (population)
+standardDeviation([10, 2, 38, 23, 38, 23, 21]); // 13.284434142114991 (sample)
+standardDeviation([10, 2, 38, 23, 38, 23, 21], true); // 12.29899614287479 (population)
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### sum
+
+Returns the sum of an of two or more numbers/arrays.
+
+Use `Array.reduce()` to add each value to an accumulator, initialized with a value of `0`.
+
+```js
+const sum = (...arr) => [].concat(...arr).reduce((acc, val) => acc + val, 0);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+sum([1, 2, 3, 4]); // 10
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Media
 
 ### speechSynthesis
@@ -2014,11 +2889,17 @@ const speechSynthesis = message => {
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-speechSynthesis('Hello, World') // // plays the message
+speechSynthesis('Hello, World'); // // plays the message
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Node
 
 ### JSONToFile
@@ -2029,14 +2910,21 @@ Use `fs.writeFile()`, template literals and `JSON.stringify()` to write a `json`
 
 ```js
 const fs = require('fs');
-const JSONToFile = (obj, filename) => fs.writeFile(`${filename}.json`, JSON.stringify(obj, null, 2));
+const JSONToFile = (obj, filename) =>
+  fs.writeFile(`${filename}.json`, JSON.stringify(obj, null, 2));
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-JSONToFile({test: "is passed"}, 'testJsonFile') // writes the object to 'testJsonFile.json'
+JSONToFile({ test: 'is passed' }, 'testJsonFile'); // writes the object to 'testJsonFile.json'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### readFileLines
 
@@ -2048,8 +2936,15 @@ creating an array from contents of file by `split`ing file content line by line 
 
 ```js
 const fs = require('fs');
-const readFileLines = filename => fs.readFileSync(filename).toString('UTF8').split('\n');
+const readFileLines = filename =>
+  fs
+    .readFileSync(filename)
+    .toString('UTF8')
+    .split('\n');
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
 /*
@@ -2059,12 +2954,41 @@ contents of test.txt :
   line3
   ___________________________
 */
-let arr = readFileLines('test.txt')
-console.log(arr) // ['line1', 'line2', 'line3']
+let arr = readFileLines('test.txt');
+console.log(arr); // ['line1', 'line2', 'line3']
 ```
 
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### UUIDGeneratorNode
+
+Generates a UUID in Node.JS.
+
+Use `crypto` API to generate a UUID, compliant with [RFC4122](https://www.ietf.org/rfc/rfc4122.txt) version 4.
+
+```js
+const crypto = require('crypto');
+const UUIDGeneratorNode = () =>
+  ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+    (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+UUIDGeneratorNode(); // '79c7c136-60ee-40a2-beb2-856f1feabefc'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Object
 
 ### cleanObj
@@ -2082,17 +3006,51 @@ const cleanObj = (obj, keysToKeep = [], childIndicator) => {
     } else if (!keysToKeep.includes(key)) {
       delete obj[key];
     }
-   });
+  });
   return obj;
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const testObj = {a: 1, b: 2, children: {a: 1, b: 2}}
-cleanObj(testObj, ["a"],"children") // { a: 1, children : { a: 1}}
+const testObj = { a: 1, b: 2, children: { a: 1, b: 2 } };
+cleanObj(testObj, ['a'], 'children'); // { a: 1, children : { a: 1}}
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### lowercaseKeys
+
+Creates a new object from the specified object, where all the keys are in lowercase.
+
+Use `Object.keys()` and `Array.reduce()` to create a new object from the specified object.
+Convert each key in the original object to lowercase, using `String.toLowerCase()`.
+
+```js
+const lowercaseKeys = obj =>
+  Object.keys(obj).reduce((acc, key) => {
+    acc[key.toLowerCase()] = obj[key];
+    return acc;
+  }, {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const myObj = { Name: 'Adam', sUrnAME: 'Smith' };
+const myObjLower = lowercaseKeys(myObj); // {name: 'Adam', surname: 'Smith'};
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### objectFromPairs
 
@@ -2101,14 +3059,20 @@ Creates an object from the given key-value pairs.
 Use `Array.reduce()` to create and combine key-value pairs.
 
 ```js
-const objectFromPairs = arr => arr.reduce((a, v) => (a[v[0]] = v[1], a), {});
+const objectFromPairs = arr => arr.reduce((a, v) => ((a[v[0]] = v[1]), a), {});
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-objectFromPairs([['a',1],['b',2]]) // {a: 1, b: 2}
+objectFromPairs([['a', 1], ['b', 2]]); // {a: 1, b: 2}
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### objectToPairs
 
@@ -2120,11 +3084,17 @@ Use `Object.keys()` and `Array.map()` to iterate over the object's keys and prod
 const objectToPairs = obj => Object.keys(obj).map(k => [k, obj[k]]);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-objectToPairs({a: 1, b: 2}) // [['a',1],['b',2]])
+objectToPairs({ a: 1, b: 2 }); // [['a',1],['b',2]])
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### orderBy
 
@@ -2135,7 +3105,7 @@ If no orders array is passed it sort by 'asc' by default.
 
 ```js
 const orderBy = (arr, props, orders) =>
-  arr.sort((a, b) =>
+  [...arr].sort((a, b) =>
     props.reduce((acc, prop, i) => {
       if (acc === 0) {
         const [p1, p2] = orders && orders[i] === 'desc' ? [b[prop], a[prop]] : [a[prop], b[prop]];
@@ -2146,14 +3116,24 @@ const orderBy = (arr, props, orders) =>
   );
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const users = [{ 'name': 'fred',   'age': 48 },{ 'name': 'barney', 'age': 36 },
-  { 'name': 'fred',   'age': 40 },{ 'name': 'barney', 'age': 34 }];
-orderby(users, ['name', 'age'], ['asc', 'desc']) // [{name: 'barney', age: 36}, {name: 'barney', age: 34}, {name: 'fred', age: 48}, {name: 'fred', age: 40}]
-orderby(users, ['name', 'age']) // [{name: 'barney', age: 34}, {name: 'barney', age: 36}, {name: 'fred', age: 40}, {name: 'fred', age: 48}]
+const users = [
+  { name: 'fred', age: 48 },
+  { name: 'barney', age: 36 },
+  { name: 'fred', age: 40 },
+  { name: 'barney', age: 34 }
+];
+orderBy(users, ['name', 'age'], ['asc', 'desc']); // [{name: 'barney', age: 36}, {name: 'barney', age: 34}, {name: 'fred', age: 48}, {name: 'fred', age: 40}]
+orderBy(users, ['name', 'age']); // [{name: 'barney', age: 34}, {name: 'barney', age: 36}, {name: 'fred', age: 40}, {name: 'fred', age: 48}]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### select
 
@@ -2166,12 +3146,18 @@ const select = (from, selector) =>
   selector.split('.').reduce((prev, cur) => prev && prev[cur], from);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const obj = {selector: {to: {val: 'val to select'}}};
+const obj = { selector: { to: { val: 'val to select' } } };
 select(obj, 'selector.to.val'); // 'val to select'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### shallowClone
 
@@ -2183,13 +3169,19 @@ Use `Object.assign()` and an empty object (`{}`) to create a shallow clone of th
 const shallowClone = obj => Object.assign({}, obj);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
 const a = { x: true, y: 1 };
 const b = shallowClone(a);
-a === b // false
+a === b; // false
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### truthCheckCollection
 
@@ -2198,14 +3190,20 @@ Checks if the predicate (second argument) is truthy on all elements of a collect
 Use `Array.every()` to check if each passed object has the specified property and if it returns a truthy value.
 
  ```js
-const truthCheckCollection = (collection, pre) => (collection.every(obj => obj[pre]));
+const truthCheckCollection = (collection, pre) => collection.every(obj => obj[pre]);
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-truthCheckCollection([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}], "sex") // true
+truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex: 'male' }], 'sex'); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## String
 
 ### anagrams
@@ -2220,16 +3218,27 @@ Base cases are for string `length` equal to `2` or `1`.
 ```js
 const anagrams = str => {
   if (str.length <= 2) return str.length === 2 ? [str, str[1] + str[0]] : [str];
-  return str.split('').reduce((acc, letter, i) =>
-    acc.concat(anagrams(str.slice(0, i) + str.slice(i + 1)).map(val => letter + val)), []);
+  return str
+    .split('')
+    .reduce(
+      (acc, letter, i) =>
+        acc.concat(anagrams(str.slice(0, i) + str.slice(i + 1)).map(val => letter + val)),
+      []
+    );
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-anagrams('abc') // ['abc','acb','bac','bca','cab','cba']
+anagrams('abc'); // ['abc','acb','bac','bca','cab','cba']
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### Capitalize
 
@@ -2243,12 +3252,18 @@ const capitalize = ([first, ...rest], lowerRest = false) =>
   first.toUpperCase() + (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-capitalize('fooBar') // 'FooBar'
-capitalize('fooBar', true) // 'Foobar'
+capitalize('fooBar'); // 'FooBar'
+capitalize('fooBar', true); // 'Foobar'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### capitalizeEveryWord
 
@@ -2260,11 +3275,17 @@ Use `replace()` to match the first character of each word and `toUpperCase()` to
 const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-capitalizeEveryWord('hello world!') // 'Hello World!'
+capitalizeEveryWord('hello world!'); // 'Hello World!'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### countVowels
 
@@ -2273,15 +3294,54 @@ Retuns `number` of vowels in provided string.
 Use a regular expression to count the number of vowels `(A, E, I, O, U)` in a `string`.
 
 ```js
-const countVowels = str => (str.match(/[aeiou]/ig) || []).length;
+const countVowels = str => (str.match(/[aeiou]/gi) || []).length;
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-countVowels('foobar') // 3
-countVowels('gym') // 0
+countVowels('foobar'); // 3
+countVowels('gym'); // 0
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### escapeHTML
+
+Escapes a string for use in HTML.
+
+Use `String.replace()` with a regex that matches the characters that need to be escaped, using a callback function to replace each character instance with its associated escaped character using a dictionary (object).
+
+```js
+const escapeHTML = str =>
+  str.replace(
+    /[&<>'"]/g,
+    tag =>
+      ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+      }[tag] || tag)
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+escapeHTML('<a href="#">Me & you</a>'); // '&lt;a href=&quot;#&quot;&gt;Me &amp; you&lt;/a&gt;'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### escapeRegExp
 
@@ -2293,11 +3353,17 @@ Use `replace()` to escape special characters.
 const escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-escapeRegExp('(test)') // \\(test\\)
+escapeRegExp('(test)'); // \\(test\\)
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### fromCamelCase
 
@@ -2308,17 +3374,25 @@ Omit the second argument to use a default separator of `_`.
 
 ```js
 const fromCamelCase = (str, separator = '_') =>
-  str.replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2')
-    .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + separator + '$2').toLowerCase();
+  str
+    .replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2')
+    .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + separator + '$2')
+    .toLowerCase();
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-fromCamelCase('someDatabaseFieldName', ' ') // 'some database field name'
-fromCamelCase('someLabelThatNeedsToBeCamelized', '-') // 'some-label-that-needs-to-be-camelized'
-fromCamelCase('someJavascriptProperty', '_') // 'some_javascript_property'
+fromCamelCase('someDatabaseFieldName', ' '); // 'some database field name'
+fromCamelCase('someLabelThatNeedsToBeCamelized', '-'); // 'some-label-that-needs-to-be-camelized'
+fromCamelCase('someJavascriptProperty', '_'); // 'some_javascript_property'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### repeatString
 
@@ -2332,12 +3406,18 @@ const repeatString = (str = '', num = 2) => {
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-repeatString("abc",3) // 'abcabcabc'
-repeatString("abc") // 'abcabc'
+repeatString('abc', 3); // 'abcabcabc'
+repeatString('abc'); // 'abcabc'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### reverseString
 
@@ -2347,14 +3427,24 @@ Use `split('')` and `Array.reverse()` to reverse the order of the characters in 
 Combine characters to get a string using `join('')`.
 
 ```js
-const reverseString = str => str.split('').reverse().join('');
+const reverseString = str =>
+  str
+    .split('')
+    .reverse()
+    .join('');
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-reverseString('foobar') // 'raboof'
+reverseString('foobar'); // 'raboof'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### sortCharactersInString
 
@@ -2364,14 +3454,45 @@ Split the string using `split('')`, `Array.sort()` utilizing `localeCompare()`, 
 
 ```js
 const sortCharactersInString = str =>
-  str.split('').sort((a, b) => a.localeCompare(b)).join('');
+  str
+    .split('')
+    .sort((a, b) => a.localeCompare(b))
+    .join('');
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-sortCharactersInString('cabbage') // 'aabbceg'
+sortCharactersInString('cabbage'); // 'aabbceg'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### splitLines
+
+Splits a multiline string into an array of lines.
+
+Use `String.split()` and a regular expression to match line breaks and create an array.
+
+```js
+const splitLines = str => str.split(/\r?\n/);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+splitLines('This\nis a\nmultiline\nstring.\n'); // ['This', 'is a', 'multiline', 'string' , '']
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### toCamelCase
 
@@ -2382,21 +3503,30 @@ For more detailed explanation of this Regex, [visit this Site](https://regex101.
 
 ```js
 const toCamelCase = str => {
-  let s = str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map(x => x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase())
-    .join('');
+  let s =
+    str &&
+    str
+      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+      .map(x => x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase())
+      .join('');
   return s.slice(0, 1).toLowerCase() + s.slice(1);
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-toCamelCase("some_database_field_name") // 'someDatabaseFieldName'
-toCamelCase("Some label that needs to be camelized") // 'someLabelThatNeedsToBeCamelized'
-toCamelCase("some-javascript-property") // 'someJavascriptProperty'
-toCamelCase("some-mixed_string with spaces_underscores-and-hyphens") // 'someMixedStringWithSpacesUnderscoresAndHyphens'
+toCamelCase('some_database_field_name'); // 'someDatabaseFieldName'
+toCamelCase('Some label that needs to be camelized'); // 'someLabelThatNeedsToBeCamelized'
+toCamelCase('some-javascript-property'); // 'someJavascriptProperty'
+toCamelCase('some-mixed_string with spaces_underscores-and-hyphens'); // 'someMixedStringWithSpacesUnderscoresAndHyphens'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### toKebabCase
 
@@ -2407,20 +3537,28 @@ For more detailed explanation of this Regex, [visit this Site](https://regex101.
 
 ```js
 const toKebabCase = str =>
-  str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+  str &&
+  str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
     .map(x => x.toLowerCase())
     .join('-');
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-toKebabCase("camelCase") // 'camel-case'
-toKebabCase("some text") // 'some-text'
-toKebabCase("some-mixed_string With spaces_underscores-and-hyphens") // 'some-mixed-string-with-spaces-underscores-and-hyphens'
-toKebabCase("AllThe-small Things") // "all-the-small-things"
-toKebabCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAndHTML') // "i-am-listening-to-fm-while-loading-different-url-on-my-browser-and-also-editing-xml-and-html"
+toKebabCase('camelCase'); // 'camel-case'
+toKebabCase('some text'); // 'some-text'
+toKebabCase('some-mixed_string With spaces_underscores-and-hyphens'); // 'some-mixed-string-with-spaces-underscores-and-hyphens'
+toKebabCase('AllThe-small Things'); // "all-the-small-things"
+toKebabCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAndHTML'); // "i-am-listening-to-fm-while-loading-different-url-on-my-browser-and-also-editing-xml-and-html"
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### toSnakeCase
 
@@ -2431,22 +3569,30 @@ For more detailed explanation of this Regex, [visit this Site](https://regex101.
 
 ```js
 const toSnakeCase = str => {
-  str && str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map(x => x.toLowerCase())
-    .join('_');
+  str &&
+    str
+      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+      .map(x => x.toLowerCase())
+      .join('_');
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-toSnakeCase("camelCase") // 'camel_case'
-toSnakeCase("some text") // 'some_text'
-toSnakeCase("some-javascript-property") // 'some_javascript_property'
-toSnakeCase("some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
-toSnakeCase("AllThe-small Things") // "all_the_smal_things"
-toSnakeCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAndHTML') // "i_am_listening_to_fm_while_loading_different_url_on_my_browser_and_also_editing_some_xml_and_html"
+toSnakeCase('camelCase'); // 'camel_case'
+toSnakeCase('some text'); // 'some_text'
+toSnakeCase('some-javascript-property'); // 'some_javascript_property'
+toSnakeCase('some-mixed_string With spaces_underscores-and-hyphens'); // 'some_mixed_string_with_spaces_underscores_and_hyphens'
+toSnakeCase('AllThe-small Things'); // "all_the_smal_things"
+toSnakeCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAndHTML'); // "i_am_listening_to_fm_while_loading_different_url_on_my_browser_and_also_editing_some_xml_and_html"
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### truncateString
 
@@ -2460,11 +3606,49 @@ const truncateString = (str, num) =>
   str.length > num ? str.slice(0, num > 3 ? num - 3 : num) + '...' : str;
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-truncateString('boomerang', 7) // 'boom...'
+truncateString('boomerang', 7); // 'boom...'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### unescapeHTML
+
+Unescapes escaped HTML characters.
+
+Use `String.replace()` with a regex that matches the characters that need to be unescaped, using a callback function to replace each escaped character instance with its associated unescaped character using a dictionary (object).
+
+```js
+const unescapeHTML = str =>
+  str.replace(
+    /&amp;|&lt;|&gt;|&#39;|&quot;/g,
+    tag =>
+      ({
+        '&amp;': '&',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&#39;': "'",
+        '&quot;': '"'
+      }[tag] || tag)
+  );
+```
+<details>
+<summary>Examples</summary>
+
+```js
+unescapeHTML('&lt;a href=&quot;#&quot;&gt;Me &amp; you&lt;/a&gt;'); // '<a href="#">Me & you</a>'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### words
 
@@ -2477,12 +3661,18 @@ Omit the second argument to use the default regex.
 const words = (str, pattern = /[^a-zA-Z-]+/) => str.split(pattern).filter(Boolean);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-words("I love javaScript!!") // ["I", "love", "javaScript"]
-words("python, javaScript & coffee") // ["python", "javaScript", "coffee"]
+words('I love javaScript!!'); // ["I", "love", "javaScript"]
+words('python, javaScript & coffee'); // ["python", "javaScript", "coffee"]
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ## Utility
 
 ### coalesce
@@ -2495,11 +3685,17 @@ Use `Array.find()` to return the first non `null`/`undefined` argument.
 const coalesce = (...args) => args.find(_ => ![undefined, null].includes(_));
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-coalesce(null,undefined,"",NaN, "Waldo") // ""
+coalesce(null, undefined, '', NaN, 'Waldo'); // ""
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### coalesceFactory
 
@@ -2511,12 +3707,18 @@ Use `Array.find()` to return the first argument that returns `true` from the pro
 const coalesceFactory = valid => (...args) => args.find(valid);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-const customCoalesce = coalesceFactory(_ => ![null, undefined, "", NaN].includes(_))
-customCoalesce(undefined, null, NaN, "", "Waldo") // "Waldo"
+const customCoalesce = coalesceFactory(_ => ![null, undefined, '', NaN].includes(_));
+customCoalesce(undefined, null, NaN, '', 'Waldo'); // "Waldo"
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### extendHex
 
@@ -2526,15 +3728,26 @@ Use `Array.map()`, `split()` and `Array.join()` to join the mapped array for con
 `String.slice()` is used to remove `#` from string start since it's added once.
 ```js
 const extendHex = shortHex =>
-  '#' + shortHex.slice(shortHex.startsWith('#') ? 1 : 0).split('').map(x => x + x).join('');
+  '#' +
+  shortHex
+    .slice(shortHex.startsWith('#') ? 1 : 0)
+    .split('')
+    .map(x => x + x)
+    .join('');
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-extendHex('#03f') // '#0033ff'
-extendHex('05a') // '#0055aa'
+extendHex('#03f'); // '#0033ff'
+extendHex('05a'); // '#0055aa'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### getType
 
@@ -2547,11 +3760,17 @@ const getType = v =>
   v === undefined ? 'undefined' : v === null ? 'null' : v.constructor.name.toLowerCase();
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-getType(new Set([1,2,3])) // "set"
+getType(new Set([1, 2, 3])); // "set"
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### hexToRGB
 
@@ -2561,25 +3780,39 @@ Use bitwise right-shift operator and mask bits with `&` (and) operator to conver
 
 ```js
 const hexToRGB = hex => {
-  let alpha = false, h = hex.slice(hex.startsWith('#') ? 1 : 0);
+  let alpha = false,
+    h = hex.slice(hex.startsWith('#') ? 1 : 0);
   if (h.length === 3) h = [...h].map(x => x + x).join('');
   else if (h.length === 8) alpha = true;
   h = parseInt(h, 16);
-  return 'rgb' + (alpha ? 'a' : '') + '(' +
-    (h >>> (alpha ? 24 : 16)) + ', ' +
-    ((h & (alpha ? 0x00ff0000 : 0x00ff00)) >>> (alpha ? 16 : 8)) + ', ' +
+  return (
+    'rgb' +
+    (alpha ? 'a' : '') +
+    '(' +
+    (h >>> (alpha ? 24 : 16)) +
+    ', ' +
+    ((h & (alpha ? 0x00ff0000 : 0x00ff00)) >>> (alpha ? 16 : 8)) +
+    ', ' +
     ((h & (alpha ? 0x0000ff00 : 0x0000ff)) >>> (alpha ? 8 : 0)) +
-    (alpha ? `, ${(h & 0x000000ff)}` : '') + ')';
+    (alpha ? `, ${h & 0x000000ff}` : '') +
+    ')'
+  );
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-hexToRGB('#27ae60ff') // 'rgba(39, 174, 96, 255)'
-hexToRGB('27ae60') // 'rgb(39, 174, 96)'
-hexToRGB('#fff') // 'rgb(255, 255, 255)'
+hexToRGB('#27ae60ff'); // 'rgba(39, 174, 96, 255)'
+hexToRGB('27ae60'); // 'rgb(39, 174, 96)'
+hexToRGB('#fff'); // 'rgb(255, 255, 255)'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isArray
 
@@ -2591,12 +3824,18 @@ Use `Array.isArray()` to check if a value is classified as an array.
 const isArray = val => !!val && Array.isArray(val);
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-isArray(null) // false
-isArray([1]) // true
+isArray(null); // false
+isArray([1]); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isBoolean
 
@@ -2608,12 +3847,18 @@ Use `typeof` to check if a value is classified as a boolean primitive.
 const isBoolean = val => typeof val === 'boolean';
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-isBoolean(null) // false
-isBoolean(false) // true
+isBoolean(null); // false
+isBoolean(false); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isFunction
 
@@ -2625,12 +3870,18 @@ Use `typeof` to check if a value is classified as a function primitive.
 const isFunction = val => val && typeof val === 'function';
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-isFunction('x') // false
-isFunction(x => x) // true
+isFunction('x'); // false
+isFunction(x => x); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isNumber
 
@@ -2642,11 +3893,17 @@ Use `typeof` to check if a value is classified as a number primitive.
 const isNumber = val => typeof val === 'number';
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-isNumber('1') // false
-isNumber(1) // true
+isNumber('1'); // false
+isNumber(1); // true
 ```
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isString
 
@@ -2658,12 +3915,18 @@ Use `typeof` to check if a value is classified as a string primitive.
 const isString = val => typeof val === 'string';
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-isString(10) // false
-isString('10') // true
+isString(10); // false
+isString('10'); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### isSymbol
 
@@ -2675,12 +3938,18 @@ Use `typeof` to check if a value is classified as a symbol primitive.
 const isSymbol = val => typeof val === 'symbol';
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-isSymbol('x') // false
-isSymbol(Symbol('x')) // true
+isSymbol('x'); // false
+isSymbol(Symbol('x')); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### randomHexColorCode
 
@@ -2689,20 +3958,25 @@ Generates a random hexadecimal color code.
 Use `Math.random` to generate a random 24-bit(6x4bits) hexadecimal number. Use bit shifting and then convert it to an hexadecimal String using `toString(16)`.
 
 ```js
-const randomHexColorCode = () => { 
-  let n = (Math.random() * 0xfffff | 0).toString(16); 
-  return '#' + (n.length !== 6 
-        ? (Math.random() * 0xf | 0).toString(16) + n : n); 
-}; 
+const randomHexColorCode = () => {
+  let n = ((Math.random() * 0xfffff) | 0).toString(16);
+  return '#' + (n.length !== 6 ? ((Math.random() * 0xf) | 0).toString(16) + n : n);
+};
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-randomHexColorCode() // "#e34155"
-randomHexColorCode() // "#fd73a6"
-randomHexColorCode() // "#4144c6"
+randomHexColorCode(); // "#e34155"
+randomHexColorCode(); // "#fd73a6"
+randomHexColorCode(); // "#4144c6"
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### RGBToHex
 
@@ -2714,11 +3988,17 @@ Convert given RGB parameters to hexadecimal string using bitwise left-shift oper
 const RGBToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-RGBToHex(255, 165, 1) // 'ffa501'
+RGBToHex(255, 165, 1); // 'ffa501'
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### sbdm
 
@@ -2726,21 +4006,29 @@ This algorithm is a simple hash-algorithm that hashes it input string `s` into a
 
 Use `split('')` and `Array.reduce()` to create a hash of the input string, utilizing bit shifting.
 
-``` js
+```js
 const sdbm = str => {
   let arr = str.split('');
-  return arr.reduce((hashCode, currentVal) =>
-    hashCode = currentVal.charCodeAt(0) + (hashCode << 6) + (hashCode << 16)  - hashCode
-  ,0)
-}
+  return arr.reduce(
+    (hashCode, currentVal) =>
+      (hashCode = currentVal.charCodeAt(0) + (hashCode << 6) + (hashCode << 16) - hashCode),
+    0
+  );
+};
 ```
+
+<details>
+<summary>Examples</summary>
 
 ```js
-console.log(sdbm("name")) // -3521204949
-console.log(sdbm("age")) // 808122783
+console.log(sdbm('name')); // -3521204949
+console.log(sdbm('age')); // 808122783
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### timeTaken
 
@@ -2750,17 +4038,25 @@ Use `console.time()` and `console.timeEnd()` to measure the difference between t
 
 ```js
 const timeTaken = callback => {
-  console.time('timeTaken'); const r = callback();
-  console.timeEnd('timeTaken'); return r;
+  console.time('timeTaken');
+  const r = callback();
+  console.timeEnd('timeTaken');
+  return r;
 };
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-timeTaken(() => Math.pow(2, 10)) // 1024
+timeTaken(() => Math.pow(2, 10)); // 1024
 // (logged): timeTaken: 0.02099609375ms
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### toDecimalMark
 
@@ -2770,11 +4066,17 @@ Use `toLocaleString()` to convert a float-point arithmetic to the [Decimal mark]
 const toDecimalMark = num => num.toLocaleString('en-US');
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-toDecimalMark(12305030388.9087) // "12,305,030,388.9087"
+toDecimalMark(12305030388.9087); // "12,305,030,388.9087"
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### toOrdinalSuffix
 
@@ -2786,37 +4088,28 @@ If digit is found in teens pattern, use teens ordinal.
 
 ```js
 const toOrdinalSuffix = num => {
-  const int = parseInt(num), digits = [(int % 10), (int % 100)],
-    ordinals = ['st', 'nd', 'rd', 'th'], oPattern = [1, 2, 3, 4],
+  const int = parseInt(num),
+    digits = [int % 10, int % 100],
+    ordinals = ['st', 'nd', 'rd', 'th'],
+    oPattern = [1, 2, 3, 4],
     tPattern = [11, 12, 13, 14, 15, 16, 17, 18, 19];
-  return oPattern.includes(digits[0]) && !tPattern.includes(digits[1]) ? int + ordinals[digits[0] - 1] : int + ordinals[3];
+  return oPattern.includes(digits[0]) && !tPattern.includes(digits[1])
+    ? int + ordinals[digits[0] - 1]
+    : int + ordinals[3];
 };
 ```
 
-```js
-toOrdinalSuffix("123") // "123rd"
-```
-
-[⬆ back to top](#table-of-contents)
-
-### UUIDGenerator
-
-Generates a UUID.
-
-Use `crypto` API to generate a UUID, compliant with [RFC4122](https://www.ietf.org/rfc/rfc4122.txt) version 4.
+<details>
+<summary>Examples</summary>
 
 ```js
-const UUIDGenerator = () =>
-  ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-  );
+toOrdinalSuffix('123'); // "123rd"
 ```
 
-```js
-UUIDGenerator() // '7982fcfe-5721-4632-bede-6000885be57d'
-```
+</details>
 
-[⬆ back to top](#table-of-contents)
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### validateNumber
 
@@ -2830,11 +4123,17 @@ Use `Number()` to check if the coercion holds.
 const validateNumber = n => !isNaN(parseFloat(n)) && isFinite(n) && Number(n) == n;
 ```
 
+<details>
+<summary>Examples</summary>
+
 ```js
-validateNumber('10') // true
+validateNumber('10'); // true
 ```
 
-[⬆ back to top](#table-of-contents)
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ## Credits
 
