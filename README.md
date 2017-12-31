@@ -10,10 +10,11 @@
 - Contributions welcome, please read the [contribution guide](CONTRIBUTING.md).
 - Snippets are written in ES6, use the [Babel transpiler](https://babeljs.io/) to ensure backwards-compatibility.
 - You can import these snippets into Alfred 3, using [this file](https://github.com/lslvxy/30-seconds-of-code-alfredsnippets).
+- You can find a package with all the snippets on [npm](https://www.npmjs.com/package/tsoc). Bear in mind that most of these snippets are not production-ready.
 
 ## Table of Contents
 
-### Adapter
+### 🔌 Adapter
 
 <details>
 <summary>View contents</summary>
@@ -27,7 +28,7 @@
 
 </details>
 
-### Array
+### 📚 Array
 
 <details>
 <summary>View contents</summary>
@@ -75,7 +76,7 @@
 
 </details>
 
-### Browser
+### 🖥️ Browser
 
 <details>
 <summary>View contents</summary>
@@ -91,16 +92,18 @@
 * [`hasClass`](#hasclass)
 * [`hide`](#hide)
 * [`httpsRedirect`](#httpsredirect)
+* [`onUserInputChange`](#onuserinputchange)
 * [`redirect`](#redirect)
 * [`scrollToTop`](#scrolltotop)
 * [`setStyle`](#setstyle)
 * [`show`](#show)
+* [`speechSynthesis`](#speechsynthesis)
 * [`toggleClass`](#toggleclass)
 * [`UUIDGeneratorBrowser`](#uuidgeneratorbrowser)
 
 </details>
 
-### Date
+### ⏱️ Date
 
 <details>
 <summary>View contents</summary>
@@ -112,7 +115,7 @@
 
 </details>
 
-### Function
+### 🎛️ Function
 
 <details>
 <summary>View contents</summary>
@@ -126,7 +129,7 @@
 
 </details>
 
-### Logic
+### 🔮 Logic
 
 <details>
 <summary>View contents</summary>
@@ -135,7 +138,7 @@
 
 </details>
 
-### Math
+### ➗ Math
 
 <details>
 <summary>View contents</summary>
@@ -160,7 +163,6 @@
 * [`max`](#max)
 * [`median`](#median)
 * [`min`](#min)
-* [`palindrome`](#palindrome)
 * [`percentile`](#percentile)
 * [`powerset`](#powerset)
 * [`primes`](#primes)
@@ -172,16 +174,7 @@
 
 </details>
 
-### Media
-
-<details>
-<summary>View contents</summary>
-
-* [`speechSynthesis`](#speechsynthesis)
-
-</details>
-
-### Node
+### 📦 Node
 
 <details>
 <summary>View contents</summary>
@@ -192,7 +185,7 @@
 
 </details>
 
-### Object
+### 🗃️ Object
 
 <details>
 <summary>View contents</summary>
@@ -208,18 +201,20 @@
 
 </details>
 
-### String
+### 📜 String
 
 <details>
 <summary>View contents</summary>
 
 * [`anagrams`](#anagrams)
+* [`byteSize`](#bytesize)
 * [`capitalize`](#capitalize)
 * [`capitalizeEveryWord`](#capitalizeeveryword)
 * [`countVowels`](#countvowels)
 * [`escapeHTML`](#escapehtml)
 * [`escapeRegExp`](#escaperegexp)
 * [`fromCamelCase`](#fromcamelcase)
+* [`palindrome`](#palindrome)
 * [`repeatString`](#repeatstring)
 * [`reverseString`](#reversestring)
 * [`sortCharactersInString`](#sortcharactersinstring)
@@ -233,7 +228,7 @@
 
 </details>
 
-### Utility
+### 💎 Utility
 
 <details>
 <summary>View contents</summary>
@@ -256,10 +251,12 @@
 * [`toDecimalMark`](#todecimalmark)
 * [`toOrdinalSuffix`](#toordinalsuffix)
 * [`validateNumber`](#validatenumber)
+* [`yesNo`](#yesno)
 
 </details>
 
-## Adapter
+---
+ ## 🔌 Adapter
 
 ### call
 
@@ -421,7 +418,8 @@ arrayMax([1, 2, 4]); // 4
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## Array
+---
+ ## 📚 Array
 
 ### chunk
 
@@ -1434,7 +1432,8 @@ zipObject(['a', 'b'], [1, 2, 3]); // {a: 1, b: 2}
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## Browser
+---
+ ## 🖥️ Browser
 
 ### arrayToHtmlList
 
@@ -1703,6 +1702,45 @@ const httpsRedirect = () => {
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### onUserInputChange
+
+Run the callback whenever the user input type changes (`mouse` or `touch`). Useful for enabling/disabling code depending on the input device. This process is dynamic and works with hybrid devices (e.g. touchscreen laptops).
+
+Use two event listeners. Assume `mouse` input initially and bind a `touchstart` event listener to the document. 
+On `touchstart`, add a `mousemove` event listener to listen for two consecutive `mousemove` events firing within 20ms, using `performance.now()`.
+Run the callback with the input type as an argument in either of these situations.
+
+```js
+const onUserInputChange = callback => {
+  let type = 'mouse',
+    lastTime = 0;
+  const mousemoveHandler = () => {
+    const now = performance.now();
+    if (now - lastTime < 20)
+      (type = 'mouse'), callback(type), document.removeEventListener('mousemove', mousemoveHandler);
+    lastTime = now;
+  };
+  document.addEventListener('touchstart', () => {
+    if (type === 'touch') return;
+    (type = 'touch'), callback(type), document.addEventListener('mousemove', mousemoveHandler);
+  });
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+onUserInputChange(type => {
+  console.log('The user is now using', type, 'as an input method.');
+});
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### redirect
 
 Redirects to a specified URL.
@@ -1800,6 +1838,35 @@ show(document.querySelectorAll('img')); // Shows all <img> elements on the page
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### speechSynthesis
+
+Performs speech synthesis (experimental).
+
+Use `SpeechSynthesisUtterance.voice` and `window.speechSynthesis.getVoices()` to convert a message to speech.
+Use `window.speechSynthesis.speak()` to play the message.
+
+Learn more about the [SpeechSynthesisUtterance interface of the Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance).
+
+```js
+const speechSynthesis = message => {
+  const msg = new SpeechSynthesisUtterance(message);
+  msg.voice = window.speechSynthesis.getVoices()[0];
+  window.speechSynthesis.speak(msg);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+speechSynthesis('Hello, World'); // // plays the message
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### toggleClass
 
 Toggle a class for an element.
@@ -1846,7 +1913,8 @@ UUIDGeneratorBrowser(); // '7982fcfe-5721-4632-bede-6000885be57d'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## Date
+---
+ ## ⏱️ Date
 
 ### getDaysDiffBetweenDates
 
@@ -1946,7 +2014,8 @@ tomorrow(); // 2017-12-27 (if current date is 2017-12-26)
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## Function
+---
+ ## 🎛️ Function
 
 ### chainAsync
 
@@ -2109,7 +2178,8 @@ async function sleepyWork() {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## Logic
+---
+ ## 🔮 Logic
 
 ### negate
 
@@ -2133,7 +2203,8 @@ negate(isOdd)(1); // false
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## Math
+---
+ ## ➗ Math
 
 ### average
 
@@ -2303,7 +2374,7 @@ const fibonacci = n =>
 <summary>Examples</summary>
 
 ```js
-fibonacci(6); // 720
+fibonacci(6); // [0, 1, 1, 2, 3, 5]
 ```
 
 </details>
@@ -2644,38 +2715,6 @@ min([10, 1, 5]); // 1
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### palindrome
-
-Returns `true` if the given string is a palindrome, `false` otherwise.
-
-Convert string `toLowerCase()` and use `replace()` to remove non-alphanumeric characters from it.
-Then, `split('')` into individual characters, `reverse()`, `join('')` and compare to the original, unreversed string, after converting it `tolowerCase()`.
-
-```js
-const palindrome = str => {
-  const s = str.toLowerCase().replace(/[\W_]/g, '');
-  return (
-    s ===
-    s
-      .split('')
-      .reverse()
-      .join('')
-  );
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-palindrome('taco cat'); // true
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### percentile
 
 Uses the percentile formula to calculate how many numbers in the given array are less or equal to the given value.
@@ -2870,37 +2909,8 @@ sum([1, 2, 3, 4]); // 10
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## Media
-
-### speechSynthesis
-
-Performs speech synthesis (experimental).
-
-Use `SpeechSynthesisUtterance.voice` and `window.speechSynthesis.getVoices()` to convert a message to speech.
-Use `window.speechSynthesis.speak()` to play the message.
-
-Learn more about the [SpeechSynthesisUtterance interface of the Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance).
-
-```js
-const speechSynthesis = message => {
-  const msg = new SpeechSynthesisUtterance(message);
-  msg.voice = window.speechSynthesis.getVoices()[0];
-  window.speechSynthesis.speak(msg);
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-speechSynthesis('Hello, World'); // // plays the message
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-## Node
+---
+ ## 📦 Node
 
 ### JSONToFile
 
@@ -2989,7 +2999,8 @@ UUIDGeneratorNode(); // '79c7c136-60ee-40a2-beb2-856f1feabefc'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## Object
+---
+ ## 🗃️ Object
 
 ### cleanObj
 
@@ -3204,7 +3215,8 @@ truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## String
+---
+ ## 📜 String
 
 ### anagrams
 
@@ -3233,6 +3245,29 @@ const anagrams = str => {
 
 ```js
 anagrams('abc'); // ['abc','acb','bac','bca','cab','cba']
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### byteSize
+
+Returns the length of string.
+
+Convert a given string to a [`Blob` Object](https://developer.mozilla.org/en-US/docs/Web/API/Blob) and find its `size`.
+
+```js
+const byteSize = str => new Blob([str]).size;
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+byteSize('😀'); // 4
+byteSize('Hello World'); // 11
 ```
 
 </details>
@@ -3387,6 +3422,38 @@ const fromCamelCase = (str, separator = '_') =>
 fromCamelCase('someDatabaseFieldName', ' '); // 'some database field name'
 fromCamelCase('someLabelThatNeedsToBeCamelized', '-'); // 'some-label-that-needs-to-be-camelized'
 fromCamelCase('someJavascriptProperty', '_'); // 'some_javascript_property'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### palindrome
+
+Returns `true` if the given string is a palindrome, `false` otherwise.
+
+Convert string `toLowerCase()` and use `replace()` to remove non-alphanumeric characters from it.
+Then, `split('')` into individual characters, `reverse()`, `join('')` and compare to the original, unreversed string, after converting it `tolowerCase()`.
+
+```js
+const palindrome = str => {
+  const s = str.toLowerCase().replace(/[\W_]/g, '');
+  return (
+    s ===
+    s
+      .split('')
+      .reverse()
+      .join('')
+  );
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+palindrome('taco cat'); // true
 ```
 
 </details>
@@ -3568,13 +3635,12 @@ Break the string into words and combine them using `_` as a separator.
 For more detailed explanation of this Regex, [visit this Site](https://regex101.com/r/bMCgAB/1).
 
 ```js
-const toSnakeCase = str => {
+const toSnakeCase = str =>
   str &&
-    str
-      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-      .map(x => x.toLowerCase())
-      .join('_');
-};
+  str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('_');
 ```
 
 <details>
@@ -3673,7 +3739,8 @@ words('python, javaScript & coffee'); // ["python", "javaScript", "coffee"]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-## Utility
+---
+ ## 💎 Utility
 
 ### coalesce
 
@@ -4128,6 +4195,33 @@ const validateNumber = n => !isNaN(parseFloat(n)) && isFinite(n) && Number(n) ==
 
 ```js
 validateNumber('10'); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### yesNo
+
+Returns `true` if the string is `y`/`yes` or `false` if the string is `n`/`no`.
+
+Use `RegExp.test()` to check if the string evaluates to `y/yes` or `n/no`.
+Omit the second argument, `def` to set the default answer as `no`.
+
+```js
+const yesNo = (val, def = false) =>
+  /^(y|yes)$/i.test(val) ? true : /^(n|no)$/i.test(val) ? false : def;
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+yesNo('Y'); // true
+yesNo('yes'); // true
+yesNo('No'); // false
+yesNo('Foo', true); // true
 ```
 
 </details>
