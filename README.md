@@ -54,6 +54,7 @@
 * [`initializeArrayWithRange`](#initializearraywithrange)
 * [`initializeArrayWithValues`](#initializearraywithvalues)
 * [`intersection`](#intersection)
+* [`isSorted`](#issorted)
 * [`join`](#join)
 * [`last`](#last)
 * [`mapObject`](#mapobject)
@@ -63,6 +64,7 @@
 * [`pullAtIndex`](#pullatindex)
 * [`pullAtValue`](#pullatvalue)
 * [`quickSort`](#quicksort)
+* [`reducedFilter`](#reducedfilter)
 * [`remove`](#remove)
 * [`sample`](#sample)
 * [`sampleSize`](#samplesize)
@@ -175,8 +177,10 @@
 * [`randomIntegerInRange`](#randomintegerinrange)
 * [`randomNumberInRange`](#randomnumberinrange)
 * [`round`](#round)
+* [`solveRPN`](#solverpn)
 * [`standardDeviation`](#standarddeviation)
 * [`sum`](#sum)
+* [`sumPower`](#sumpower)
 
 </details>
 
@@ -185,8 +189,11 @@
 <details>
 <summary>View contents</summary>
 
+* [`hasFlags`](#hasflags)
+* [`isTravisCI`](#istravisci)
 * [`JSONToFile`](#jsontofile)
 * [`readFileLines`](#readfilelines)
+* [`untildify`](#untildify)
 * [`UUIDGeneratorNode`](#uuidgeneratornode)
 
 </details>
@@ -197,6 +204,7 @@
 <summary>View contents</summary>
 
 * [`cleanObj`](#cleanobj)
+* [`invertKeyValues`](#invertkeyvalues)
 * [`lowercaseKeys`](#lowercasekeys)
 * [`objectFromPairs`](#objectfrompairs)
 * [`objectToPairs`](#objecttopairs)
@@ -237,11 +245,12 @@
 
 </details>
 
-### 💎 Utility
+### 🔧 Utility
 
 <details>
 <summary>View contents</summary>
 
+* [`cloneRegExp`](#cloneregexp)
 * [`coalesce`](#coalesce)
 * [`coalesceFactory`](#coalescefactory)
 * [`extendHex`](#extendhex)
@@ -259,6 +268,7 @@
 * [`isString`](#isstring)
 * [`isSymbol`](#issymbol)
 * [`isValidJSON`](#isvalidjson)
+* [`prettyBytes`](#prettybytes)
 * [`randomHexColorCode`](#randomhexcolorcode)
 * [`RGBToHex`](#rgbtohex)
 * [`sdbm`](#sdbm)
@@ -914,6 +924,38 @@ intersection([1, 2, 3], [4, 3, 2]); // [2,3]
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### isSorted
+
+Returns `1` if the array is sorted in ascending order, `-1` if it is sorted in descending order or `0` if it is not sorted.
+
+Calculate the ordering `direction` for the first two elements.
+Use `Object.entries()` to loop over array objects and compare them in pairs.
+Return `0` if the `direction` changes or the `direction` if the last element is reached.
+
+```js
+const isSorted = arr => {
+  const direction = arr[0] > arr[1] ? -1 : 1;
+  for (let [i, val] of arr.entries())
+    if (i === arr.length - 1) return direction;
+    else if ((val - arr[i + 1]) * direction > 0) return 0;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isSorted([0, 1, 2, 3]); // 1
+isSorted([0, 1, 2, 2]); // 1
+isSorted([4, 3, 2]); // -1
+isSorted([4, 3, 5]); // 0
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### join
 
 Joins all elements of an array into a string and returns this string. Uses a separator and an end separator.
@@ -1175,6 +1217,48 @@ const quickSort = ([n, ...nums], desc) =>
 ```js
 quickSort([4, 1, 3, 2]); // [1,2,3,4]
 quickSort([4, 1, 3, 2], true); // [4,3,2,1]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### reducedFilter
+
+Filter an array of objects based on a condition while also filtering out unspecified keys.
+
+Use `Array.filter()` to filter the array based on the predicate `fn` so that it returns the objects for which the condition returned a truthy value. 
+On the filtered array, use `Array.map()` to return the new object using `Array.reduce()` to filter out the keys which were not supplied as the `keys` argument.
+
+```js
+const reducedFilter = (data, keys, fn) =>
+  data.filter(fn).map(el =>
+    keys.reduce((acc, key) => {
+      acc[key] = el[key];
+      return acc;
+    }, {})
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const data = [
+  {
+    id: 1,
+    name: 'john',
+    age: 24
+  },
+  {
+    id: 2,
+    name: 'mike',
+    age: 50
+  }
+];
+
+reducedFilter(data, ['id', 'name'], item => item.age > 24); // [{ id: 2, name: 'mike'}]
 ```
 
 </details>
@@ -3042,6 +3126,63 @@ round(1.005, 2); // 1.01
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### solveRPN
+
+Solves the given mathematical expression in [reverse polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation).
+Throws appropriate errors if there are unrecognized symbols or the expression is wrong.
+
+Use a dictionary, `OPERATORS` to specify each operator's matching mathematical operation.
+Use `String.replace()` with a regular expression to replace `^` with `**`, `String.split()` to tokenize the string and `Array.filter()` to remove empty tokens.
+Use `Array.forEach()` to parse each `symbol`, evaluate it as a numeric value or operator and solve the mathematical expression.
+Numeric values are converted to floating point numbers and pushed to a `stack`, while operators are evaluated using the `OPERATORS` dictionary and pop elements from the `stack` to apply operations.
+
+```js
+const solveRPN = rpn => {
+  const OPERATORS = {
+    '*': (a, b) => a * b,
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+    '/': (a, b) => a / b,
+    '**': (a, b) => a ** b
+  };
+  const [stack, solve] = [
+    [],
+    rpn
+      .replace(/\^/g, '**')
+      .split(/\s+/g)
+      .filter(el => !/\s+/.test(el) && el !== '')
+  ];
+  solve.forEach(symbol => {
+    if (!isNaN(parseFloat(symbol)) && isFinite(symbol)) {
+      stack.push(symbol);
+    } else if (Object.keys(OPERATORS).includes(symbol)) {
+      const [a, b] = [stack.pop(), stack.pop()];
+      stack.push(OPERATORS[symbol](parseFloat(b), parseFloat(a)));
+    } else {
+      throw `${symbol} is not a recognized symbol`;
+    }
+  });
+  if (stack.length === 1) return stack.pop();
+  else throw `${rpn} is not a proper RPN. Please check it and try again`;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+solveRPN('15 7 1 1 + - / 3 * 2 1 1 + + -'); // 5
+solveRPN('3 5 6 + *'); //33
+solveRPN('2 4 / 5 6 - *'); //-0.5
+solveRPN('2 3 ^'); //8
+solveRPN('2 3 ^'); //8
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### standardDeviation
 
 Returns the standard deviation of an array of numbers.
@@ -3094,8 +3235,88 @@ sum([1, 2, 3, 4]); // 10
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
+### sumPower
+
+Returns the sum of the powers of all the numbers from `start` to `end` (both inclusive).
+
+Use `Array.fill()` to create an array of all the numbers in the target range, `Array.map()` and the exponent operator (`**`) to raise them to `power` and `Array.reduce()` to add them together.
+Omit the second argument, `power`, to use a default power of `2`.
+Omit the third argument, `start`, to use a default starting value of `1`.
+
+```js
+const sumPower = (end, power = 2, start = 1) =>
+  Array(end + 1 - start)
+    .fill(0)
+    .map((x, i) => (i + start) ** power)
+    .reduce((a, b) => a + b, 0);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+sumPower(10); // 385
+sumPower(10, 3); //3025
+sumPower(10, 3, 5); //2925
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ---
  ## 📦 Node
+
+### hasFlags
+
+Check if the current process's arguments contain the specified flags.
+
+Use `Array.every()` and `Array.includes()` to check if `process.argv` contains all the specified flags.
+Use a regular expression to test if the specified flags are prefixed with `-` or `--` and prefix them accordingly.
+
+```js
+const hasFlags = (...flags) =>
+  flags.every(flag => process.argv.includes(/^-{1,2}/.test(flag) ? flag : '--' + flag));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+// node myScript.js -s --test --cool=true
+hasFlags('-s'); // true
+hasFlags('test', 'cool=true'); // true
+hasFlags('--test', 'cool=true', '-s'); // true
+hasFlags('special'); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### isTravisCI
+
+Checks if the current environment is [Travis CI](https://travis-ci.org/).
+
+Checks if the current environment has the `TRAVIS` and `CI` environment variables ([reference](https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables)).
+
+```js
+const isTravisCI = () => 'TRAVIS' in process.env && 'CI' in process.env;
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isTravisCI(); // true (if code is running on Travis CI)
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### JSONToFile
 
@@ -3159,6 +3380,28 @@ console.log(arr); // ['line1', 'line2', 'line3']
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### untildify
+
+Converts a tilde path to an absolute path.
+
+Use `String.replace()` with a regular expression and `OS.homedir()` to replace the `~` in the start of the path with the home directory.
+
+```js
+const untildify = str => str.replace(/^~($|\/|\\)/, `${require('os').homedir()}$1`);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+untildify('~/node'); // '/Users/aUser/node'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### UUIDGeneratorNode
 
 Generates a UUID in Node.JS.
@@ -3213,6 +3456,32 @@ const cleanObj = (obj, keysToKeep = [], childIndicator) => {
 ```js
 const testObj = { a: 1, b: 2, children: { a: 1, b: 2 } };
 cleanObj(testObj, ['a'], 'children'); // { a: 1, children : { a: 1}}
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### invertKeyValues
+
+Inverts the key-value pairs of an object, without mutating it.
+
+Use `Object.keys()` and `Array.reduce()` to invert the key-value pairs of an object.
+
+```js
+const invertKeyValues = obj =>
+  Object.keys(obj).reduce((acc, key) => {
+    acc[obj[key]] = key;
+    return acc;
+  }, {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+invertKeyValues({ name: 'John', age: 20 }); // { 20: 'age', John: 'name' }
 ```
 
 </details>
@@ -3438,6 +3707,8 @@ truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex
  ## 📜 String
 
 ### anagrams
+
+⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.
 
 Generates all anagrams of a string (contains duplicates).
 
@@ -4012,7 +4283,30 @@ words('python, javaScript & coffee'); // ["python", "javaScript", "coffee"]
 <br>[⬆ Back to top](#table-of-contents)
 
 ---
- ## 💎 Utility
+ ## 🔧 Utility
+
+### cloneRegExp
+
+Clones a regular expression.
+
+Use `new RegExp()`, `RegExp.source` and `RegExp.flags` to clone the given regular expression.
+
+```js
+const cloneRegExp = regExp => new RegExp(regExp.source, regExp.flags);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const regExp = /lorem ipsum/gi;
+const regExp2 = cloneRegExp(regExp); // /lorem ipsum/gi
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### coalesce
 
@@ -4209,11 +4503,12 @@ Checks if the provided argument is array-like (i.e. is iterable).
 Use the spread operator (`...`) to check if the provided argument is iterable inside a `try... catch` block and the comma operator (`,`) to return the appropriate value.
 
 ```js
-
-
-const isArrayLike = val =>
-  try {return [...val], true; }
-  catch (e)  { return false; }
+const isArrayLike = val => {
+  try {
+    return [...val], true;
+  } catch (e) {
+    return false;
+  }
 };
 ```
 
@@ -4454,6 +4749,43 @@ const isValidJSON = obj => {
 isValidJSON('{"name":"Adam","age":20}'); // true
 isValidJSON('{"name":"Adam",age:"20"}'); // false
 isValidJSON(null); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### prettyBytes
+
+Converts a number in bytes to a human-readable string.
+
+Use an array dictionary of units to be accessed based on the exponent. 
+Use `Number.toPrecision()` to truncate the number to a certain number of digits. 
+Return the prettified string by building it up, taking into account the supplied options and whether it is negative or not.
+Omit the second argument, `precision`, to use a default precision of `3` digits.
+Omit the third argument, `addSpace`, to add space between the number and unit by default.
+
+```js
+const prettyBytes = (num, precision = 3, addSpace = true) => {
+  const UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  if (Math.abs(num) < 1) return num + (addSpace ? ' ' : '') + UNITS[0];
+  const exponent = Math.min(Math.floor(Math.log10(num < 0 ? -num : num) / 3), UNITS.length - 1);
+  const n = Number(((num < 0 ? -num : num) / 1000 ** exponent).toPrecision(precision));
+  return (num < 0 ? '-' : '') + n + (addSpace ? ' ' : '') + UNITS[exponent];
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+prettyBytes(1000); // 1 KB
+prettyBytes(123456789); // 123 MB
+prettyBytes(-50); // -50 B
+prettyBytes(27145424323.5821); // 27.1 GB
+prettyBytes(27145424323.5821, 5); // 27.145 GB
+prettyBytes(5500, 3, false); // 5.5KB
 ```
 
 </details>
