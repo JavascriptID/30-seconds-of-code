@@ -1,9 +1,11 @@
 ![Logo](/logo.png)
 
 # 30 seconds of code
-[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/LICENSE) [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-4FB999.svg)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis Build](https://travis-ci.org/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.org/Chalarangelo/30-seconds-of-code) [![Insight.io](https://img.shields.io/badge/insight.io-Ready-brightgreen.svg)](https://insight.io/github.com/Chalarangelo/30-seconds-of-code/tree/master/?source=0) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard)
 
-> Curated collection of useful Javascript snippets that you can understand in 30 seconds or less.
+[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-4FB999.svg)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis Build](https://travis-ci.org/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.org/Chalarangelo/30-seconds-of-code) [![Insight.io](https://img.shields.io/badge/insight.io-Ready-brightgreen.svg)](https://insight.io/github.com/Chalarangelo/30-seconds-of-code/tree/master/?source=0) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code)
+
+
+> Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
 
 
 - Use <kbd>Ctrl</kbd> + <kbd>F</kbd> or <kbd>command</kbd> + <kbd>F</kbd> to search for a snippet.
@@ -11,7 +13,58 @@
 - Snippets are written in ES6, use the [Babel transpiler](https://babeljs.io/) to ensure backwards-compatibility.
 - You can import these snippets into your text editor of choice (VSCode, Atom, Sublime) using the files found in [this repo](https://github.com/Rob-Rychs/30-seconds-of-code-texteditorsnippets).
 - You can import these snippets into Alfred 3, using [this file](https://github.com/lslvxy/30-seconds-of-code-alfredsnippets).
-- You can find a package with all the snippets on [npm](https://www.npmjs.com/package/tsoc). Bear in mind that most of these snippets are not production-ready.
+
+#### Package
+
+⚠️ **WARNING:** Snippets are not production ready.
+
+You can find a package with all the snippets on [npm](https://www.npmjs.com/package/30-seconds-of-code). 
+
+```
+npm install 30-seconds-of-code
+```
+
+CDN links
+- [ES2017 Full (UMD)](https://unpkg.com/30-seconds-of-code)
+- [ES5 Minified (UMD)](https://unpkg.com/30-seconds-of-code/dist/_30s.es5.min.js)
+
+<details>
+
+**Browser**
+
+> IMPORTANT: replace the `src` with the full version link and desired target spec (such as ES5 minified)):
+
+```html
+<script src="https://unpkg.com/30-seconds-of-code"></script>
+<script>
+  _30s.average(1, 2, 3);
+</script>
+```
+
+**Node**
+
+```js
+// CommonJS
+const _30s = require('30-seconds-of-code');
+_30s.average(1, 2, 3);
+
+// ES Modules
+import _30s from '30-seconds-of-code';
+_30s.average(1, 2, 3);
+```
+
+To import snippets directly:
+
+```js
+// CommonJS
+const { average } = require('30-seconds-of-code');
+average(1, 2, 3);
+
+// ES Modules
+import { average } from '30-seconds-of-code';
+average(1, 2, 3);
+```
+</details>
 
 ## Table of Contents
 
@@ -58,6 +111,8 @@
 * [`join`](#join)
 * [`last`](#last)
 * [`mapObject`](#mapobject)
+* [`maxN`](#maxn)
+* [`minN`](#minn)
 * [`nthElement`](#nthelement)
 * [`pick`](#pick)
 * [`pull`](#pull)
@@ -100,6 +155,7 @@
 * [`httpsRedirect`](#httpsredirect)
 * [`onUserInputChange`](#onuserinputchange)
 * [`redirect`](#redirect)
+* [`runAsync`](#runasync)
 * [`scrollToTop`](#scrolltotop)
 * [`setStyle`](#setstyle)
 * [`show`](#show)
@@ -114,6 +170,7 @@
 <details>
 <summary>View contents</summary>
 
+* [`formatDuration`](#formatduration)
 * [`getDaysDiffBetweenDates`](#getdaysdiffbetweendates)
 * [`JSONToDate`](#jsontodate)
 * [`toEnglishDate`](#toenglishdate)
@@ -129,8 +186,10 @@
 * [`chainAsync`](#chainasync)
 * [`compose`](#compose)
 * [`curry`](#curry)
+* [`defer`](#defer)
 * [`functionName`](#functionname)
 * [`memoize`](#memoize)
+* [`once`](#once)
 * [`runPromisesInSeries`](#runpromisesinseries)
 * [`sleep`](#sleep)
 
@@ -157,20 +216,22 @@
 * [`distance`](#distance)
 * [`elo`](#elo)
 * [`factorial`](#factorial)
+* [`factors`](#factors)
 * [`fibonacci`](#fibonacci)
 * [`fibonacciCountUntilNum`](#fibonaccicountuntilnum)
 * [`fibonacciUntilNum`](#fibonacciuntilnum)
 * [`gcd`](#gcd)
+* [`geometricProgression`](#geometricprogression)
 * [`hammingDistance`](#hammingdistance)
+* [`howManyTimes`](#howmanytimes)
 * [`inRange`](#inrange)
 * [`isArmstrongNumber`](#isarmstrongnumber)
 * [`isDivisible`](#isdivisible)
 * [`isEven`](#iseven)
 * [`isPrime`](#isprime)
 * [`lcm`](#lcm)
-* [`max`](#max)
+* [`luhnCheck`](#luhncheck)
 * [`median`](#median)
-* [`min`](#min)
 * [`percentile`](#percentile)
 * [`powerset`](#powerset)
 * [`primes`](#primes)
@@ -232,6 +293,7 @@
 * [`isAbsoluteURL`](#isabsoluteurl)
 * [`mask`](#mask)
 * [`palindrome`](#palindrome)
+* [`pluralize`](#pluralize)
 * [`repeatString`](#repeatstring)
 * [`reverseString`](#reversestring)
 * [`sortCharactersInString`](#sortcharactersinstring)
@@ -570,17 +632,17 @@ difference([1, 2, 3], [1, 2, 4]); // [3]
 
 Filters out all values from an array for which the comparator function does not return `true`.
 
-Use `Array.filter()` and `Array.find()` to find the appropriate values.
+Use `Array.filter()` and `Array.findIndex()` to find the appropriate values.
 
 ```js
-const differenceWith = (arr, val, comp) => arr.filter(a => !val.find(b => comp(a, b)));
+const differenceWith = (arr, val, comp) => arr.filter(a => val.findIndex(b => comp(a, b)) === -1);
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```js
-differenceWith([1, 1.2, 1.5, 3], [1.9, 3], (a, b) => Math.round(a) == Math.round(b)); // [1, 1.2]
+differenceWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0], (a, b) => Math.round(a) === Math.round(b)); // [1, 1.2]
 ```
 
 </details>
@@ -853,14 +915,15 @@ initialize2DArray(2, 2, 0); // [[0,0], [0,0]]
 
 ### initializeArrayWithRange
 
-Initializes an array containing the numbers in the specified range where `start` and `end` are inclusive.
+Initializes an array containing the numbers in the specified range where `start` and `end` are inclusive with there common difference `step`.
 
-Use `Array((end + 1) - start)` to create an array of the desired length, `Array.map()` to fill with the desired values in a range.
+Use `Array(Math.ceil((end+1-start)/step)` to create an array of the desired length(the amounts of elements is equal to `(end-start)/step` or `(end+1-start)/step` for inclusive end), `Array.map()` to fill with the desired values in a range.
 You can omit `start` to use a default value of `0`.
-
+You can omit `step` to use a default value of `1`.
+ 
 ```js
-const initializeArrayWithRange = (end, start = 0) =>
-  Array.from({ length: end + 1 - start }).map((v, i) => i + start);
+const initializeArrayWithRange = (end, start = 0, step = 1) =>
+  Array.from({ length: Math.ceil((end + 1 - start) / step) }).map((v, i) => i * step + start);
 ```
 
 <details>
@@ -869,6 +932,7 @@ const initializeArrayWithRange = (end, start = 0) =>
 ```js
 initializeArrayWithRange(5); // [0,1,2,3,4,5]
 initializeArrayWithRange(7, 3); // [3,4,5,6,7]
+initializeArrayWithRange(9, 0, 2); //[0,2,4,6,8]
 ```
 
 </details>
@@ -1031,6 +1095,57 @@ const mapObject = (arr, fn) =>
 ```js
 const squareIt = arr => mapObject(arr, a => a * a);
 squareIt([1, 2, 3]); // { 1: 1, 2: 4, 3: 9 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### maxN
+
+Returns the `n` maximum elements from the provided array. If `n` is greater than or equal to the provided array's length, then return the original array(sorted in descending order).
+
+Use `Array.sort()` combined with the spread operator (`...`) to create a shallow clone of the array and sort it in descending order. 
+Use `Array.slice()` to get the specified number of elements.
+Omit the second argument, `n`, to get a one-element array.
+
+```js
+const maxN = (arr, n = 1) => [...arr].sort((a, b) => b - a).slice(0, n);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+maxN([1, 2, 3]); // [3]
+maxN([1, 2, 3], 2); // [3,2]
+maxN([1, 2, 3], 4); // [3,2,1]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### minN
+
+Returns the `n` minimum elements from the provided array. If `n` is greater than or equal to the provided array's length, then return the original array(sorted in ascending order).
+
+Use `Array.sort()` combined with the spread operator (`...`) to create a shallow clone of the array and sort it in ascending order.
+Use `Array.slice()` to get the specified number of elements.
+Omit the second argument, `n`, to get a one-element array.
+
+```js
+const minN = (arr, n = 1) => [...arr].sort((a, b) => a - b).slice(0, n);
+```
+<details>
+<summary>Examples</summary>
+
+```js
+minN([1, 2, 3]); // [1]
+minN([1, 2, 3], 2); // [1,2]
+minN([1, 2, 3], 4); // [1,2,3]
 ```
 
 </details>
@@ -1354,7 +1469,7 @@ sampleSize([1, 2, 3], 4); // [2,3,1]
 
 Randomizes the order of the values of an array, returning a new array.
 
-Uses the Fisher-Yates algoritm to reorder the elements of the array, based on the [Lodash implementation](https://github.com/lodash/lodash/blob/b2ea6b1cd251796dcb5f9700c4911a7b6223920b/shuffle.js), but as a pure function.
+Uses the Fisher-Yates algorithm to reorder the elements of the array, based on the [Lodash implementation](https://github.com/lodash/lodash/blob/b2ea6b1cd251796dcb5f9700c4911a7b6223920b/shuffle.js), but as a pure function.
 
 ```js
 const shuffle = ([...arr]) => {
@@ -1974,6 +2089,63 @@ redirect('https://google.com');
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### runAsync
+
+Runs a function in a separate thread by using a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers), allowing long running functions to not block the UI.
+
+Create a new `Worker` using a `Blob` object URL, the contents of which should be the stringified version of the supplied function. 
+Immediately post the return value of calling the function back. 
+Return a promise, listening for `onmessage` and `onerror` events and resolving the data posted back from the worker, or throwing an error.
+
+```js
+const runAsync = fn => {
+  const blob = `var fn = ${fn.toString()}; postMessage(fn());`;
+  const worker = new Worker(
+    URL.createObjectURL(new Blob([blob]), {
+      type: 'application/javascript; charset=utf-8'
+    })
+  );
+  return new Promise((res, rej) => {
+    worker.onmessage = ({ data }) => {
+      res(data), worker.terminate();
+    };
+    worker.onerror = err => {
+      rej(err), worker.terminate();
+    };
+  });
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const longRunningFunction = () => {
+  let result = 0;
+  for (let i = 0; i < 1000; i++) {
+    for (let j = 0; j < 700; j++) {
+      for (let k = 0; k < 300; k++) {
+        result = result + i + j + k;
+      }
+    }
+  }
+  return result;
+};
+
+// NOTE: Since the function is running in a different context, closures are not supported.
+// The function supplied to `runAsync` gets stringified, so everything becomes literal.
+// All variables and functions must be defined inside.
+runAsync(longRunningFunction).then(console.log); // 209685000000
+runAsync(() => 10 ** 3).then(console.log); // 1000
+let outsideVariable = 50;
+runAsync(() => typeof outsideVariable).then(console.log); // 'undefined'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### scrollToTop
 
 Smooth-scrolls to the top of the page.
@@ -2124,6 +2296,46 @@ UUIDGeneratorBrowser(); // '7982fcfe-5721-4632-bede-6000885be57d'
 
 ---
  ## ⏱️ Date
+
+### formatDuration
+
+Returns the human readable format of the given number of milliseconds.
+
+Divide `ms` with the appropriate values to obtain the appropriate values for `day`, `hour`, `minute`, `second` and `millisecond`.
+Use `Object.entries()` with `Array.filter()` to keep only non-zero values.
+Use `Array.map()` to create the string for each value, pluralizing appropriately.
+Use `String.join(', ')` to combine the values into a string.
+
+```js
+const formatDuration = ms => {
+  if (ms < 0) ms = -ms;
+  const time = {
+    day: Math.floor(ms / 86400000),
+    hour: Math.floor(ms / 3600000) % 24,
+    minute: Math.floor(ms / 60000) % 60,
+    second: Math.floor(ms / 1000) % 60,
+    millisecond: Math.floor(ms) % 1000
+  };
+  return Object.entries(time)
+    .filter(val => val[1] !== 0)
+    .map(val => val[1] + ' ' + (val[1] !== 1 ? val[0] + 's' : val[0]))
+    .join(', ');
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+formatDuration(1001); // "1 second, 1 millisecond"
+formatDuration(343250555); // "3 days, 23 hours, 20 minutes, 50 seconds, 555 milliseconds"
+formatDuration(34325055574); // "397 days, 6 hours, 44 minutes, 15 seconds, 574 milliseconds"
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 
 ### getDaysDiffBetweenDates
 
@@ -2317,6 +2529,34 @@ curry(Math.min, 3)(10)(50)(2); // 2
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### defer
+
+Defers invoking a function until the current call stack has cleared.
+
+Use `setTimeout()` with a timeout of 1ms to add a new event to the browser event queue and allow the rendering engine to complete its work. Use the spread (`...`) operator to supply the function with an arbitrary number of arguments.
+
+```js
+const defer = (fn, ...args) => setTimeout(fn, 1, ...args);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+// Example A:
+defer(console.log, 'a'), console.log('b'); // logs 'b' then 'a'
+
+// Example B:
+document.querySelector('#someElement').innerHTML = 'Hello';
+longRunningFunction(); // the browser will not update the HTML until this has finished
+defer(longRunningFunction); // the browser will update the HTML then run the function
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### functionName
 
 Logs the name of a function.
@@ -2343,13 +2583,18 @@ functionName(Math.max); // max (logged in debug channel of console)
 
 Returns the memoized (cached) function.
 
-Use `Object.create(null)` to create an empty object without `Object.prototype` (so that those properties are not resolved if the input value is something like `'hasOwnProperty'`).
-Return a function which takes a single argument to be supplied to the memoized function by first checking if the function's output for that specific input value is already cached, or store and return it if not.
+Create an empty cache by instantiating a new `Map` object.
+Return a function which takes a single argument to be supplied to the memoized function by first checking if the function's output for that specific input value is already cached, or store and return it if not. The `function` keyword must be used in order to allow the memoized function to have its `this` context changed if necessary.
+Allow access to the `cache` by setting it as a property on the returned function.
 
 ```js
 const memoize = fn => {
-  const cache = Object.create(null);
-  return value => cache[value] || (cache[value] = fn(value));
+  const cache = new Map();
+  const cached = function(val) {
+    return cache.has(val) ? cache.get(val) : cache.set(val, fn.call(this, val)) && cache.get(val);
+  };
+  cached.cache = cache;
+  return cached;
 };
 ```
 
@@ -2361,6 +2606,40 @@ const memoize = fn => {
 const anagramsCached = memoize(anagrams);
 anagramsCached('javascript'); // takes a long time
 anagramsCached('javascript'); // returns virtually instantly since it's now cached
+console.log(anagramsCached.cache); // Map
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### once
+
+Ensures a function is called only once.
+
+Utilizing a closure, use a flag, `called`, and set it to `true` once the function is called for the first time, preventing it from being called again. In order to allow the function to have its `this` context changed (such as in an event listener), the `function` keyword must be used, and the supplied function must have the context applied.
+Allow the function to be supplied with an arbitrary number of arguments using the rest/spread (`...`) operator.
+
+```js
+const once = fn => {
+  let called = false;
+  return function(...args) {
+    if (called) return;
+    called = true;
+    return fn.apply(this, args);
+  };
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const startApp = function(event) {
+  console.log(this, event); // document.body, MouseEvent
+};
+document.body.addEventListener('click', once(startApp)); // only runs `startApp` once upon click
 ```
 
 </details>
@@ -2626,6 +2905,57 @@ factorial(6); // 720
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### factors
+
+Returns the array of factors of the given `num`. 
+If the second argument is set to `true` returns only the prime factors of `num`.
+If `num` is `1` or `0` returns an empty array.
+If `num` is less than `0` returns all the factors of `-int` together with their additive inverses.
+
+Use `Array.from()`, `Array.map()` and `Array.filter()` to find all the factors of `num`.
+If given `num` is negative, use `Array.reduce()` to add the additive inverses to the array.
+Return all results if `primes` is `false`, else determine and return only the prime factors using `isPrime` and `Array.filter()`.
+Omit the second argument, `primes`, to return prime and non-prime factors by default.
+
+**Note**:- _Negative numbers are not considered prime._
+
+```js
+const factors = (num, primes = false) => {
+  const isPrime = num => {
+    const boundary = Math.floor(Math.sqrt(num));
+    for (var i = 2; i <= boundary; i++) if (num % i === 0) return false;
+    return num >= 2;
+  };
+  const isNeg = num < 0;
+  num = isNeg ? -num : num;
+  let array = Array.from({ length: num - 1 })
+    .map((val, i) => (num % (i + 2) === 0 ? i + 2 : false))
+    .filter(val => val);
+  if (isNeg)
+    array = array.reduce((acc, val) => {
+      acc.push(val);
+      acc.push(-val);
+      return acc;
+    }, []);
+  return primes ? array.filter(isPrime) : array;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+factors(12); // [2,3,4,6,12]
+factors(12, true); // [2,3]
+factors(-12); // [2, -2, 3, -3, 4, -4, 6, -6, 12, -12]
+factors(-12, true); // [2,3]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### fibonacci
 
 Generates an array, containing the Fibonacci sequence, up until the nth term.
@@ -2734,6 +3064,37 @@ gcd(8, 36); // 4
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### geometricProgression
+
+Initializes an array containing the numbers in the specified range where `start` and `end` are inclusive and the ratio between two terms is `step`. 
+Returns an error if `step` equals `1`.
+
+Use `Array.from()`, `Math.log()` and `Math.floor()` to create an array of the desired length, `Array.map()` to fill with the desired values in a range. 
+Omit the second argument, `start`, to use a default value of `1`.
+Omit the third argument, `step`, to use a default value of `2`.
+
+```js
+const geometricProgression = (end, start = 1, step = 2) =>
+  Array.from({ length: Math.floor(Math.log(end / start) / Math.log(step)) + 1 }).map(
+    (v, i) => start * step ** i
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+geometricProgression(256); // [1, 2, 4, 8, 16, 32, 64, 128, 256]
+geometricProgression(256, 3); //[3, 6, 12, 24, 48, 96, 192]
+geometricProgression(256, 1, 4); //[1, 4, 16, 64, 256]
+geometricProgression(256, 2, 1); //Gives error
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### hammingDistance
 
 Calculates the Hamming distance between two values.
@@ -2750,6 +3111,47 @@ const hammingDistance = (num1, num2) => ((num1 ^ num2).toString(2).match(/1/g) |
 
 ```js
 hammingDistance(2, 3); // 1
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### howManyTimes
+
+Returns the number of times `num` can be divided by `divisor` (integer or fractional) without getting a fractional answer. 
+Works for both negative and positive integers.
+
+If `divisor` is `-1` or `1` return `Infinity`.
+If `divisor` is `-0` or `0` return `0`.
+Otherwise, keep dividing `num` with `divisor` and incrementing `i`, while the result is an integer.
+Return the number of times the loop was executed, `i`.
+
+```js
+const howManyTimes = (num, divisor) => {
+  if (divisor === 1 || divisor === -1) return Infinity;
+  if (divisor === 0) return 0;
+  let i = 0;
+  while (Number.isInteger(num / divisor)) {
+    i++;
+    num = num / divisor;
+  }
+  return i;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+howManyTimes(100, 2); //2
+howManyTimes(100, -2); //2
+howManyTimes(100, 2.5); //2
+howManyTimes(100, 3); //0
+howManyTimes(100, 0); //0
+howManyTimes(100, 1); //Infinity
+howManyTimes(100, -1); //Infinity
 ```
 
 </details>
@@ -2914,21 +3316,36 @@ lcm([1, 3, 4], 5); // 60
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### max
+### luhnCheck
 
-Returns the maximum value out of two or more numbers/arrays.
+Implementation of the [Luhn Algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm) used to validate a variety of identification numbers, such as credit card numbers, IMEI numbers, National Provider Identifier numbers etc.
 
-Use `Math.max()` combined with the spread operator (`...`) to get the maximum value in the array.
+Use `String.split('')`, `Array.reverse()` and `Array.map()` in combination with `parseInt()` to obtain an array of digits.
+Use `Array.splice(0,1)` to obtain the last digit.
+Use `Array.reduce()` to implement the Luhn Algorithm.
+Return `true` if `sum` is divisible by `10`, `false` otherwise.
+
 
 ```js
-const max = (...arr) => Math.max(...[].concat(...arr));
+const luhnCheck = num => {
+  let arr = (num + '')
+    .split('')
+    .reverse()
+    .map(x => parseInt(x));
+  let lastDigit = arr.splice(0, 1)[0];
+  let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + (val * 2) % 9 || 9), 0);
+  sum += lastDigit;
+  return sum % 10 === 0;
+};
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```js
-max([10, 1, 5]); // 10
+luhnCheck('4485275742308327'); // true
+luhnCheck(6011329933655299); //  true
+luhnCheck(123456789); // false
 ```
 
 </details>
@@ -2957,28 +3374,6 @@ const median = arr => {
 ```js
 median([5, 6, 50, 1, -5]); // 5
 median([0, 10, -2, 7]); // 3.5
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### min
-
-Returns the minimum value in an array.
-
-Use `Math.min()` combined with the spread operator (`...`) to get the minimum value in the array.
-
-```js
-const min = arr => Math.min(...[].concat(...arr));
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-min([10, 1, 5]); // 1
 ```
 
 </details>
@@ -3129,7 +3524,7 @@ round(1.005, 2); // 1.01
 ### solveRPN
 
 Solves the given mathematical expression in [reverse polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation).
-Throws appropriate errors if there are unrecognized symbols or the expression is wrong.
+Throws appropriate errors if there are unrecognized symbols or the expression is wrong. The valid operators are :- `+`,`-`,`*`,`/`,`^`,`**` (`^`&`**` are the exponential symbols and are same). This snippet does not supports any unary operators.
 
 Use a dictionary, `OPERATORS` to specify each operator's matching mathematical operation.
 Use `String.replace()` with a regular expression to replace `^` with `**`, `String.split()` to tokenize the string and `Array.filter()` to remove empty tokens.
@@ -3216,7 +3611,7 @@ standardDeviation([10, 2, 38, 23, 38, 23, 21], true); // 12.29899614287479 (popu
 
 ### sum
 
-Returns the sum of an of two or more numbers/arrays.
+Returns the sum of two or more numbers/arrays.
 
 Use `Array.reduce()` to add each value to an accumulator, initialized with a value of `0`.
 
@@ -4004,6 +4399,44 @@ palindrome('taco cat'); // true
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### pluralize
+
+Returns the singular or plural form of the word based on the input number. If the first argument is an `object`, it will use a closure by returning a function that can auto-pluralize words that don't simply end in `s` if the supplied dictionary contains the word.
+
+If `num` is either `-1` or `1`, return the singular form of the word. If `num` is any other number, return the plural form. Omit the third argument to use the default of the singular word + `s`, or supply a custom pluralized word when necessary. If the first argument is an `object`, utilize a closure by returning a function which can use the supplied dictionary to resolve the correct plural form of the word.
+
+```js
+const pluralize = (val, word, plural = word + 's') => {
+  const _pluralize = (num, word, plural = word + 's') =>
+    [1, -1].includes(Number(num)) ? word : plural;
+  if (typeof val === 'object') return (num, word) => _pluralize(num, word, val[word]);
+  return _pluralize(val, word, plural);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+pluralize(0, 'apple'); // 'apples'
+pluralize(1, 'apple'); // 'apple'
+pluralize(2, 'apple'); // 'apples'
+pluralize(1, 'person'); // 'person'
+pluralize(2, 'person', 'people'); // 'people'
+
+const PLURALS = {
+  person: 'people',
+  radius: 'radii'
+};
+const autoPluralize = pluralize(PLURALS);
+autoPluralize(2, 'person'); // 'people'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### repeatString
 
 Repeats a string n times using `String.repeat()`
@@ -4556,13 +4989,14 @@ Checks if the given argument is a function.
 Use `typeof` to check if a value is classified as a function primitive.
 
 ```js
-const isFunction = val => val && typeof val === 'function';
+const isFunction = val => typeof val === 'function';
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```js
+isFunction(null); // false
 isFunction('x'); // false
 isFunction(x => x); // true
 ```
