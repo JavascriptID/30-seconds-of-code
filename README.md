@@ -100,6 +100,7 @@ average(1, 2, 3);
 * [`filterNonUnique`](#filternonunique)
 * [`flatten`](#flatten)
 * [`flattenDepth`](#flattendepth)
+* [`forEachRight`](#foreachright)
 * [`groupBy`](#groupby)
 * [`head`](#head)
 * [`indexOfAll`](#indexofall)
@@ -111,10 +112,12 @@ average(1, 2, 3);
 * [`isSorted`](#issorted)
 * [`join`](#join)
 * [`last`](#last)
+* [`longestItem`](#longestitem)
 * [`mapObject`](#mapobject)
 * [`maxN`](#maxn)
 * [`minN`](#minn)
 * [`nthElement`](#nthelement)
+* [`partition`](#partition)
 * [`pick`](#pick)
 * [`pull`](#pull)
 * [`pullAtIndex`](#pullatindex)
@@ -146,6 +149,7 @@ average(1, 2, 3);
 * [`bottomVisible`](#bottomvisible)
 * [`copyToClipboard`](#copytoclipboard-)
 * [`createElement`](#createelement)
+* [`createEventHub`](#createeventhub-)
 * [`currentURL`](#currenturl)
 * [`detectDeviceType`](#detectdevicetype)
 * [`elementIsVisibleInViewport`](#elementisvisibleinviewport)
@@ -190,18 +194,10 @@ average(1, 2, 3);
 * [`defer`](#defer)
 * [`functionName`](#functionname)
 * [`memoize`](#memoize)
+* [`negate`](#negate)
 * [`once`](#once)
 * [`runPromisesInSeries`](#runpromisesinseries)
 * [`sleep`](#sleep)
-
-</details>
-
-### 🔮 Logic
-
-<details>
-<summary>View contents</summary>
-
-* [`negate`](#negate)
 
 </details>
 
@@ -237,6 +233,7 @@ average(1, 2, 3);
 * [`standardDeviation`](#standarddeviation)
 * [`sum`](#sum)
 * [`sumPower`](#sumpower)
+* [`toSafeInteger`](#tosafeinteger)
 
 </details>
 
@@ -281,7 +278,6 @@ average(1, 2, 3);
 * [`byteSize`](#bytesize)
 * [`capitalize`](#capitalize)
 * [`capitalizeEveryWord`](#capitalizeeveryword)
-* [`countVowels`](#countvowels)
 * [`escapeHTML`](#escapehtml)
 * [`escapeRegExp`](#escaperegexp)
 * [`fromCamelCase`](#fromcamelcase)
@@ -303,7 +299,7 @@ average(1, 2, 3);
 
 </details>
 
-###  Type
+### 📃 Type
 
 <details>
 <summary>View contents</summary>
@@ -818,6 +814,32 @@ flattenDepth([1, [2], 3, 4]); // [1,2,3,4]
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### forEachRight
+
+Executes a provided function once for each array element, starting from the array's last element.
+
+Use `Array.slice(0)` to clone the given array, `Array.reverse()` to reverse it and `Array.forEach()` to iterate over the reversed array.
+
+```js
+const forEachRight = (arr, callback) =>
+  arr
+    .slice(0)
+    .reverse()
+    .forEach(callback);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+forEachRight([1, 2, 3, 4], val => console.log(val)); // '4', '3', '2', '1'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### groupBy
 
 Groups the elements of an array based on the given function.
@@ -870,16 +892,16 @@ head([1, 2, 3]); // 1
 
 ### indexOfAll
 
-Returns all indices of `val` in an array. If `val` never occurs, returns `[-1]`.
+Returns all indices of `val` in an array. If `val` never occurs, returns `[]`.
 
 Use `Array.forEach()` to loop over elements and `Array.push()` to store indices for matching elements.
-Return `[-1]` if `length` of the array of indices is `0`, otherwise return the array of indices.
+Return the array of indices.
 
 ```js
 const indexOfAll = (arr, val) => {
   const indices = [];
   arr.forEach((el, i) => el === val && indices.push(i));
-  return indices.length ? indices : [-1];
+  return indices;
 };
 ```
 
@@ -888,7 +910,7 @@ const indexOfAll = (arr, val) => {
 
 ```js
 indexOfAll([1, 2, 3, 1, 2, 3], 1); // [0,3]
-indexOfAll([1, 2, 3], 4); // [-1]
+indexOfAll([1, 2, 3], 4); // []
 ```
 
 </details>
@@ -1104,6 +1126,32 @@ last([1, 2, 3]); // 3
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### longestItem
+
+Takes any number of iterable objects or objects with a `length` property and returns the longest one.
+
+Use `Array.sort()` to sort all arguments by `length`, return the first (longest) one.
+
+```js
+const longestItem = (...vals) => [...vals].sort((a, b) => b.length - a.length)[0];
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+longestItem('this', 'is', 'a', 'testcase'); // 'testcase'
+longestItem(...['a', 'ab', 'abc']); // 'abc'
+longestItem(...['a', 'ab', 'abc'], 'abcd'); // 'abcd'
+longestItem([1, 2, 3], [1, 2], [1, 2, 3, 4, 5]); // [1, 2, 3, 4, 5]
+longestItem([1, 2, 3], 'foobar'); // 'foobar'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### mapObject
 
 Maps the values of an array to an object using a function, where the key-value pairs consist of the original value as the key and the mapped value.
@@ -1197,6 +1245,37 @@ const nthElement = (arr, n = 0) => (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[
 ```js
 nthElement(['a', 'b', 'c'], 1); // 'b'
 nthElement(['a', 'b', 'b'], -3); // 'a'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### partition
+
+Groups the elements into two arrays, depending on the provided function's truthiness for each element.
+
+Use `Array.reduce()` to create an array of two arrays.
+Use `Array.push()` to add elements for which `fn` returns `true` to the first array and elements for which `fn` returns `false` to the second one.
+
+```js
+const partition = (arr, fn) =>
+  arr.reduce(
+    (acc, val, i, arr) => {
+      acc[fn(val, i, arr) ? 0 : 1].push(val);
+      return acc;
+    },
+    [[], []]
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+var users = [{ user: 'barney', age: 36, active: false }, { user: 'fred', age: 40, active: true }];
+partition(users, o => o.active); // [[{ 'user': 'fred',    'age': 40, 'active': true }],[{ 'user': 'barney',  'age': 36, 'active': false }]]
 ```
 
 </details>
@@ -1849,6 +1928,60 @@ console.log(el.className); // 'container'
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### createEventHub ![advanced](/advanced.svg)
+
+Creates a pub/sub ([publish–subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)) event hub with `emit`, `on`, and `off` methods.
+
+Use `Object.create(null)` to create an empty `hub` object that does not inherit properties from `Object.prototype`.
+For `emit`, resolve the array of handlers based on the `event` argument and then run each one with `Array.forEach()` by passing in the data as an argument.
+For `on`, create an array for the event if it does not yet exist, then use `Array.push()` to add the handler
+to the array.
+For `off`, use `Array.findIndex()` to find the index of the handler in the event array and remove it using `Array.splice()`.
+
+```js
+const createEventHub = () => ({
+  hub: Object.create(null),
+  emit(event, data) {
+    (this.hub[event] || []).forEach(handler => handler(data));
+  },
+  on(event, handler) {
+    if (!this.hub[event]) this.hub[event] = [];
+    this.hub[event].push(handler);
+  },
+  off(event, handler) {
+    const i = (this.hub[event] || []).findIndex(h => h === handler);
+    if (i > -1) this.hub[event].splice(i, 1);
+  }
+});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const handler = data => console.log(data);
+const hub = createEventHub();
+let increment = 0;
+
+// Subscribe: listen for different types of events
+hub.on('message', handler);
+hub.on('message', () => console.log('Message event fired'));
+hub.on('increment', () => increment++);
+
+// Publish: emit events to invoke all handlers subscribed to them, passing the data to them as an argument
+hub.emit('message', 'hello world'); // logs 'hello world' and 'Message event fired'
+hub.emit('message', { hello: 'world' }); // logs the object and 'Message event fired'
+hub.emit('increment'); // `increment` variable is now 1
+
+// Unsubscribe: stop a specific handler from listening to the 'message' event
+hub.off('message', handler);
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### currentURL
 
 Returns the current URL.
@@ -2014,7 +2147,7 @@ const hide = (...el) => [...el].forEach(e => (e.style.display = 'none'));
 <summary>Examples</summary>
 
 ```js
-hide(document.querySelectorAll('img')); // Hides all <img> elements on the page
+hide(...document.querySelectorAll('img')); // Hides all <img> elements on the page
 ```
 
 </details>
@@ -2288,7 +2421,7 @@ const show = (...el) => [...el].forEach(e => (e.style.display = ''));
 <summary>Examples</summary>
 
 ```js
-show(document.querySelectorAll('img')); // Shows all <img> elements on the page
+show(...document.querySelectorAll('img')); // Shows all <img> elements on the page
 ```
 
 </details>
@@ -2632,6 +2765,28 @@ console.log(anagramsCached.cache); // The cached anagrams map
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### negate
+
+Negates a predicate function.
+
+Take a predicate function and apply the not operator (`!`) to it with its arguments.
+
+```js
+const negate = func => (...args) => !func(...args);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+[1, 2, 3, 4, 5, 6].filter(negate(n => n % 2 == 0)); // [ 1, 3, 5 ]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### once
 
 Ensures a function is called only once.
@@ -2707,31 +2862,6 @@ async function sleepyWork() {
   await sleep(1000);
   console.log('I woke up after 1 second.');
 }
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
----
- ## 🔮 Logic
-
-### negate
-
-Negates a predicate function.
-
-Take a predicate function and apply the not operator (`!`) to it with its arguments.
-
-```js
-const negate = func => (...args) => !func(...args);
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-filter([1, 2, 3, 4, 5, 6], negate(isEven)); // [1, 3, 5]
-negate(isOdd)(1); // false
 ```
 
 </details>
@@ -3129,7 +3259,7 @@ isPrime(11); // true
 
 Returns the least common multiple of two or more numbers.
 
-Use the greatest common divisor (GCD) formula and `Math.abs()` to determine the least common multiple.
+Use the greatest common divisor (GCD) formula and the fact that `lcm(x,y) = x * y / gcd(x,y)` to determine the least common multiple.
 The GCD formula uses recursion.
 
 ```js
@@ -3462,6 +3592,31 @@ const sumPower = (end, power = 2, start = 1) =>
 sumPower(10); // 385
 sumPower(10, 3); //3025
 sumPower(10, 3, 5); //2925
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### toSafeInteger
+
+Converts a value to a safe integer.
+
+Use `Math.max()` and `Math.min()` to find the closest safe value.
+Use `Math.round()` to convert to an integer.
+
+```js
+const toSafeInteger = num =>
+  Math.round(Math.max(Math.min(num, Number.MAX_SAFE_INTEGER), Number.MIN_SAFE_INTEGER));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+toSafeInteger('3.2'); // 3
+toSafeInteger(Infinity); // 9007199254740991
 ```
 
 </details>
@@ -4008,29 +4163,6 @@ capitalizeEveryWord('hello world!'); // 'Hello World!'
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### countVowels
-
-Retuns `number` of vowels in provided string.
-
-Use a regular expression to count the number of vowels `(A, E, I, O, U)` in a `string`.
-
-```js
-const countVowels = str => (str.match(/[aeiou]/gi) || []).length;
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-countVowels('foobar'); // 3
-countVowels('gym'); // 0
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### escapeHTML
 
 Escapes a string for use in HTML.
@@ -4528,7 +4660,7 @@ words('python, javaScript & coffee'); // ["python", "javaScript", "coffee"]
 <br>[⬆ Back to top](#table-of-contents)
 
 ---
- ##  Type
+ ## 📃 Type
 
 ### getType
 

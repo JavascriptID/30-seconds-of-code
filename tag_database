@@ -18,8 +18,8 @@ compact:array
 compose:function
 copyToClipboard:browser,string,advanced
 countOccurrences:array
-countVowels:string
 createElement:browser,utility
+createEventHub:browser,event,advanced
 currentURL:browser,url
 curry:function,recursion
 deepFlatten:array,recursion
@@ -44,6 +44,7 @@ filterNonUnique:array
 flatten:array
 flattenDepth:array,recursion
 flip:adapter,function
+forEachRight:array,function
 formatDuration:date,math,string,utility
 fromCamelCase:string
 functionName:function,utility
@@ -93,6 +94,7 @@ join:array
 JSONToFile:node,json
 last:array
 lcm:math,recursion
+longestItem:array,string,utility
 lowercaseKeys:object
 luhnCheck:math,utility
 mapObject:array,object
@@ -101,7 +103,7 @@ maxN:array,math
 median:math,array
 memoize:function
 minN:array,amth
-negate:logic,function
+negate:function
 nthElement:array
 objectFromPairs:object,array
 objectToPairs:object,array
@@ -111,6 +113,7 @@ once:function
 onUserInputChange:browser,event,advanced
 orderBy:object,array
 palindrome:string
+partition:array,object,function
 percentile:math
 pick:array
 pipeFunctions:adapter,function
@@ -165,6 +168,7 @@ toggleClass:browser
 toKebabCase:string,regexp
 tomorrow:date
 toOrdinalSuffix:utility,math
+toSafeInteger:math
 toSnakeCase:string,regexp
 truncateString:string
 truthCheckCollection:object,logic,array
