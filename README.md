@@ -99,7 +99,6 @@ average(1, 2, 3);
 * [`everyNth`](#everynth)
 * [`filterNonUnique`](#filternonunique)
 * [`flatten`](#flatten)
-* [`flattenDepth`](#flattendepth)
 * [`forEachRight`](#foreachright)
 * [`groupBy`](#groupby)
 * [`head`](#head)
@@ -178,7 +177,6 @@ average(1, 2, 3);
 
 * [`formatDuration`](#formatduration)
 * [`getDaysDiffBetweenDates`](#getdaysdiffbetweendates)
-* [`toEnglishDate`](#toenglishdate)
 * [`tomorrow`](#tomorrow)
 
 </details>
@@ -207,6 +205,7 @@ average(1, 2, 3);
 <summary>View contents</summary>
 
 * [`average`](#average)
+* [`averageBy`](#averageby)
 * [`clampNumber`](#clampnumber)
 * [`digitize`](#digitize)
 * [`distance`](#distance)
@@ -222,7 +221,9 @@ average(1, 2, 3);
 * [`isPrime`](#isprime)
 * [`lcm`](#lcm)
 * [`luhnCheck`](#luhncheck)
+* [`maxBy`](#maxby)
 * [`median`](#median)
+* [`minBy`](#minby)
 * [`percentile`](#percentile)
 * [`powerset`](#powerset)
 * [`primes`](#primes)
@@ -232,6 +233,7 @@ average(1, 2, 3);
 * [`sdbm`](#sdbm)
 * [`standardDeviation`](#standarddeviation)
 * [`sum`](#sum)
+* [`sumBy`](#sumby)
 * [`sumPower`](#sumpower)
 * [`toSafeInteger`](#tosafeinteger)
 
@@ -278,6 +280,7 @@ average(1, 2, 3);
 * [`byteSize`](#bytesize)
 * [`capitalize`](#capitalize)
 * [`capitalizeEveryWord`](#capitalizeeveryword)
+* [`decapitalize`](#decapitalize)
 * [`escapeHTML`](#escapehtml)
 * [`escapeRegExp`](#escaperegexp)
 * [`fromCamelCase`](#fromcamelcase)
@@ -311,6 +314,7 @@ average(1, 2, 3);
 * [`isFunction`](#isfunction)
 * [`isNull`](#isnull)
 * [`isNumber`](#isnumber)
+* [`isObject`](#isobject)
 * [`isPrimitive`](#isprimitive)
 * [`isPromiseLike`](#ispromiselike)
 * [`isString`](#isstring)
@@ -330,6 +334,8 @@ average(1, 2, 3);
 * [`extendHex`](#extendhex)
 * [`getURLParameters`](#geturlparameters)
 * [`hexToRGB`](#hextorgb-)
+* [`httpGet`](#httpget)
+* [`httpPost`](#httppost)
 * [`prettyBytes`](#prettybytes)
 * [`randomHexColorCode`](#randomhexcolorcode)
 * [`RGBToHex`](#rgbtohex)
@@ -766,39 +772,17 @@ filterNonUnique([1, 2, 2, 3, 4, 4, 5]); // [1,3,5]
 
 ### flatten
 
-Flattens an array.
-
-Use a new array, `Array.concat()` and the spread operator (`...`) to cause a shallow denesting of any contained arrays.
-
-```js
-const flatten = arr => [].concat(...arr);
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-flatten([1, [2], 3, 4]); // [1,2,3,4]
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### flattenDepth
-
 Flattens an array up to the specified depth.
 
 Use recursion, decrementing `depth` by 1 for each level of depth.
 Use `Array.reduce()` and `Array.concat()` to merge elements or arrays.
 Base case, for `depth` equal to `1` stops recursion.
-Omit the second element, `depth` to flatten only to a depth of `1` (single flatten).
+Omit the second argument, `depth` to flatten only to a depth of `1` (single flatten).
 
 ```js
-const flattenDepth = (arr, depth = 1) =>
+const flatten = (arr, depth = 1) =>
   depth != 1
-    ? arr.reduce((a, v) => a.concat(Array.isArray(v) ? flattenDepth(v, depth - 1) : v), [])
+    ? arr.reduce((a, v) => a.concat(Array.isArray(v) ? flatten(v, depth - 1) : v), [])
     : arr.reduce((a, v) => a.concat(v), []);
 ```
 
@@ -806,7 +790,8 @@ const flattenDepth = (arr, depth = 1) =>
 <summary>Examples</summary>
 
 ```js
-flattenDepth([1, [2], 3, 4]); // [1,2,3,4]
+flatten([1, [2], 3, 4]); // [1, 2, 3, 4]
+flatten([1, [2, [3, [4, 5], 6], 7], 8], 2); // [1, 2, 3, [4, 5], 6, 7, 8]
 ```
 
 </details>
@@ -948,9 +933,7 @@ Use `Array.map()` to generate h rows where each is a new array of size w initial
 
 ```js
 const initialize2DArray = (w, h, val = null) =>
-  Array(h)
-    .fill()
-    .map(() => Array(w).fill(val));
+  Array.from({ length: h }).map(() => Array.from({ length: w }).fill(val));
 ```
 
 <details>
@@ -1274,7 +1257,7 @@ const partition = (arr, fn) =>
 <summary>Examples</summary>
 
 ```js
-var users = [{ user: 'barney', age: 36, active: false }, { user: 'fred', age: 40, active: true }];
+const users = [{ user: 'barney', age: 36, active: false }, { user: 'fred', age: 40, active: true }];
 partition(users, o => o.active); // [[{ 'user': 'fred',    'age': 40, 'active': true }],[{ 'user': 'barney',  'age': 36, 'active': false }]]
 ```
 
@@ -2540,36 +2523,6 @@ getDaysDiffBetweenDates(new Date('2017-12-13'), new Date('2017-12-22')); // 9
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### toEnglishDate
-
-Converts a date from American format to English format.
-
-Use `Date.toISOString()`, `split('T')` and `replace()` to convert a date from American format to the English format.
-Throws an error if the passed time cannot be converted to a date.
-
-```js
-const toEnglishDate = time => {
-  try {
-    return new Date(time)
-      .toISOString()
-      .split('T')[0]
-      .replace(/-/g, '/');
-  } catch (e) {}
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-toEnglishDate('09/21/2010'); // '21/09/2010'
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### tomorrow
 
 Results in a string representation of tomorrow's date.
@@ -2887,6 +2840,28 @@ const average = (...nums) => [...nums].reduce((acc, val) => acc + val, 0) / nums
 ```js
 average(...[1, 2, 3]); // 2
 average(1, 2, 3); // 2
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### averageBy
+
+Returns the average of an array, after mapping each element to a value using the provided function.
+
+Use `Array.map()` to map each element to the value returned by `fn`, `Array.reduce()` to add each value to an accumulator, initialized with a value of `0`, divide by the `length` of the array.
+
+```js
+const averageBy = (arr, fn) => arr.map(fn).reduce((acc, val) => acc + val, 0) / arr.length;
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+averageBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 5
 ```
 
 </details>
@@ -3311,8 +3286,30 @@ const luhnCheck = num => {
 
 ```js
 luhnCheck('4485275742308327'); // true
-luhnCheck(6011329933655299); //  true
+luhnCheck(6011329933655299); //  false
 luhnCheck(123456789); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### maxBy
+
+Returns the maximum value of an array, after mapping each element to a value using the provided function.
+
+Use `Array.map()` to map each element to the value returned by `fn`, `Math.max()` to get the maximum value.
+
+```js
+const maxBy = (arr, fn) => Math.max(...arr.map(fn));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 8
 ```
 
 </details>
@@ -3340,6 +3337,28 @@ const median = arr => {
 
 ```js
 median([5, 6, 50, 1, -5]); // 5
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### minBy
+
+Returns the minimum value of an array, after mapping each element to a value using the provided function.
+
+Use `Array.map()` to map each element to the value returned by `fn`, `Math.min()` to get the maximum value.
+
+```js
+const minBy = (arr, fn) => Math.min(...arr.map(fn));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+minBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 8
 ```
 
 </details>
@@ -3508,7 +3527,7 @@ const sdbm = str => {
 <summary>Examples</summary>
 
 ```js
-console.log(sdbm('name')); // -3521204949
+sdbm('name'); // -3521204949
 ```
 
 </details>
@@ -3562,6 +3581,28 @@ const sum = (...arr) => [...arr].reduce((acc, val) => acc + val, 0);
 
 ```js
 sum(...[1, 2, 3, 4]); // 10
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### sumBy
+
+Returns the sum of an array, after mapping each element to a value using the provided function.
+
+Use `Array.map()` to map each element to the value returned by `fn`, `Array.reduce()` to add each value to an accumulator, initialized with a value of `0`.
+
+```js
+const sumBy = (arr, fn) => arr.map(fn).reduce((acc, val) => acc + val, 0);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+sumBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 20
 ```
 
 </details>
@@ -3910,7 +3951,7 @@ const objectToPairs = obj => Object.keys(obj).map(k => [k, obj[k]]);
 <summary>Examples</summary>
 
 ```js
-objectToPairs({ a: 1, b: 2 }); // [['a',1],['b',2]])
+objectToPairs({ a: 1, b: 2 }); // [['a',1],['b',2]]
 ```
 
 </details>
@@ -4163,6 +4204,31 @@ capitalizeEveryWord('hello world!'); // 'Hello World!'
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### decapitalize
+
+Decapitalizes the first letter of a string.
+
+Use array destructuring and `String.toLowerCase()` to decapitalize first letter, `...rest` to get array of characters after first letter and then `Array.join('')` to make it a string again.
+Omit the `upperRest` parameter to keep the rest of the string intact, or set it to `true` to convert to uppercase.
+
+```js
+const decapitalize = ([first, ...rest], upperRest = false) =>
+  first.toLowerCase() + (upperRest ? rest.join('').toUpperCase() : rest.join(''));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+decapitalize('FooBar'); // 'fooBar'
+decapitalize('FooBar', true); // 'fOOBAR'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### escapeHTML
 
 Escapes a string for use in HTML.
@@ -4340,7 +4406,7 @@ const mask = (cc, num = 4, mask = '*') =>
 ```js
 mask(1234567890); // '******7890'
 mask(1234567890, 3); // '*******890'
-mask(1234567890, -4, '$'); // '1234$$$$$$'
+mask(1234567890, -4, '$'); // '$$$$567890'
 ```
 
 </details>
@@ -4476,7 +4542,7 @@ const splitLines = str => str.split(/\r?\n/);
 <summary>Examples</summary>
 
 ```js
-splitLines('This\nis a\nmultiline\nstring.\n'); // ['This', 'is a', 'multiline', 'string' , '']
+splitLines('This\nis a\nmultiline\nstring.\n'); // ['This', 'is a', 'multiline', 'string.' , '']
 ```
 
 </details>
@@ -4677,7 +4743,7 @@ const getType = v =>
 <summary>Examples</summary>
 
 ```js
-getType(new Set([1, 2, 3])); // 'Set'
+getType(new Set([1, 2, 3])); // 'set'
 ```
 
 </details>
@@ -4828,9 +4894,37 @@ isNumber(1); // true
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### isObject
+
+Returns a boolean determining if the passed value is an object or not.
+
+Uses the  `Object` constructor to create an object wrapper for the given value. 
+If the value is `null` or `undefined`, create and return an empty object. Οtherwise, return an object of a type that corresponds to the given value.
+
+```js
+const isObject = obj => obj === Object(obj);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isObject([1, 2, 3, 4]); // true
+isObject([]); // true
+isObject(['Hello!']); // true
+isObject({ a: 1 }); // true
+isObject({}); // true
+isObject(true); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### isPrimitive
 
-Returns a boolean determining if the supplied value is primitive or not.
+Returns a boolean determining if the passed value is primitive or not.
 
 Use `Array.includes()` on an array of type strings which are not primitive,
 supplying the type using `typeof`.
@@ -5131,6 +5225,105 @@ hexToRGB('#fff'); // 'rgb(255, 255, 255)'
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### httpGet
+
+Makes a `GET` request to the passed URL.
+
+Use [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest) web api to make a `get` request to the given `url`.
+Handle the `onload` event, by calling the given `callback` the `responseText`.
+Handle the `onerror` event, by running the provided `err` function.
+Omit the third argument, `err`, to log errors to the console's `error` stream by default.
+
+```js
+const httpGet = (url, callback, err = console.error) => {
+  const request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.onload = () => callback(request.responseText);
+  request.onerror = () => err(request);
+  request.send();
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+httpGet(
+  'https://jsonplaceholder.typicode.com/posts/1',
+  console.log
+); /* 
+Logs: {
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+*/
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### httpPost
+
+Makes a `POST` request to the passed URL.
+
+Use [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest) web api to make a `post` request to the given `url`.
+Set the value of an `HTTP` request header with `setRequestHeader` method.
+Handle the `onload` event, by calling the given `callback` the `responseText`.
+Handle the `onerror` event, by running the provided `err` function.
+Omit the third argument, `data`, to send no data to the provided `url`.
+Omit the fourth argument, `err`, to log errors to the console's `error` stream by default.
+
+```js
+const httpPost = (url, callback, data = null, err = console.error) => {
+  const request = new XMLHttpRequest();
+  request.open('POST', url, true);
+  request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+  request.onload = () => callback(request.responseText);
+  request.onerror = () => err(request);
+  request.send(data);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+
+
+
+
+
+
+
+
+
+
+const newPost = {
+  "userId": 1,
+  "id": 1337,
+  "title": "Foo",
+  "body": "bar bar bar"
+};
+const data = JSON.stringify(newPost);
+httpPost('https://jsonplaceholder.typicode.com/posts', console.log, data; /*
+Logs: {
+  "userId": 1,
+  "id": 1337,
+  "title": "Foo",
+  "body": "bar bar bar"
+}
+*/
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### prettyBytes
 
 Converts a number in bytes to a human-readable string.
@@ -5155,9 +5348,9 @@ const prettyBytes = (num, precision = 3, addSpace = true) => {
 <summary>Examples</summary>
 
 ```js
-prettyBytes(1000); // 1 KB
-prettyBytes(-27145424323.5821, 5); // -27.145 GB
-prettyBytes(123456789, 3, false); // 123MB
+prettyBytes(1000); // "1 KB"
+prettyBytes(-27145424323.5821, 5); // "-27.145 GB"
+prettyBytes(123456789, 3, false); // "123MB"
 ```
 
 </details>
@@ -5251,7 +5444,7 @@ const toDecimalMark = num => num.toLocaleString('en-US');
 <summary>Examples</summary>
 
 ```js
-toDecimalMark(12305030388.9087); // "12,305,030,388.9087"
+toDecimalMark(12305030388.9087); // "12,305,030,388.909"
 ```
 
 </details>

@@ -1,6 +1,7 @@
 anagrams:string,recursion
 arrayToHtmlList:browser,array
 average:math,array
+averageBy:math,array,function
 bottomVisible:browser
 byteSize:string
 call:adapter,function
@@ -22,6 +23,7 @@ createElement:browser,utility
 createEventHub:browser,event,advanced
 currentURL:browser,url
 curry:function,recursion
+decapitalize:string,array
 deepFlatten:array,recursion
 defer:function
 detectDeviceType:browser
@@ -42,7 +44,6 @@ factorial:math,recursion
 fibonacci:math,array
 filterNonUnique:array
 flatten:array
-flattenDepth:array,recursion
 flip:adapter,function
 forEachRight:array,function
 formatDuration:date,math,string,utility
@@ -62,6 +63,8 @@ hasFlags:node
 head:array
 hexToRGB:utility,string,math,advanced
 hide:browser,css
+httpGet:utility,url,browser
+httpPost:utility,url,browser
 httpsRedirect:browser,url
 indexOfAll:array
 initial:array
@@ -81,6 +84,7 @@ isFunction:type,function
 isLowerCase:string,utility
 isNull:type
 isNumber:type,math
+isObject:type,object
 isPrime:math
 isPrimitive:type,function,array,string
 isPromiseLike:type,function,promise
@@ -99,9 +103,11 @@ lowercaseKeys:object
 luhnCheck:math,utility
 mapObject:array,object
 mask:string,utility,regexp
+maxBy:math,array,function
 maxN:array,math
 median:math,array
 memoize:function
+minBy:math,array,function
 minN:array,amth
 negate:function
 nthElement:array
@@ -155,6 +161,7 @@ splitLines:string
 spreadOver:adapter
 standardDeviation:math,array
 sum:math,array
+sumBy:math,array,function
 sumPower:math
 symmetricDifference:array,math
 tail:array
@@ -163,7 +170,6 @@ takeRight:array
 timeTaken:utility
 toCamelCase:string,regexp
 toDecimalMark:utility,math
-toEnglishDate:date,string
 toggleClass:browser
 toKebabCase:string,regexp
 tomorrow:date
