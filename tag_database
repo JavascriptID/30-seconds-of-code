@@ -18,6 +18,7 @@ collectInto:adapter,function,array
 compact:array
 compose:function
 copyToClipboard:browser,string,advanced
+countBy:array,object
 countOccurrences:array
 createElement:browser,utility
 createEventHub:browser,event,advanced
@@ -43,12 +44,14 @@ extendHex:utility,string
 factorial:math,recursion
 fibonacci:math,array
 filterNonUnique:array
+findLast:array
 flatten:array
 flip:adapter,function
 forEachRight:array,function
 formatDuration:date,math,string,utility
 fromCamelCase:string
 functionName:function,utility
+functions:object,function
 gcd:math,recursion
 geometricProgression:math
 getDaysDiffBetweenDates:date
@@ -56,7 +59,7 @@ getScrollPosition:browser
 getStyle:browser,css
 getType:type
 getURLParameters:utility,browser,string,url
-groupBy:array
+groupBy:array,object
 hammingDistance:math
 hasClass:browser,css
 hasFlags:node
@@ -101,12 +104,15 @@ lcm:math,recursion
 longestItem:array,string,utility
 lowercaseKeys:object
 luhnCheck:math,utility
+mapKeys:object,function
 mapObject:array,object
+mapValues:object,function
 mask:string,utility,regexp
 maxBy:math,array,function
 maxN:array,math
 median:math,array
 memoize:function
+merge:object,array
 minBy:math,array,function
 minN:array,amth
 negate:function
@@ -176,6 +182,7 @@ tomorrow:date
 toOrdinalSuffix:utility,math
 toSafeInteger:math
 toSnakeCase:string,regexp
+transform:object,array
 truncateString:string
 truthCheckCollection:object,logic,array
 unescapeHTML:string,browser

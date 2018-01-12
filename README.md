@@ -89,6 +89,7 @@ average(1, 2, 3);
 
 * [`chunk`](#chunk)
 * [`compact`](#compact)
+* [`countBy`](#countby)
 * [`countOccurrences`](#countoccurrences)
 * [`deepFlatten`](#deepflatten)
 * [`difference`](#difference)
@@ -98,6 +99,7 @@ average(1, 2, 3);
 * [`dropRight`](#dropright)
 * [`everyNth`](#everynth)
 * [`filterNonUnique`](#filternonunique)
+* [`findLast`](#findlast)
 * [`flatten`](#flatten)
 * [`forEachRight`](#foreachright)
 * [`groupBy`](#groupby)
@@ -259,14 +261,19 @@ average(1, 2, 3);
 <summary>View contents</summary>
 
 * [`cleanObj`](#cleanobj)
+* [`functions`](#functions)
 * [`invertKeyValues`](#invertkeyvalues)
 * [`lowercaseKeys`](#lowercasekeys)
+* [`mapKeys`](#mapkeys)
+* [`mapValues`](#mapvalues)
+* [`merge`](#merge)
 * [`objectFromPairs`](#objectfrompairs)
 * [`objectToPairs`](#objecttopairs)
 * [`orderBy`](#orderby)
 * [`select`](#select)
 * [`shallowClone`](#shallowclone)
 * [`size`](#size)
+* [`transform`](#transform)
 * [`truthCheckCollection`](#truthcheckcollection)
 
 </details>
@@ -561,6 +568,34 @@ compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34]); // [ 1, 2, 3, 'a'
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### countBy
+
+Groups the elements of an array based on the given function and returns the count of elements in each group.
+
+Use `Array.map()` to map the values of an array to a function or property name.
+Use `Array.reduce()` to create an object, where the keys are produced from the mapped results.
+
+```js
+const countBy = (arr, fn) =>
+  arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val, i) => {
+    acc[val] = (acc[val] || 0) + 1;
+    return acc;
+  }, {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+countBy([6.1, 4.2, 6.3], Math.floor); // {4: 1, 6: 2}
+countBy(['one', 'two', 'three'], 'length'); // {3: 2, 5: 1}
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### countOccurrences
 
 Counts the occurrences of a value in an array.
@@ -770,6 +805,28 @@ filterNonUnique([1, 2, 2, 3, 4, 4, 5]); // [1,3,5]
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### findLast
+
+Returns the last element for which the provided function returns a truthy value.
+
+Use `Array.filter()` to remove elements for which `fn` returns falsey values, `Array.slice(-1)` to get the last one.
+
+```js
+const findLast = (arr, fn) => arr.filter(fn).slice(-1);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+findLast([1, 2, 3, 4], n => n % 2 === 1); // 3
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### flatten
 
 Flattens an array up to the specified depth.
@@ -833,8 +890,8 @@ Use `Array.map()` to map the values of an array to a function or property name.
 Use `Array.reduce()` to create an object, where the keys are produced from the mapped results.
 
 ```js
-const groupBy = (arr, func) =>
-  arr.map(typeof func === 'function' ? func : val => val[func]).reduce((acc, val, i) => {
+const groupBy = (arr, fn) =>
+  arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val, i) => {
     acc[val] = (acc[val] || []).concat(arr[i]);
     return acc;
   }, {});
@@ -2854,7 +2911,9 @@ Returns the average of an array, after mapping each element to a value using the
 Use `Array.map()` to map each element to the value returned by `fn`, `Array.reduce()` to add each value to an accumulator, initialized with a value of `0`, divide by the `length` of the array.
 
 ```js
-const averageBy = (arr, fn) => arr.map(fn).reduce((acc, val) => acc + val, 0) / arr.length;
+const averageBy = (arr, fn) =>
+  arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val) => acc + val, 0) /
+  arr.length;
 ```
 
 <details>
@@ -2862,6 +2921,7 @@ const averageBy = (arr, fn) => arr.map(fn).reduce((acc, val) => acc + val, 0) / 
 
 ```js
 averageBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 5
+averageBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 5
 ```
 
 </details>
@@ -3302,7 +3362,7 @@ Returns the maximum value of an array, after mapping each element to a value usi
 Use `Array.map()` to map each element to the value returned by `fn`, `Math.max()` to get the maximum value.
 
 ```js
-const maxBy = (arr, fn) => Math.max(...arr.map(fn));
+const maxBy = (arr, fn) => Math.max(...arr.map(typeof fn === 'function' ? fn : val => val[fn]));
 ```
 
 <details>
@@ -3310,6 +3370,7 @@ const maxBy = (arr, fn) => Math.max(...arr.map(fn));
 
 ```js
 maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 8
+maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 8
 ```
 
 </details>
@@ -3351,7 +3412,7 @@ Returns the minimum value of an array, after mapping each element to a value usi
 Use `Array.map()` to map each element to the value returned by `fn`, `Math.min()` to get the maximum value.
 
 ```js
-const minBy = (arr, fn) => Math.min(...arr.map(fn));
+const minBy = (arr, fn) => Math.min(...arr.map(typeof fn === 'function' ? fn : val => val[fn]));
 ```
 
 <details>
@@ -3359,6 +3420,7 @@ const minBy = (arr, fn) => Math.min(...arr.map(fn));
 
 ```js
 minBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 8
+minBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 8
 ```
 
 </details>
@@ -3595,7 +3657,8 @@ Returns the sum of an array, after mapping each element to a value using the pro
 Use `Array.map()` to map each element to the value returned by `fn`, `Array.reduce()` to add each value to an accumulator, initialized with a value of `0`.
 
 ```js
-const sumBy = (arr, fn) => arr.map(fn).reduce((acc, val) => acc + val, 0);
+const sumBy = (arr, fn) =>
+  arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val) => acc + val, 0);
 ```
 
 <details>
@@ -3603,6 +3666,7 @@ const sumBy = (arr, fn) => arr.map(fn).reduce((acc, val) => acc + val, 0);
 
 ```js
 sumBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 20
+sumBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 20
 ```
 
 </details>
@@ -3861,6 +3925,41 @@ cleanObj(testObj, ['a'], 'children'); // { a: 1, children : { a: 1}}
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### functions
+
+Returns an array of function property names from own (and optionally inherited) enumerable properties of an object.
+
+Use `Object.keys(obj)` to iterate over the object's own properties.
+If `inherited` is `true`, use `Object.get.PrototypeOf(obj)` to also get the object's inherited properties.
+Use `Array.filter()` to keep only those properties that are functions.
+Omit the second argument, `inherited`, to not include inherited properties by default.
+
+```js
+const functions = (obj, inherited = false) =>
+  (inherited
+    ? [...Object.keys(obj), ...Object.keys(Object.getPrototypeOf(obj))]
+    : Object.keys(obj)
+  ).filter(key => typeof obj[key] === 'function');
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+function Foo() {
+  this.a = () => 1;
+  this.b = () => 2;
+}
+Foo.prototype.c = () => 3;
+functions(new Foo()); // ['a', 'b']
+functions(new Foo(), true); // ['a', 'b', 'c']
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### invertKeyValues
 
 Inverts the key-value pairs of an object, without mutating it.
@@ -3908,6 +4007,104 @@ const lowercaseKeys = obj =>
 ```js
 const myObj = { Name: 'Adam', sUrnAME: 'Smith' };
 const myObjLower = lowercaseKeys(myObj); // {name: 'Adam', surname: 'Smith'};
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### mapKeys
+
+Creates an object with keys generated by running the provided function for each key and the same values as the provided object.
+
+Use `Object.keys(obj)` to iterate over the object's keys.
+Use `Array.reduce()` to create a new object with the same values and mapped keys using `fn`.
+
+```js
+const mapKeys = (obj, fn) =>
+  Object.keys(obj).reduce((acc, k) => {
+    acc[fn(obj[k], k, obj)] = obj[k];
+    return acc;
+  }, {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+mapKeys({ a: 1, b: 2 }, (val, key) => key + val); // { a1: 1, b2: 2 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### mapValues
+
+Creates an object with the same keys as the provided object and values generated by running the provided function for each value.
+
+Use `Object.keys(obj)` to iterate over the object's keys.
+Use `Array.reduce()` to create a new object with the same keys and mapped values using `fn`.
+
+```js
+const mapValues = (obj, fn) =>
+  Object.keys(obj).reduce((acc, k) => {
+    acc[k] = fn(obj[k], k, obj);
+    return acc;
+  }, {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const users = {
+  fred: { user: 'fred', age: 40 },
+  pebbles: { user: 'pebbles', age: 1 }
+};
+mapValues(users, u => u.age); // { fred: 40, pebbles: 1 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### merge
+
+Creates a new object from the combination of two or more objects.
+
+Use `Array.reduce()` combined with `Object.keys(obj)` to iterate over all objects and keys.
+Use `hasOwnProperty()` and `Array.concat()` to append values for keys existing in multiple objects.
+
+```js
+const merge = (...objs) =>
+  [...objs].reduce(
+    (acc, obj) =>
+      Object.keys(obj).reduce((a, k) => {
+        acc[k] = acc.hasOwnProperty(k) ? [].concat(acc[k]).concat(obj[k]) : obj[k];
+        return acc;
+      }, {}),
+    {}
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const object = {
+  a: [{ x: 2 }, { y: 4 }],
+  b: 1
+};
+const other = {
+  a: { z: 3 },
+  b: [2, 3],
+  c: 'foo'
+};
+merge(object, other); // { a: [ { x: 2 }, { y: 4 }, { z: 3 } ], b: [ 1, 2, 3 ], c: 'foo' }
 ```
 
 </details>
@@ -3995,13 +4192,13 @@ orderBy(users, ['name', 'age']); // [{name: 'barney', age: 36}, {name: 'fred', a
 
 ### select
 
-Retrieve a property indicated by the selector from an object.
+Retrieve a set of properties indicated by the given selectors from an object.
 
-If the property does not exists returns `undefined`.
+Use `Array.map()` for each selector, `String.split('.')` to split each selector and `Array.reduce()` to get the value indicated by it.
 
 ```js
-const select = (from, selector) =>
-  selector.split('.').reduce((prev, cur) => prev && prev[cur], from);
+const select = (from, ...selectors) =>
+  [...selectors].map(s => s.split('.').reduce((prev, cur) => prev && prev[cur], from));
 ```
 
 <details>
@@ -4009,7 +4206,8 @@ const select = (from, selector) =>
 
 ```js
 const obj = { selector: { to: { val: 'val to select' } } };
-select(obj, 'selector.to.val'); // 'val to select'
+select(obj, 'selector.to.val'); // ['val to select']
+select(obj, 'selector.to.val', 'selector.to'); // ['val to select', { val: 'val to select' }]
 ```
 
 </details>
@@ -4067,6 +4265,35 @@ const size = val =>
 size([1, 2, 3, 4, 5]); // 5
 size('size'); // 4
 size({ one: 1, two: 2, three: 3 }); // 3
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### transform
+
+Applies a function against an accumulator and each key in the object (from left to right).
+
+Use `Object.keys(obj)` to iterate over each key in the object, `Array.reduce()` to call the apply the specified function against the given accumulator.
+
+```js
+const transform = (obj, fn, acc) => Object.keys(obj).reduce((a, k) => fn(a, obj[k], k, obj), acc);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+transform(
+  { a: 1, b: 2, c: 1 },
+  (r, v, k) => {
+    (r[v] || (r[v] = [])).push(k);
+    return r;
+  },
+  {}
+); // { '1': ['a', 'c'], '2': ['b'] }
 ```
 
 </details>
@@ -5292,24 +5519,18 @@ const httpPost = (url, callback, data = null, err = console.error) => {
 <summary>Examples</summary>
 
 ```js
-
-
-
-
-
-
-
-
-
-
 const newPost = {
-  "userId": 1,
-  "id": 1337,
-  "title": "Foo",
-  "body": "bar bar bar"
+  userId: 1,
+  id: 1337,
+  title: 'Foo',
+  body: 'bar bar bar'
 };
 const data = JSON.stringify(newPost);
-httpPost('https://jsonplaceholder.typicode.com/posts', console.log, data; /*
+httpPost(
+  'https://jsonplaceholder.typicode.com/posts',
+  console.log,
+  data
+); /*
 Logs: {
   "userId": 1,
   "id": 1337,
