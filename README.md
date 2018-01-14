@@ -246,6 +246,7 @@ average(1, 2, 3);
 <details>
 <summary>View contents</summary>
 
+* [`colorize`](#colorize)
 * [`hasFlags`](#hasflags)
 * [`isTravisCI`](#istravisci)
 * [`JSONToFile`](#jsontofile)
@@ -343,9 +344,11 @@ average(1, 2, 3);
 * [`hexToRGB`](#hextorgb-)
 * [`httpGet`](#httpget)
 * [`httpPost`](#httppost)
+* [`parseCookie`](#parsecookie)
 * [`prettyBytes`](#prettybytes)
 * [`randomHexColorCode`](#randomhexcolorcode)
 * [`RGBToHex`](#rgbtohex)
+* [`serializeCookie`](#serializecookie)
 * [`timeTaken`](#timetaken)
 * [`toDecimalMark`](#todecimalmark)
 * [`toOrdinalSuffix`](#toordinalsuffix)
@@ -3731,6 +3734,48 @@ toSafeInteger(Infinity); // 9007199254740991
 ---
  ## 📦 Node
 
+### colorize
+
+Add special characters to text to print in color in the console (combined with `console.log()`).
+
+Use template literals and special characters to add the appropriate color code to the string output.
+For background colors, add a special character that resets the background color at the end of the string.
+
+```js
+const colorize = (...args) => ({
+  black: `\x1b[30m${args.join(' ')}`,
+  red: `\x1b[31m${args.join(' ')}`,
+  green: `\x1b[32m${args.join(' ')}`,
+  yellow: `\x1b[33m${args.join(' ')}`,
+  blue: `\x1b[34m${args.join(' ')}`,
+  magenta: `\x1b[35m${args.join(' ')}`,
+  cyan: `\x1b[36m${args.join(' ')}`,
+  white: `\x1b[37m${args.join(' ')}`,
+  bgBlack: `\x1b[40m${args.join(' ')}\x1b[0m`,
+  bgRed: `\x1b[41m${args.join(' ')}\x1b[0m`,
+  bgGreen: `\x1b[42m${args.join(' ')}\x1b[0m`,
+  bgYellow: `\x1b[43m${args.join(' ')}\x1b[0m`,
+  bgBlue: `\x1b[44m${args.join(' ')}\x1b[0m`,
+  bgMagenta: `\x1b[45m${args.join(' ')}\x1b[0m`,
+  bgCyan: `\x1b[46m${args.join(' ')}\x1b[0m`,
+  bgWhite: `\x1b[47m${args.join(' ')}\x1b[0m`
+});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+console.log(colorize('foo').red); // 'foo' (red letters)
+console.log(colorize('foo', 'bar').bgBlue); // 'foo bar' (blue background)
+console.log(colorize(colorize('foo').yellow, colorize('foo').green).bgWhite); // 'foo bar' (first word in yellow letters, second word in green letters, white background for both)
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### hasFlags
 
 Check if the current process's arguments contain the specified flags.
@@ -5545,6 +5590,37 @@ Logs: {
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### parseCookie
+
+Parse an HTTP Cookie header string and return an object of all cookie name-value pairs.
+
+Use `String.split(';')` to separate key-value pairs from each other.
+Use `Array.map()` and `String.split('=')` to separate keys from values in each pair.
+Use `Array.reduce()` and `decodeURIComponent()` to create an object with all key-value pairs.
+
+```js
+const parseCookie = str =>
+  str
+    .split(';')
+    .map(v => v.split('='))
+    .reduce((acc, v) => {
+      acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim());
+      return acc;
+    }, {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+parseCookie('foo=bar; equation=E%3Dmc%5E2'); // { foo: 'bar', equation: 'E=mc^2' }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### prettyBytes
 
 Converts a number in bytes to a human-readable string.
@@ -5619,6 +5695,28 @@ const RGBToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6
 
 ```js
 RGBToHex(255, 165, 1); // 'ffa501'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### serializeCookie
+
+Serialize a cookie name-value pair into a Set-Cookie header string.
+
+Use template literals and `encodeURIComponent()` to create the appropriate string.
+
+```js
+const serializeCookie = (name, val) => `${encodeURIComponent(name)}=${encodeURIComponent(val)}`;
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+serializeCookie('foo', 'bar'); // 'foo=bar'
 ```
 
 </details>

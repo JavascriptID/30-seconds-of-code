@@ -15,6 +15,7 @@ cloneRegExp:utility,regexp
 coalesce:utility
 coalesceFactory:utility
 collectInto:adapter,function,array
+colorize:node,utility,string
 compact:array
 compose:function
 copyToClipboard:browser,string,advanced
@@ -125,6 +126,7 @@ once:function
 onUserInputChange:browser,event,advanced
 orderBy:object,array
 palindrome:string
+parseCookie:utility,string
 partition:array,object,function
 percentile:math
 pick:array
@@ -154,6 +156,7 @@ sampleSize:array,random
 scrollToTop:browser
 sdbm:math,utility
 select:object
+serializeCookie:utility,string
 setStyle:browser
 shallowClone:object
 show:browser,css
