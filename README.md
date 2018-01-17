@@ -98,7 +98,6 @@ average(1, 2, 3);
 * [`deepFlatten`](#deepflatten)
 * [`difference`](#difference)
 * [`differenceWith`](#differencewith)
-* [`distinctValuesOfArray`](#distinctvaluesofarray)
 * [`dropElements`](#dropelements)
 * [`dropRight`](#dropright)
 * [`everyNth`](#everynth)
@@ -140,6 +139,7 @@ average(1, 2, 3);
 * [`take`](#take)
 * [`takeRight`](#takeright)
 * [`union`](#union)
+* [`uniqueElements`](#uniqueelements)
 * [`without`](#without)
 * [`zip`](#zip)
 * [`zipObject`](#zipobject)
@@ -162,6 +162,7 @@ average(1, 2, 3);
 * [`getScrollPosition`](#getscrollposition)
 * [`getStyle`](#getstyle)
 * [`hasClass`](#hasclass)
+* [`hashBrowser`](#hashbrowser-)
 * [`hide`](#hide)
 * [`httpsRedirect`](#httpsredirect)
 * [`observeMutations`](#observemutations-)
@@ -253,8 +254,11 @@ average(1, 2, 3);
 <details>
 <summary>View contents</summary>
 
+* [`atob`](#atob)
+* [`btoa`](#btoa)
 * [`colorize`](#colorize)
 * [`hasFlags`](#hasflags)
+* [`hashNode`](#hashnode)
 * [`isTravisCI`](#istravisci)
 * [`JSONToFile`](#jsontofile)
 * [`readFileLines`](#readfilelines)
@@ -325,27 +329,20 @@ average(1, 2, 3);
 <summary>View contents</summary>
 
 * [`getType`](#gettype)
-* [`isArray`](#isarray)
-* [`isArrayBuffer`](#isarraybuffer)
+* [`is`](#is)
 * [`isArrayLike`](#isarraylike)
 * [`isBoolean`](#isboolean)
 * [`isFunction`](#isfunction)
-* [`isMap`](#ismap)
 * [`isNil`](#isnil)
 * [`isNull`](#isnull)
 * [`isNumber`](#isnumber)
 * [`isObject`](#isobject)
 * [`isPrimitive`](#isprimitive)
 * [`isPromiseLike`](#ispromiselike)
-* [`isRegExp`](#isregexp)
-* [`isSet`](#isset)
 * [`isString`](#isstring)
 * [`isSymbol`](#issymbol)
-* [`isTypedArray`](#istypedarray)
 * [`isUndefined`](#isundefined)
 * [`isValidJSON`](#isvalidjson)
-* [`isWeakMap`](#isweakmap)
-* [`isWeakSet`](#isweakset)
 
 </details>
 
@@ -703,28 +700,6 @@ const differenceWith = (arr, val, comp) => arr.filter(a => val.findIndex(b => co
 
 ```js
 differenceWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0], (a, b) => Math.round(a) === Math.round(b)); // [1, 1.2]
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### distinctValuesOfArray
-
-Returns all the distinct values of an array.
-
-Use ES6 `Set` and the `...rest` operator to discard all duplicated values.
-
-```js
-const distinctValuesOfArray = arr => [...new Set(arr)];
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-distinctValuesOfArray([1, 2, 2, 3, 4, 4, 5]); // [1,2,3,4,5]
 ```
 
 </details>
@@ -1815,6 +1790,28 @@ union([1, 2, 3], [4, 3, 2]); // [1,2,3,4]
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### uniqueElements
+
+Returns all unique values of an array.
+
+Use ES6 `Set` and the `...rest` operator to discard all duplicated values.
+
+```js
+const uniqueElements = arr => [...new Set(arr)];
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+uniqueElements([1, 2, 2, 3, 4, 4, 5]); // [1,2,3,4,5]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### without
 
 Filters out the elements of an array, that have one of the specified values.
@@ -2216,6 +2213,35 @@ const hasClass = (el, className) => el.classList.contains(className);
 
 ```js
 hasClass(document.querySelector('p.special'), 'special'); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### hashBrowser ![advanced](/advanced.svg)
+
+Creates a hash for a value using the [SHA-256](https://en.wikipedia.org/wiki/SHA-2) algorithm. Returns a promise.
+
+Use the [SubtleCrypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) API to create a hash for the given value.
+
+```js
+const hashBrowser = val =>
+  crypto.subtle.digest('SHA-256', new TextEncoder('utf-8').encode(val)).then(h => {
+    let hexes = [],
+      view = new DataView(h);
+    for (let i = 0; i < view.byteLength; i += 4)
+      hexes.push(('00000000' + view.getUint32(i).toString(16)).slice(-8));
+    return hexes.join('');
+  });
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+hashBrowser(JSON.stringify({ a: 'a', b: [1, 2, 3, 4], foo: { c: 'bar' } })).then(console.log); // '04aa106279f5977f59f9067fa9712afc4aedc6f5862a8defc34552d8c7206393'
 ```
 
 </details>
@@ -3683,7 +3709,7 @@ round(1.005, 2); // 1.01
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### sbdm
+### sdbm
 
 Hashes the input string into a whole number.
 
@@ -3846,6 +3872,50 @@ toSafeInteger(Infinity); // 9007199254740991
 ---
  ## 📦 Node
 
+### atob
+
+Decodes a string of data which has been encoded using base-64 encoding.
+
+Create a `Buffer` for the given string with base-64 encoding and use `Buffer.toString('binary')` to return the decoded string.
+
+```js
+const atob = str => new Buffer(str, 'base64').toString('binary');
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+atob('Zm9vYmFy'); // 'foobar'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### btoa
+
+Creates a base-64 encoded ASCII string from a String object in which each character in the string is treated as a byte of binary data.
+
+Create a `Buffer` for the given string with binary encoding and use `Buffer.toString('base64')` to return the encoded string.
+
+```js
+const btoa = str => new Buffer(str, 'binary').toString('base64');
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+btoa('foobar'); // 'Zm9vYmFy'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### colorize
 
 Add special characters to text to print in color in the console (combined with `console.log()`).
@@ -3908,6 +3978,41 @@ const hasFlags = (...flags) =>
 hasFlags('-s'); // true
 hasFlags('--test', 'cool=true', '-s'); // true
 hasFlags('special'); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### hashNode
+
+Creates a hash for a value using the [SHA-256](https://en.wikipedia.org/wiki/SHA-2) algorithm. Returns a promise.
+
+Use `crypto` API to create a hash for the given value.
+
+```js
+const crypto = require('crypto');
+const hashNode = val =>
+  new Promise(resolve =>
+    setTimeout(
+      () =>
+        resolve(
+          crypto
+            .createHash('sha256')
+            .update(val)
+            .digest('hex')
+        ),
+      0
+    )
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+hashBrowser(JSON.stringify({ a: 'a', b: [1, 2, 3, 4], foo: { c: 'bar' } })).then(console.log); // '04aa106279f5977f59f9067fa9712afc4aedc6f5862a8defc34552d8c7206393'
 ```
 
 </details>
@@ -5198,43 +5303,33 @@ getType(new Set([1, 2, 3])); // 'set'
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### isArray
+### is
 
-Checks if the given argument is an array.
+Checks if the provided value is of the specified type (doesn't work with literals).
 
-Use `Array.isArray()` to check if a value is classified as an array.
+Use the `instanceof` operator to check if the provided value is of the specified `type`.
 
 ```js
-const isArray = val => Array.isArray(val);
+const is = (type, val) => val instanceof type;
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```js
-isArray([1]); // true
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### isArrayBuffer
-
-Checks if value is classified as a ArrayBuffer object.
-
-Use the `instanceof`operator to check if the provided value is a `ArrayBuffer` object.
-
-```js
-const isArrayBuffer = val => val instanceof ArrayBuffer;
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-isArrayBuffer(new ArrayBuffer()); // true
+is(Array, [1]); // true
+is(ArrayBuffer, new ArrayBuffer()); // true
+is(Map, new Map()); // true
+is(RegExp, /./g); // true
+is(Set, new Set()); // true
+is(WeakMap, new WeakMap()); // true
+is(WeakSet, new WeakSet()); // true
+is(String, ''); // false
+is(String, new String('')); // true
+is(Number, 1); // false
+is(Number, new Number(1)); // true
+is(Boolean, true); // false
+is(Boolean, new Boolean(true)); // true
 ```
 
 </details>
@@ -5311,28 +5406,6 @@ const isFunction = val => typeof val === 'function';
 ```js
 isFunction('x'); // false
 isFunction(x => x); // true
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### isMap
-
-Checks if value is classified as a Map object.
-
-Use the `instanceof`operator to check if the provided value is a `Map` object.
-
-```js
-const isMap = val => val instanceof Map;
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-isMap(new Map()); // true
 ```
 
 </details>
@@ -5496,50 +5569,6 @@ isPromiseLike({}); // false
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### isRegExp
-
-Checks if value is classified as a RegExp object.
-
-Use the `instanceof`operator to check if the provided value is a `RegExp` object.
-
-```js
-const isRegExp = val => val instanceof RegExp;
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-isRegExp(/./g); // true
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### isSet
-
-Checks if value is classified as a Set object.
-
-Use the `instanceof`operator to check if the provided value is a `Set` object.
-
-```js
-const isSet = val => val instanceof Set;
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-isSet(new Set()); // true
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### isString
 
 Checks if the given argument is a string.
@@ -5577,28 +5606,6 @@ const isSymbol = val => typeof val === 'symbol';
 
 ```js
 isSymbol(Symbol('x')); // true
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### isTypedArray
-
-Checks if value is classified as a TypedArray object.
-
-Use the `instanceof`operator to check if the provided value is a `TypedArray` object.
-
-```js
-const isTypedArray = val => val instanceof TypedArray;
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-isTypedArray(new TypedArray()); // true
 ```
 
 </details>
@@ -5652,50 +5659,6 @@ const isValidJSON = obj => {
 isValidJSON('{"name":"Adam","age":20}'); // true
 isValidJSON('{"name":"Adam",age:"20"}'); // false
 isValidJSON(null); // true
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### isWeakMap
-
-Checks if value is classified as a WeakMap object.
-
-Use the `instanceof`operator to check if the provided value is a `WeakMap` object.
-
-```js
-const isWeakMap = val => val instanceof WeakMap;
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-isWeakMap(new WeakMap()); // true
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### isWeakSet
-
-Checks if value is classified as a WeakSet object.
-
-Use the `instanceof`operator to check if the provided value is a `WeakSet` object.
-
-```js
-const isWeakSet = val => val instanceof WeakSet;
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-isWeakSet(new WeakSet()); // true
 ```
 
 </details>
@@ -5924,7 +5887,7 @@ Omit the third argument, `data`, to send no data to the provided `url`.
 Omit the fourth argument, `err`, to log errors to the console's `error` stream by default.
 
 ```js
-const httpPost = (url, callback, data = null, err = console.error) => {
+const httpPost = (url, data, callback, err = console.error) => {
   const request = new XMLHttpRequest();
   request.open('POST', url, true);
   request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -5947,14 +5910,23 @@ const newPost = {
 const data = JSON.stringify(newPost);
 httpPost(
   'https://jsonplaceholder.typicode.com/posts',
-  console.log,
-  data
+  data,
+  console.log
 ); /*
 Logs: {
   "userId": 1,
   "id": 1337,
   "title": "Foo",
   "body": "bar bar bar"
+}
+*/
+httpPost(
+  'https://jsonplaceholder.typicode.com/posts',
+  null, //does not send a body
+  console.log
+); /*
+Logs: {
+  "id": 101
 }
 */
 ```
