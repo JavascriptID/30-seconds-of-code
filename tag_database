@@ -12,7 +12,6 @@ capitalizeEveryWord:string,regexp
 chainAsync:function
 chunk:array
 clampNumber:math
-cleanObj:object,json
 cloneRegExp:utility,regexp
 coalesce:utility
 coalesceFactory:utility
@@ -29,6 +28,7 @@ currentURL:browser,url
 curry:function,recursion
 decapitalize:string,array
 deepFlatten:array,recursion
+defaults:object
 defer:function
 detectDeviceType:browser
 difference:array,math
@@ -52,11 +52,14 @@ flatten:array
 flip:adapter,function
 forEachRight:array,function
 formatDuration:date,math,string,utility
+forOwn:object
+forOwnRight:object
 fromCamelCase:string
 functionName:function,utility
 functions:object,function
 gcd:math,recursion
 geometricProgression:math
+get:object
 getDaysDiffBetweenDates:date
 getScrollPosition:browser
 getStyle:browser,css
@@ -66,8 +69,8 @@ groupBy:array,object
 hammingDistance:math
 hasClass:browser,css
 hasFlags:node
-hashBrowser:browser,utility,advanced
-hashNode:node,utility
+hashBrowser:browser,utility,advanced,promise
+hashNode:node,utility,promise
 head:array
 hexToRGB:utility,string,math,advanced
 hide:browser,css
@@ -95,6 +98,7 @@ isNil:type
 isNull:type
 isNumber:type,math
 isObject:type,object
+isPlainObject:type,object
 isPrime:math
 isPrimitive:type,function,array,string
 isPromiseLike:type,function,promise
@@ -129,6 +133,8 @@ objectFromPairs:object,array
 objectToPairs:object,array
 observeMutations:browser,event,advanced
 off:browser,event
+omit:object,array
+omitBy:object,array,function
 on:browser,event
 once:function
 onUserInputChange:browser,event,advanced
@@ -137,7 +143,8 @@ palindrome:string
 parseCookie:utility,string
 partition:array,object,function
 percentile:math
-pick:array
+pick:object,array
+pickBy:object,array,function
 pipeFunctions:adapter,function
 pluralize:string
 powerset:math
@@ -164,7 +171,6 @@ sample:array,random
 sampleSize:array,random
 scrollToTop:browser
 sdbm:math,utility
-select:object
 serializeCookie:utility,string
 setStyle:browser
 shallowClone:object

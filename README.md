@@ -123,7 +123,6 @@ average(1, 2, 3);
 * [`minN`](#minn)
 * [`nthElement`](#nthelement)
 * [`partition`](#partition)
-* [`pick`](#pick)
 * [`pull`](#pull)
 * [`pullAtIndex`](#pullatindex)
 * [`pullAtValue`](#pullatvalue)
@@ -272,9 +271,12 @@ average(1, 2, 3);
 <details>
 <summary>View contents</summary>
 
-* [`cleanObj`](#cleanobj)
+* [`defaults`](#defaults)
 * [`equals`](#equals-)
+* [`forOwn`](#forown)
+* [`forOwnRight`](#forownright)
 * [`functions`](#functions)
+* [`get`](#get)
 * [`invertKeyValues`](#invertkeyvalues)
 * [`lowercaseKeys`](#lowercasekeys)
 * [`mapKeys`](#mapkeys)
@@ -282,8 +284,11 @@ average(1, 2, 3);
 * [`merge`](#merge)
 * [`objectFromPairs`](#objectfrompairs)
 * [`objectToPairs`](#objecttopairs)
+* [`omit`](#omit)
+* [`omitBy`](#omitby)
 * [`orderBy`](#orderby)
-* [`select`](#select)
+* [`pick`](#pick)
+* [`pickBy`](#pickby)
 * [`shallowClone`](#shallowclone)
 * [`size`](#size)
 * [`transform`](#transform)
@@ -337,6 +342,7 @@ average(1, 2, 3);
 * [`isNull`](#isnull)
 * [`isNumber`](#isnumber)
 * [`isObject`](#isobject)
+* [`isPlainObject`](#isplainobject)
 * [`isPrimitive`](#isprimitive)
 * [`isPromiseLike`](#ispromiselike)
 * [`isString`](#isstring)
@@ -436,7 +442,7 @@ Flip takes a function as an argument, then makes the first argument the last.
 Return a closure that takes variadic inputs, and splices the last argument to make it the first argument before applying the rest.
 
 ```js
-const flip = fn => (...args) => fn(args.pop(), ...args);
+const flip = fn => (first, ...rest) => fn(...rest, first);
 ```
 
 <details>
@@ -1341,29 +1347,6 @@ const partition = (arr, fn) =>
 ```js
 const users = [{ user: 'barney', age: 36, active: false }, { user: 'fred', age: 40, active: true }];
 partition(users, o => o.active); // [[{ 'user': 'fred',    'age': 40, 'active': true }],[{ 'user': 'barney',  'age': 36, 'active': false }]]
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
-### pick
-
-Picks the key-value pairs corresponding to the given keys from an object.
-
-Use `Array.reduce()` to convert the filtered/picked keys back to an object with the corresponding key-value pair if the key exists in the obj.
-
-```js
-const pick = (obj, arr) =>
-  arr.reduce((acc, curr) => (curr in obj && (acc[curr] = obj[curr]), acc), {});
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-pick({ a: 1, b: '2', c: 3 }, ['a', 'c']); // { 'a': 1, 'c': 3 }
 ```
 
 </details>
@@ -4154,32 +4137,21 @@ UUIDGeneratorNode(); // '79c7c136-60ee-40a2-beb2-856f1feabefc'
 ---
  ## 🗃️ Object
 
-### cleanObj
+### defaults
 
-Removes any properties except the ones specified from a JSON object.
+Assigns default values for all properties in an object that are `undefined`.
 
-Use `Object.keys()` method to loop over given JSON object and deleting keys that are not included in given array.
-If you pass a special key,`childIndicator`, it will search deeply apply the function to inner objects, too.
+Use `Object.assign()` to create a new empty object and copy the original one to maintain key order, use `Array.reverse()` and the spread operator `...` to combine the default values from left to right, finally use `obj` again to overwrite properties that originally had a value.
 
 ```js
-const cleanObj = (obj, keysToKeep = [], childIndicator) => {
-  Object.keys(obj).forEach(key => {
-    if (key === childIndicator) {
-      cleanObj(obj[key], keysToKeep, childIndicator);
-    } else if (!keysToKeep.includes(key)) {
-      delete obj[key];
-    }
-  });
-  return obj;
-};
+const defaults = (obj, ...defs) => Object.assign({}, obj, ...defs.reverse(), obj);
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```js
-const testObj = { a: 1, b: 2, children: { a: 1, b: 2 } };
-cleanObj(testObj, ['a'], 'children'); // { a: 1, children : { a: 1}}
+defaults({ a: 1 }, { b: 2 }, { b: 6 }, { a: 3 }); // { a: 1, b: 2 }
 ```
 
 </details>
@@ -4220,6 +4192,53 @@ equals({ a: [2, { e: 3 }], b: [4], c: 'foo' }, { a: [2, { e: 3 }], b: [4], c: 'f
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### forOwn
+
+Iterates over all own properties of an object, running a callback for each one.
+
+Use `Object.keys(obj)` to get all the properties of the object, `Array.forEach()` to run the provided function for each key-value pair. The callback receives three arguments - the value, the key and the object.
+
+```js
+const forOwn = (obj, fn) => Object.keys(obj).forEach(key => fn(obj[key], key, obj));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+forOwn({ foo: 'bar', a: 1 }, v => console.log(v)); // 'bar', 1
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### forOwnRight
+
+Iterates over all own properties of an object in reverse, running a callback for each one.
+
+Use `Object.keys(obj)` to get all the properties of the object, `Array.reverse()` to reverse their order and `Array.forEach()` to run the provided function for each key-value pair. The callback receives three arguments - the value, the key and the object.
+
+```js
+const forOwnRight = (obj, fn) =>
+  Object.keys(obj)
+    .reverse()
+    .forEach(key => fn(obj[key], key, obj));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+forOwnRight({ foo: 'bar', a: 1 }, v => console.log(v)); // 1, 'bar'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### functions
 
 Returns an array of function property names from own (and optionally inherited) enumerable properties of an object.
@@ -4248,6 +4267,36 @@ function Foo() {
 Foo.prototype.c = () => 3;
 functions(new Foo()); // ['a', 'b']
 functions(new Foo(), true); // ['a', 'b', 'c']
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### get
+
+Retrieve a set of properties indicated by the given selectors from an object.
+
+Use `Array.map()` for each selector, `String.replace()` to replace square brackets with dots, `String.split('.')` to split each selector, `Array.filter()` to remove empty values and `Array.reduce()` to get the value indicated by it.
+
+```js
+const get = (from, ...selectors) =>
+  [...selectors].map(s =>
+    s
+      .replace(/\[([^\[\]]*)\]/g, '.$1.')
+      .split('.')
+      .filter(t => t !== '')
+      .reduce((prev, cur) => prev && prev[cur], from)
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const obj = { selector: { to: { val: 'val to select' } }, target: [1, 2, { a: 'test' }] };
+get(obj, 'selector.to.val', 'target[0]', 'target[2].a'); // ['val to select', 1, 'test']
 ```
 
 </details>
@@ -4451,6 +4500,57 @@ objectToPairs({ a: 1, b: 2 }); // [['a',1],['b',2]]
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### omit
+
+Omits the key-value pairs corresponding to the given keys from an object.
+
+Use `Object.keys(obj)`, `Array.filter()` and `Array.includes()` to remove the provided keys.
+Use `Array.reduce()` to convert the filtered keys back to an object with the corresponding key-value pairs.
+
+```js
+const omit = (obj, arr) =>
+  Object.keys(obj)
+    .filter(k => !arr.includes(k))
+    .reduce((acc, key) => ((acc[key] = obj[key]), acc), {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+omit({ a: 1, b: '2', c: 3 }, ['b']); // { 'a': 1, 'c': 3 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### omitBy
+
+Creates an object composed of the properties the given function returns falsey for. The function is invoked with two arguments: (value, key).
+
+Use `Object.keys(obj)` and `Array.filter()`to remove the keys for which `fn` returns a truthy value.
+Use `Array.reduce()` to convert the filtered keys back to an object with the corresponding key-value pairs.
+
+```js
+const omitBy = (obj, fn) =>
+  Object.keys(obj)
+    .filter(k => !fn(obj[k], k))
+    .reduce((acc, key) => ((acc[key] = obj[key]), acc), {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+omitBy({ a: 1, b: '2', c: 3 }, x => typeof x === 'number'); // { b: '2' }
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### orderBy
 
 Returns a sorted array of objects ordered by properties and orders.
@@ -4485,24 +4585,48 @@ orderBy(users, ['name', 'age']); // [{name: 'barney', age: 36}, {name: 'fred', a
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### select
+### pick
 
-Retrieve a set of properties indicated by the given selectors from an object.
+Picks the key-value pairs corresponding to the given keys from an object.
 
-Use `Array.map()` for each selector, `String.split('.')` to split each selector and `Array.reduce()` to get the value indicated by it.
+Use `Array.reduce()` to convert the filtered/picked keys back to an object with the corresponding key-value pairs if the key exists in the object.
 
 ```js
-const select = (from, ...selectors) =>
-  [...selectors].map(s => s.split('.').reduce((prev, cur) => prev && prev[cur], from));
+const pick = (obj, arr) =>
+  arr.reduce((acc, curr) => (curr in obj && (acc[curr] = obj[curr]), acc), {});
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```js
-const obj = { selector: { to: { val: 'val to select' } } };
-select(obj, 'selector.to.val'); // ['val to select']
-select(obj, 'selector.to.val', 'selector.to'); // ['val to select', { val: 'val to select' }]
+pick({ a: 1, b: '2', c: 3 }, ['a', 'c']); // { 'a': 1, 'c': 3 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### pickBy
+
+Creates an object composed of the properties the given function returns truthy for. The function is invoked with two arguments: (value, key).
+
+Use `Object.keys(obj)` and `Array.filter()`to remove the keys for which `fn` returns a falsey value.
+Use `Array.reduce()` to convert the filtered keys back to an object with the corresponding key-value pairs.
+
+```js
+const pickBy = (obj, fn) =>
+  Object.keys(obj)
+    .filter(k => fn(obj[k], k))
+    .reduce((acc, key) => ((acc[key] = obj[key]), acc), {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+pickBy({ a: 1, b: '2', c: 3 }, x => typeof x === 'number'); // { 'a': 1, 'c': 3 }
 ```
 
 </details>
@@ -5502,6 +5626,29 @@ isObject(['Hello!']); // true
 isObject({ a: 1 }); // true
 isObject({}); // true
 isObject(true); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### isPlainObject
+
+Checks if the provided value is an bbject created by the Object constructor.
+
+Check if the provided value is truthy, use `typeof` to check if it is an object and `Object.constructor` to make sure the constructor is equal to `Object`.
+
+```js
+const isPlainObject = val => !!val && typeof val === 'object' && val.constructor === Object;
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isPlainObject({ a: 1 }); // true
+isPlainObject(new Map()); // false
 ```
 
 </details>
