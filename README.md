@@ -142,6 +142,7 @@ average(1, 2, 3);
 * [`without`](#without)
 * [`zip`](#zip)
 * [`zipObject`](#zipobject)
+* [`zipWith`](#zipwith-)
 
 </details>
 
@@ -1872,6 +1873,47 @@ zipObject(['a', 'b'], [1, 2, 3]); // {a: 1, b: 2}
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
+### zipWith ![advanced](/advanced.svg)
+
+Creates an array of elements, grouped based on the position in the original arrays and using function as the last value to specify how grouped values should be combined.
+
+Check if the last argument provided in a function.
+Use `Math.max()` to get the longest array in the arguments.
+Creates an array with that length as return value and use `Array.from()` with a map-function to create an array of grouped elements.
+If lengths of the argument-arrays vary, `undefined` is used where no value could be found.
+The function is invoked with the elements of each group `(...group)`.
+
+```js
+const zipWith = (...arrays) => {
+  const length = arrays.length;
+  let fn = length > 1 ? arrays[length - 1] : undefined;
+  fn = typeof fn == 'function' ? (arrays.pop(), fn) : undefined;
+  const maxLength = Math.max(...arrays.map(x => x.length));
+  const result = Array.from({ length: maxLength }).map((_, i) => {
+    return Array.from({ length: arrays.length }, (_, k) => arrays[k][i]);
+  });
+  return fn ? result.map(arr => fn(...arr)) : result;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+zipWith([1, 2], [10, 20], [100, 200], (a, b, c) => a + b + c); // [111,222]
+zipWith(
+  [1, 2, 3],
+  [10, 20],
+  [100, 200],
+  (a, b, c) => (a != null ? a : 'a') + (b != null ? b : 'b') + (c != null ? c : 'c')
+); // [111, 222, '3bc']
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ---
  ## 🌐 Browser
 
@@ -2684,10 +2726,16 @@ getDaysDiffBetweenDates(new Date('2017-12-13'), new Date('2017-12-22')); // 9
 ### tomorrow
 
 Results in a string representation of tomorrow's date.
-Use `new Date()` to get today's date, adding `86400000` of seconds to it(24 hours), using `Date.toISOString()` to convert Date object to string.
+Use `new Date()` to get today's date, adding one day using `Date.getDate()` and `Date.setDate()`, and converting the Date object to a string.
 
 ```js
-const tomorrow = () => new Date(new Date().getTime() + 86400000).toISOString().split('T')[0];
+const tomorrow = () => {
+  let t = new Date();
+  t.setDate(t.getDate() + 1);
+  return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(
+    t.getDate()
+  ).padStart(2, '0')}`;
+};
 ```
 
 <details>
