@@ -1,4 +1,4 @@
-Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
+Test log for: Wed Jan 24 2018 20:13:12 GMT+0000 (UTC)
 
 > 30-seconds-of-code@0.0.1 test /home/travis/build/Chalarangelo/30-seconds-of-code
 > tape test/**/*.test.js | tap-spec
@@ -44,9 +44,15 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
 
     ✔ arrayToHtmlList is a Function
 
+  Testing ary
+
+    ✔ ary is a Function
+
   Testing atob
 
     ✔ atob is a Function
+    ✔ atob("Zm9vYmFy") equals "foobar"
+    ✔ atob("Z") returns ""
 
   Testing average
 
@@ -66,10 +72,20 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing averageBy
 
     ✔ averageBy is a Function
+    ✔ Produces the right result with a function
+    ✔ Produces the right result with a property name
 
   Testing binarySearch
 
     ✔ binarySearch is a Function
+
+  Testing bind
+
+    ✔ bind is a Function
+
+  Testing bindKey
+
+    ✔ bindKey is a Function
 
   Testing bottomVisible
 
@@ -78,6 +94,7 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing btoa
 
     ✔ btoa is a Function
+    ✔ btoa("foobar") equals "Zm9vYmFy"
 
   Testing byteSize
 
@@ -101,6 +118,11 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing castArray
 
     ✔ castArray is a Function
+    ✔ Works for single values
+    ✔ Works for arrays with one value
+    ✔ Works for arrays with multiple value
+    ✔ Works for strings
+    ✔ Works for objects
 
   Testing chainAsync
 
@@ -132,6 +154,7 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing cloneRegExp
 
     ✔ cloneRegExp is a Function
+    ✔ Clones regular expressions properly
 
   Testing coalesce
 
@@ -164,6 +187,11 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
 
     ✔ compose is a Function
     ✔ Performs right-to-left function composition
+
+  Testing composeRight
+
+    ✔ composeRight is a Function
+    ✔ Performs left-to-right function composition
 
   Testing copyToClipboard
 
@@ -207,6 +235,8 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing deepClone
 
     ✔ deepClone is a Function
+    ✔ Shallow cloning works
+    ✔ Deep cloning works
 
   Testing deepFlatten
 
@@ -221,6 +251,10 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
 
     ✔ defer is a Function
 
+  Testing delay
+
+    ✔ delay is a Function
+
   Testing detectDeviceType
 
     ✔ detectDeviceType is a Function
@@ -229,6 +263,10 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
 
     ✔ difference is a Function
     ✔ Returns the difference between two arrays
+
+  Testing differenceBy
+
+    ✔ differenceBy is a Function
 
   Testing differenceWith
 
@@ -335,6 +373,10 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing findLast
 
     ✔ findLast is a Function
+
+  Testing findLastIndex
+
+    ✔ findLastIndex is a Function
 
   Testing findLastKey
 
@@ -541,24 +583,39 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
     ✔ intersection is a Function
     ✔ Returns a list of elements that exist in both arrays
 
+  Testing intersectionBy
+
+    ✔ intersectionBy is a Function
+
+  Testing intersectionWith
+
+    ✔ intersectionWith is a Function
+
   Testing invertKeyValues
 
     ✔ invertKeyValues is a Function
-
-    ✖ Inverts the key-value pairs of an object
-    -------------------------------------------
-      operator: deepEqual
-      expected: |-
-        { 20: 'age', John: 'name' }
-      actual: |-
-        { 20: [ 'age' ], John: [ 'name' ] }
-      at: Test.test (/home/travis/build/Chalarangelo/30-seconds-of-code/test/invertKeyValues/invertKeyValues.test.js:8:4)
-      stack: |-
-
+    ✔ invertKeyValues({ a: 1, b: 2, c: 1 }) returns { 1: [ 'a', 'c' ], 2: [ 'b' ] }
+    ✔ invertKeyValues({ a: 1, b: 2, c: 1 }, value => 'group' + value) returns { group1: [ 'a', 'c' ], group2: [ 'b' ] }
 
   Testing is
 
     ✔ is is a Function
+    ✔ Works for arrays with data
+    ✔ Works for empty arrays
+    ✔ Works for arrays, not objects
+    ✔ Works for objects
+    ✔ Works for maps
+    ✔ Works for regular expressions
+    ✔ Works for sets
+    ✔ Works for weak maps
+    ✔ Works for weak sets
+    ✔ Works for strings - returns false for primitive
+    ✔ Works for strings - returns true when using constructor
+    ✔ Works for numbers - returns false for primitive
+    ✔ Works for numbers - returns true when using constructor
+    ✔ Works for booleans - returns false for primitive
+    ✔ Works for booleans - returns true when using constructor
+    ✔ Works for functions
 
   Testing isAbsoluteURL
 
@@ -814,6 +871,8 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing maxBy
 
     ✔ maxBy is a Function
+    ✔ Produces the right result with a function
+    ✔ Produces the right result with a property name
 
   Testing maxN
 
@@ -838,6 +897,8 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing minBy
 
     ✔ minBy is a Function
+    ✔ Produces the right result with a function
+    ✔ Produces the right result with a property name
 
   Testing minN
 
@@ -917,6 +978,14 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing parseCookie
 
     ✔ parseCookie is a Function
+
+  Testing partial
+
+    ✔ partial is a Function
+
+  Testing partialRight
+
+    ✔ partialRight is a Function
 
   Testing partition
 
@@ -1014,6 +1083,10 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
 
     ✔ redirect is a Function
 
+  Testing reduceSuccessive
+
+    ✔ reduceSuccessive is a Function
+
   Testing reducedFilter
 
     ✔ reducedFilter is a Function
@@ -1074,6 +1147,8 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing shallowClone
 
     ✔ shallowClone is a Function
+    ✔ Shallow cloning works
+    ✔ Does not clone deeply
 
   Testing show
 
@@ -1112,6 +1187,10 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
     ✔ sortedIndex is a Function
     ✔ Returns the lowest index at which value should be inserted into array in order to maintain its sort order.
     ✔ Returns the lowest index at which value should be inserted into array in order to maintain its sort order.
+
+  Testing sortedLastIndex
+
+    ✔ sortedLastIndex is a Function
 
   Testing speechSynthesis
 
@@ -1154,6 +1233,14 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
     ✔ symmetricDifference is a Function
     ✔ Returns the symmetric difference between two arrays.
 
+  Testing symmetricDifferenceBy
+
+    ✔ symmetricDifferenceBy is a Function
+
+  Testing symmetricDifferenceWith
+
+    ✔ symmetricDifferenceWith is a Function
+
   Testing tail
 
     ✔ tail is a Function
@@ -1175,6 +1262,10 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing timeTaken
 
     ✔ timeTaken is a Function
+
+  Testing times
+
+    ✔ times is a Function
 
   Testing toCamelCase
 
@@ -1244,15 +1335,31 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
     ✔ truthCheckCollection is a Function
     ✔ second argument is truthy on all elements of a collection
 
+  Testing unary
+
+    ✔ unary is a Function
+
   Testing unescapeHTML
 
     ✔ unescapeHTML is a Function
     ✔ Unescapes escaped HTML characters.
 
+  Testing unfold
+
+    ✔ unfold is a Function
+
   Testing union
 
     ✔ union is a Function
     ✔ Returns every element that exists in any of the two arrays once
+
+  Testing unionBy
+
+    ✔ unionBy is a Function
+
+  Testing unionWith
+
+    ✔ unionWith is a Function
 
   Testing uniqueElements
 
@@ -1262,6 +1369,17 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
   Testing untildify
 
     ✔ untildify is a Function
+
+  Testing unzip
+
+    ✔ unzip is a Function
+    ✔ unzip([['a', 1, true], ['b', 2, false]]) equals [['a', 'b'], [1, 2], [true, false]]
+    ✔ unzip([['a', 1, true], ['b', 2]]) equals [['a', 'b'], [1, 2], [true]]
+
+  Testing unzipWith
+
+    ✔ unzipWith is a Function
+    ✔ unzipWith([[1, 10, 100], [2, 20, 200]], (...args) => args.reduce((acc, v) => acc + v, 0)) equals [3, 30, 300]
 
   Testing validateNumber
 
@@ -1304,6 +1422,11 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
     ✔ words({}) throws a error
     ✔ words([]) throws a error
     ✔ words(1234) throws a error
+
+  Testing xProd
+
+    ✔ xProd is a Function
+    ✔ xProd([1, 2], ['a', 'b']) returns [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
 
   Testing yesNo
 
@@ -1351,18 +1474,8 @@ Test log for: Tue Jan 23 2018 20:11:47 GMT+0000 (UTC)
     ✔ zipWith is a Function
 
 
-
-  Failed Tests: There was 1 failure
-
-    Testing invertKeyValues
-
-      ✖ Inverts the key-value pairs of an object
+  total:     638
+  passing:   638
+  duration:  374ms
 
 
-  total:     574
-  passing:   573
-  failing:   1
-  duration:  440ms
-
-
-undefined

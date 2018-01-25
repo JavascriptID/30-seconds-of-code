@@ -182,6 +182,8 @@ randomNumberInRange:math,utility,random
 readFileLines:node,array,string
 redirect:browser,url
 reducedFilter:array
+reduceSuccessive:array,function
+reduceWhich:array,function
 remove:array
 reverseString:string,array
 RGBToHex:utility
@@ -228,8 +230,9 @@ toSnakeCase:string,regexp
 transform:object,array
 truncateString:string
 truthCheckCollection:object,logic,array
-unary:adaptor,function
+unary:adapter,function
 unescapeHTML:string,browser
+unfold:function,array
 union:array,math
 unionBy:array,function
 unionWith:array,function
@@ -243,6 +246,7 @@ UUIDGeneratorNode:node,utility,random
 validateNumber:utility,math
 without:array
 words:string,regexp
+xProd:array,math
 yesNo:utility,regexp
 zip:array
 zipObject:array,object

@@ -85,14 +85,6 @@ average(1, 2, 3);
 * [`pipeFunctions`](#pipefunctions)
 * [`promisify`](#promisify)
 * [`spreadOver`](#spreadover)
-
-</details>
-
-###  Adaptor
-
-<details>
-<summary>View contents</summary>
-
 * [`unary`](#unary)
 
 </details>
@@ -142,6 +134,8 @@ average(1, 2, 3);
 * [`pullAtIndex`](#pullatindex)
 * [`pullAtValue`](#pullatvalue)
 * [`reducedFilter`](#reducedfilter)
+* [`reduceSuccessive`](#reducesuccessive)
+* [`reduceWhich`](#reducewhich)
 * [`remove`](#remove)
 * [`sample`](#sample)
 * [`sampleSize`](#samplesize)
@@ -162,6 +156,7 @@ average(1, 2, 3);
 * [`unzip`](#unzip)
 * [`unzipWith`](#unzipwith-)
 * [`without`](#without)
+* [`xProd`](#xprod)
 * [`zip`](#zip)
 * [`zipObject`](#zipobject)
 * [`zipWith`](#zipwith-)
@@ -234,6 +229,7 @@ average(1, 2, 3);
 * [`runPromisesInSeries`](#runpromisesinseries)
 * [`sleep`](#sleep)
 * [`times`](#times)
+* [`unfold`](#unfold)
 
 </details>
 
@@ -625,8 +621,6 @@ arrayMax([1, 2, 3]); // 3
 
 <br>[⬆ Back to top](#table-of-contents)
 
----
- ##  Adaptor
 
 ### unary
 
@@ -1701,6 +1695,58 @@ reducedFilter(data, ['id', 'name'], item => item.age > 24); // [{ id: 2, name: '
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### reduceSuccessive
+
+Applies a function against an accumulator and each element in the array (from left to right), returning an array of successively reduced values.
+
+Use `Array.reduce()` to apply the given function to the given array, storing each new result.
+
+```js
+const reduceSuccessive = (arr, fn, acc) =>
+  arr.reduce((res, val, i, arr) => (res.push(fn(res.slice(-1)[0], val, i, arr)), res), [acc]);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+reduceSuccessive([1, 2, 3, 4, 5, 6], (acc, val) => acc + val, 0); // [0, 1, 3, 6, 10, 15, 21]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### reduceWhich
+
+Returns the minimum/maximum value of an array, after applying the provided function to set comparing rule.
+
+Use `Array.reduce()` in combination with the `comparator` function to get the appropriate element in the array.
+You can omit the second parameter, `comparator`, to use the default one that returns the minimum element in the array.
+
+```js
+const reduceWhich = (arr, comparator = (a, b) => a - b) =>
+  arr.reduce((a, b) => (comparator(a, b) >= 0 ? b : a));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+reduceWhich([1, 3, 2]); // 1
+reduceWhich([1, 3, 2], (a, b) => b - a); // 3
+reduceWhich(
+  [{ name: 'Tom', age: 12 }, { name: 'Jack', age: 18 }, { name: 'Lucy', age: 9 }],
+  (a, b) => a.age - b.age
+); // {name: "Lucy", age: 9}
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### remove
 
 Removes elements from an array for which the given function returns `false`.
@@ -2219,6 +2265,28 @@ const without = (arr, ...args) => arr.filter(v => !args.includes(v));
 
 ```js
 without([2, 1, 2, 3], 1, 2); // [3]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### xProd
+
+Creates a new array out of the two supplied by creating each possible pair from the arrays.
+
+Use `Array.reduce()`, `Array.map()` and `Array.concat()` to produce every possible pair from the elements of the two arrays and save them in an array.
+
+```js
+const xProd = (a, b) => a.reduce((acc, x) => acc.concat(b.map(y => [x, y])), []);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+xProd([1, 2], ['a', 'b']); // [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
 ```
 
 </details>
@@ -3632,6 +3700,35 @@ console.log(output); // 01234
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
+### unfold
+
+Builds an array, using an iterator function and an initial seed value.
+
+Use a `while` loop and `Array.push()` to call the function repeatedly until it returns `false`.
+The iterator function accepts one argument (`seed`) and must always return an array with two elements ([`value`, `nextSeed`]) or `false` to terminate.
+
+```js
+const unfold = (fn, seed) => {
+  let result = [],
+    val = [null, seed];
+  while ((val = fn(val[1]))) result.push(val[0]);
+  return result;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+var f = n => (n > 50 ? false : [-n, n + 10]);
+unfold(f, 10); // [-10, -20, -30, -40, -50]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ---
  ## ➗ Math
 
@@ -4173,8 +4270,8 @@ const minBy = (arr, fn) => Math.min(...arr.map(typeof fn === 'function' ? fn : v
 <summary>Examples</summary>
 
 ```js
-minBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 8
-minBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 8
+minBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 2
+minBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 2
 ```
 
 </details>
