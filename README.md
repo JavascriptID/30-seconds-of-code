@@ -102,8 +102,10 @@ average(1, 2, 3);
 * [`difference`](#difference)
 * [`differenceBy`](#differenceby)
 * [`differenceWith`](#differencewith)
-* [`dropElements`](#dropelements)
+* [`drop`](#drop)
 * [`dropRight`](#dropright)
+* [`dropRightWhile`](#droprightwhile)
+* [`dropWhile`](#dropwhile)
 * [`everyNth`](#everynth)
 * [`filterNonUnique`](#filternonunique)
 * [`findLast`](#findlast)
@@ -133,6 +135,7 @@ average(1, 2, 3);
 * [`pull`](#pull)
 * [`pullAtIndex`](#pullatindex)
 * [`pullAtValue`](#pullatvalue)
+* [`pullBy`](#pullby-)
 * [`reducedFilter`](#reducedfilter)
 * [`reduceSuccessive`](#reducesuccessive)
 * [`reduceWhich`](#reducewhich)
@@ -142,13 +145,17 @@ average(1, 2, 3);
 * [`shuffle`](#shuffle)
 * [`similarity`](#similarity)
 * [`sortedIndex`](#sortedindex)
+* [`sortedIndexBy`](#sortedindexby)
 * [`sortedLastIndex`](#sortedlastindex)
+* [`sortedLastIndexBy`](#sortedlastindexby)
 * [`symmetricDifference`](#symmetricdifference)
 * [`symmetricDifferenceBy`](#symmetricdifferenceby)
 * [`symmetricDifferenceWith`](#symmetricdifferencewith)
 * [`tail`](#tail)
 * [`take`](#take)
 * [`takeRight`](#takeright)
+* [`takeRightWhile`](#takerightwhile)
+* [`takeWhile`](#takewhile)
 * [`union`](#union)
 * [`unionBy`](#unionby)
 * [`unionWith`](#unionwith)
@@ -297,6 +304,7 @@ average(1, 2, 3);
 <details>
 <summary>View contents</summary>
 
+* [`bindAll`](#bindall)
 * [`deepClone`](#deepclone)
 * [`defaults`](#defaults)
 * [`equals`](#equals-)
@@ -346,9 +354,11 @@ average(1, 2, 3);
 * [`mask`](#mask)
 * [`palindrome`](#palindrome)
 * [`pluralize`](#pluralize)
+* [`removeNonASCII`](#removenonascii)
 * [`reverseString`](#reversestring)
 * [`sortCharactersInString`](#sortcharactersinstring)
 * [`splitLines`](#splitlines)
+* [`stripHTMLTags`](#striphtmltags)
 * [`toCamelCase`](#tocamelcase)
 * [`toKebabCase`](#tokebabcase)
 * [`toSnakeCase`](#tosnakecase)
@@ -842,25 +852,23 @@ differenceWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0], (a, b) => Math.round(a) === Mat
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### dropElements
+### drop
 
-Removes elements in an array until the passed function returns `true`. Returns the remaining elements in the array.
+Returns a new array with `n` elements removed from the left.
 
-Loop through the array, using `Array.slice()` to drop the first element of the array until the returned value from the function is `true`.
-Returns the remaining elements.
+Use `Array.slice()` to slice the remove the specified number of elements from the left.
 
 ```js
-const dropElements = (arr, func) => {
-  while (arr.length > 0 && !func(arr[0])) arr = arr.slice(1);
-  return arr;
-};
+const drop = (arr, n = 1) => arr.slice(n);
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```js
-dropElements([1, 2, 3, 4], n => n >= 3); // [3,4]
+drop([1, 2, 3]); // [2,3]
+drop([1, 2, 3], 2); // [3]
+drop([1, 2, 3], 42); // []
 ```
 
 </details>
@@ -885,6 +893,58 @@ const dropRight = (arr, n = 1) => arr.slice(0, -n);
 dropRight([1, 2, 3]); // [1,2]
 dropRight([1, 2, 3], 2); // [1]
 dropRight([1, 2, 3], 42); // []
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### dropRightWhile
+
+Removes elements from the end of an array until the passed function returns `true`. Returns the remaining elements in the array.
+
+Loop through the array, using `Array.slice()` to drop the last element of the array until the returned value from the function is `true`.
+Returns the remaining elements.
+
+```js
+const dropRightWhile = (arr, func) => {
+  while (arr.length > 0 && !func(arr[arr.length - 1])) arr = arr.slice(0, -1);
+  return arr;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+dropRightWhile([1, 2, 3, 4], n => n < 3); // [1, 2]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### dropWhile
+
+Removes elements in an array until the passed function returns `true`. Returns the remaining elements in the array.
+
+Loop through the array, using `Array.slice()` to drop the first element of the array until the returned value from the function is `true`.
+Returns the remaining elements.
+
+```js
+const dropWhile = (arr, func) => {
+  while (arr.length > 0 && !func(arr[0])) arr = arr.slice(1);
+  return arr;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+dropWhile([1, 2, 3, 4], n => n >= 3); // [3,4]
 ```
 
 </details>
@@ -1653,6 +1713,40 @@ let pulled = pullAtValue(myArray, ['b', 'd']); // myArray = [ 'a', 'c' ] , pulle
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### pullBy ![advanced](/advanced.svg)
+
+Mutates the original array to filter out the values specified, based on a given iterator function.
+
+Check if the last argument provided in a function.
+Use `Array.map()` to apply the iterator function `fn` to all array elements.
+Use `Array.filter()` and `Array.includes()` to pull out the values that are not needed.
+Use `Array.length = 0` to mutate the passed in an array by resetting it's length to zero and `Array.push()` to re-populate it with only the pulled values.
+
+```js
+const pullBy = (arr, ...args) => {
+  const length = args.length;
+  let fn = length > 1 ? args[length - 1] : undefined;
+  fn = typeof fn == 'function' ? (args.pop(), fn) : undefined;
+  let argState = (Array.isArray(args[0]) ? args[0] : args).map(val => fn(val));
+  let pulled = arr.filter((v, i) => !argState.includes(fn(v)));
+  arr.length = 0;
+  pulled.forEach(v => arr.push(v));
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+var myArray = [{ x: 1 }, { x: 2 }, { x: 3 }, { x: 1 }];
+pullBy(myArray, [{ x: 1 }, { x: 3 }], o => o.x); // myArray = [{ x: 2 }]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### reducedFilter
 
 Filter an array of objects based on a condition while also filtering out unspecified keys.
@@ -1911,21 +2005,18 @@ sortedIndex([30, 50], 40); // 1
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### sortedLastIndex
+### sortedIndexBy
 
-Returns the highest index at which value should be inserted into array in order to maintain its sort order.
+Returns the lowest index at which value should be inserted into array in order to maintain its sort order, based on a provided iterator function.
 
 Check if the array is sorted in descending order (loosely).
-Use `Array.map()` to map each element to an array with its index and value.
-Use `Array.filter()` to find all possible positions where the element could be inserted, `Array.slice(-1)` to get the last one.
+Use `Array.findIndex()` to find the appropriate index where the element should be inserted, based on the iterator function `fn`.
 
 ```js
-const sortedLastIndex = (arr, n) => {
-  const isDescending = arr[0] > arr[arr.length - 1];
-  const index = arr
-    .map((val, i) => [i, val])
-    .filter(el => (isDescending ? n >= el[1] : n >= el[1]))
-    .slice(-1)[0][0];
+const sortedIndexBy = (arr, n, fn) => {
+  const isDescending = fn(arr[0]) > fn(arr[arr.length - 1]);
+  const val = fn(n);
+  const index = arr.findIndex(el => (isDescending ? val >= fn(el) : val <= fn(el)));
   return index === -1 ? arr.length : index;
 };
 ```
@@ -1934,7 +2025,69 @@ const sortedLastIndex = (arr, n) => {
 <summary>Examples</summary>
 
 ```js
+sortedIndexBy([{ x: 4 }, { x: 5 }], { x: 4 }, o => o.x); // 0
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### sortedLastIndex
+
+Returns the highest index at which value should be inserted into array in order to maintain its sort order.
+
+Check if the array is sorted in descending order (loosely).
+Use `Array.map()` to map each element to an array with its index and value.
+Use `Array.reverse()` and `Array.findIndex()` to find the appropriate last index where the element should be inserted.
+
+```js
+const sortedLastIndex = (arr, n) => {
+  const isDescending = arr[0] > arr[arr.length - 1];
+  const index = arr
+    .map((val, i) => [i, val])
+    .reverse()
+    .findIndex(el => (isDescending ? n <= el[1] : n >= el[1]));
+  return index === -1 ? 0 : arr.length - index - 1;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
 sortedLastIndex([10, 20, 30, 30, 40], 30); // 3
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### sortedLastIndexBy
+
+Returns the highest index at which value should be inserted into array in order to maintain its sort order, based on a provided iterator function.
+
+Check if the array is sorted in descending order (loosely).
+Use `Array.reverse()` and `Array.findIndex()` to find the appropriate last index where the element should be inserted, based on the iterator function `fn`..
+
+```js
+const sortedLastIndexBy = (arr, n, fn) => {
+  const isDescending = fn(arr[0]) > fn(arr[arr.length - 1]);
+  const val = fn(n);
+  const index = arr
+    .map((val, i) => [i, fn(val)])
+    .reverse()
+    .findIndex(el => (isDescending ? val <= el[1] : val >= el[1]));
+  return index === -1 ? 0 : arr.length - index;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+sortedLastIndexBy([{ x: 4 }, { x: 5 }], { x: 4 }, o => o.x); // 1
 ```
 
 </details>
@@ -2085,6 +2238,59 @@ const takeRight = (arr, n = 1) => arr.slice(arr.length - n, arr.length);
 ```js
 takeRight([1, 2, 3], 2); // [ 2, 3 ]
 takeRight([1, 2, 3]); // [3]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### takeRightWhile
+
+Removes elements from the end of an array until the passed function returns `true`. Returns the removed elements.
+
+Loop through the array, using a `for...of` loop over `Array.keys()` until the returned value from the function is `true`.
+Return the removed elements, using `Array.reverse()` and `Array.slice()`.
+
+```js
+const takeRightWhile = (arr, func) => {
+  for (let i of arr.reverse().keys())
+    if (func(arr[i])) return arr.reverse().slice(arr.length - i, arr.length);
+  return arr;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+takeRightWhile([1, 2, 3, 4], n => n < 3); // [3, 4]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### takeWhile
+
+Removes elements in an array until the passed function returns `true`. Returns the removed elements.
+
+Loop through the array, using a `for...of` loop over `Array.keys()` until the returned value from the function is `true`.
+Return the removed elements, using `Array.slice()`.
+
+```js
+const takeWhile = (arr, func) => {
+  for (let i of arr.keys()) if (func(arr[i])) return arr.slice(0, i);
+  return arr;
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+takeWhile([1, 2, 3, 4], n => n >= 3); // [1, 2]
 ```
 
 </details>
@@ -3431,7 +3637,7 @@ defer(longRunningFunction); // Browser will update the HTML then run the functio
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### defer
+### delay
 
 Invokes the provided function after `wait` milliseconds.
 
@@ -4887,6 +5093,41 @@ UUIDGeneratorNode(); // '79c7c136-60ee-40a2-beb2-856f1feabefc'
 ---
  ## 🗃️ Object
 
+### bindAll
+
+Explain briefly what the snippet does.
+
+Use `Array.forEach()` to return a `function` that uses `Function.apply()` to apply the given context (`obj`) to `fn` for each function specified.
+
+```js
+const bindAll = (obj, ...fns) =>
+  fns.forEach(
+    fn =>
+      (obj[fn] = function() {
+        return fn.apply(obj);
+      })
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+var view = {
+  label: 'docs',
+  click: function() {
+    console.log('clicked ' + this.label);
+  }
+};
+bindAll(view, 'click');
+jQuery(element).on('click', view.click); // Logs 'clicked docs' when clicked.
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### deepClone
 
 Creates a deep clone of an object.
@@ -6034,6 +6275,28 @@ autoPluralize(2, 'person'); // 'people'
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### removeNonASCII
+
+Removes non-printable ASCII characters.
+
+Use a regular expression to remove non-printable ASCII characters.
+
+```js
+const removeNonASCII = str => str.replace(/[^\x20-\x7E]/g, '');
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+removeNonASCII('äÄçÇéÉêlorem-ipsumöÖÐþúÚ'); // 'lorem-ipsum'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### reverseString
 
 Reverses a string.
@@ -6094,6 +6357,28 @@ const splitLines = str => str.split(/\r?\n/);
 
 ```js
 splitLines('This\nis a\nmultiline\nstring.\n'); // ['This', 'is a', 'multiline', 'string.' , '']
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### stripHTMLTags
+
+Removes HTML/XML tags from string.
+
+Use a regular expression to remove HTML/XML tags from a string.
+
+```js
+const stripHTMLTags = str => str.replace(/<[^>]*>/g, '');
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+stripHTMLTags('<p><em>lorem</em> <strong>ipsum</strong></p>'); // 'lorem ipsum'
 ```
 
 </details>
@@ -6906,9 +7191,10 @@ Pass `location.search` as the argument to apply to the current `url`.
 
 ```js
 const getURLParameters = url =>
-  url
-    .match(/([^?=&]+)(=([^&]*))/g)
-    .reduce((a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a), {});
+  (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+    (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),
+    {}
+  );
 ```
 
 <details>
@@ -6916,6 +7202,7 @@ const getURLParameters = url =>
 
 ```js
 getURLParameters('http://url.com/page?name=Adam&surname=Smith'); // {name: 'Adam', surname: 'Smith'}
+getURLParameters('google.com'); // {}
 ```
 
 </details>

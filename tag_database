@@ -5,6 +5,7 @@ atob:node,string,utility
 average:math,array
 averageBy:math,array,function
 bind:function,object
+bindAll:object,function
 bindKey:function,object
 bottomVisible:browser
 btoa:node,string,utility
@@ -43,8 +44,10 @@ differenceBy:array,function
 differenceWith:array,function
 digitize:math,array
 distance:math
-dropElements:array,function
+drop:array
 dropRight:array
+dropRightWhile:array,function
+dropWhile:array,function
 elementIsVisibleInViewport:browser
 elo:math,array,advanced
 equals:object,array,type,advanced
@@ -175,6 +178,7 @@ promisify:adapter,function,promise
 pull:array
 pullAtIndex:array
 pullAtValue:array
+pullBy:array,function,advanced
 randomHexColorCode:utility,random
 randomIntArrayInRange:math,utility,random
 randomIntegerInRange:math,utility,random
@@ -185,6 +189,7 @@ reducedFilter:array
 reduceSuccessive:array,function
 reduceWhich:array,function
 remove:array
+removeNonASCII:string,regexp
 reverseString:string,array
 RGBToHex:utility
 round:math
@@ -204,10 +209,13 @@ size:object,array,string
 sleep:function,promise
 sortCharactersInString:string
 sortedIndex:array,math
+sortedIndexBy:array,math,function
 sortedLastIndex:array,math
+sortedLastIndexBy:array,math,function
 splitLines:string
 spreadOver:adapter
 standardDeviation:math,array
+stripHTMLTags:string,utility,regexp
 sum:math,array
 sumBy:math,array,function
 sumPower:math
@@ -217,6 +225,8 @@ symmetricDifferenceWith:array,function
 tail:array
 take:array
 takeRight:array
+takeRightWhile:array,function
+takeWhile:array,function
 times:function
 timeTaken:utility
 toCamelCase:string,regexp
@@ -250,4 +260,4 @@ xProd:array,math
 yesNo:utility,regexp
 zip:array
 zipObject:array,object
-zipWith:array,advanced
+zipWith:array,function,advanced
