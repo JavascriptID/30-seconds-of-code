@@ -422,6 +422,7 @@ average(1, 2, 3);
 * [`RGBToHex`](#rgbtohex)
 * [`serializeCookie`](#serializecookie)
 * [`timeTaken`](#timetaken)
+* [`toCurrency`](#tocurrency)
 * [`toDecimalMark`](#todecimalmark)
 * [`toOrdinalSuffix`](#toordinalsuffix)
 * [`validateNumber`](#validatenumber)
@@ -574,13 +575,10 @@ const overArgs = (fn, transforms) => (...args) => fn(...args.map((val, i) => tra
 <summary>Examples</summary>
 
 ```js
-var func = overArgs(
-  function(x, y) {
-    return [x, y];
-  },
-  [square, doubled]
-);
-func(9, 3); // [81, 6]
+const square = n => n * n;
+const double = n => n * 2;
+const fn = overArgs((x, y) => [x, y], [square, double]);
+fn(9, 3); // [81, 6]
 ```
 
 </details>
@@ -7753,6 +7751,33 @@ const timeTaken = callback => {
 
 ```js
 timeTaken(() => Math.pow(2, 10)); // 1024, (logged): timeTaken: 0.02099609375ms
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### toCurrency
+
+Take a number and return specified currency formatting.
+
+Use `Intl.NumberFormat` to enable country / currency sensitive formatting.
+
+```js
+const toCurrency = (n, curr, LanguageFormat = undefined) =>
+  Intl.NumberFormat(LanguageFormat, { style: 'currency', currency: curr }).format(n);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+toCurrency(123456.789, 'EUR'); // €123,456.79  | currency: Euro | currencyLangFormat: Local
+toCurrency(123456.789, 'USD', 'en-us'); // €123,456.79  | currency: US Dollar | currencyLangFormat: English (United States)
+toCurrency(123456.789, 'USD', 'fa'); // ۱۲۳٬۴۵۶٫۷۹ ؜$ | currency: US Dollar | currencyLangFormat: Farsi
+toCurrency(322342436423.2435, 'JPY'); // ¥322,342,436,423 | currency: Japanese Yen | currencyLangFormat: Local
+toCurrency(322342436423.2435, 'JPY', 'fi'); // 322 342 436 423 ¥ | currency: Japanese Yen | currencyLangFormat: Finnish
 ```
 
 </details>
