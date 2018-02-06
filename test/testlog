@@ -1,4 +1,4 @@
-Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
+Test log for: Mon Feb 05 2018 20:18:19 GMT+0000 (UTC)
 
 > 30-seconds-of-code@0.0.1 test /home/travis/build/Chalarangelo/30-seconds-of-code
 > tape test/**/*.test.js | tap-spec
@@ -11,10 +11,6 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing JSONToFile
 
     ✔ JSONToFile is a Function
-
-  Testing README
-
-    ✔ README is a Function
 
   Testing RGBToHex
 
@@ -89,6 +85,8 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
     ✔ binarySearch is a Function
     ✔ Finds item in array
     ✔ Returns -1 when not found
+    ✔ Works with empty arrays
+    ✔ Works for one element arrays
 
   Testing bind
 
@@ -128,11 +126,15 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
     ✔ capitalize is a Function
     ✔ Capitalizes the first letter of a string
     ✔ Capitalizes the first letter of a string
+    ✔ Works with characters
+    ✔ Works with single character words
 
   Testing capitalizeEveryWord
 
     ✔ capitalizeEveryWord is a Function
     ✔ Capitalizes the first letter of every word in a string
+    ✔ Works with characters
+    ✔ Works with one word string
 
   Testing castArray
 
@@ -332,10 +334,12 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing dropRightWhile
 
     ✔ dropRightWhile is a Function
+    ✔ Removes elements from the end of an array until the passed function returns true.
 
   Testing dropWhile
 
     ✔ dropWhile is a Function
+    ✔ Removes elements in an array until the passed function returns true.
 
   Testing elementIsVisibleInViewport
 
@@ -438,6 +442,7 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing flip
 
     ✔ flip is a Function
+    ✔ Flips argument order
 
   Testing forEachRight
 
@@ -646,10 +651,12 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing intersectionBy
 
     ✔ intersectionBy is a Function
+    ✔ Returns a list of elements that exist in both arrays, after applying the provided function to each array element of both
 
   Testing intersectionWith
 
     ✔ intersectionWith is a Function
+    ✔ Returns a list of elements that exist in both arrays, using a provided comparator function
 
   Testing invertKeyValues
 
@@ -1011,6 +1018,9 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing nthArg
 
     ✔ nthArg is a Function
+    ✔ Returns the nth argument
+    ✔ Returns undefined if arguments too few
+    ✔ Works for negative values
 
   Testing nthElement
 
@@ -1039,10 +1049,12 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing omit
 
     ✔ omit is a Function
+    ✔ Omits the key-value pairs corresponding to the given keys from an object
 
   Testing omitBy
 
     ✔ omitBy is a Function
+    ✔ Creates an object composed of the properties the given function returns falsey for
 
   Testing on
 
@@ -1065,10 +1077,12 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing over
 
     ✔ over is a Function
+    ✔ Applies given functions over multiple arguments
 
   Testing overArgs
 
     ✔ overArgs is a Function
+    ✔ Invokes the provided function with its arguments transformed
 
   Testing palindrome
 
@@ -1084,10 +1098,12 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing partial
 
     ✔ partial is a Function
+    ✔ Prepends arguments
 
   Testing partialRight
 
     ✔ partialRight is a Function
+    ✔ Appends arguments
 
   Testing partition
 
@@ -1107,19 +1123,27 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing pickBy
 
     ✔ pickBy is a Function
+    ✔ Creates an object composed of the properties the given function returns truthy for.
 
   Testing pipeAsyncFunctions
 
     ✔ pipeAsyncFunctions is a Function
+    ✔ Produces the appropriate hash
     ✔ pipeAsyncFunctions result should be 15
 
   Testing pipeFunctions
 
     ✔ pipeFunctions is a Function
+    ✔ Performs left-to-right function composition
 
   Testing pluralize
 
     ✔ pluralize is a Function
+    ✔ Produces the plural of the word
+    ✔ Produces the singular of the word
+    ✔ Produces the plural of the word
+    ✔ Prodices the defined plural of the word
+    ✔ Works with a dictionary
 
   Testing powerset
 
@@ -1145,18 +1169,24 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing pull
 
     ✔ pull is a Function
+    ✔ Pulls the specified values
 
   Testing pullAtIndex
 
     ✔ pullAtIndex is a Function
+    ✔ Pulls the given values
+    ✔ Pulls the given values
 
   Testing pullAtValue
 
     ✔ pullAtValue is a Function
+    ✔ Pulls the specified values
+    ✔ Pulls the specified values
 
   Testing pullBy
 
     ✔ pullBy is a Function
+    ✔ Pulls the specified values
 
   Testing quickSort
 
@@ -1194,6 +1224,7 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
   Testing rearg
 
     ✔ rearg is a Function
+    ✔ Reorders arguments in invoked function
 
   Testing redirect
 
@@ -1699,8 +1730,8 @@ Test log for: Sat Feb 03 2018 20:17:24 GMT+0000 (UTC)
     ✔ Works with multiple promises
 
 
-  total:     803
-  passing:   803
-  duration:  2.4s
+  total:     837
+  passing:   837
+  duration:  2.3s
 
 
