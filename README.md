@@ -33,6 +33,7 @@ CDN links
 - [ES5 Minified (UMD)](https://unpkg.com/30-seconds-of-code/dist/_30s.es5.min.js)
 
 <details>
+<summary>Details</summary>
 
 **Browser**
 
@@ -230,6 +231,7 @@ average(1, 2, 3);
 * [`chainAsync`](#chainasync)
 * [`compose`](#compose)
 * [`composeRight`](#composeright)
+* [`converge`](#converge)
 * [`curry`](#curry)
 * [`debounce`](#debounce)
 * [`defer`](#defer)
@@ -318,6 +320,7 @@ average(1, 2, 3);
 * [`equals`](#equals-)
 * [`findKey`](#findkey)
 * [`findLastKey`](#findlastkey)
+* [`flattenObject`](#flattenobject)
 * [`forOwn`](#forown)
 * [`forOwnRight`](#forownright)
 * [`functions`](#functions)
@@ -340,6 +343,7 @@ average(1, 2, 3);
 * [`size`](#size)
 * [`transform`](#transform)
 * [`truthCheckCollection`](#truthcheckcollection)
+* [`unflattenObject`](#unflattenobject-)
 
 </details>
 
@@ -3763,6 +3767,33 @@ addAndSquare(1, 2); // 9
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### converge
+
+Accepts a converging function and a list of branching functions and returns a function that applies each branching function to the arguments and the results of the branching functions are passed as arguments to the converging function.
+
+Use `Array.map()` and `Function.apply()` to apply each function to the given arguments.
+Use the spread operator (`...`) to call `coverger` with the results of all other functions.
+
+```js
+const converge = (converger, fns) => (...args) => converger(...fns.map(fn => fn.apply(null, args)));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const average = converge((a, b) => a / b, [
+  arr => arr.reduce((a, v) => a + v, 0),
+  arr => arr.length
+]);
+average([1, 2, 3, 4, 5, 6, 7]); // 4
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### curry
 
 Curries a function.
@@ -5540,6 +5571,38 @@ findLastKey(
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### flattenObject
+
+Flatten an object with the paths for keys.
+
+Use recursion.
+Use `Object.keys(obj)` combined with `Array.reduce()` to convert every leaf node to a flattened path node.
+If the value of a key is an object, the function calls itself with the appropriate `prefix` to create the path using `Object.assign()`.
+Otherwise, it adds the appropriate prefixed key-value pair to the accumulator object.
+You should always omit the second argument, `prefix`, unless you want every key to have a prefix.
+
+```js
+const flattenObject = (obj, prefix = '') =>
+  Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? prefix + '.' : '';
+    if (typeof obj[k] === 'object') Object.assign(acc, flattenObject(obj[k], pre + k));
+    else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+flattenObject({ a: { b: { c: 1 } }, d: 1 }); // { 'a.b.c': 1, d: 1 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### forOwn
 
 Iterates over all own properties of an object, running a callback for each one.
@@ -6146,6 +6209,45 @@ const truthCheckCollection = (collection, pre) => collection.every(obj => obj[pr
 
 ```js
 truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex: 'male' }], 'sex'); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### unflattenObject ![advanced](/advanced.svg)
+
+Unlatten an object with the paths for keys.
+
+Use `Object.keys(obj)` combined with `Array.reduce()` to convert flattened path node to a leaf node.
+If the value of a key contains a dot delimiter (`.`), use `Array.split('.')`, string transformations and `JSON.parse()` to create an object, then `Object.assign()` to create the leaf node.
+Otherwise, add the appropriate key-value pair to the accumulator object.
+
+```js
+const unflattenObject = obj =>
+  Object.keys(obj).reduce((acc, k) => {
+    if (k.indexOf('.') !== -1) {
+      const keys = k.split('.');
+      Object.assign(
+        acc,
+        JSON.parse(
+          '{' +
+            keys.map((v, i) => (i !== keys.length - 1 ? `"${v}":{` : `"${v}":`)).join('') +
+            obj[k] +
+            '}'.repeat(keys.length)
+        )
+      );
+    } else acc[k] = obj[k];
+    return acc;
+  }, {});
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+unflattenObject({ 'a.b.c': 1, d: 1 }); // { a: { b: { c: 1 } }, d: 1 }
 ```
 
 </details>
