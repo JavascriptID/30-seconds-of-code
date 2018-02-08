@@ -131,7 +131,7 @@ average(1, 2, 3);
 * [`join`](#join)
 * [`last`](#last)
 * [`longestItem`](#longestitem)
-* [`mapObject`](#mapobject)
+* [`mapObject`](#mapobject-)
 * [`maxN`](#maxn)
 * [`minN`](#minn)
 * [`nthElement`](#nthelement)
@@ -1590,7 +1590,7 @@ longestItem([1, 2, 3], 'foobar'); // 'foobar'
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### mapObject
+### mapObject ![advanced](/advanced.svg)
 
 Maps the values of an array to an object using a function, where the key-value pairs consist of the original value as the key and the mapped value.
 
@@ -5391,6 +5391,8 @@ UUIDGeneratorNode(); // '79c7c136-60ee-40a2-beb2-856f1feabefc'
 
 ### bindAll
 
+Binds methods of an object to the object itself, overwriting the existing method.
+
 Use `Array.forEach()` to return a `function` that uses `Function.apply()` to apply the given context (`obj`) to `fn` for each function specified.
 
 ```js
@@ -7924,7 +7926,7 @@ const toCurrency = (n, curr, LanguageFormat = undefined) =>
 
 ```js
 toCurrency(123456.789, 'EUR'); // €123,456.79  | currency: Euro | currencyLangFormat: Local
-toCurrency(123456.789, 'USD', 'en-us'); // €123,456.79  | currency: US Dollar | currencyLangFormat: English (United States)
+toCurrency(123456.789, 'USD', 'en-us'); // $123,456.79  | currency: US Dollar | currencyLangFormat: English (United States)
 toCurrency(123456.789, 'USD', 'fa'); // ۱۲۳٬۴۵۶٫۷۹ ؜$ | currency: US Dollar | currencyLangFormat: Farsi
 toCurrency(322342436423.2435, 'JPY'); // ¥322,342,436,423 | currency: Japanese Yen | currencyLangFormat: Local
 toCurrency(322342436423.2435, 'JPY', 'fi'); // 322 342 436 423 ¥ | currency: Japanese Yen | currencyLangFormat: Finnish
