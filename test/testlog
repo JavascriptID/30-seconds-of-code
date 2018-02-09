@@ -1,4 +1,4 @@
-Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
+Test log for: Fri Feb 09 2018 13:39:36 GMT+0200 (GTB Standard Time)
 
 > 30-seconds-of-code@0.0.1 test G:\My Files\git Repositories\30-seconds-of-code
 > tape test/**/*.test.js | tap-spec
@@ -943,7 +943,9 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing mapObject
 
     √ mapObject is a Function
-    √ Maps the values of an array to an object using a function
+    √ mapObject([1, 2, 3], a => a * a) returns { 1: 1, 2: 4, 3: 9 }
+    √ mapObject([1, 2, 3, 4], (a, b) => b - a) returns { 1: -1, 2: -1, 3: -1, 4: -1 }
+    √ mapObject([1, 2, 3, 4], (a, b) => a - b) returns { 1: 1, 2: 1, 3: 1, 4: 1 }
 
   Testing mapValues
 
@@ -1165,6 +1167,7 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing promisify
 
     √ promisify is a Function
+    √ Returns a promise
 
   Testing pull
 
@@ -1208,18 +1211,26 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing randomIntArrayInRange
 
     √ randomIntArrayInRange is a Function
+    √ The returned array contains only integers
+    √ The returned array has the proper length
+    √ The returned array's values lie between provided lowerLimit and upperLimit (both inclusive).
 
   Testing randomIntegerInRange
 
     √ randomIntegerInRange is a Function
+    √ The returned value is an integer
+    √ The returned value lies between provided lowerLimit and upperLimit (both inclusive).
 
   Testing randomNumberInRange
 
     √ randomNumberInRange is a Function
+    √ The returned value is a number
+    √ The returned value lies between provided lowerLimit and upperLimit (both inclusive).
 
   Testing readFileLines
 
     √ readFileLines is a Function
+    √ Tested on 09/02/2018 by @chalarangelo
 
   Testing rearg
 
@@ -1288,6 +1299,7 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing runAsync
 
     √ runAsync is a Function
+    √ Tested on 09/02/2018 by @chalarangelo
 
   Testing runPromisesInSeries
 
@@ -1296,10 +1308,18 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing sample
 
     √ sample is a Function
+    √ Returns a random element from the array
+    √ Works for single-element arrays
+    √ Returns undefined for empty array
 
   Testing sampleSize
 
     √ sampleSize is a Function
+    √ Returns a single element without n specified
+    √ Returns a random sample of specified size from an array
+    √ Returns all elements in an array if n >= length
+    √ Returns an empty array if original array is empty
+    √ Returns an empty array if n = 0
 
   Testing scrollToTop
 
@@ -1332,6 +1352,10 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing shuffle
 
     √ shuffle is a Function
+    √ Shuffles the array
+    √ New array contains all original elements
+    √ Works for empty arrays
+    √ Works for single-element arrays
 
   Testing similarity
 
@@ -1520,6 +1544,9 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing tomorrow
 
     √ tomorrow is a Function
+    √ Returns the correct year
+    √ Returns the correct month
+    √ Returns the correct date
 
   Testing toOrdinalSuffix
 
@@ -1636,6 +1663,9 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing untildify
 
     √ untildify is a Function
+    √ Contains no tildes
+    √ Does not alter the rest of the path
+    √ Does not alter paths without tildes
 
   Testing unzip
 
@@ -1657,10 +1687,13 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing UUIDGeneratorBrowser
 
     √ UUIDGeneratorBrowser is a Function
+    √ Tested 09/02/2018 by @chalarangelo
 
   Testing UUIDGeneratorNode
 
     √ UUIDGeneratorNode is a Function
+    √ Contains dashes in the proper places
+    √ Only contains hexadecimal digits
 
   Testing validateNumber
 
@@ -1753,13 +1786,15 @@ Test log for: Thu Feb 08 2018 16:12:32 GMT+0200 (GTB Standard Time)
   Testing zipWith
 
     √ zipWith is a Function
+    √ Runs the function provided
     √ Sends a GET request
+    √ Runs promises in series
     √ Sends a POST request
     √ Works with multiple promises
 
 
-  total:     856
-  passing:   856
+  total:     891
+  passing:   891
   duration:  2.4s
 
 
