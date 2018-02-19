@@ -141,6 +141,7 @@ average(1, 2, 3);
 * [`none`](#none)
 * [`nthElement`](#nthelement)
 * [`partition`](#partition)
+* [`permutations`](#permutations)
 * [`pull`](#pull)
 * [`pullAtIndex`](#pullatindex)
 * [`pullAtValue`](#pullatvalue)
@@ -157,6 +158,7 @@ average(1, 2, 3);
 * [`sortedIndexBy`](#sortedindexby)
 * [`sortedLastIndex`](#sortedlastindex)
 * [`sortedLastIndexBy`](#sortedlastindexby)
+* [`stableSort`](#stablesort-)
 * [`symmetricDifference`](#symmetricdifference)
 * [`symmetricDifferenceBy`](#symmetricdifferenceby)
 * [`symmetricDifferenceWith`](#symmetricdifferencewith)
@@ -362,7 +364,6 @@ average(1, 2, 3);
 <details>
 <summary>View contents</summary>
 
-* [`anagrams`](#anagrams)
 * [`byteSize`](#bytesize)
 * [`capitalize`](#capitalize)
 * [`capitalizeEveryWord`](#capitalizeeveryword)
@@ -371,6 +372,7 @@ average(1, 2, 3);
 * [`escapeRegExp`](#escaperegexp)
 * [`fromCamelCase`](#fromcamelcase)
 * [`isAbsoluteURL`](#isabsoluteurl)
+* [`isAnagram`](#isanagram)
 * [`isLowerCase`](#islowercase)
 * [`isUpperCase`](#isuppercase)
 * [`mask`](#mask)
@@ -380,6 +382,7 @@ average(1, 2, 3);
 * [`reverseString`](#reversestring)
 * [`sortCharactersInString`](#sortcharactersinstring)
 * [`splitLines`](#splitlines)
+* [`stringPermutations`](#stringpermutations)
 * [`stripHTMLTags`](#striphtmltags)
 * [`toCamelCase`](#tocamelcase)
 * [`toKebabCase`](#tokebabcase)
@@ -1850,6 +1853,42 @@ partition(users, o => o.active); // [[{ 'user': 'fred',    'age': 40, 'active': 
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### permutations
+
+⚠️ **WARNING**: This function's execution time increases exponentially with each array element. Anything more than 8 to 10 entries will cause your browser to hang as it tries to solve all the different combinations.
+
+Generates all permutations of an array's elements (contains duplicates).
+
+Use recursion.
+For each element in the given array, create all the partial permutations for the rest of its elements.
+Use `Array.map()` to combine the element with each partial permutation, then `Array.reduce()` to combine all permutations in one array.
+Base cases are for array `length` equal to `2` or `1`.
+
+```js
+const permutations = arr => {
+  if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr;
+  return arr.reduce(
+    (acc, item, i) =>
+      acc.concat(
+        permutations([...arr.slice(0, i), ...arr.slice(i + 1)]).map(val => [item, ...val])
+      ),
+    []
+  );
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+permutations([1, 33, 5]); // [ [ 1, 33, 5 ], [ 1, 5, 33 ], [ 33, 1, 5 ], [ 33, 5, 1 ], [ 5, 1, 33 ], [ 5, 33, 1 ] ]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### pull
 
 Mutates the original array to filter out the values specified.
@@ -2321,6 +2360,36 @@ const sortedLastIndexBy = (arr, n, fn) => {
 
 ```js
 sortedLastIndexBy([{ x: 4 }, { x: 5 }], { x: 4 }, o => o.x); // 1
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### stableSort ![advanced](/advanced.svg)
+
+Performs stable sorting of an array, preserving the initial indexes of items when their values are the same. 
+Does not mutate the original array, but returns a new array instead.
+
+Use `Array.map()` to pair each element of the input array with its corresponding index. 
+Use `Array.sort()` and a `compare` function to sort the list, preserving their initial order if the items compared are equal.
+Use `Array.map()` to convert back to the initial array items.
+
+```js
+const stableSort = (arr, compare) =>
+  arr
+    .map((item, index) => ({ item, index }))
+    .sort((a, b) => compare(a.item, b.item) || a.index - b.index)
+    .map(({ item }) => item);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const stable = stableSort(arr, () => 0); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
 
 </details>
@@ -6518,42 +6587,6 @@ unflattenObject({ 'a.b.c': 1, d: 1 }); // { a: { b: { c: 1 } }, d: 1 }
 ---
  ## 📜 String
 
-### anagrams
-
-⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.
-
-Generates all anagrams of a string (contains duplicates).
-
-Use recursion.
-For each letter in the given string, create all the partial anagrams for the rest of its letters.
-Use `Array.map()` to combine the letter with each partial anagram, then `Array.reduce()` to combine all anagrams in one array.
-Base cases are for string `length` equal to `2` or `1`.
-
-```js
-const anagrams = str => {
-  if (str.length <= 2) return str.length === 2 ? [str, str[1] + str[0]] : [str];
-  return str
-    .split('')
-    .reduce(
-      (acc, letter, i) =>
-        acc.concat(anagrams(str.slice(0, i) + str.slice(i + 1)).map(val => letter + val)),
-      []
-    );
-};
-```
-
-<details>
-<summary>Examples</summary>
-
-```js
-anagrams('abc'); // ['abc','acb','bac','bca','cab','cba']
-```
-
-</details>
-
-<br>[⬆ Back to top](#table-of-contents)
-
-
 ### byteSize
 
 Returns the length of a string in bytes.
@@ -6750,6 +6783,37 @@ const isAbsoluteURL = str => /^[a-z][a-z0-9+.-]*:/.test(str);
 isAbsoluteURL('https://google.com'); // true
 isAbsoluteURL('ftp://www.myserver.net'); // true
 isAbsoluteURL('/foo/bar'); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### isAnagram
+
+Checks if a string is an anagram of another string (case-insensitive, ignores spaces, punctuation and special characters).
+
+Use `String.toLowerCase()`, `String.replace()` with an appropriate regular expression to remove unnecessary characters, `String.split('')`, `Array.sort()` and `Array.join('')` on both strings to normalize them, then check if their normalized forms are equal.
+
+```js
+const isAnagram = (str1, str2) => {
+  const normalize = str =>
+    str
+      .toLowerCase()
+      .replace(/[^a-z0-9]/gi, '')
+      .split('')
+      .sort()
+      .join('');
+  return normalize(str1) === normalize(str2);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isAnagram('iceman', 'cinema'); // true
 ```
 
 </details>
@@ -6985,6 +7049,42 @@ const splitLines = str => str.split(/\r?\n/);
 
 ```js
 splitLines('This\nis a\nmultiline\nstring.\n'); // ['This', 'is a', 'multiline', 'string.' , '']
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### stringPermutations
+
+⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.
+
+Generates all permutations of a string (contains duplicates).
+
+Use recursion.
+For each letter in the given string, create all the partial permutations for the rest of its letters.
+Use `Array.map()` to combine the letter with each partial permutation, then `Array.reduce()` to combine all permutations in one array.
+Base cases are for string `length` equal to `2` or `1`.
+
+```js
+const stringPermutations = str => {
+  if (str.length <= 2) return str.length === 2 ? [str, str[1] + str[0]] : [str];
+  return str
+    .split('')
+    .reduce(
+      (acc, letter, i) =>
+        acc.concat(stringPermutations(str.slice(0, i) + str.slice(i + 1)).map(val => letter + val)),
+      []
+    );
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+stringPermutations('abc'); // ['abc','acb','bac','bca','cab','cba']
 ```
 
 </details>
