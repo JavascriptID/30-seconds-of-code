@@ -162,6 +162,7 @@ minBy:math,array,function
 minN:array,math
 mostPerformant:utility,function
 negate:function
+nest:object
 none:array,function
 nthArg:utility,function
 nthElement:array
@@ -177,6 +178,7 @@ onUserInputChange:browser,event,advanced
 orderBy:object,array
 over:adapter,function
 overArgs:adapter,function
+pad:string
 palindrome:string
 parseCookie:utility,string
 partial:function

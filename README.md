@@ -344,6 +344,7 @@ average(1, 2, 3);
 * [`matches`](#matches)
 * [`matchesWith`](#matcheswith)
 * [`merge`](#merge)
+* [`nest`](#nest)
 * [`objectFromPairs`](#objectfrompairs)
 * [`objectToPairs`](#objecttopairs)
 * [`omit`](#omit)
@@ -376,6 +377,7 @@ average(1, 2, 3);
 * [`isLowerCase`](#islowercase)
 * [`isUpperCase`](#isuppercase)
 * [`mask`](#mask)
+* [`pad`](#pad)
 * [`palindrome`](#palindrome)
 * [`pluralize`](#pluralize)
 * [`removeNonASCII`](#removenonascii)
@@ -2310,16 +2312,12 @@ sortedIndexBy([{ x: 4 }, { x: 5 }], { x: 4 }, o => o.x); // 0
 Returns the highest index at which value should be inserted into array in order to maintain its sort order.
 
 Check if the array is sorted in descending order (loosely).
-Use `Array.map()` to map each element to an array with its index and value.
 Use `Array.reverse()` and `Array.findIndex()` to find the appropriate last index where the element should be inserted.
 
 ```js
 const sortedLastIndex = (arr, n) => {
   const isDescending = arr[0] > arr[arr.length - 1];
-  const index = arr
-    .map((val, i) => [i, val])
-    .reverse()
-    .findIndex(el => (isDescending ? n <= el[1] : n >= el[1]));
+  const index = arr.reverse().findIndex(el => (isDescending ? n <= el : n >= el));
   return index === -1 ? 0 : arr.length - index - 1;
 };
 ```
@@ -2341,16 +2339,17 @@ sortedLastIndex([10, 20, 30, 30, 40], 30); // 3
 Returns the highest index at which value should be inserted into array in order to maintain its sort order, based on a provided iterator function.
 
 Check if the array is sorted in descending order (loosely).
-Use `Array.reverse()` and `Array.findIndex()` to find the appropriate last index where the element should be inserted, based on the iterator function `fn`..
+Use `Array.map()` to apply the iterator function to all elements of the array.
+Use `Array.reverse()` and `Array.findIndex()` to find the appropriate last index where the element should be inserted, based on the provided iterator function.
 
 ```js
 const sortedLastIndexBy = (arr, n, fn) => {
   const isDescending = fn(arr[0]) > fn(arr[arr.length - 1]);
   const val = fn(n);
   const index = arr
-    .map((val, i) => [i, fn(val)])
+    .map(fn)
     .reverse()
-    .findIndex(el => (isDescending ? val <= el[1] : val >= el[1]));
+    .findIndex(el => (isDescending ? val <= el : val >= el));
   return index === -1 ? 0 : arr.length - index;
 };
 ```
@@ -3760,12 +3759,13 @@ Results in a string representation of tomorrow's date.
 Use `new Date()` to get today's date, adding one day using `Date.getDate()` and `Date.setDate()`, and converting the Date object to a string.
 
 ```js
-const tomorrow = () => {
+const tomorrow = (long = false) => {
   let t = new Date();
   t.setDate(t.getDate() + 1);
-  return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(
+  const ret = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(
     t.getDate()
   ).padStart(2, '0')}`;
+  return !long ? ret : `${ret}T00:00:00`;
 };
 ```
 
@@ -3774,6 +3774,7 @@ const tomorrow = () => {
 
 ```js
 tomorrow(); // 2017-12-27 (if current date is 2017-12-26)
+tomorrow(true); // 2017-12-27T00:00:00 (if current date is 2017-12-26)
 ```
 
 </details>
@@ -6259,6 +6260,44 @@ merge(object, other); // { a: [ { x: 2 }, { y: 4 }, { z: 3 } ], b: [ 1, 2, 3 ], 
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### nest
+
+Given a flat array of objects linked to one another, it will nest them recursively.
+Useful for nesting comments, such as the ones on reddit.com.
+
+Use recursion. 
+Use `Array.filter()` to filter the items where the `id` matches the `link`, then `Array.map()` to map each one to a new object that has a `children` property which recursively nests the items based on which ones are children of the current item. 
+Omit the second argument, `id`, to default to `null` which indicates the object is not linked to another one (i.e. it is a top level object). 
+Omit the third argument, `link`, to use `'parent_id'` as the default property which links the object to another one by its `id`.
+
+```js
+const nest = (items, id = null, link = 'parent_id') =>
+  items
+    .filter(item => item[link] === id)
+    .map(item => ({ ...item, children: nest(items, item.id) }));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+// One top level comment
+const comments = [
+  { id: 1, parent_id: null },
+  { id: 2, parent_id: 1 },
+  { id: 3, parent_id: 1 },
+  { id: 4, parent_id: 2 },
+  { id: 5, parent_id: 4 }
+];
+const nestedComments = nest(comments); // [{ id: 1, parent_id: null, children: [...] }]
+```
+
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### objectFromPairs
 
 Creates an object from the given key-value pairs.
@@ -6891,6 +6930,32 @@ const mask = (cc, num = 4, mask = '*') =>
 mask(1234567890); // '******7890'
 mask(1234567890, 3); // '*******890'
 mask(1234567890, -4, '$'); // '$$$$567890'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### pad
+
+Pads a string on both sides with the specified character, if it's shorter than the specified length.
+
+Use `String.padStart()` and `String.padEnd()` to pad both sides of the given string.
+Omit the third argument, `char`, to use the whitespace character as the default padding character.
+
+```js
+const pad = (str, length, char = ' ') =>
+  str.padStart((str.length + length) / 2, char).padEnd(length, char);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+pad('cat', 8); // '  cat   '
+pad(String(42), 6, '0'); // '004200'
+pad('foobar', 3); // 'foobar'
 ```
 
 </details>
