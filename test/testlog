@@ -1,4 +1,4 @@
-Test log for: Thu Mar 08 2018 20:34:08 GMT+0000 (UTC)
+Test log for: Fri Mar 09 2018 20:35:47 GMT+0000 (UTC)
 
 > 30-seconds-of-code@0.0.2 test /home/travis/build/Chalarangelo/30-seconds-of-code
 > tape test/**/*.test.js | tap-spec
@@ -938,7 +938,15 @@ Test log for: Thu Mar 08 2018 20:34:08 GMT+0000 (UTC)
 
     ✔ isSorted is a Function
     ✔ Array is sorted in ascending order
+    ✔ Array is sorted in ascending order
+    ✔ Array is sorted in ascending order
+    ✔ Array is sorted in ascending order
     ✔ Array is sorted in descending order
+    ✔ Array is sorted in descending order
+    ✔ Array is sorted in descending order
+    ✔ Array is sorted in descending order
+    ✔ Array is empty
+    ✔ Array is not sorted, direction changed in array
     ✔ Array is not sorted, direction changed in array
 
   Testing isString
@@ -1214,24 +1222,8 @@ Test log for: Thu Mar 08 2018 20:34:08 GMT+0000 (UTC)
   Testing pad
 
     ✔ pad is a Function
-
-    ✖ cat is padded on both sides
-    ------------------------------
-      operator: equal
-      expected: '  cat   '
-      actual:   'cat'
-      at: Test.test (/home/travis/build/Chalarangelo/30-seconds-of-code/test/pad/pad.test.js:8:5)
-      stack: |-
-
-
-    ✖ length of string is 8
-    ------------------------
-      operator: equal
-      expected: 8
-      actual:   3
-      at: Test.test (/home/travis/build/Chalarangelo/30-seconds-of-code/test/pad/pad.test.js:9:5)
-      stack: |-
-
+    ✔ cat is padded on both sides
+    ✔ length of string is 8
     ✔ pads 42 with "0"
     ✔ does not truncates if string exceeds length
 
@@ -1961,25 +1953,14 @@ Test log for: Thu Mar 08 2018 20:34:08 GMT+0000 (UTC)
     ✔ zipWith is a Function
     ✔ Sends a GET request
     ✔ Runs the function provided
-    ✔ Runs promises in series
     ✔ Sends a POST request
+    ✔ Runs promises in series
     ✔ Works as expecting, passing arguments properly
     ✔ Works with multiple promises
 
 
-
-  Failed Tests: There were 2 failures
-
-    Testing pad
-
-      ✖ cat is padded on both sides
-      ✖ length of string is 8
-
-
-  total:     989
-  passing:   987
-  failing:   2
+  total:     997
+  passing:   997
   duration:  2.5s
 
 
-undefined
