@@ -1,4 +1,4 @@
-Test log for: Sat Apr 07 2018 20:49:47 GMT+0000 (UTC)
+Test log for: Tue Apr 10 2018 20:51:10 GMT+0000 (UTC)
 
 > 30-seconds-of-code@0.0.3 test /home/travis/build/Chalarangelo/30-seconds-of-code
 > tape test/**/*.test.js | tap-spec
@@ -1182,6 +1182,16 @@ Test log for: Sat Apr 07 2018 20:49:47 GMT+0000 (UTC)
     ✔ off is a Function
     ✔ Tested by @chalarangelo on 16/02/2018
 
+  Testing offset
+
+    ✔ offset is a Function
+    ✔ Offset of 0 returns the same array.
+    ✔ Offset > 0 returns the offsetted array.
+    ✔ Offset < 0 returns the reverse offsetted array.
+    ✔ Offset greater than the length of the array returns the same array.
+    ✔ Offset less than the negative length of the array returns the same array.
+    ✔ Offsetting empty array returns an empty array.
+
   Testing omit
 
     ✔ omit is a Function
@@ -1967,8 +1977,8 @@ Test log for: Sat Apr 07 2018 20:49:47 GMT+0000 (UTC)
     ✔ Works with multiple promises
 
 
-  total:     999
-  passing:   999
+  total:     1006
+  passing:   1006
   duration:  2.4s
 
 
