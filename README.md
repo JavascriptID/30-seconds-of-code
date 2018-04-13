@@ -253,6 +253,7 @@ average(1, 2, 3);
 * [`defer`](#defer)
 * [`delay`](#delay)
 * [`functionName`](#functionname)
+* [`hz`](#hz)
 * [`memoize`](#memoize)
 * [`negate`](#negate)
 * [`once`](#once)
@@ -361,6 +362,7 @@ average(1, 2, 3);
 * [`orderBy`](#orderby)
 * [`pick`](#pick)
 * [`pickBy`](#pickby)
+* [`renameKeys`](#renamekeys)
 * [`shallowClone`](#shallowclone)
 * [`size`](#size)
 * [`transform`](#transform)
@@ -4272,6 +4274,50 @@ functionName(Math.max); // max (logged in debug channel of console)
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### hz
+
+Returns the number of times a function executed per second. 
+`hz` is the unit for `hertz`, the unit of frequency defined as one cycle per second.
+
+Use `performance.now()` to get the difference in milliseconds before and after the iteration loop to calculate the time elapsed executing the function `iterations` times. 
+Return the number of cycles per second by converting milliseconds to seconds and dividing it by the time elapsed. 
+Omit the second argument, `iterations`, to use the default of 100 iterations.
+
+```js
+const hz = (fn, iterations = 100) => {
+  const before = performance.now();
+  for (let i = 0; i < iterations; i++) fn();
+  return 1000 * iterations / (performance.now() - before);
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+// 10,000 element array
+const numbers = Array(10000)
+  .fill()
+  .map((_, i) => i);
+
+// Test functions with the same goal: sum up the elements in the array
+const sumReduce = () => numbers.reduce((acc, n) => acc + n, 0);
+const sumForLoop = () => {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  return sum;
+};
+
+// `sumForLoop` is nearly 10 times faster
+Math.round(hz(sumReduce)); // 572
+Math.round(hz(sumForLoop)); // 4784
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### memoize
 
 Returns the memoized (cached) function.
@@ -6616,6 +6662,36 @@ pickBy({ a: 1, b: '2', c: 3 }, x => typeof x === 'number'); // { 'a': 1, 'c': 3 
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### renameKeys
+
+Replaces the names of multiple object keys with the values provided.
+
+Use `Object.keys()` in combination with `Array.reduce()` and the spread operator (`...`) to get the object's keys and rename them according to `keysMap`.
+
+```js
+const renameKeys = (keysMap, obj) =>
+  Object.keys(obj).reduce(
+    (acc, key) => ({
+      ...acc,
+      ...{ [keysMap[key] || key]: obj[key] }
+    }),
+    {}
+  );
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const obj = { name: 'Bobo', job: 'Front-End Master', shoeSize: 100 };
+renameKeys({ name: 'firstName', job: 'passion' }, obj); // { firstName: 'Bobo', passion: 'Front-End Master', shoeSize: 100 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### shallowClone
 
 Creates a shallow clone of an object.
@@ -7551,12 +7627,12 @@ getType(new Set([1, 2, 3])); // 'set'
 
 ### is
 
-Checks if the provided value is of the specified type (doesn't work with literals).
+Checks if the provided value is of the specified type.
 
-Use the `instanceof` operator to check if the provided value is of the specified `type`.
+Ensure the value is not `undefined` or `null` using `Array.includes()`, and compare the `constructor` property on the value with `type` to check if the provided value is of the specified `type`.
 
 ```js
-const is = (type, val) => val instanceof type;
+const is = (type, val) => ![, null].includes(val) && val.constructor === type;
 ```
 
 <details>
@@ -7570,11 +7646,11 @@ is(RegExp, /./g); // true
 is(Set, new Set()); // true
 is(WeakMap, new WeakMap()); // true
 is(WeakSet, new WeakSet()); // true
-is(String, ''); // false
+is(String, ''); // true
 is(String, new String('')); // true
-is(Number, 1); // false
+is(Number, 1); // true
 is(Number, new Number(1)); // true
-is(Boolean, true); // false
+is(Boolean, true); // true
 is(Boolean, new Boolean(true)); // true
 ```
 

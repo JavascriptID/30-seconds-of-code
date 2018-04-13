@@ -103,6 +103,7 @@ hide:browser,css
 httpGet:utility,url,browser
 httpPost:utility,url,browser
 httpsRedirect:browser,url
+hz:function
 indexOfAll:array
 initial:array
 initialize2DArray:array
@@ -216,6 +217,7 @@ reduceSuccessive:array,function
 reduceWhich:array,function
 remove:array
 removeNonASCII:string,regexp
+renameKeys:object
 reverseString:string,array
 RGBToHex:utility
 round:math
