@@ -133,6 +133,7 @@ average(1, 2, 3);
 * [`initializeArrayWithRange`](#initializearraywithrange)
 * [`initializeArrayWithRangeRight`](#initializearraywithrangeright)
 * [`initializeArrayWithValues`](#initializearraywithvalues)
+* [`initializeNDArray`](#initializendarray)
 * [`intersection`](#intersection)
 * [`intersectionBy`](#intersectionby)
 * [`intersectionWith`](#intersectionwith)
@@ -206,6 +207,7 @@ average(1, 2, 3);
 * [`hashBrowser`](#hashbrowser-)
 * [`hide`](#hide)
 * [`httpsRedirect`](#httpsredirect)
+* [`isBrowserTabFocused`](#isbrowsertabfocused)
 * [`observeMutations`](#observemutations-)
 * [`off`](#off)
 * [`on`](#on)
@@ -265,6 +267,7 @@ average(1, 2, 3);
 * [`times`](#times)
 * [`uncurry`](#uncurry)
 * [`unfold`](#unfold)
+* [`when`](#when)
 
 </details>
 
@@ -1519,6 +1522,33 @@ const initializeArrayWithValues = (n, val = 0) => Array(n).fill(val);
 
 ```js
 initializeArrayWithValues(5, 2); // [2,2,2,2,2]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### initializeNDArray
+
+Create a n-dimensional array with given value.
+
+Use recursion.
+Use `Array.map()` to generate rows where each is a new array initialized using `initializeNDArray`.
+
+```js
+const initializeNDArray = (val, ...args) =>
+  args.length === 0
+    ? val
+    : Array.from({ length: args[0] }).map(() => initializeNDArray(val, ...args.slice(1)));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+initializeNDArray(1, 3); // [1,1,1]
+initializeNDArray(5, 2, 2, 2); // [[[5,5],[5,5]],[[5,5],[5,5]]]
 ```
 
 </details>
@@ -3337,6 +3367,28 @@ httpsRedirect(); // If you are on http://mydomain.com, you are redirected to htt
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### isBrowserTabFocused
+
+Returns `true` if the browser tab of the page is focused, `false` otherwise.
+
+Use the `Document.hidden` property, introduced by the Page Visibility API to check if the browser tab of the page is visible or hidden.
+
+```js
+const isBrowserTabFocused = () => !document.hidden;
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isBrowserTabFocused(); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### observeMutations ![advanced](/advanced.svg)
 
 Returns a new MutationObserver and runs the provided callback for each mutation on the specified element.
@@ -4637,6 +4689,30 @@ const unfold = (fn, seed) => {
 ```js
 var f = n => (n > 50 ? false : [-n, n + 10]);
 unfold(f, 10); // [-10, -20, -30, -40, -50]
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### when
+
+Tests a value, `x`, against a predicate function. If `true`, return `fn(x)`. Else, return `x`. 
+
+Return a function expecting a single value, `x`, that returns the appropriate value based on `pred`.
+
+```js
+const when = (pred, whenTrue) => x => (pred(x) ? whenTrue(x) : x);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const doubleEvenNumbers = when(x => x % 2 === 0, x => x * 2);
+doubleEvenNumbers(2); // 4
+doubleEvenNumbers(1); // 1
 ```
 
 </details>

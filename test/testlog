@@ -1,4 +1,4 @@
-Test log for: Sat Apr 14 2018 20:53:48 GMT+0000 (UTC)
+Test log for: Wed Apr 18 2018 20:55:18 GMT+0000 (UTC)
 
 > 30-seconds-of-code@0.0.3 test /home/travis/build/Chalarangelo/30-seconds-of-code
 > tape test/**/*.test.js | tap-spec
@@ -733,6 +733,10 @@ Test log for: Sat Apr 14 2018 20:53:48 GMT+0000 (UTC)
     ✔ initializeArrayWithValues is a Function
     ✔ Initializes and fills an array with the specified values
 
+  Testing initializeNDArray
+
+    ✔ initializeNDArray is a Function
+
   Testing intersection
 
     ✔ intersection is a Function
@@ -766,35 +770,11 @@ Test log for: Sat Apr 14 2018 20:53:48 GMT+0000 (UTC)
     ✔ Works for sets
     ✔ Works for weak maps
     ✔ Works for weak sets
-
-    ✖ Works for strings - returns false for primitive
-    --------------------------------------------------
-      operator: notOk
-      expected: false
-      actual:   true
-      at: Test.test (/home/travis/build/Chalarangelo/30-seconds-of-code/test/is/is.test.js:17:10)
-      stack: |-
-
+    ✔ Works for strings - returns true for primitive
     ✔ Works for strings - returns true when using constructor
-
-    ✖ Works for numbers - returns false for primitive
-    --------------------------------------------------
-      operator: notOk
-      expected: false
-      actual:   true
-      at: Test.test (/home/travis/build/Chalarangelo/30-seconds-of-code/test/is/is.test.js:19:10)
-      stack: |-
-
+    ✔ Works for numbers - returns true for primitive
     ✔ Works for numbers - returns true when using constructor
-
-    ✖ Works for booleans - returns false for primitive
-    ---------------------------------------------------
-      operator: notOk
-      expected: false
-      actual:   true
-      at: Test.test (/home/travis/build/Chalarangelo/30-seconds-of-code/test/is/is.test.js:21:10)
-      stack: |-
-
+    ✔ Works for booleans - returns true for primitive
     ✔ Works for booleans - returns true when using constructor
     ✔ Works for functions
 
@@ -843,6 +823,10 @@ Test log for: Sat Apr 14 2018 20:53:48 GMT+0000 (UTC)
   Testing isBrowser
 
     ✔ isBrowser is a Function
+
+  Testing isBrowserTabFocused
+
+    ✔ isBrowserTabFocused is a Function
 
   Testing isDivisible
 
@@ -2010,20 +1994,8 @@ Test log for: Sat Apr 14 2018 20:53:48 GMT+0000 (UTC)
     ✔ Works with multiple promises
 
 
-
-  Failed Tests: There were 3 failures
-
-    Testing is
-
-      ✖ Works for strings - returns false for primitive
-      ✖ Works for numbers - returns false for primitive
-      ✖ Works for booleans - returns false for primitive
+  total:     1011
+  passing:   1011
+  duration:  2.3s
 
 
-  total:     1009
-  passing:   1006
-  failing:   3
-  duration:  2.4s
-
-
-undefined

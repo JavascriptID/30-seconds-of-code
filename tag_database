@@ -110,6 +110,7 @@ initialize2DArray:array
 initializeArrayWithRange:array,math
 initializeArrayWithRangeRight:array,math
 initializeArrayWithValues:array,math
+initializeNDArray:array,recursion
 inRange:math
 intersection:array,math
 intersectionBy:array,function
@@ -121,6 +122,7 @@ isAnagram:string,regexp
 isArrayLike:type,array
 isBoolean:type
 isBrowser:utility,browser
+isBrowserTabFocused:browser
 isDivisible:math
 isEmpty:type,array,object,string
 isEven:math
@@ -289,6 +291,7 @@ URLJoin:string,utility,regexp
 UUIDGeneratorBrowser:browser,utility,random
 UUIDGeneratorNode:node,utility,random
 validateNumber:utility,math
+when:function
 without:array
 words:string,regexp
 xProd:array,math
