@@ -156,6 +156,7 @@ average(1, 2, 3);
 * [`reducedFilter`](#reducedfilter)
 * [`reduceSuccessive`](#reducesuccessive)
 * [`reduceWhich`](#reducewhich)
+* [`reject`](#reject)
 * [`remove`](#remove)
 * [`sample`](#sample)
 * [`sampleSize`](#samplesize)
@@ -2175,6 +2176,27 @@ reduceWhich(
   [{ name: 'Tom', age: 12 }, { name: 'Jack', age: 18 }, { name: 'Lucy', age: 9 }],
   (a, b) => a.age - b.age
 ); // {name: "Lucy", age: 9}
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### reject
+
+Takes a predicate and array, like `Array.filter()`, but only keeps `x` if `pred(x) === false`.
+
+```js
+const reject = (pred, array) => array.filter((...args) => !pred(...args));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+reject(x => x % 2 === 0, [1, 2, 3, 4, 5]); // [1, 3, 5]
+reject(word => word.length > 4, ['Apple', 'Pear', 'Kiwi', 'Banana']); // ['Pear', 'Kiwi']
 ```
 
 </details>
@@ -7259,18 +7281,12 @@ pad('foobar', 3); // 'foobar'
 Returns `true` if the given string is a palindrome, `false` otherwise.
 
 Convert string `String.toLowerCase()` and use `String.replace()` to remove non-alphanumeric characters from it.
-Then, `String.split('')` into individual characters, `Array.reverse()`, `String.join('')` and compare to the original, unreversed string, after converting it `String.tolowerCase()`.
+Then, use the spread operator (`...`) to split string into individual characters, `Array.reverse()`, `String.join('')` and compare to the original, unreversed string, after converting it `String.tolowerCase()`.
 
 ```js
 const palindrome = str => {
   const s = str.toLowerCase().replace(/[\W_]/g, '');
-  return (
-    s ===
-    s
-      .split('')
-      .reverse()
-      .join('')
-  );
+  return s === [...s].reverse().join('');
 };
 ```
 
