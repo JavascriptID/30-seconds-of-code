@@ -1,4 +1,4 @@
-Test log for: Tue May 08 2018 21:07:41 GMT+0000 (UTC)
+Test log for: Fri May 11 2018 21:08:17 GMT+0000 (UTC)
 
 > 30-seconds-of-code@0.0.3 test /home/travis/build/Chalarangelo/30-seconds-of-code
 > tape test/**/*.test.js | tap-spec
@@ -335,6 +335,8 @@ Test log for: Tue May 08 2018 21:07:41 GMT+0000 (UTC)
     ✔ deepClone is a Function
     ✔ Shallow cloning works
     ✔ Deep cloning works
+    ✔ Array shallow cloning works
+    ✔ Array deep cloning works
 
   Testing deepFlatten
 
@@ -2014,8 +2016,8 @@ Test log for: Tue May 08 2018 21:07:41 GMT+0000 (UTC)
     ✔ Works with multiple promises
 
 
-  total:     1019
-  passing:   1019
-  duration:  2.5s
+  total:     1021
+  passing:   1021
+  duration:  2.4s
 
 
