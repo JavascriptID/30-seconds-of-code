@@ -205,6 +205,7 @@ average(1, 2, 3);
 * [`createEventHub`](#createeventhub-)
 * [`currentURL`](#currenturl)
 * [`detectDeviceType`](#detectdevicetype)
+* [`elementContains`](#elementcontains)
 * [`elementIsVisibleInViewport`](#elementisvisibleinviewport)
 * [`getScrollPosition`](#getscrollposition)
 * [`getStyle`](#getstyle)
@@ -212,6 +213,8 @@ average(1, 2, 3);
 * [`hashBrowser`](#hashbrowser-)
 * [`hide`](#hide)
 * [`httpsRedirect`](#httpsredirect)
+* [`insertAfter`](#insertafter)
+* [`insertBefore`](#insertbefore)
 * [`isBrowserTabFocused`](#isbrowsertabfocused)
 * [`nodeListToArray`](#nodelisttoarray)
 * [`observeMutations`](#observemutations-)
@@ -227,6 +230,7 @@ average(1, 2, 3);
 * [`show`](#show)
 * [`smoothScroll`](#smoothscroll)
 * [`toggleClass`](#toggleclass)
+* [`triggerEvent`](#triggerevent)
 * [`UUIDGeneratorBrowser`](#uuidgeneratorbrowser)
 
 </details>
@@ -3295,6 +3299,29 @@ detectDeviceType(); // "Mobile" or "Desktop"
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### elementContains
+
+Returns `true` if the `parent` element contains the `child` element, `false` otherwise.
+
+Check that `parent` is not the same element as `child`, use `parent.contains(child)` to check if the `parent` element contains the `child` element.
+
+```js
+const elementContains = (parent, child) => parent !== child && parent.contains(child);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+elementContains(document.querySelector('head'), document.querySelector('title')); // true
+elementContains(document.querySelector('body'), document.querySelector('body')); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### elementIsVisibleInViewport
 
 Returns `true` if the element specified is visible in the viewport, `false` otherwise.
@@ -3467,6 +3494,50 @@ const httpsRedirect = () => {
 
 ```js
 httpsRedirect(); // If you are on http://mydomain.com, you are redirected to https://mydomain.com
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### insertAfter
+
+Inserts an HTML string after the end of the specified element.
+
+Use `el.insertAdjacentHTML()` with a position of `'afterend'` to parse `htmlString` and insert it after the end of `el`.
+
+```js
+const insertAfter = (el, htmlString) => el.insertAdjacentHTML('afterend', htmlString);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+insertAfter(document.getElementById('myId'), '<p>after</p>'); // <div id="myId">...</div> <p>after</p>
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### insertBefore
+
+Inserts an HTML string before the start of the specified element.
+
+Use `el.insertAdjacentHTML()` with a position of `'beforebegin'` to parse `htmlString` and insert it before the start of `el`.
+
+```js
+const insertBefore = (el, htmlString) => el.insertAdjacentHTML('beforebegin', htmlString);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+insertBefore(document.getElementById('myId'), '<p>before</p>'); // <p>before</p> <div id="myId">...</div>
 ```
 
 </details>
@@ -3936,6 +4007,32 @@ toggleClass(document.querySelector('p.special'), 'special'); // The paragraph wi
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### triggerEvent
+
+Triggers a specific event on a given element, optionally passing custom data.
+
+Use `new CustomEvent()` to create an event from the specified `eventType` and details.
+Use `el.dispatchEvent()` to trigger the newly created event on the given element.
+Omit the third argument, `detail`, if you do not want to pass custom data to the triggered event.
+
+```js
+const triggerEvent = (el, eventType, detail = undefined) =>
+  el.dispatchEvent(new CustomEvent(eventType, { detail: detail }));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+triggerEvent(document.getElementById('myId'), 'click');
+triggerEvent(document.getElementById('myId'), 'click', { username: 'bob' });
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### UUIDGeneratorBrowser
 
 Generates a UUID in a browser.
@@ -4060,8 +4157,8 @@ const getMeridiemSuffixOfInteger = num =>
     : num === 12
       ? 12 + 'pm'
       : num < 12
-        ? num % 12 + 'am'
-        : num % 12 + 'pm';
+        ? (num % 12) + 'am'
+        : (num % 12) + 'pm';
 ```
 
 <details>
@@ -4256,7 +4353,10 @@ const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
 ```js
 const add5 = x => x + 5;
 const multiply = (x, y) => x * y;
-const multiplyAndAdd5 = compose(add5, multiply);
+const multiplyAndAdd5 = compose(
+  add5,
+  multiply
+);
 multiplyAndAdd5(5, 2); // 15
 ```
 
@@ -4472,7 +4572,7 @@ Omit the second argument, `iterations`, to use the default of 100 iterations.
 const hz = (fn, iterations = 100) => {
   const before = performance.now();
   for (let i = 0; i < iterations; i++) fn();
-  return 1000 * iterations / (performance.now() - before);
+  return (1000 * iterations) / (performance.now() - before);
 };
 ```
 
@@ -4992,7 +5092,7 @@ Converts an angle from degrees to radians.
 Use `Math.PI` and the degree to radian formula to convert the angle from degrees to radians.
 
 ```js
-const degreesToRads = deg => deg * Math.PI / 180.0;
+const degreesToRads = deg => (deg * Math.PI) / 180.0;
 ```
 
 <details>
@@ -5356,7 +5456,7 @@ The GCD formula uses recursion.
 ```js
 const lcm = (...arr) => {
   const gcd = (x, y) => (!y ? x : gcd(y, x % y));
-  const _lcm = (x, y) => x * y / gcd(x, y);
+  const _lcm = (x, y) => (x * y) / gcd(x, y);
   return [...arr].reduce((a, b) => _lcm(a, b));
 };
 ```
@@ -5391,7 +5491,7 @@ const luhnCheck = num => {
     .reverse()
     .map(x => parseInt(x));
   let lastDigit = arr.splice(0, 1)[0];
-  let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + (val * 2) % 9 || 9), 0);
+  let sum = arr.reduce((acc, val, i) => (i % 2 !== 0 ? acc + val : acc + ((val * 2) % 9) || 9), 0);
   sum += lastDigit;
   return sum % 10 === 0;
 };
@@ -5492,7 +5592,7 @@ Use `Array.reduce()` to calculate how many numbers are below the value and how m
 
 ```js
 const percentile = (arr, val) =>
-  100 * arr.reduce((acc, v) => acc + (v < val ? 1 : 0) + (v === val ? 0.5 : 0), 0) / arr.length;
+  (100 * arr.reduce((acc, v) => acc + (v < val ? 1 : 0) + (v === val ? 0.5 : 0), 0)) / arr.length;
 ```
 
 <details>
@@ -5564,7 +5664,7 @@ Converts an angle from radians to degrees.
 Use `Math.PI` and the radian to degree formula to convert the angle from radians to degrees.
 
 ```js
-const radsToDegrees = rad => rad * 180.0 / Math.PI;
+const radsToDegrees = rad => (rad * 180.0) / Math.PI;
 ```
 
 <details>
