@@ -2,7 +2,7 @@
 
 # 30 seconds of code
 
-[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-4FB999.svg)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis Build](https://travis-ci.org/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.org/Chalarangelo/30-seconds-of-code) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/207ea6fa2c204ccda61dc3047986e144)](https://www.codacy.com/app/Chalarangelo/30-seconds-of-code?utm_source=github.com&utm_medium=referral&utm_content=Chalarangelo/30-seconds-of-code&utm_campaign=badger) [![Maintainability](https://api.codeclimate.com/v1/badges/e9020d1c963a91c0c8a2/maintainability)](https://codeclimate.com/github/Chalarangelo/30-seconds-of-code/maintainability)  [![Insight.io](https://img.shields.io/badge/insight.io-Ready-brightgreen.svg)](https://insight.io/github.com/Chalarangelo/30-seconds-of-code/tree/master/?source=0) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code)
+[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-4FB999.svg)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis Build](https://travis-ci.com/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.com/Chalarangelo/30-seconds-of-code) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/207ea6fa2c204ccda61dc3047986e144)](https://www.codacy.com/app/Chalarangelo/30-seconds-of-code?utm_source=github.com&utm_medium=referral&utm_content=Chalarangelo/30-seconds-of-code&utm_campaign=badger) [![Maintainability](https://api.codeclimate.com/v1/badges/e9020d1c963a91c0c8a2/maintainability)](https://codeclimate.com/github/Chalarangelo/30-seconds-of-code/maintainability)  [![Insight.io](https://img.shields.io/badge/insight.io-Ready-brightgreen.svg)](https://insight.io/github.com/Chalarangelo/30-seconds-of-code/tree/master/?source=0) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) [![Known Vulnerabilities](https://snyk.io/test/github/Chalarangelo/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Chalarangelo/30-seconds-of-code?targetFile=package.json) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code)
 
 
 > Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
@@ -5171,13 +5171,12 @@ const elo = ([...ratings], kFactor = 32, selfRating) => {
     (selfRating || rating) + kFactor * (i - expectedScore(i ? a : b, i ? b : a));
   if (ratings.length === 2) {
     return [newRating(a, 1), newRating(b, 0)];
-  } else {
-    for (let i = 0; i < ratings.length; i++) {
-      let j = i;
-      while (j < ratings.length - 1) {
-        [ratings[i], ratings[j + 1]] = elo([ratings[i], ratings[j + 1]], kFactor);
-        j++;
-      }
+  }
+  for (let i = 0, len = ratings.length; i < len; i++) {
+    let j = i;
+    while (j < len - 1) {
+      j++;
+      [ratings[i], ratings[j]] = elo([ratings[i], ratings[j]], kFactor);
     }
   }
   return ratings;
@@ -6316,7 +6315,7 @@ If none of the above conditions are met, use `Object.keys()` to check if both va
 const equals = (a, b) => {
   if (a === b) return true;
   if (a instanceof Date && b instanceof Date) return a.getTime() === b.getTime();
-  if (!a || !b || (typeof a != 'object' && typeof b !== 'object')) return a === b;
+  if (!a || !b || (typeof a !== 'object' && typeof b !== 'object')) return a === b;
   if (a === null || a === undefined || b === null || b === undefined) return false;
   if (a.prototype !== b.prototype) return false;
   let keys = Object.keys(a);
@@ -7115,7 +7114,7 @@ truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex
 
 ### unflattenObject ![advanced](/advanced.svg)
 
-Unlatten an object with the paths for keys.
+Unflatten an object with the paths for keys.
 
 Use `Object.keys(obj)` combined with `Array.reduce()` to convert flattened path node to a leaf node.
 If the value of a key contains a dot delimiter (`.`), use `Array.split('.')`, string transformations and `JSON.parse()` to create an object, then `Object.assign()` to create the leaf node.
