@@ -107,6 +107,7 @@ average(1, 2, 3);
 
 * [`all`](#all)
 * [`any`](#any)
+* [`arrayToCSV`](#arraytocsv)
 * [`bifurcate`](#bifurcate)
 * [`bifurcateBy`](#bifurcateby)
 * [`chunk`](#chunk)
@@ -392,6 +393,8 @@ average(1, 2, 3);
 * [`byteSize`](#bytesize)
 * [`capitalize`](#capitalize)
 * [`capitalizeEveryWord`](#capitalizeeveryword)
+* [`CSVToArray`](#csvtoarray)
+* [`CSVToJSON`](#csvtojson-)
 * [`decapitalize`](#decapitalize)
 * [`escapeHTML`](#escapehtml)
 * [`escapeRegExp`](#escaperegexp)
@@ -842,6 +845,31 @@ const any = (arr, fn = Boolean) => arr.some(fn);
 ```js
 any([0, 1, 2, 0], x => x >= 2); // true
 any([0, 0, 1, 0]); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### arrayToCSV
+
+Converts a 2D array to a comma-separated values (CSV) string.
+
+Use `Array.map()` and `String.join(delimiter)` to combine individual 1D arrays (rows) into strings.
+Use `String.join('\n')` to combine all rows into a CSV string, separating each row with a newline.
+Omit the second argument, `delimiter`, to use a default delimiter of `,`.
+
+```js
+const arrayToCSV = (arr, delimiter = ',') => arr.map(v => v.join(delimiter)).join('\n');
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+arrayToCSV([['a', 'b'], ['c', 'd']]); // 'a,b\nc,d'
+arrayToCSV([['a', 'b'], ['c', 'd']], ';'); // 'a;b\nc;d'
 ```
 
 </details>
@@ -7216,6 +7244,73 @@ const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperC
 
 ```js
 capitalizeEveryWord('hello world!'); // 'Hello World!'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### CSVToArray
+
+Converts a comma-separated values (CSV) string to a 2D array.
+
+Use `Array.slice()` and `Array.indexOf('\n')` to remove the first row (title row) if `omitFirstRow` is `true`.
+Use `String.split('\n')` to create a string for each row, then `String.split(delimiter)` to separate the values in each row.
+Omit the second argument, `delimiter`, to use a default delimiter of `,`.
+Omit the third argument, `omitFirstRow`, to include the first row (title row) of the CSV string.
+
+```js
+const CSVToArray = (data, delimiter = ',', omitFirstRow = false) =>
+  data
+    .slice(omitFirstRow ? data.indexOf('\n') + 1 : 0)
+    .split('\n')
+    .map(v => v.split(delimiter));
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+CSVToArray('a,b\nc,d'); // [['a','b'],['c','d']];
+CSVToArray('a;b\nc;d', ';'); // [['a','b'],['c','d']];
+CSVToArray('col1,col2\na,b\nc,d', ',', true); // [['a','b'],['c','d']];
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### CSVToJSON ![advanced](/advanced.svg)
+
+Converts a comma-separated values (CSV) string to a 2D array of objects.
+The first row of the string is used as the title row.
+
+Use `Array.slice()` and `Array.indexOf('\n')` and `String.split(delimiter)` to separate the first row (title row) into values.
+Use `String.split('\n')` to create a string for each row, then `Array.map()` and `String.split(delimiter)` to separate the values in each row.
+Use `Array.reduce()` to create an object for each row's values, with the keys parsed from the title row.
+Omit the second argument, `delimiter`, to use a default delimiter of `,`.
+
+```js
+const CSVToJSON = (data, delimiter = ',') => {
+  const titles = data.slice(0, data.indexOf('\n')).split(delimiter);
+  return data
+    .slice(data.indexOf('\n') + 1)
+    .split('\n')
+    .map(v => {
+      const values = v.split(delimiter);
+      return titles.reduce((obj, title, index) => ((obj[title] = values[index]), obj), {});
+    });
+};
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+CSVToJSON('col1,col2\na,b\nc,d'); // [{'col1': 'a', 'col2': 'b'}, {'col1': 'c', 'col2': 'd'}];
+CSVToJSON('col1;col2\na;b\nc;d', ';'); // [{'col1': 'a', 'col2': 'b'}, {'col1': 'c', 'col2': 'd'}];
 ```
 
 </details>

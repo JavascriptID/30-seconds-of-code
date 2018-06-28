@@ -1,6 +1,7 @@
 all:array,function
 any:array,function
 approximatelyEqual:math
+arrayToCSV:array,string,utility
 arrayToHtmlList:browser,array
 ary:adapter,function
 atob:node,string,utility
@@ -38,6 +39,8 @@ counter:browser,advanced
 countOccurrences:array
 createElement:browser,utility
 createEventHub:browser,event,advanced
+CSVToArray:string,array,utility
+CSVToJSON:string,array,object,advanced
 currentURL:browser,url
 curry:function,recursion
 debounce:function
