@@ -355,6 +355,7 @@ average(1, 2, 3);
 * [`bindAll`](#bindall)
 * [`deepClone`](#deepclone)
 * [`defaults`](#defaults)
+* [`dig`](#dig)
 * [`equals`](#equals-)
 * [`findKey`](#findkey)
 * [`findLastKey`](#findlastkey)
@@ -405,6 +406,7 @@ average(1, 2, 3);
 * [`isAnagram`](#isanagram)
 * [`isLowerCase`](#islowercase)
 * [`isUpperCase`](#isuppercase)
+* [`mapString`](#mapstring)
 * [`mask`](#mask)
 * [`pad`](#pad)
 * [`palindrome`](#palindrome)
@@ -6369,6 +6371,43 @@ defaults({ a: 1 }, { b: 2 }, { b: 6 }, { a: 3 }); // { a: 1, b: 2 }
 <br>[⬆ Back to top](#table-of-contents)
 
 
+### dig
+
+Returns the target value in a nested JSON object, based on the given key.
+
+Use the `in` operator to check if `target` exists in `obj`.
+If found, return the value of `obj[target]`, otherwise use `Object.values(obj)` and `Array.reduce()` to recursively call `dig` on each nested object until the first matching key/value pair is found.
+
+```js
+const dig = (obj, target) =>
+  target in obj
+    ? obj[target]
+    : Object.values(obj).reduce((acc, val) => {
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const data = {
+  level1: {
+    level2: {
+      level3: 'some data'
+    }
+  }
+};
+dig(data, 'level3'); // 'some data'
+dig(data, 'level4'); // undefined
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
 ### equals ![advanced](/advanced.svg)
 
 Performs a deep comparison between two values to determine if they are equivalent.
@@ -7562,6 +7601,34 @@ const isUpperCase = str => str === str.toUpperCase();
 isUpperCase('ABC'); // true
 isLowerCase('A3@$'); // true
 isLowerCase('aB4'); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+
+### mapString
+
+Creates a new string with the results of calling a provided function on every character in the calling string.
+
+Use `String.split('')` and `Array.map()` to call the provided function, `fn`, for each character in `str`.
+Use `Array.join('')` to recombine the array of characters into a string.
+The callback function, `fn`, takes three arguments (the current character, the index of the current character and the string `mapString` was called upon).
+
+```js
+const mapString = (str, fn) =>
+  str
+    .split('')
+    .map((c, i) => fn(c, i, str))
+    .join('');
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+mapString('lorem ipsum', c => c.toUpperCase()); // 'LOREM IPSUM'
 ```
 
 </details>
