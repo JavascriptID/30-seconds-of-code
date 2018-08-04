@@ -11,9 +11,8 @@ test('isObject([]) is a object', () => {
   expect(isObject([])).toBeTruthy();
 });
 test('isObject({ a:1 }) is a object', () => {
-  expect(isObject({ a:1 })).toBeTruthy();
+  expect(isObject({ a: 1 })).toBeTruthy();
 });
 test('isObject(true) is not a object', () => {
   expect(isObject(true)).toBeFalsy();
 });
-  
