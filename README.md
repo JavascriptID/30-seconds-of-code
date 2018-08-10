@@ -4442,10 +4442,7 @@ Return a `function` that uses `Function.apply()` to apply the given `context` to
 Use `Array.concat()` to prepend any additional supplied parameters to the arguments.
 
 ```js
-const bind = (fn, context, ...args) =>
-  function() {
-    return fn.apply(context, args.concat(...arguments));
-  };
+const bind = (fn, context, ...boundArgs) => (...args) => fn.apply(context, [...boundArgs, ...args]);
 ```
 
 <details>
@@ -4470,13 +4467,11 @@ console.log(freddyBound('hi', '!')); // 'hi fred!'
 Creates a function that invokes the method at a given key of an object, optionally adding any additional supplied parameters to the beginning of the arguments.
 
 Return a `function` that uses `Function.apply()` to bind `context[fn]` to `context`.
-Use `Array.concat()` to prepend any additional supplied parameters to the arguments.
+Use the spread operator (`...`) to prepend any additional supplied parameters to the arguments.
 
 ```js
-const bindKey = (context, fn, ...args) =>
-  function() {
-    return context[fn].apply(context, args.concat(...arguments));
-  };
+const bindKey = (context, fn, ...boundArgs) => (...args) =>
+  context[fn].apply(context, [...boundArgs, ...args]);
 ```
 
 <details>
