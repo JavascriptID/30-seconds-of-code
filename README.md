@@ -735,16 +735,10 @@ delay(2000).then(() => console.log('Hi!')); // // Promise resolves after 2s
 
 Creates a function that invokes the provided function with its arguments arranged according to the specified indexes.
 
-Use `Array.reduce()` and `Array.indexOf()` to reorder arguments based on `indexes` in combination with the spread operator (`...`) to pass the transformed arguments to `fn`.
+Use `Array.map()` to reorder arguments based on `indexes` in combination with the spread operator (`...`) to pass the transformed arguments to `fn`.
 
 ```js
-const rearg = (fn, indexes) => (...args) =>
-  fn(
-    ...args.reduce(
-      (acc, val, i) => ((acc[indexes.indexOf(i)] = val), acc),
-      Array.from({ length: indexes.length })
-    )
-  );
+const rearg = (fn, indexes) => (...args) => fn(...indexes.map(i => args[i]));
 ```
 
 <details>
@@ -1553,13 +1547,13 @@ initialize2DArray(2, 2, 0); // [[0,0], [0,0]]
 
 Initializes an array containing the numbers in the specified range where `start` and `end` are inclusive with their common difference `step`.
 
-Use `Array.from(Math.ceil((end+1-start)/step))` to create an array of the desired length(the amounts of elements is equal to `(end-start)/step` or `(end+1-start)/step` for inclusive end), `Array.map()` to fill with the desired values in a range.
+Use `Array.from()` to create an array of the desired length, `(end - start + 1)/step`, and a map function to fill it with the desired values in the given range.
 You can omit `start` to use a default value of `0`.
 You can omit `step` to use a default value of `1`.
 
 ```js
 const initializeArrayWithRange = (end, start = 0, step = 1) =>
-  Array.from({ length: Math.ceil((end + 1 - start) / step) }).map((v, i) => i * step + start);
+  Array.from({ length: Math.ceil((end - start + 1) / step) }, (v, i) => i * step + start);
 ```
 
 <details>
@@ -1856,10 +1850,10 @@ last([1, 2, 3]); // 3
 
 Takes any number of iterable objects or objects with a `length` property and returns the longest one.
 
-Use `Array.sort()` to sort all arguments by `length`, return the first (longest) one.
+Use `Array.reduce()` to collect the longest element.  Returns [] for empty array.
 
 ```js
-const longestItem = (...vals) => [...vals].sort((a, b) => b.length - a.length)[0];
+const longestItem = (...vals) => [...vals].reduce((a, x) => (a.length > x.length ? a : x), []);
 ```
 
 <details>
