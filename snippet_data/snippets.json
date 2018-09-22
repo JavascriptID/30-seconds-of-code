@@ -12,7 +12,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "beginner"
         ]
       },
       "meta": {
@@ -32,7 +33,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "beginner"
         ]
       },
       "meta": {
@@ -52,7 +54,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "beginner"
         ]
       },
       "meta": {
@@ -71,7 +74,8 @@
           "approximatelyEqual(Math.PI / 2.0, 1.5708); // true"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -92,7 +96,8 @@
         "tags": [
           "array",
           "string",
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
@@ -112,7 +117,8 @@
         ],
         "tags": [
           "browser",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -132,7 +138,8 @@
         ],
         "tags": [
           "adapter",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -153,7 +160,8 @@
         "tags": [
           "node",
           "string",
-          "utility"
+          "utility",
+          "beginner"
         ]
       },
       "meta": {
@@ -172,7 +180,8 @@
           "var elements = attempt(function(selector) {\n  return document.querySelectorAll(selector);\n}, '>_>');\nif (elements instanceof Error) elements = []; // elements = []"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -192,7 +201,8 @@
         ],
         "tags": [
           "math",
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -213,7 +223,8 @@
         "tags": [
           "math",
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -232,7 +243,8 @@
           "bifurcate(['beep', 'boop', 'foo', 'bar'], [true, true, false, true]); // [ ['beep', 'boop', 'bar'], ['foo'] ]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -252,7 +264,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -272,7 +285,8 @@
         ],
         "tags": [
           "function",
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -292,7 +306,8 @@
         ],
         "tags": [
           "object",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -312,7 +327,8 @@
         ],
         "tags": [
           "function",
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -331,7 +347,8 @@
           "binomialCoefficient(8, 2); // 28"
         ],
         "tags": [
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -350,7 +367,8 @@
           "bottomVisible(); // true"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "intermediate"
         ]
       },
       "meta": {
@@ -371,7 +389,8 @@
         "tags": [
           "node",
           "string",
-          "utility"
+          "utility",
+          "beginner"
         ]
       },
       "meta": {
@@ -390,7 +409,8 @@
           "byteSize('😀'); // 4\nbyteSize('Hello World'); // 11"
         ],
         "tags": [
-          "string"
+          "string",
+          "beginner"
         ]
       },
       "meta": {
@@ -410,7 +430,8 @@
         ],
         "tags": [
           "adapter",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -430,7 +451,8 @@
         ],
         "tags": [
           "string",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -450,7 +472,8 @@
         ],
         "tags": [
           "string",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -471,7 +494,8 @@
         "tags": [
           "utility",
           "array",
-          "type"
+          "type",
+          "beginner"
         ]
       },
       "meta": {
@@ -490,7 +514,8 @@
           "chainAsync([\n  next => {\n    console.log('0 seconds');\n    setTimeout(next, 1000);\n  },\n  next => {\n    console.log('1 second');\n  }\n]);"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -509,7 +534,8 @@
           "chunk([1, 2, 3, 4, 5], 2); // [[1,2],[3,4],[5]]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -528,7 +554,8 @@
           "clampNumber(2, 3, 5); // 3\nclampNumber(1, -1, -5); // -1"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -548,7 +575,8 @@
         ],
         "tags": [
           "utility",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -567,7 +595,8 @@
           "coalesce(null, undefined, '', NaN, 'Waldo'); // \"\""
         ],
         "tags": [
-          "utility"
+          "utility",
+          "beginner"
         ]
       },
       "meta": {
@@ -586,7 +615,8 @@
           "const customCoalesce = coalesceFactory(_ => ![null, undefined, '', NaN].includes(_));\ncustomCoalesce(undefined, null, NaN, '', 'Waldo'); // \"Waldo\""
         ],
         "tags": [
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
@@ -607,7 +637,8 @@
         "tags": [
           "adapter",
           "function",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -628,7 +659,8 @@
         "tags": [
           "node",
           "utility",
-          "string"
+          "string",
+          "intermediate"
         ]
       },
       "meta": {
@@ -647,7 +679,8 @@
           "compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34]); // [ 1, 2, 3, 'a', 's', 34 ]"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -666,7 +699,8 @@
           "const add5 = x => x + 5;\nconst multiply = (x, y) => x * y;\nconst multiplyAndAdd5 = compose(\n  add5,\n  multiply\n);\nmultiplyAndAdd5(5, 2); // 15"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -685,7 +719,8 @@
           "const add = (x, y) => x + y;\nconst square = x => x * x;\nconst addAndSquare = composeRight(add, square);\naddAndSquare(1, 2); // 9"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -704,7 +739,8 @@
           "const average = converge((a, b) => a / b, [\n  arr => arr.reduce((a, v) => a + v, 0),\n  arr => arr.length\n]);\naverage([1, 2, 3, 4, 5, 6, 7]); // 4"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -745,7 +781,8 @@
         ],
         "tags": [
           "array",
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -784,7 +821,8 @@
           "countOccurrences([1, 1, 2, 1, 2, 3], 1); // 3"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -804,7 +842,8 @@
         ],
         "tags": [
           "browser",
-          "utility"
+          "utility",
+          "beginner"
         ]
       },
       "meta": {
@@ -846,7 +885,8 @@
         "tags": [
           "string",
           "array",
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
@@ -888,7 +928,8 @@
         ],
         "tags": [
           "browser",
-          "url"
+          "url",
+          "beginner"
         ]
       },
       "meta": {
@@ -908,7 +949,8 @@
         ],
         "tags": [
           "function",
-          "recursion"
+          "recursion",
+          "intermediate"
         ]
       },
       "meta": {
@@ -927,7 +969,8 @@
           "window.addEventListener(\n  'resize',\n  debounce(() => {\n    console.log(window.innerWidth);\n    console.log(window.innerHeight);\n  }, 250)\n); // Will log the window dimensions at most every 250ms"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -947,7 +990,8 @@
         ],
         "tags": [
           "string",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -967,7 +1011,8 @@
         ],
         "tags": [
           "object",
-          "recursion"
+          "recursion",
+          "intermediate"
         ]
       },
       "meta": {
@@ -987,12 +1032,34 @@
         ],
         "tags": [
           "array",
-          "recursion"
+          "recursion",
+          "intermediate"
         ]
       },
       "meta": {
         "archived": false,
         "hash": "31714831376eeddd863a295af778632f584468745fbeb4e9a6f62b5275ea3562"
+      }
+    },
+    {
+      "id": "deepFreeze",
+      "type": "snippet",
+      "attributes": {
+        "fileName": "deepFreeze.md",
+        "text": "Deep freezes an object.\n\nCalls `Object.freeze(obj)` recursively on all unfrozen properties of passed object that are `instanceof` object.",
+        "codeBlocks": [
+          "const deepFreeze = obj =>\n  Object.keys(obj).forEach(\n    prop =>\n      !obj[prop] instanceof Object || Object.isFrozen(obj[prop]) ? null : deepFreeze(obj[prop])\n  ) || Object.freeze(obj);",
+          "'use strict';\n\nconst o = deepFreeze([1, [2, 3]]);\n\no[0] = 3; // not allowed\no[1][0] = 4; // not allowed as well"
+        ],
+        "tags": [
+          "object",
+          "recursion",
+          "intermediate"
+        ]
+      },
+      "meta": {
+        "archived": false,
+        "hash": "24b3dd66c4b69577d70917ba4f0c119a7ad21497d18704b7150c3693673b5e53"
       }
     },
     {
@@ -1006,7 +1073,8 @@
           "defaults({ a: 1 }, { b: 2 }, { b: 6 }, { a: 3 }); // { a: 1, b: 2 }"
         ],
         "tags": [
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1025,7 +1093,8 @@
           "// Example A:\ndefer(console.log, 'a'), console.log('b'); // logs 'b' then 'a'\n\n// Example B:\ndocument.querySelector('#someElement').innerHTML = 'Hello';\nlongRunningFunction(); //Browser will not update the HTML until this has finished\ndefer(longRunningFunction); // Browser will update the HTML then run the function"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1044,7 +1113,8 @@
           "degreesToRads(90.0); // ~1.5708"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -1063,7 +1133,8 @@
           "delay(\n  function(text) {\n    console.log(text);\n  },\n  1000,\n  'later'\n); // Logs 'later' after one second."
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1082,7 +1153,8 @@
           "detectDeviceType(); // \"Mobile\" or \"Desktop\""
         ],
         "tags": [
-          "browser"
+          "browser",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1102,7 +1174,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -1122,7 +1195,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1142,7 +1216,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1162,7 +1237,8 @@
         ],
         "tags": [
           "object",
-          "recursion"
+          "recursion",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1182,7 +1258,8 @@
         ],
         "tags": [
           "math",
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -1201,7 +1278,8 @@
           "distance(1, 1, 2, 3); // 2.23606797749979"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -1220,7 +1298,8 @@
           "drop([1, 2, 3]); // [2,3]\ndrop([1, 2, 3], 2); // [3]\ndrop([1, 2, 3], 42); // []"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -1239,7 +1318,8 @@
           "dropRight([1, 2, 3]); // [1,2]\ndropRight([1, 2, 3], 2); // [1]\ndropRight([1, 2, 3], 42); // []"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -1259,7 +1339,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1279,7 +1360,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1298,7 +1380,8 @@
           "elementContains(document.querySelector('head'), document.querySelector('title')); // true\nelementContains(document.querySelector('body'), document.querySelector('body')); // false"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1317,7 +1400,8 @@
           "// e.g. 100x100 viewport and a 10x10px element at position {top: -1, left: 0, bottom: 9, right: 10}\nelementIsVisibleInViewport(el); // false - (not fully visible)\nelementIsVisibleInViewport(el, true); // true - (partially visible)"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "advanced"
         ]
       },
       "meta": {
@@ -1381,7 +1465,8 @@
         "tags": [
           "string",
           "browser",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1401,7 +1486,8 @@
         ],
         "tags": [
           "string",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1420,7 +1506,8 @@
           "everyNth([1, 2, 3, 4, 5, 6], 2); // [ 2, 4, 6 ]"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -1440,7 +1527,8 @@
         ],
         "tags": [
           "utility",
-          "string"
+          "string",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1460,7 +1548,8 @@
         ],
         "tags": [
           "math",
-          "recursion"
+          "recursion",
+          "beginner"
         ]
       },
       "meta": {
@@ -1480,7 +1569,8 @@
         ],
         "tags": [
           "math",
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -1499,7 +1589,8 @@
           "filterNonUnique([1, 2, 2, 3, 4, 4, 5]); // [1,3,5]"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -1519,7 +1610,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1539,7 +1631,8 @@
         ],
         "tags": [
           "object",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1558,7 +1651,8 @@
           "findLast([1, 2, 3, 4], n => n % 2 === 1); // 3"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -1578,7 +1672,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1598,7 +1693,8 @@
         ],
         "tags": [
           "object",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1617,7 +1713,8 @@
           "flatten([1, [2], 3, 4]); // [1, 2, 3, 4]\nflatten([1, [2, [3, [4, 5], 6], 7], 8], 2); // [1, 2, 3, [4, 5], 6, 7, 8]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1637,7 +1734,8 @@
         ],
         "tags": [
           "object",
-          "recursion"
+          "recursion",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1657,7 +1755,8 @@
         ],
         "tags": [
           "adapter",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1677,7 +1776,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1692,19 +1792,20 @@
         "fileName": "formatDuration.md",
         "text": "Returns the human readable format of the given number of milliseconds.\n\nDivide `ms` with the appropriate values to obtain the appropriate values for `day`, `hour`, `minute`, `second` and `millisecond`.\nUse `Object.entries()` with `Array.filter()` to keep only non-zero values.\nUse `Array.map()` to create the string for each value, pluralizing appropriately.\nUse `String.join(', ')` to combine the values into a string.",
         "codeBlocks": [
-          "const formatDuration = ms => {\n  if (ms < 0) ms = -ms;\n  const time = {\n    day: Math.floor(ms / 86400000),\n    hour: Math.floor(ms / 3600000) % 24,\n    minute: Math.floor(ms / 60000) % 60,\n    second: Math.floor(ms / 1000) % 60,\n    millisecond: Math.floor(ms) % 1000\n  };\n  return Object.entries(time)\n    .filter(val => val[1] !== 0)\n    .map(val => val[1] + ' ' + (val[1] !== 1 ? val[0] + 's' : val[0]))\n    .join(', ');\n};",
+          "const formatDuration = ms => {\n  if (ms < 0) ms = -ms;\n  const time = {\n    day: Math.floor(ms / 86400000),\n    hour: Math.floor(ms / 3600000) % 24,\n    minute: Math.floor(ms / 60000) % 60,\n    second: Math.floor(ms / 1000) % 60,\n    millisecond: Math.floor(ms) % 1000\n  };\n  return Object.entries(time)\n    .filter(val => val[1] !== 0)\n    .map(([key, val]) => `${val} ${key}${val !== 1 ? 's' : ''}`)\n    .join(', ');\n};",
           "formatDuration(1001); // '1 second, 1 millisecond'\nformatDuration(34325055574); // '397 days, 6 hours, 44 minutes, 15 seconds, 574 milliseconds'"
         ],
         "tags": [
           "date",
           "math",
           "string",
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
         "archived": false,
-        "hash": "79051bd95886abf6856585481e3c9cb0685e197bad764a56eb583bd3421f3449"
+        "hash": "fcaccacf92e1a1e5f8610cf78b840a6b897fc5e6cadb54d7a32efadb71b99f80"
       }
     },
     {
@@ -1718,7 +1819,8 @@
           "forOwn({ foo: 'bar', a: 1 }, v => console.log(v)); // 'bar', 1"
         ],
         "tags": [
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1737,7 +1839,8 @@
           "forOwnRight({ foo: 'bar', a: 1 }, v => console.log(v)); // 1, 'bar'"
         ],
         "tags": [
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1756,7 +1859,8 @@
           "fromCamelCase('someDatabaseFieldName', ' '); // 'some database field name'\nfromCamelCase('someLabelThatNeedsToBeCamelized', '-'); // 'some-label-that-needs-to-be-camelized'\nfromCamelCase('someJavascriptProperty', '_'); // 'some_javascript_property'"
         ],
         "tags": [
-          "string"
+          "string",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1776,7 +1880,8 @@
         ],
         "tags": [
           "function",
-          "utility"
+          "utility",
+          "beginner"
         ]
       },
       "meta": {
@@ -1796,7 +1901,8 @@
         ],
         "tags": [
           "object",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1816,7 +1922,8 @@
         ],
         "tags": [
           "math",
-          "recursion"
+          "recursion",
+          "beginner"
         ]
       },
       "meta": {
@@ -1835,7 +1942,8 @@
           "geometricProgression(256); // [1, 2, 4, 8, 16, 32, 64, 128, 256]\ngeometricProgression(256, 3); // [3, 6, 12, 24, 48, 96, 192]\ngeometricProgression(256, 1, 4); // [1, 4, 16, 64, 256]"
         ],
         "tags": [
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1854,7 +1962,8 @@
           "const obj = { selector: { to: { val: 'val to select' } }, target: [1, 2, { a: 'test' }] };\nget(obj, 'selector.to.val', 'target[0]', 'target[2].a'); // ['val to select', 1, 'test']"
         ],
         "tags": [
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1873,7 +1982,8 @@
           "getColonTimeFromDate(new Date()); // \"08:38:00\""
         ],
         "tags": [
-          "date"
+          "date",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1892,7 +2002,8 @@
           "getDaysDiffBetweenDates(new Date('2017-12-13'), new Date('2017-12-22')); // 9"
         ],
         "tags": [
-          "date"
+          "date",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1911,7 +2022,8 @@
           "getMeridiemSuffixOfInteger(0); // \"12am\"\ngetMeridiemSuffixOfInteger(11); // \"11am\"\ngetMeridiemSuffixOfInteger(13); // \"1pm\"\ngetMeridiemSuffixOfInteger(25); // \"1pm\""
         ],
         "tags": [
-          "date"
+          "date",
+          "beginner"
         ]
       },
       "meta": {
@@ -1930,7 +2042,8 @@
           "getScrollPosition(); // {x: 0, y: 200}"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "intermediate"
         ]
       },
       "meta": {
@@ -1950,7 +2063,8 @@
         ],
         "tags": [
           "browser",
-          "css"
+          "css",
+          "beginner"
         ]
       },
       "meta": {
@@ -1969,7 +2083,8 @@
           "getType(new Set([1, 2, 3])); // 'set'"
         ],
         "tags": [
-          "type"
+          "type",
+          "beginner"
         ]
       },
       "meta": {
@@ -1991,7 +2106,8 @@
           "utility",
           "browser",
           "string",
-          "url"
+          "url",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2011,7 +2127,8 @@
         ],
         "tags": [
           "array",
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2030,7 +2147,8 @@
           "hammingDistance(2, 3); // 1"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -2050,7 +2168,8 @@
         ],
         "tags": [
           "browser",
-          "css"
+          "css",
+          "beginner"
         ]
       },
       "meta": {
@@ -2069,7 +2188,8 @@
           "// node myScript.js -s --test --cool=true\nhasFlags('-s'); // true\nhasFlags('--test', 'cool=true', '-s'); // true\nhasFlags('special'); // false"
         ],
         "tags": [
-          "node"
+          "node",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2091,7 +2211,8 @@
           "browser",
           "utility",
           "advanced",
-          "promise"
+          "promise",
+          "advanced"
         ]
       },
       "meta": {
@@ -2112,7 +2233,8 @@
         "tags": [
           "node",
           "utility",
-          "promise"
+          "promise",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2131,7 +2253,8 @@
           "head([1, 2, 3]); // 1"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -2166,19 +2289,20 @@
       "type": "snippet",
       "attributes": {
         "fileName": "hide.md",
-        "text": "Hides all the elements specified.\n\nUse the spread operator (`...`) and `Array.forEach()` to apply `display: none` to each element specified.",
+        "text": "Hides all the elements specified.\n\nUse `NodeList.prototype.forEach()` to apply `display: none` to each element specified.",
         "codeBlocks": [
-          "const hide = (...el) => [...el].forEach(e => (e.style.display = 'none'));",
-          "hide(...document.querySelectorAll('img')); // Hides all <img> elements on the page"
+          "const hide = els => els.forEach(e => (e.style.display = 'none'));",
+          "hide(document.querySelectorAll('img')); // Hides all <img> elements on the page"
         ],
         "tags": [
           "browser",
-          "css"
+          "css",
+          "beginner"
         ]
       },
       "meta": {
         "archived": false,
-        "hash": "936ca95ab4a3a012580a45574f77cb8f8c2b70d60e8506627bf4eb2ef8743fa2"
+        "hash": "8b7b70809f93fd9392315a5c63aa4cbbf9b45eb1165a7d44db314186d407816b"
       }
     },
     {
@@ -2194,7 +2318,8 @@
         "tags": [
           "utility",
           "url",
-          "browser"
+          "browser",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2215,7 +2340,8 @@
         "tags": [
           "utility",
           "url",
-          "browser"
+          "browser",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2235,7 +2361,8 @@
         ],
         "tags": [
           "browser",
-          "url"
+          "url",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2254,7 +2381,8 @@
           "// 10,000 element array\nconst numbers = Array(10000)\n  .fill()\n  .map((_, i) => i);\n\n// Test functions with the same goal: sum up the elements in the array\nconst sumReduce = () => numbers.reduce((acc, n) => acc + n, 0);\nconst sumForLoop = () => {\n  let sum = 0;\n  for (let i = 0; i < numbers.length; i++) sum += numbers[i];\n  return sum;\n};\n\n// `sumForLoop` is nearly 10 times faster\nMath.round(hz(sumReduce)); // 572\nMath.round(hz(sumForLoop)); // 4784"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2273,7 +2401,8 @@
           "indexOfAll([1, 2, 3, 1, 2, 3], 1); // [0,3]\nindexOfAll([1, 2, 3], 4); // []"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2292,7 +2421,8 @@
           "initial([1, 2, 3]); // [1,2]"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -2311,7 +2441,8 @@
           "initialize2DArray(2, 2, 0); // [[0,0], [0,0]]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2331,7 +2462,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2351,7 +2483,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2371,7 +2504,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2391,7 +2525,8 @@
         ],
         "tags": [
           "array",
-          "recursion"
+          "recursion",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2406,16 +2541,17 @@
         "fileName": "inRange.md",
         "text": "Checks if the given number falls within the given range.\n\nUse arithmetic comparison to check if the given number is in the specified range.\nIf the second parameter, `end`, is not specified, the range is considered to be from `0` to `start`.",
         "codeBlocks": [
-          "const inRange = (n, start, end = null) => {\n  if (end && start > end) end = [start, (start = end)][0];\n  return end == null ? n >= 0 && n < start : n >= start && n < end;\n};",
-          "inRange(3, 2, 5); // true\ninRange(3, 4); // true\ninRange(2, 3, 5); // false\ninrange(3, 2); // false"
+          "const inRange = (n, start, end = null) => {\n  if (end && start > end) [end, start] = [start, end];\n  return end == null ? n >= 0 && n < start : n >= start && n < end;\n};",
+          "inRange(3, 2, 5); // true\ninRange(3, 4); // true\ninRange(2, 3, 5); // false\ninRange(3, 2); // false"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
         "archived": false,
-        "hash": "fe2b9483c3a173e426aba3e834d6b97008b840ea40e54c8eabb06e1da9832872"
+        "hash": "cb00d1c23e02506fc968515ce8c18dcec8837d447cd47a99f73777574308fb49"
       }
     },
     {
@@ -2429,7 +2565,8 @@
           "insertAfter(document.getElementById('myId'), '<p>after</p>'); // <div id=\"myId\">...</div> <p>after</p>"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "beginner"
         ]
       },
       "meta": {
@@ -2448,7 +2585,8 @@
           "insertBefore(document.getElementById('myId'), '<p>before</p>'); // <p>before</p> <div id=\"myId\">...</div>"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "beginner"
         ]
       },
       "meta": {
@@ -2468,7 +2606,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2483,17 +2622,18 @@
         "fileName": "intersectionBy.md",
         "text": "Returns a list of elements that exist in both arrays, after applying the provided function to each array element of both.\n\nCreate a `Set` by applying `fn` to all elements in `b`, then use `Array.filter()` on `a` to only keep elements, which produce values contained in `b` when `fn` is applied to them.",
         "codeBlocks": [
-          "const intersectionBy = (a, b, fn) => {\n  const s = new Set(b.map(x => fn(x)));\n  return a.filter(x => s.has(fn(x)));\n};",
+          "const intersectionBy = (a, b, fn) => {\n  const s = new Set(b.map(fn));\n  return a.filter(x => s.has(fn(x)));\n};",
           "intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [2.1]"
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
         "archived": false,
-        "hash": "4df9daee1b38b51d92741ea763fdfb42e85331c1cb747ec413c45543243f1f48"
+        "hash": "78c90426a81372be83af6ef2bdee0147263361673ab99fa2315ead2720d991b8"
       }
     },
     {
@@ -2508,7 +2648,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2528,7 +2669,8 @@
         ],
         "tags": [
           "object",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2549,7 +2691,8 @@
         "tags": [
           "type",
           "array",
-          "regexp"
+          "regexp",
+          "beginner"
         ]
       },
       "meta": {
@@ -2571,7 +2714,8 @@
           "string",
           "utility",
           "browser",
-          "url"
+          "url",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2591,7 +2735,8 @@
         ],
         "tags": [
           "string",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2611,7 +2756,8 @@
         ],
         "tags": [
           "type",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2630,7 +2776,8 @@
           "isBoolean(null); // false\nisBoolean(false); // true"
         ],
         "tags": [
-          "type"
+          "type",
+          "beginner"
         ]
       },
       "meta": {
@@ -2650,7 +2797,8 @@
         ],
         "tags": [
           "utility",
-          "browser"
+          "browser",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2669,7 +2817,8 @@
           "isBrowserTabFocused(); // true"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "beginner"
         ]
       },
       "meta": {
@@ -2688,7 +2837,8 @@
           "isDivisible(6, 3); // true"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -2710,7 +2860,8 @@
           "type",
           "array",
           "object",
-          "string"
+          "string",
+          "beginner"
         ]
       },
       "meta": {
@@ -2729,7 +2880,8 @@
           "isEven(3); // false"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -2749,7 +2901,8 @@
         ],
         "tags": [
           "type",
-          "function"
+          "function",
+          "beginner"
         ]
       },
       "meta": {
@@ -2769,7 +2922,8 @@
         ],
         "tags": [
           "string",
-          "utility"
+          "utility",
+          "beginner"
         ]
       },
       "meta": {
@@ -2788,7 +2942,8 @@
           "isNil(null); // true\nisNil(undefined); // true"
         ],
         "tags": [
-          "type"
+          "type",
+          "beginner"
         ]
       },
       "meta": {
@@ -2807,7 +2962,8 @@
           "isNull(null); // true"
         ],
         "tags": [
-          "type"
+          "type",
+          "beginner"
         ]
       },
       "meta": {
@@ -2827,7 +2983,8 @@
         ],
         "tags": [
           "type",
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -2847,7 +3004,8 @@
         ],
         "tags": [
           "type",
-          "object"
+          "object",
+          "beginner"
         ]
       },
       "meta": {
@@ -2867,7 +3025,8 @@
         ],
         "tags": [
           "type",
-          "object"
+          "object",
+          "beginner"
         ]
       },
       "meta": {
@@ -2887,7 +3046,8 @@
         ],
         "tags": [
           "type",
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2906,7 +3066,9 @@
           "isPrime(11); // true"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2928,7 +3090,8 @@
           "type",
           "function",
           "array",
-          "string"
+          "string",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2949,7 +3112,8 @@
         "tags": [
           "type",
           "function",
-          "promise"
+          "promise",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2968,7 +3132,8 @@
           "isSorted([0, 1, 2, 2]); // 1\nisSorted([4, 3, 2]); // -1\nisSorted([4, 3, 5]); // 0"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -2988,7 +3153,8 @@
         ],
         "tags": [
           "type",
-          "string"
+          "string",
+          "beginner"
         ]
       },
       "meta": {
@@ -3007,7 +3173,8 @@
           "isSymbol(Symbol('x')); // true"
         ],
         "tags": [
-          "type"
+          "type",
+          "beginner"
         ]
       },
       "meta": {
@@ -3026,7 +3193,8 @@
           "isTravisCI(); // true (if code is running on Travis CI)"
         ],
         "tags": [
-          "node"
+          "node",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3045,7 +3213,8 @@
           "isUndefined(undefined); // true"
         ],
         "tags": [
-          "type"
+          "type",
+          "beginner"
         ]
       },
       "meta": {
@@ -3065,7 +3234,8 @@
         ],
         "tags": [
           "string",
-          "utility"
+          "utility",
+          "beginner"
         ]
       },
       "meta": {
@@ -3085,7 +3255,8 @@
         ],
         "tags": [
           "type",
-          "json"
+          "json",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3104,7 +3275,8 @@
           "join(['pen', 'pineapple', 'apple', 'pen'], ',', '&'); // \"pen,pineapple,apple&pen\"\njoin(['pen', 'pineapple', 'apple', 'pen'], ','); // \"pen,pineapple,apple,pen\"\njoin(['pen', 'pineapple', 'apple', 'pen']); // \"pen,pineapple,apple,pen\""
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3146,7 +3318,8 @@
         ],
         "tags": [
           "node",
-          "json"
+          "json",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3165,7 +3338,8 @@
           "last([1, 2, 3]); // 3"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -3185,7 +3359,8 @@
         ],
         "tags": [
           "math",
-          "recursion"
+          "recursion",
+          "beginner"
         ]
       },
       "meta": {
@@ -3206,7 +3381,8 @@
         "tags": [
           "array",
           "string",
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3225,7 +3401,8 @@
           "const myObj = { Name: 'Adam', sUrnAME: 'Smith' };\nconst myObjLower = lowercaseKeys(myObj); // {name: 'Adam', surname: 'Smith'};"
         ],
         "tags": [
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3245,7 +3422,8 @@
         ],
         "tags": [
           "math",
-          "utility"
+          "utility",
+          "advanced"
         ]
       },
       "meta": {
@@ -3265,7 +3443,8 @@
         ],
         "tags": [
           "object",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3308,7 +3487,8 @@
           "string",
           "array",
           "function",
-          "utility"
+          "utility",
+          "beginner"
         ]
       },
       "meta": {
@@ -3328,7 +3508,8 @@
         ],
         "tags": [
           "object",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3349,7 +3530,8 @@
         "tags": [
           "string",
           "utility",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3369,7 +3551,8 @@
         ],
         "tags": [
           "object",
-          "type"
+          "type",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3390,7 +3573,8 @@
         "tags": [
           "object",
           "type",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3411,7 +3595,8 @@
         "tags": [
           "math",
           "array",
-          "function"
+          "function",
+          "beginner"
         ]
       },
       "meta": {
@@ -3431,7 +3616,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -3451,7 +3637,8 @@
         ],
         "tags": [
           "math",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3470,7 +3657,8 @@
           "// See the `anagrams` snippet.\nconst anagramsCached = memoize(anagrams);\nanagramsCached('javascript'); // takes a long time\nanagramsCached('javascript'); // returns virtually instantly since it's now cached\nconsole.log(anagramsCached.cache); // The cached anagrams map"
         ],
         "tags": [
-          "function"
+          "function",
+          "advanced"
         ]
       },
       "meta": {
@@ -3490,7 +3678,8 @@
         ],
         "tags": [
           "object",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3511,7 +3700,8 @@
         "tags": [
           "math",
           "array",
-          "function"
+          "function",
+          "beginner"
         ]
       },
       "meta": {
@@ -3531,7 +3721,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -3570,7 +3761,8 @@
           "[1, 2, 3, 4, 5, 6].filter(negate(n => n % 2 === 0)); // [ 1, 3, 5 ]"
         ],
         "tags": [
-          "function"
+          "function",
+          "beginner"
         ]
       },
       "meta": {
@@ -3589,7 +3781,8 @@
           "// One top level comment\nconst comments = [\n  { id: 1, parent_id: null },\n  { id: 2, parent_id: 1 },\n  { id: 3, parent_id: 1 },\n  { id: 4, parent_id: 2 },\n  { id: 5, parent_id: 4 }\n];\nconst nestedComments = nest(comments); // [{ id: 1, parent_id: null, children: [...] }]"
         ],
         "tags": [
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3602,19 +3795,20 @@
       "type": "snippet",
       "attributes": {
         "fileName": "nodeListToArray.md",
-        "text": "Converts a `NodeList` to an array.\n\nUse `Array.prototype.slice()` and `Function.prototype.call()` to convert a `NodeList` to an array.",
+        "text": "Converts a `NodeList` to an array.\n\nUse spread operator inside new array to convert a `NodeList` to an array.",
         "codeBlocks": [
-          "const nodeListToArray = nodeList => Array.prototype.slice.call(nodeList);",
+          "const nodeListToArray = nodeList => [...nodeList];",
           "nodeListToArray(document.childNodes); // [ <!DOCTYPE html>, html ]"
         ],
         "tags": [
           "browser",
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
         "archived": false,
-        "hash": "c11457d105eebd90dbaabc970dd03a4d3868b740e0a52f4d813957bae7324740"
+        "hash": "50e0b97be1cc2256f34991c379bae0bba8c99db160dcd5842112752074de92ec"
       }
     },
     {
@@ -3629,7 +3823,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "beginner"
         ]
       },
       "meta": {
@@ -3649,7 +3844,8 @@
         ],
         "tags": [
           "utility",
-          "function"
+          "function",
+          "beginner"
         ]
       },
       "meta": {
@@ -3662,18 +3858,19 @@
       "type": "snippet",
       "attributes": {
         "fileName": "nthElement.md",
-        "text": "Returns the nth element of an array.\n\nUse `Array.slice()` to get an array containing the nth element at the first place.\nIf the index is out of bounds, return `[]`.\nOmit the second argument, `n`, to get the first element of the array.",
+        "text": "Returns the nth element of an array.\n\nUse `Array.slice()` to get an array containing the nth element at the first place.\nIf the index is out of bounds, return `undefined`.\nOmit the second argument, `n`, to get the first element of the array.",
         "codeBlocks": [
-          "const nthElement = (arr, n = 0) => (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];",
+          "const nthElement = (arr, n = 0) => (n === -1 ? arr.slice(n) : arr.slice(n, n + 1))[0];",
           "nthElement(['a', 'b', 'c'], 1); // 'b'\nnthElement(['a', 'b', 'b'], -3); // 'a'"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
         "archived": false,
-        "hash": "8d86827300570ea124917756dd740f33f5d12b59487e889ebcad2e1172bf1993"
+        "hash": "94f23b748d064fc620e820b9f858e0b191c68be84c9af6d8740fe48618005870"
       }
     },
     {
@@ -3683,17 +3880,18 @@
         "fileName": "objectFromPairs.md",
         "text": "Creates an object from the given key-value pairs.\n\nUse `Array.reduce()` to create and combine key-value pairs.",
         "codeBlocks": [
-          "const objectFromPairs = arr => arr.reduce((a, v) => ((a[v[0]] = v[1]), a), {});",
+          "const objectFromPairs = arr => arr.reduce((a, [key, val]) => ((a[key] = val), a), {});",
           "objectFromPairs([['a', 1], ['b', 2]]); // {a: 1, b: 2}"
         ],
         "tags": [
           "object",
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
         "archived": false,
-        "hash": "c19c3608e7a51b5b67046bc49b59e3e70e1161d0c5df0d77c8904a8e2bfa1c71"
+        "hash": "5dac82c5ca1e0d36ddc13bd1d3e643676c271f86eebf8aa4fb1afb382e07e771"
       }
     },
     {
@@ -3708,7 +3906,8 @@
         ],
         "tags": [
           "object",
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -3749,7 +3948,8 @@
         ],
         "tags": [
           "browser",
-          "event"
+          "event",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3768,7 +3968,8 @@
           "offset([1, 2, 3, 4, 5], 2); // [3, 4, 5, 1, 2]\noffset([1, 2, 3, 4, 5], -2); // [4, 5, 1, 2, 3]"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -3788,7 +3989,8 @@
         ],
         "tags": [
           "object",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3809,7 +4011,8 @@
         "tags": [
           "object",
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3829,7 +4032,8 @@
         ],
         "tags": [
           "browser",
-          "event"
+          "event",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3848,7 +4052,8 @@
           "const startApp = function(event) {\n  console.log(this, event); // document.body, MouseEvent\n};\ndocument.body.addEventListener('click', once(startApp)); // only runs `startApp` once upon click"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3889,7 +4094,8 @@
         ],
         "tags": [
           "object",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3909,7 +4115,8 @@
         ],
         "tags": [
           "adapter",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3929,7 +4136,8 @@
         ],
         "tags": [
           "adapter",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3948,7 +4156,8 @@
           "pad('cat', 8); // '  cat   '\npad(String(42), 6, '0'); // '004200'\npad('foobar', 3); // 'foobar'"
         ],
         "tags": [
-          "string"
+          "string",
+          "beginner"
         ]
       },
       "meta": {
@@ -3967,7 +4176,8 @@
           "palindrome('taco cat'); // true"
         ],
         "tags": [
-          "string"
+          "string",
+          "intermediate"
         ]
       },
       "meta": {
@@ -3987,7 +4197,8 @@
         ],
         "tags": [
           "utility",
-          "string"
+          "string",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4006,7 +4217,8 @@
           "const greet = (greeting, name) => greeting + ' ' + name + '!';\nconst greetHello = partial(greet, 'Hello');\ngreetHello('John'); // 'Hello John!'"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4025,7 +4237,8 @@
           "const greet = (greeting, name) => greeting + ' ' + name + '!';\nconst greetJohn = partialRight(greet, 'John');\ngreetJohn('Hello'); // 'Hello John!'"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4046,7 +4259,8 @@
         "tags": [
           "array",
           "object",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4065,7 +4279,8 @@
           "percentile([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 6); // 55"
         ],
         "tags": [
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4085,7 +4300,8 @@
         ],
         "tags": [
           "array",
-          "recursion"
+          "recursion",
+          "advanced"
         ]
       },
       "meta": {
@@ -4105,7 +4321,8 @@
         ],
         "tags": [
           "object",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4126,7 +4343,8 @@
         "tags": [
           "object",
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4147,7 +4365,8 @@
         "tags": [
           "adapter",
           "function",
-          "promise"
+          "promise",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4167,7 +4386,8 @@
         ],
         "tags": [
           "adapter",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4186,7 +4406,8 @@
           "pluralize(0, 'apple'); // 'apples'\npluralize(1, 'apple'); // 'apple'\npluralize(2, 'apple'); // 'apples'\npluralize(2, 'person', 'people'); // 'people'\n\nconst PLURALS = {\n  person: 'people',\n  radius: 'radii'\n};\nconst autoPluralize = pluralize(PLURALS);\nautoPluralize(2, 'person'); // 'people'"
         ],
         "tags": [
-          "string"
+          "string",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4205,7 +4426,8 @@
           "powerset([1, 2]); // [[], [1], [2], [2,1]]"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -4225,7 +4447,8 @@
         ],
         "tags": [
           "browser",
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4246,7 +4469,8 @@
         "tags": [
           "utility",
           "string",
-          "math"
+          "math",
+          "advanced"
         ]
       },
       "meta": {
@@ -4266,7 +4490,8 @@
         ],
         "tags": [
           "math",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4287,7 +4512,8 @@
         "tags": [
           "adapter",
           "function",
-          "promise"
+          "promise",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4306,7 +4532,8 @@
           "let myArray = ['a', 'b', 'c', 'a', 'b', 'c'];\npull(myArray, 'a', 'c'); // myArray = [ 'b', 'b' ]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4325,7 +4552,8 @@
           "let myArray = ['a', 'b', 'c', 'd'];\nlet pulled = pullAtIndex(myArray, [1, 3]); // myArray = [ 'a', 'c' ] , pulled = [ 'b', 'd' ]"
         ],
         "tags": [
-          "array"
+          "array",
+          "advanced"
         ]
       },
       "meta": {
@@ -4344,7 +4572,8 @@
           "let myArray = ['a', 'b', 'c', 'd'];\nlet pulled = pullAtValue(myArray, ['b', 'd']); // myArray = [ 'a', 'c' ] , pulled = [ 'b', 'd' ]"
         ],
         "tags": [
-          "array"
+          "array",
+          "advanced"
         ]
       },
       "meta": {
@@ -4384,7 +4613,8 @@
           "radsToDegrees(Math.PI / 2); // 90"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -4404,7 +4634,8 @@
         ],
         "tags": [
           "utility",
-          "random"
+          "random",
+          "beginner"
         ]
       },
       "meta": {
@@ -4425,7 +4656,8 @@
         "tags": [
           "math",
           "utility",
-          "random"
+          "random",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4446,7 +4678,8 @@
         "tags": [
           "math",
           "utility",
-          "random"
+          "random",
+          "beginner"
         ]
       },
       "meta": {
@@ -4467,7 +4700,8 @@
         "tags": [
           "math",
           "utility",
-          "random"
+          "random",
+          "beginner"
         ]
       },
       "meta": {
@@ -4488,7 +4722,8 @@
         "tags": [
           "node",
           "array",
-          "string"
+          "string",
+          "beginner"
         ]
       },
       "meta": {
@@ -4508,7 +4743,8 @@
         ],
         "tags": [
           "adapter",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4528,7 +4764,8 @@
         ],
         "tags": [
           "browser",
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4548,7 +4785,8 @@
         ],
         "tags": [
           "browser",
-          "url"
+          "url",
+          "beginner"
         ]
       },
       "meta": {
@@ -4567,7 +4805,8 @@
           "const data = [\n  {\n    id: 1,\n    name: 'john',\n    age: 24\n  },\n  {\n    id: 2,\n    name: 'mike',\n    age: 50\n  }\n];\n\nreducedFilter(data, ['id', 'name'], item => item.age > 24); // [{ id: 2, name: 'mike'}]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4587,7 +4826,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4607,7 +4847,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4626,7 +4867,8 @@
           "reject(x => x % 2 === 0, [1, 2, 3, 4, 5]); // [1, 3, 5]\nreject(word => word.length > 4, ['Apple', 'Pear', 'Kiwi', 'Banana']); // ['Pear', 'Kiwi']"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -4645,7 +4887,8 @@
           "remove([1, 2, 3, 4], n => n % 2 === 0); // [2, 4]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4665,7 +4908,8 @@
         ],
         "tags": [
           "string",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4684,7 +4928,8 @@
           "const obj = { name: 'Bobo', job: 'Front-End Master', shoeSize: 100 };\nrenameKeys({ name: 'firstName', job: 'passion' }, obj); // { firstName: 'Bobo', passion: 'Front-End Master', shoeSize: 100 }"
         ],
         "tags": [
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4704,7 +4949,8 @@
         ],
         "tags": [
           "string",
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -4723,7 +4969,8 @@
           "RGBToHex(255, 165, 1); // 'ffa501'"
         ],
         "tags": [
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4742,7 +4989,8 @@
           "round(1.005, 2); // 1.01"
         ],
         "tags": [
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4785,7 +5033,8 @@
         ],
         "tags": [
           "function",
-          "promise"
+          "promise",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4805,7 +5054,8 @@
         ],
         "tags": [
           "array",
-          "random"
+          "random",
+          "beginner"
         ]
       },
       "meta": {
@@ -4825,7 +5075,8 @@
         ],
         "tags": [
           "array",
-          "random"
+          "random",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4844,7 +5095,8 @@
           "scrollToTop();"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4864,7 +5116,8 @@
         ],
         "tags": [
           "math",
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4884,7 +5137,8 @@
         ],
         "tags": [
           "utility",
-          "string"
+          "string",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4903,7 +5157,8 @@
           "setStyle(document.querySelector('p'), 'font-size', '20px'); // The first <p> element on the page will have a font-size of 20px"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "beginner"
         ]
       },
       "meta": {
@@ -4922,7 +5177,8 @@
           "const a = { x: true, y: 1 };\nconst b = shallowClone(a); // a !== b"
         ],
         "tags": [
-          "object"
+          "object",
+          "beginner"
         ]
       },
       "meta": {
@@ -4942,7 +5198,8 @@
         ],
         "tags": [
           "browser",
-          "css"
+          "css",
+          "beginner"
         ]
       },
       "meta": {
@@ -4962,7 +5219,8 @@
         ],
         "tags": [
           "array",
-          "random"
+          "random",
+          "intermediate"
         ]
       },
       "meta": {
@@ -4982,7 +5240,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -5003,7 +5262,8 @@
         "tags": [
           "object",
           "array",
-          "string"
+          "string",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5023,7 +5283,8 @@
         ],
         "tags": [
           "function",
-          "promise"
+          "promise",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5043,7 +5304,8 @@
         ],
         "tags": [
           "browser",
-          "css"
+          "css",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5062,7 +5324,8 @@
           "sortCharactersInString('cabbage'); // 'aabbceg'"
         ],
         "tags": [
-          "string"
+          "string",
+          "beginner"
         ]
       },
       "meta": {
@@ -5082,7 +5345,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5103,7 +5367,8 @@
         "tags": [
           "array",
           "math",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5123,7 +5388,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5144,7 +5410,8 @@
         "tags": [
           "array",
           "math",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5163,7 +5430,8 @@
           "splitLines('This\\nis a\\nmultiline\\nstring.\\n'); // ['This', 'is a', 'multiline', 'string.' , '']"
         ],
         "tags": [
-          "string"
+          "string",
+          "beginner"
         ]
       },
       "meta": {
@@ -5182,7 +5450,8 @@
           "const arrayMax = spreadOver(Math.max);\narrayMax([1, 2, 3]); // 3"
         ],
         "tags": [
-          "adapter"
+          "adapter",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5203,7 +5472,8 @@
         "tags": [
           "array",
           "sort",
-          "advanced"
+          "advanced",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5223,7 +5493,8 @@
         ],
         "tags": [
           "math",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5243,7 +5514,8 @@
         ],
         "tags": [
           "string",
-          "recursion"
+          "recursion",
+          "advanced"
         ]
       },
       "meta": {
@@ -5264,7 +5536,8 @@
         "tags": [
           "string",
           "utility",
-          "regexp"
+          "regexp",
+          "beginner"
         ]
       },
       "meta": {
@@ -5284,7 +5557,8 @@
         ],
         "tags": [
           "math",
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -5305,7 +5579,8 @@
         "tags": [
           "math",
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5324,7 +5599,8 @@
           "sumPower(10); // 385\nsumPower(10, 3); //3025\nsumPower(10, 3, 5); //2925"
         ],
         "tags": [
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5337,19 +5613,20 @@
       "type": "snippet",
       "attributes": {
         "fileName": "symmetricDifference.md",
-        "text": "Returns the symmetric difference between two arrays.\n\nCreate a `Set` from each array, then use `Array.filter()` on each of them to only keep values not contained in the other.",
+        "text": "Returns the symmetric difference between two arrays, without filtering out duplicate values.\n\nCreate a `Set` from each array, then use `Array.filter()` on each of them to only keep values not contained in the other.",
         "codeBlocks": [
           "const symmetricDifference = (a, b) => {\n  const sA = new Set(a),\n    sB = new Set(b);\n  return [...a.filter(x => !sB.has(x)), ...b.filter(x => !sA.has(x))];\n};",
-          "symmetricDifference([1, 2, 3], [1, 2, 4]); // [3,4]"
+          "symmetricDifference([1, 2, 3], [1, 2, 4]); // [3, 4]\nsymmetricDifference([1, 2, 2], [1, 3, 1]); // [2, 2, 3]"
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
         "archived": false,
-        "hash": "a353d35fc5fb8ec4ebbf0856079a823a598a5023ca908a7b1ddca55b4b3b60fe"
+        "hash": "476d7ee29bd0750a4c0f428c7e17a612ea50ee002eb865733f8d312b79a0c5a3"
       }
     },
     {
@@ -5364,7 +5641,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5384,7 +5662,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5403,7 +5682,8 @@
           "tail([1, 2, 3]); // [2,3]\ntail([1]); // [1]"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -5422,7 +5702,8 @@
           "take([1, 2, 3], 5); // [1, 2, 3]\ntake([1, 2, 3], 0); // []"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -5441,7 +5722,8 @@
           "takeRight([1, 2, 3], 2); // [ 2, 3 ]\ntakeRight([1, 2, 3]); // [3]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5461,7 +5743,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5481,7 +5764,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5500,7 +5784,8 @@
           "window.addEventListener(\n  'resize',\n  throttle(function(evt) {\n    console.log(window.innerWidth);\n    console.log(window.innerHeight);\n  }, 250)\n); // Will log the window dimensions at most every 250ms"
         ],
         "tags": [
-          "function"
+          "function",
+          "advanced"
         ]
       },
       "meta": {
@@ -5519,7 +5804,8 @@
           "var output = '';\ntimes(5, i => (output += i));\nconsole.log(output); // 01234"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5538,7 +5824,8 @@
           "timeTaken(() => Math.pow(2, 10)); // 1024, (logged): timeTaken: 0.02099609375ms"
         ],
         "tags": [
-          "utility"
+          "utility",
+          "beginner"
         ]
       },
       "meta": {
@@ -5558,7 +5845,8 @@
         ],
         "tags": [
           "string",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5577,7 +5865,8 @@
           "toCurrency(123456.789, 'EUR'); // €123,456.79  | currency: Euro | currencyLangFormat: Local\ntoCurrency(123456.789, 'USD', 'en-us'); // $123,456.79  | currency: US Dollar | currencyLangFormat: English (United States)\ntoCurrency(123456.789, 'USD', 'fa'); // ۱۲۳٬۴۵۶٫۷۹ ؜$ | currency: US Dollar | currencyLangFormat: Farsi\ntoCurrency(322342436423.2435, 'JPY'); // ¥322,342,436,423 | currency: Japanese Yen | currencyLangFormat: Local\ntoCurrency(322342436423.2435, 'JPY', 'fi'); // 322 342 436 423 ¥ | currency: Japanese Yen | currencyLangFormat: Finnish"
         ],
         "tags": [
-          "utility"
+          "utility",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5597,7 +5886,8 @@
         ],
         "tags": [
           "utility",
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -5616,7 +5906,8 @@
           "toggleClass(document.querySelector('p.special'), 'special'); // The paragraph will not have the 'special' class anymore"
         ],
         "tags": [
-          "browser"
+          "browser",
+          "beginner"
         ]
       },
       "meta": {
@@ -5635,7 +5926,8 @@
           "toHash([4, 3, 2, 1]); // { 0: 4, 1: 3, 2: 2, 1: 1 }\ntoHash([{ a: 'label' }], 'a'); // { label: { a: 'label' } }\n// A more in depth example:\nlet users = [{ id: 1, first: 'Jon' }, { id: 2, first: 'Joe' }, { id: 3, first: 'Moe' }];\nlet managers = [{ manager: 1, employees: [2, 3] }];\n// We use function here because we want a bindable reference, but a closure referencing the hash would work, too.\nmanagers.forEach(\n  manager =>\n    (manager.employees = manager.employees.map(function(id) {\n      return this[id];\n    }, toHash(users, 'id')))\n);\nmanagers; // [ { manager:1, employees: [ { id: 2, first: \"Joe\" }, { id: 3, first: \"Moe\" } ] } ]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5655,7 +5947,8 @@
         ],
         "tags": [
           "string",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5674,7 +5967,8 @@
           "tomorrow(); // 2017-12-27 (if current date is 2017-12-26)\ntomorrow(true); // 2017-12-27T00:00:00 (if current date is 2017-12-26)"
         ],
         "tags": [
-          "date"
+          "date",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5694,7 +5988,8 @@
         ],
         "tags": [
           "utility",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5713,7 +6008,8 @@
           "toSafeInteger('3.2'); // 3\ntoSafeInteger(Infinity); // 9007199254740991"
         ],
         "tags": [
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -5733,7 +6029,8 @@
         ],
         "tags": [
           "string",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5753,7 +6050,8 @@
         ],
         "tags": [
           "object",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5773,7 +6071,8 @@
         ],
         "tags": [
           "browser",
-          "event"
+          "event",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5792,7 +6091,8 @@
           "truncateString('boomerang', 7); // 'boom...'"
         ],
         "tags": [
-          "string"
+          "string",
+          "beginner"
         ]
       },
       "meta": {
@@ -5813,7 +6113,8 @@
         "tags": [
           "object",
           "logic",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5833,7 +6134,8 @@
         ],
         "tags": [
           "adapter",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5852,7 +6154,8 @@
           "const add = x => y => z => x + y + z;\nconst uncurriedAdd = uncurry(add, 3);\nuncurriedAdd(1, 2, 3); // 6"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5872,7 +6175,8 @@
         ],
         "tags": [
           "string",
-          "browser"
+          "browser",
+          "beginner"
         ]
       },
       "meta": {
@@ -5912,7 +6216,8 @@
         ],
         "tags": [
           "function",
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5932,7 +6237,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "beginner"
         ]
       },
       "meta": {
@@ -5952,7 +6258,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5972,7 +6279,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -5991,7 +6299,8 @@
           "uniqueElements([1, 2, 2, 3, 4, 4, 5]); // [1,2,3,4,5]"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -6011,7 +6320,8 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6031,12 +6341,34 @@
         ],
         "tags": [
           "array",
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
         "archived": false,
         "hash": "853887ad00b7c39a719c5b7e16dd3464a85f08da43d9d1bd1e7b7ebeaa897c95"
+      }
+    },
+    {
+      "id": "uniqueSymmetricDifference",
+      "type": "snippet",
+      "attributes": {
+        "fileName": "uniqueSymmetricDifference.md",
+        "text": "Returns the unique symmetric difference between two arrays, not containing duplicate values from either array.\n\nUse `Array.filter()` and `Array.includes()` on each array to remove values contained in the other, then create a `Set` from the results, removing duplicate values.",
+        "codeBlocks": [
+          "const uniqueSymmetricDifference = (a, b) => [\n  ...new Set([...a.filter(v => !b.includes(v)), ...b.filter(v => !a.includes(v))])\n];",
+          "uniqueSymmetricDifference([1, 2, 3], [1, 2, 4]); // [3, 4]\nuniqueSymmetricDifference([1, 2, 2], [1, 3, 1]); // [2, 3]"
+        ],
+        "tags": [
+          "array",
+          "math",
+          "intermediate"
+        ]
+      },
+      "meta": {
+        "archived": false,
+        "hash": "58712a3aee2c952a18d9f0d2f21d0002ac720d0d0f8fe082d02f891e3912bf1d"
       }
     },
     {
@@ -6051,7 +6383,8 @@
         ],
         "tags": [
           "node",
-          "string"
+          "string",
+          "beginner"
         ]
       },
       "meta": {
@@ -6070,7 +6403,8 @@
           "unzip([['a', 1, true], ['b', 2, false]]); //[['a', 'b'], [1, 2], [true, false]]\nunzip([['a', 1, true], ['b', 2]]); //[['a', 'b'], [1, 2], [true]]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6112,7 +6446,8 @@
         "tags": [
           "string",
           "utility",
-          "regexp"
+          "regexp",
+          "advanced"
         ]
       },
       "meta": {
@@ -6133,7 +6468,8 @@
         "tags": [
           "browser",
           "utility",
-          "random"
+          "random",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6154,7 +6490,8 @@
         "tags": [
           "node",
           "utility",
-          "random"
+          "random",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6174,7 +6511,8 @@
         ],
         "tags": [
           "utility",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6193,7 +6531,8 @@
           "const doubleEvenNumbers = when(x => x % 2 === 0, x => x * 2);\ndoubleEvenNumbers(2); // 4\ndoubleEvenNumbers(1); // 1"
         ],
         "tags": [
-          "function"
+          "function",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6212,7 +6551,8 @@
           "without([2, 1, 2, 3], 1, 2); // [3]"
         ],
         "tags": [
-          "array"
+          "array",
+          "beginner"
         ]
       },
       "meta": {
@@ -6232,7 +6572,8 @@
         ],
         "tags": [
           "string",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6252,7 +6593,8 @@
         ],
         "tags": [
           "array",
-          "math"
+          "math",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6272,7 +6614,8 @@
         ],
         "tags": [
           "utility",
-          "regexp"
+          "regexp",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6291,7 +6634,8 @@
           "zip(['a', 'b'], [1, 2], [true, false]); // [['a', 1, true], ['b', 2, false]]\nzip(['a'], [1, 2], [true, false]); // [['a', 1, true], [undefined, 2, false]]"
         ],
         "tags": [
-          "array"
+          "array",
+          "intermediate"
         ]
       },
       "meta": {
@@ -6311,7 +6655,8 @@
         ],
         "tags": [
           "array",
-          "object"
+          "object",
+          "intermediate"
         ]
       },
       "meta": {

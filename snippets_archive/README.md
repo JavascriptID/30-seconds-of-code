@@ -1,11 +1,7 @@
 ![Logo](/logo.png)
-
 # Snippets Archive
-
 These snippets, while useful and interesting, didn't quite make it into the repository due to either having very specific use-cases or being outdated. However we felt like they might still be useful to some readers, so here they are.
-
 ## Table of Contents
-
 * [`JSONToDate`](#jsontodate)
 * [`speechSynthesis`](#speechsynthesis)
 * [`binarySearch`](#binarysearch)
@@ -26,7 +22,6 @@ These snippets, while useful and interesting, didn't quite make it into the repo
 * [`howManyTimes`](#howmanytimes)
 
 ---
-
 ### JSONToDate
 
 Converts a JSON object to a date.
@@ -50,7 +45,6 @@ JSONToDate(/Date(1489525200000)/); // "14/3/2017"
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### speechSynthesis
 
@@ -79,7 +73,6 @@ speechSynthesis('Hello, World'); // // plays the message
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### binarySearch
 
@@ -113,7 +106,6 @@ binarySearch([1, 4, 6, 7, 12, 13, 15, 18, 19, 20, 22, 24], 21); // -1
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### cleanObj
 
 Removes any properties except the ones specified from a JSON object.
@@ -146,7 +138,6 @@ cleanObj(testObj, ['a'], 'children'); // { a: 1, children : { a: 1}}
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### collatz
 
 Applies the Collatz algorithm.
@@ -167,7 +158,6 @@ collatz(8); // 4
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### countVowels
 
@@ -190,7 +180,6 @@ countVowels('gym'); // 0
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### factors
 
@@ -242,7 +231,6 @@ factors(-12, true); // [2,3]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### fibonacciCountUntilNum
 
 Returns the number of fibonnacci numbers up to `num`(`0` and `num` inclusive).
@@ -264,7 +252,6 @@ fibonacciCountUntilNum(10); // 7
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### fibonacciUntilNum
 
@@ -295,7 +282,6 @@ fibonacciUntilNum(10); // [ 0, 1, 1, 2, 3, 5, 8 ]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### httpDelete
 
 Makes a `DELETE` request to the passed URL.
@@ -308,7 +294,7 @@ Omit the third argument, `err` to log the request to the console's error stream 
 ```js
 const httpDelete = (url, callback, err = console.error) => {
   const request = new XMLHttpRequest();
-  request.open("DELETE", url, true);
+  request.open('DELETE', url, true);
   request.onload = () => callback(request);
   request.onerror = () => err(request);
   request.send();
@@ -328,7 +314,6 @@ httpDelete('https://website.com/users/123', request => {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### httpPut
 
 Makes a `PUT` request to the passed URL.
@@ -341,12 +326,12 @@ Omit the last argument, `err` to log the request to the console's error stream b
 
 ```js
 const httpPut = (url, data, callback, err = console.error) => {
-    const request = new XMLHttpRequest();
-    request.open("PUT", url, true);
-    request.setRequestHeader('Content-type','application/json; charset=utf-8');
-    request.onload = () => callback(request);
-    request.onerror = () => err(request);
-    request.send(data);
+  const request = new XMLHttpRequest();
+  request.open("PUT", url, true);
+  request.setRequestHeader('Content-type','application/json; charset=utf-8');
+  request.onload = () => callback(request);
+  request.onerror = () => err(request);
+  request.send(data);
 };
 ```
 
@@ -364,7 +349,6 @@ httpPut('https://website.com/users/123', data, request => {
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isArmstrongNumber
 
@@ -391,7 +375,6 @@ isArmstrongNumber(56); // false
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isSimilar
 
 Determines if the `pattern` matches with `str`.
@@ -399,26 +382,30 @@ Determines if the `pattern` matches with `str`.
 Use `String.toLowerCase()` to convert both strings to lowercase, then loop through `str` and determine if it contains all characters of `pattern` and in the correct order.
 Adapted from [here](https://github.com/forrestthewoods/lib_fts/blob/80f3f8c52db53428247e741b9efe2cde9667050c/code/fts_fuzzy_match.js#L18).
 
-``` js
+```js
 const isSimilar = (pattern, str) =>
-	[...str].reduce(
-		(matchIndex, char) => char.toLowerCase() === (pattern[matchIndex]  || '').toLowerCase() ? matchIndex + 1 : matchIndex, 0
-	) === pattern.length ? true : false;
+  [...str].reduce(
+    (matchIndex, char) =>
+      char.toLowerCase() === (pattern[matchIndex] || '').toLowerCase()
+        ? matchIndex + 1
+        : matchIndex,
+    0
+  ) === pattern.length
+    ? true
+    : false;
 ```
 
-
-``` js
-isSimilar('rt','Rohit'); // true
-isSimilar('tr','Rohit'); // false
-```<details>
+<details>
 <summary>Examples</summary>
 
+```js
+isSimilar('rt','Rohit'); // true
+isSimilar('tr','Rohit'); // false
 ```
 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### levenshteinDistance
 
@@ -429,21 +416,28 @@ Can also be used to compare two strings as shown in the second example.
 
 ``` js
 const levenshteinDistance = (string1, string2) => {
-    if(string1.length === 0) return string2.length;
-    if(string2.length === 0) return string1.length;
-    let matrix = Array(string2.length + 1).fill(0).map((x,i) => [i]);
-    matrix[0] = Array(string1.length + 1).fill(0).map((x,i) => i);
-    for(let i = 1; i <= string2.length; i++) {
-        for(let j = 1; j<=string1.length; j++) {
-            if(string2[i-1] === string1[j-1]) {
-                matrix[i][j] = matrix[i-1][j-1];
-            }
-            else{
-                matrix[i][j] = Math.min(matrix[i-1][j-1]+1, matrix[i][j-1]+1, matrix[i-1][j]+1);
-            }
-        }
+  if (string1.length === 0) return string2.length;
+  if (string2.length === 0) return string1.length;
+  let matrix = Array(string2.length + 1)
+    .fill(0)
+    .map((x, i) => [i]);
+  matrix[0] = Array(string1.length + 1)
+    .fill(0)
+    .map((x, i) => i);
+  for (let i = 1; i <= string2.length; i++) {
+    for (let j = 1; j <= string1.length; j++) {
+      if (string2[i - 1] === string1[j - 1]) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
     }
-    return matrix[string2.length][string1.length];
+  }
+  return matrix[string2.length][string1.length];
 };
 ```
 
@@ -459,7 +453,6 @@ compareStrings('30-seconds-of-code', '30-seconds-of-python-code'); // 99.72 (%)
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### quickSort
 
@@ -492,7 +485,6 @@ quickSort([4, 1, 3, 2], true); // [4,3,2,1]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### removeVowels
 
 Returns all the vowels in a `str` replaced by `repl`.
@@ -501,7 +493,7 @@ Use `String.replace()` with a regexp to replace all vowels in `str`.
 Omot `repl` to use a default value of `''`.
 
 ```js
-const removeVowels = (str, repl = '') => str.replace(/[aeiou]/gi,repl);
+const removeVowels = (str, repl = '') => str.replace(/[aeiou]/gi, repl);
 ```
 
 <details>
@@ -515,7 +507,6 @@ removeVowels("foobAr","*"); // "f**b*r"
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### solveRPN
 
@@ -569,7 +560,6 @@ solveRPN('2 3 ^'); // 8
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### howManyTimes
 

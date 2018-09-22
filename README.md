@@ -2,7 +2,7 @@
 
 # 30 seconds of code
 
-[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/Chalarangelo/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-4FB999.svg)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis Build](https://travis-ci.com/Chalarangelo/30-seconds-of-code.svg?branch=master)](https://travis-ci.com/Chalarangelo/30-seconds-of-code) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/207ea6fa2c204ccda61dc3047986e144)](https://www.codacy.com/app/Chalarangelo/30-seconds-of-code?utm_source=github.com&utm_medium=referral&utm_content=Chalarangelo/30-seconds-of-code&utm_campaign=badger) [![Maintainability](https://api.codeclimate.com/v1/badges/e9020d1c963a91c0c8a2/maintainability)](https://codeclimate.com/github/Chalarangelo/30-seconds-of-code/maintainability)  [![Insight.io](https://img.shields.io/badge/insight.io-Ready-brightgreen.svg)](https://insight.io/github.com/Chalarangelo/30-seconds-of-code/tree/master/?source=0) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) [![Known Vulnerabilities](https://snyk.io/test/github/Chalarangelo/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Chalarangelo/30-seconds-of-code?targetFile=package.json) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code)
+[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/30-seconds/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-4FB999.svg)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis Build](https://travis-ci.com/30-seconds/30-seconds-of-code.svg?branch=master)](https://travis-ci.com/30-seconds/30-seconds-of-code) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ab7791fb1ea40b4a576d658fb96807f)](https://www.codacy.com/app/Chalarangelo/30-seconds-of-code?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=30-seconds/30-seconds-of-code&amp;utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/4b8c1e099135f2d53413/maintainability)](https://codeclimate.com/github/30-seconds/30-seconds-of-code/maintainability) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) [![Known Vulnerabilities](https://snyk.io/test/github/30-seconds/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/30-seconds/30-seconds-of-code?targetFile=package.json) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code)
 
 
 > Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
@@ -16,11 +16,12 @@
 - You can import these snippets into your text editor of choice (VSCode, Atom, Sublime) using the files found in [this repo](https://github.com/Rob-Rychs/30-seconds-of-code-texteditorsnippets).
 - You can import these snippets into Alfred 3, using [this file](https://github.com/lslvxy/30-seconds-of-code-alfredsnippets).
 
-#### Related
+#### Related projects
 
-- [30 Seconds of CSS](https://atomiks.github.io/30-seconds-of-css/)
-- [30 Seconds of Interviews](https://30secondsofinterviews.org/)
-- [30 Seconds of Python](https://github.com/kriadmin/30-seconds-of-python-code)
+- [30 Seconds of CSS](https://30-seconds.github.io/30-seconds-of-css/)
+- [30 Seconds of Interviews](https://30secondsofinterviews.org/) 
+- [30 Seconds of Python](https://github.com/kriadmin/30-seconds-of-python-code) *(unofficial)*
+- [30 Seconds of PHP](https://github.com/appzcoder/30-seconds-of-php-code) *(unofficial)*
 
 #### Package
 
@@ -155,10 +156,10 @@ average(1, 2, 3);
 * [`nthElement`](#nthelement)
 * [`offset`](#offset)
 * [`partition`](#partition)
-* [`permutations`](#permutations)
+* [`permutations`](#permutations-)
 * [`pull`](#pull)
-* [`pullAtIndex`](#pullatindex)
-* [`pullAtValue`](#pullatvalue)
+* [`pullAtIndex`](#pullatindex-)
+* [`pullAtValue`](#pullatvalue-)
 * [`pullBy`](#pullby-)
 * [`reducedFilter`](#reducedfilter)
 * [`reduceSuccessive`](#reducesuccessive)
@@ -214,7 +215,7 @@ average(1, 2, 3);
 * [`currentURL`](#currenturl)
 * [`detectDeviceType`](#detectdevicetype)
 * [`elementContains`](#elementcontains)
-* [`elementIsVisibleInViewport`](#elementisvisibleinviewport)
+* [`elementIsVisibleInViewport`](#elementisvisibleinviewport-)
 * [`getScrollPosition`](#getscrollposition)
 * [`getStyle`](#getstyle)
 * [`hasClass`](#hasclass)
@@ -274,14 +275,14 @@ average(1, 2, 3);
 * [`delay`](#delay)
 * [`functionName`](#functionname)
 * [`hz`](#hz)
-* [`memoize`](#memoize)
+* [`memoize`](#memoize-)
 * [`negate`](#negate)
 * [`once`](#once)
 * [`partial`](#partial)
 * [`partialRight`](#partialright)
 * [`runPromisesInSeries`](#runpromisesinseries)
 * [`sleep`](#sleep)
-* [`throttle`](#throttle)
+* [`throttle`](#throttle-)
 * [`times`](#times)
 * [`uncurry`](#uncurry)
 * [`unfold`](#unfold)
@@ -313,7 +314,7 @@ average(1, 2, 3);
 * [`isEven`](#iseven)
 * [`isPrime`](#isprime)
 * [`lcm`](#lcm)
-* [`luhnCheck`](#luhncheck)
+* [`luhnCheck`](#luhncheck-)
 * [`maxBy`](#maxby)
 * [`median`](#median)
 * [`minBy`](#minby)
@@ -359,6 +360,7 @@ average(1, 2, 3);
 
 * [`bindAll`](#bindall)
 * [`deepClone`](#deepclone)
+* [`deepFreeze`](#deepfreeze)
 * [`defaults`](#defaults)
 * [`dig`](#dig)
 * [`equals`](#equals-)
@@ -420,14 +422,14 @@ average(1, 2, 3);
 * [`reverseString`](#reversestring)
 * [`sortCharactersInString`](#sortcharactersinstring)
 * [`splitLines`](#splitlines)
-* [`stringPermutations`](#stringpermutations)
+* [`stringPermutations`](#stringpermutations-)
 * [`stripHTMLTags`](#striphtmltags)
 * [`toCamelCase`](#tocamelcase)
 * [`toKebabCase`](#tokebabcase)
 * [`toSnakeCase`](#tosnakecase)
 * [`truncateString`](#truncatestring)
 * [`unescapeHTML`](#unescapehtml)
-* [`URLJoin`](#urljoin)
+* [`URLJoin`](#urljoin-)
 * [`words`](#words)
 
 </details>
@@ -476,7 +478,7 @@ average(1, 2, 3);
 * [`mostPerformant`](#mostperformant)
 * [`nthArg`](#ntharg)
 * [`parseCookie`](#parsecookie)
-* [`prettyBytes`](#prettybytes)
+* [`prettyBytes`](#prettybytes-)
 * [`randomHexColorCode`](#randomhexcolorcode)
 * [`RGBToHex`](#rgbtohex)
 * [`serializeCookie`](#serializecookie)
@@ -489,8 +491,10 @@ average(1, 2, 3);
 
 </details>
 
+
 ---
- ## 🔌 Adapter
+
+## 🔌 Adapter
 
 ### ary
 
@@ -513,7 +517,6 @@ const firstTwoMax = ary(Math.max, 2);
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### call
 
@@ -542,7 +545,6 @@ Promise.resolve([1, 2, 3])
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### collectInto
 
 Changes a function that accepts an array into a variadic function.
@@ -567,7 +569,6 @@ Pall(p1, p2, p3).then(console.log); // [1, 2, 3] (after about 2 seconds)
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### flip
 
@@ -596,7 +597,6 @@ Object.assign(b, a); // == b
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### over
 
 Creates a function that invokes each provided function with the arguments it receives and returns the results.
@@ -618,7 +618,6 @@ minMax(1, 2, 3, 4, 5); // [1,5]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### overArgs
 
@@ -643,7 +642,6 @@ fn(9, 3); // [81, 6]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### pipeAsyncFunctions
 
@@ -676,7 +674,6 @@ const sum = pipeAsyncFunctions(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### pipeFunctions
 
 Performs left-to-right function composition.
@@ -701,7 +698,6 @@ multiplyAndAdd5(5, 2); // 15
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### promisify
 
@@ -731,7 +727,6 @@ delay(2000).then(() => console.log('Hi!')); // // Promise resolves after 2s
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### rearg
 
 Creates a function that invokes the provided function with its arguments arranged according to the specified indexes.
@@ -759,7 +754,6 @@ rearged('b', 'c', 'a'); // ['a', 'b', 'c']
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### spreadOver
 
 Takes a variadic function and returns a closure that accepts an array of arguments to map to the inputs of the function.
@@ -782,7 +776,6 @@ arrayMax([1, 2, 3]); // 3
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### unary
 
 Creates a function that accepts up to one argument, ignoring any additional arguments.
@@ -804,8 +797,10 @@ const unary = fn => val => fn(val);
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## 📚 Array
+
+## 📚 Array
 
 ### all
 
@@ -830,7 +825,6 @@ all([1, 2, 3]); // true
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### allEqual
 
 Check if all elements are equal
@@ -852,7 +846,6 @@ allEqual([1, 1, 1, 1]); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### any
 
@@ -876,7 +869,6 @@ any([0, 0, 1, 0]); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### arrayToCSV
 
@@ -903,7 +895,6 @@ arrayToCSV([['a', 'b'], ['c', 'd']], ';'); // '"a";"b"\n"c";"d"'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### bifurcate
 
 Splits values into two groups. If an element in `filter` is truthy, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
@@ -926,7 +917,6 @@ bifurcate(['beep', 'boop', 'foo', 'bar'], [true, true, false, true]); // [ ['bee
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### bifurcateBy
 
 Splits values into two groups according to a predicate function, which specifies which group an element in the input collection belongs to. If the predicate function returns a truthy value, the collection element belongs to the first group; otherwise, it belongs to the second group.
@@ -948,7 +938,6 @@ bifurcateBy(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'b'); // [ ['beep', 'b
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### chunk
 
@@ -976,7 +965,6 @@ chunk([1, 2, 3, 4, 5], 2); // [[1,2],[3,4],[5]]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### compact
 
 Removes falsey values from an array.
@@ -997,7 +985,6 @@ compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34]); // [ 1, 2, 3, 'a'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### countBy
 
@@ -1026,7 +1013,6 @@ countBy(['one', 'two', 'three'], 'length'); // {3: 2, 5: 1}
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### countOccurrences
 
 Counts the occurrences of a value in an array.
@@ -1047,7 +1033,6 @@ countOccurrences([1, 1, 2, 1, 2, 3], 1); // 3
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### deepFlatten
 
@@ -1072,7 +1057,6 @@ deepFlatten([1, [2], [[3], 4], 5]); // [1,2,3,4,5]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### difference
 
 Returns the difference between two arrays.
@@ -1096,7 +1080,6 @@ difference([1, 2, 3], [1, 2, 4]); // [3]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### differenceBy
 
@@ -1123,7 +1106,6 @@ differenceBy([{ x: 2 }, { x: 1 }], [{ x: 1 }], v => v.x); // [ { x: 2 } ]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### differenceWith
 
 Filters out all values from an array for which the comparator function does not return `true`.
@@ -1144,7 +1126,6 @@ differenceWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0], (a, b) => Math.round(a) === Mat
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### drop
 
@@ -1169,7 +1150,6 @@ drop([1, 2, 3], 42); // []
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### dropRight
 
 Returns a new array with `n` elements removed from the right.
@@ -1192,7 +1172,6 @@ dropRight([1, 2, 3], 42); // []
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### dropRightWhile
 
@@ -1219,7 +1198,6 @@ dropRightWhile([1, 2, 3, 4], n => n < 3); // [1, 2]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### dropWhile
 
 Removes elements in an array until the passed function returns `true`. Returns the remaining elements in the array.
@@ -1245,7 +1223,6 @@ dropWhile([1, 2, 3, 4], n => n >= 3); // [3,4]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### everyNth
 
 Returns every nth element in an array.
@@ -1267,7 +1244,6 @@ everyNth([1, 2, 3, 4, 5, 6], 2); // [ 2, 4, 6 ]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### filterNonUnique
 
 Filters out the non-unique values in an array.
@@ -1288,7 +1264,6 @@ filterNonUnique([1, 2, 2, 3, 4, 4, 5]); // [1,3,5]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### filterNonUniqueBy
 
@@ -1322,7 +1297,6 @@ filterNonUniqueBy(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### findLast
 
 Returns the last element for which the provided function returns a truthy value.
@@ -1343,7 +1317,6 @@ findLast([1, 2, 3, 4], n => n % 2 === 1); // 3
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### findLastIndex
 
@@ -1371,7 +1344,6 @@ findLastIndex([1, 2, 3, 4], n => n % 2 === 1); // 2 (index of the value 3)
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### flatten
 
 Flattens an array up to the specified depth.
@@ -1398,7 +1370,6 @@ flatten([1, [2, [3, [4, 5], 6], 7], 8], 2); // [1, 2, 3, [4, 5], 6, 7, 8]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### forEachRight
 
 Executes a provided function once for each array element, starting from the array's last element.
@@ -1423,7 +1394,6 @@ forEachRight([1, 2, 3, 4], val => console.log(val)); // '4', '3', '2', '1'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### groupBy
 
@@ -1452,7 +1422,6 @@ groupBy(['one', 'two', 'three'], 'length'); // {3: ['one', 'two'], 5: ['three']}
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### head
 
 Returns the head of a list.
@@ -1473,7 +1442,6 @@ head([1, 2, 3]); // 1
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### indexOfAll
 
@@ -1498,7 +1466,6 @@ indexOfAll([1, 2, 3], 4); // []
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### initial
 
 Returns all the elements of an array except the last one.
@@ -1519,7 +1486,6 @@ initial([1, 2, 3]); // [1,2]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### initialize2DArray
 
@@ -1542,7 +1508,6 @@ initialize2DArray(2, 2, 0); // [[0,0], [0,0]]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### initializeArrayWithRange
 
@@ -1569,7 +1534,6 @@ initializeArrayWithRange(9, 0, 2); // [0,2,4,6,8]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### initializeArrayWithRangeRight
 
@@ -1599,7 +1563,6 @@ initializeArrayWithRangeRight(9, 0, 2); // [8,6,4,2,0]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### initializeArrayWithValues
 
 Initializes and fills an array with the specified values.
@@ -1621,7 +1584,6 @@ initializeArrayWithValues(5, 2); // [2,2,2,2,2]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### initializeNDArray
 
@@ -1649,7 +1611,6 @@ initializeNDArray(5, 2, 2, 2); // [[[5,5],[5,5]],[[5,5],[5,5]]]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### intersection
 
 Returns a list of elements that exist in both arrays.
@@ -1674,7 +1635,6 @@ intersection([1, 2, 3], [4, 3, 2]); // [2,3]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### intersectionBy
 
 Returns a list of elements that exist in both arrays, after applying the provided function to each array element of both.
@@ -1683,7 +1643,7 @@ Create a `Set` by applying `fn` to all elements in `b`, then use `Array.filter()
 
 ```js
 const intersectionBy = (a, b, fn) => {
-  const s = new Set(b.map(x => fn(x)));
+  const s = new Set(b.map(fn));
   return a.filter(x => s.has(fn(x)));
 };
 ```
@@ -1698,7 +1658,6 @@ intersectionBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [2.1]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### intersectionWith
 
@@ -1720,7 +1679,6 @@ intersectionWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0, 3.9], (a, b) => Math.round(a) 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isSorted
 
@@ -1753,7 +1711,6 @@ isSorted([4, 3, 5]); // 0
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### join
 
@@ -1789,7 +1746,6 @@ join(['pen', 'pineapple', 'apple', 'pen']); // "pen,pineapple,apple,pen"
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### JSONtoCSV ![advanced](/advanced.svg)
 
 Converts an array of objects to a comma-separated values (CSV) string that contains only the `columns` specified.
@@ -1824,7 +1780,6 @@ JSONtoCSV([{ a: 1, b: 2 }, { a: 3, b: 4, c: 5 }, { a: 6 }, { b: 7 }], ['a', 'b']
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### last
 
 Returns the last element in an array.
@@ -1845,7 +1800,6 @@ last([1, 2, 3]); // 3
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### longestItem
 
@@ -1875,7 +1829,6 @@ longestItem([1, 2, 3], 'foobar'); // 'foobar'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### mapObject ![advanced](/advanced.svg)
 
 Maps the values of an array to an object using a function, where the key-value pairs consist of the original value as the key and the mapped value.
@@ -1901,7 +1854,6 @@ squareIt([1, 2, 3]); // { 1: 1, 2: 4, 3: 9 }
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### maxN
 
 Returns the `n` maximum elements from the provided array. If `n` is greater than or equal to the provided array's length, then return the original array(sorted in descending order).
@@ -1926,7 +1878,6 @@ maxN([1, 2, 3], 2); // [3,2]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### minN
 
 Returns the `n` minimum elements from the provided array. If `n` is greater than or equal to the provided array's length, then return the original array(sorted in ascending order).
@@ -1938,6 +1889,7 @@ Omit the second argument, `n`, to get a one-element array.
 ```js
 const minN = (arr, n = 1) => [...arr].sort((a, b) => a - b).slice(0, n);
 ```
+
 <details>
 <summary>Examples</summary>
 
@@ -1949,7 +1901,6 @@ minN([1, 2, 3], 2); // [1,2]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### none
 
@@ -1973,7 +1924,6 @@ none([0, 0, 0]); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### nthElement
 
@@ -1999,7 +1949,6 @@ nthElement(['a', 'b', 'b'], -3); // 'a'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### offset
 
 Moves the specified amount of elements to the end of the array.
@@ -2023,7 +1972,6 @@ offset([1, 2, 3, 4, 5], -2); // [4, 5, 1, 2, 3]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### partition
 
@@ -2055,8 +2003,7 @@ partition(users, o => o.active); // [[{ 'user': 'fred',    'age': 40, 'active': 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### permutations
+### permutations ![advanced](/advanced.svg)
 
 ⚠️ **WARNING**: This function's execution time increases exponentially with each array element. Anything more than 8 to 10 entries will cause your browser to hang as it tries to solve all the different combinations.
 
@@ -2091,7 +2038,6 @@ permutations([1, 33, 5]); // [ [ 1, 33, 5 ], [ 1, 5, 33 ], [ 33, 1, 5 ], [ 33, 5
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### pull
 
 Mutates the original array to filter out the values specified.
@@ -2122,8 +2068,7 @@ pull(myArray, 'a', 'c'); // myArray = [ 'b', 'b' ]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### pullAtIndex
+### pullAtIndex ![advanced](/advanced.svg)
 
 Mutates the original array to filter out the values at the specified indexes.
 
@@ -2155,8 +2100,7 @@ let pulled = pullAtIndex(myArray, [1, 3]); // myArray = [ 'a', 'c' ] , pulled = 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### pullAtValue
+### pullAtValue ![advanced](/advanced.svg)
 
 Mutates the original array to filter out the values specified. Returns the removed elements.
 
@@ -2186,7 +2130,6 @@ let pulled = pullAtValue(myArray, ['b', 'd']); // myArray = [ 'a', 'c' ] , pulle
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### pullBy ![advanced](/advanced.svg)
 
@@ -2220,7 +2163,6 @@ pullBy(myArray, [{ x: 1 }, { x: 3 }], o => o.x); // myArray = [{ x: 2 }]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### reducedFilter
 
@@ -2263,7 +2205,6 @@ reducedFilter(data, ['id', 'name'], item => item.age > 24); // [{ id: 2, name: '
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### reduceSuccessive
 
 Applies a function against an accumulator and each element in the array (from left to right), returning an array of successively reduced values.
@@ -2285,7 +2226,6 @@ reduceSuccessive([1, 2, 3, 4, 5, 6], (acc, val) => acc + val, 0); // [0, 1, 3, 6
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### reduceWhich
 
@@ -2315,7 +2255,6 @@ reduceWhich(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### reject
 
 Takes a predicate and array, like `Array.filter()`, but only keeps `x` if `pred(x) === false`.
@@ -2335,7 +2274,6 @@ reject(word => word.length > 4, ['Apple', 'Pear', 'Kiwi', 'Banana']); // ['Pear'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### remove
 
@@ -2365,7 +2303,6 @@ remove([1, 2, 3, 4], n => n % 2 === 0); // [2, 4]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### sample
 
 Returns a random element from an array.
@@ -2388,12 +2325,11 @@ sample([3, 7, 9, 11]); // 9
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### sampleSize
 
 Gets `n` random elements at unique keys from `array` up to the size of `array`.
 
-Shuffle the array using the [Fisher-Yates algorithm](https://github.com/chalarangelo/30-seconds-of-code#shuffle).
+Shuffle the array using the [Fisher-Yates algorithm](https://github.com/30-seconds/30-seconds-of-code#shuffle).
 Use `Array.slice()` to get the first `n` elements.
 Omit the second argument, `n` to get only one element at random from the array.
 
@@ -2420,12 +2356,11 @@ sampleSize([1, 2, 3], 4); // [2,3,1]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### shuffle
 
 Randomizes the order of the values of an array, returning a new array.
 
-Uses the [Fisher-Yates algorithm](https://github.com/chalarangelo/30-seconds-of-code#shuffle) to reorder the elements of the array.
+Uses the [Fisher-Yates algorithm](https://github.com/30-seconds/30-seconds-of-code#shuffle) to reorder the elements of the array.
 
 ```js
 const shuffle = ([...arr]) => {
@@ -2450,7 +2385,6 @@ shuffle(foo); // [2,3,1], foo = [1,2,3]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### similarity
 
 Returns an array of elements that appear in both arrays.
@@ -2471,7 +2405,6 @@ similarity([1, 2, 3], [1, 2, 4]); // [1,2]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### sortedIndex
 
@@ -2500,7 +2433,6 @@ sortedIndex([30, 50], 40); // 1
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### sortedIndexBy
 
 Returns the lowest index at which value should be inserted into array in order to maintain its sort order, based on a provided iterator function.
@@ -2528,7 +2460,6 @@ sortedIndexBy([{ x: 4 }, { x: 5 }], { x: 4 }, o => o.x); // 0
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### sortedLastIndex
 
 Returns the highest index at which value should be inserted into array in order to maintain its sort order.
@@ -2554,7 +2485,6 @@ sortedLastIndex([10, 20, 30, 30, 40], 30); // 4
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### sortedLastIndexBy
 
@@ -2587,7 +2517,6 @@ sortedLastIndexBy([{ x: 4 }, { x: 5 }], { x: 4 }, o => o.x); // 1
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### stableSort ![advanced](/advanced.svg)
 
 Performs stable sorting of an array, preserving the initial indexes of items when their values are the same. 
@@ -2617,7 +2546,6 @@ const stable = stableSort(arr, () => 0); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### symmetricDifference
 
 Returns the symmetric difference between two arrays, without filtering out duplicate values.
@@ -2644,7 +2572,6 @@ symmetricDifference([1, 2, 2], [1, 3, 1]); // [2, 2, 3]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### symmetricDifferenceBy
 
 Returns the symmetric difference between two arrays, after applying the provided function to each array element of both.
@@ -2669,7 +2596,6 @@ symmetricDifferenceBy([2.1, 1.2], [2.3, 3.4], Math.floor); // [ 1.2, 3.4 ]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### symmetricDifferenceWith
 
@@ -2699,7 +2625,6 @@ symmetricDifferenceWith(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### tail
 
 Returns all elements in an array except for the first one.
@@ -2721,7 +2646,6 @@ tail([1]); // [1]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### take
 
@@ -2745,7 +2669,6 @@ take([1, 2, 3], 0); // []
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### takeRight
 
 Returns an array with n elements removed from the end.
@@ -2767,7 +2690,6 @@ takeRight([1, 2, 3]); // [3]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### takeRightWhile
 
@@ -2795,7 +2717,6 @@ takeRightWhile([1, 2, 3, 4], n => n < 3); // [3, 4]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### takeWhile
 
 Removes elements in an array until the passed function returns `true`. Returns the removed elements.
@@ -2820,7 +2741,6 @@ takeWhile([1, 2, 3, 4], n => n >= 3); // [1, 2]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### toHash
 
@@ -2860,7 +2780,6 @@ managers; // [ { manager:1, employees: [ { id: 2, first: "Joe" }, { id: 3, first
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### union
 
 Returns every element that exists in any of the two arrays once.
@@ -2881,7 +2800,6 @@ union([1, 2, 3], [4, 3, 2]); // [1,2,3,4]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### unionBy
 
@@ -2909,7 +2827,6 @@ unionBy([2.1], [1.2, 2.3], Math.floor); // [2.1, 1.2]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### unionWith
 
 Returns every element that exists in any of the two arrays once, using a provided comparator function.
@@ -2932,7 +2849,6 @@ unionWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0, 3.9], (a, b) => Math.round(a) === Mat
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### uniqueElements
 
 Returns all unique values of an array.
@@ -2953,7 +2869,6 @@ uniqueElements([1, 2, 2, 3, 4, 4, 5]); // [1,2,3,4,5]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### uniqueElementsBy
 
@@ -2990,7 +2905,6 @@ uniqueElementsBy(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### uniqueElementsByRight
 
 Returns all unique values of an array, based on a provided comparator function.
@@ -3026,7 +2940,6 @@ uniqueElementsByRight(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### uniqueSymmetricDifference
 
 Returns the unique symmetric difference between two arrays, not containing duplicate values from either array.
@@ -3050,7 +2963,6 @@ uniqueSymmetricDifference([1, 2, 2], [1, 3, 1]); // [2, 3]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### unzip
 
@@ -3080,7 +2992,6 @@ unzip([['a', 1, true], ['b', 2]]); //[['a', 'b'], [1, 2], [true]]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### unzipWith ![advanced](/advanced.svg)
 
@@ -3113,7 +3024,6 @@ unzipWith([[1, 10, 100], [2, 20, 200]], (...args) => args.reduce((acc, v) => acc
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### without
 
 Filters out the elements of an array, that have one of the specified values.
@@ -3137,7 +3047,6 @@ without([2, 1, 2, 3], 1, 2); // [3]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### xProd
 
 Creates a new array out of the two supplied by creating each possible pair from the arrays.
@@ -3158,7 +3067,6 @@ xProd([1, 2], ['a', 'b']); // [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### zip
 
@@ -3189,7 +3097,6 @@ zip(['a'], [1, 2], [true, false]); // [['a', 1, true], [undefined, 2, false]]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### zipObject
 
 Given an array of valid property identifiers and an array of values, return an object associating the properties to the values.
@@ -3212,7 +3119,6 @@ zipObject(['a', 'b'], [1, 2, 3]); // {a: 1, b: 2}
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### zipWith ![advanced](/advanced.svg)
 
@@ -3251,8 +3157,10 @@ zipWith(
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## 🌐 Browser
+
+## 🌐 Browser
 
 ### arrayToHtmlList
 
@@ -3279,7 +3187,6 @@ arrayToHtmlList(['item 1', 'item 2'], 'myListID');
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### bottomVisible
 
 Returns `true` if the bottom of the page is visible, `false` otherwise.
@@ -3302,7 +3209,6 @@ bottomVisible(); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### copyToClipboard ![advanced](/advanced.svg)
 
@@ -3347,7 +3253,6 @@ copyToClipboard('Lorem ipsum'); // 'Lorem ipsum' copied to clipboard.
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### counter ![advanced](/advanced.svg)
 
 Creates a counter with the specified range, step and duration for the specified selector.
@@ -3383,7 +3288,6 @@ counter('#my-id', 1, 1000, 5, 2000); // Creates a 2-second timer for the element
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### createElement
 
 Creates an element from a string (without appending it to the document). 
@@ -3416,7 +3320,6 @@ console.log(el.className); // 'container'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### createEventHub ![advanced](/advanced.svg)
 
@@ -3471,7 +3374,6 @@ hub.off('message', handler);
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### currentURL
 
 Returns the current URL.
@@ -3492,7 +3394,6 @@ currentURL(); // 'https://google.com'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### detectDeviceType
 
@@ -3518,7 +3419,6 @@ detectDeviceType(); // "Mobile" or "Desktop"
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### elementContains
 
 Returns `true` if the `parent` element contains the `child` element, `false` otherwise.
@@ -3541,8 +3441,7 @@ elementContains(document.querySelector('body'), document.querySelector('body'));
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### elementIsVisibleInViewport
+### elementIsVisibleInViewport ![advanced](/advanced.svg)
 
 Returns `true` if the element specified is visible in the viewport, `false` otherwise.
 
@@ -3575,7 +3474,6 @@ elementIsVisibleInViewport(el, true); // true - (partially visible)
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### getScrollPosition
 
 Returns the scroll position of the current page.
@@ -3601,7 +3499,6 @@ getScrollPosition(); // {x: 0, y: 200}
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### getStyle
 
 Returns the value of a CSS rule for the specified element.
@@ -3623,7 +3520,6 @@ getStyle(document.querySelector('p'), 'font-size'); // '16px'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### hasClass
 
 Returns `true` if the element has the specified class, `false` otherwise.
@@ -3644,7 +3540,6 @@ hasClass(document.querySelector('p.special'), 'special'); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### hashBrowser ![advanced](/advanced.svg)
 
@@ -3674,28 +3569,26 @@ hashBrowser(JSON.stringify({ a: 'a', b: [1, 2, 3, 4], foo: { c: 'bar' } })).then
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### hide
 
 Hides all the elements specified.
 
-Use the spread operator (`...`) and `Array.forEach()` to apply `display: none` to each element specified.
+Use `NodeList.prototype.forEach()` to apply `display: none` to each element specified.
 
 ```js
-const hide = (...el) => [...el].forEach(e => (e.style.display = 'none'));
+const hide = els => els.forEach(e => (e.style.display = 'none'));
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```js
-hide(...document.querySelectorAll('img')); // Hides all <img> elements on the page
+hide(document.querySelectorAll('img')); // Hides all <img> elements on the page
 ```
 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### httpsRedirect
 
@@ -3720,7 +3613,6 @@ httpsRedirect(); // If you are on http://mydomain.com, you are redirected to htt
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### insertAfter
 
 Inserts an HTML string after the end of the specified element.
@@ -3741,7 +3633,6 @@ insertAfter(document.getElementById('myId'), '<p>after</p>'); // <div id="myId">
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### insertBefore
 
@@ -3764,7 +3655,6 @@ insertBefore(document.getElementById('myId'), '<p>before</p>'); // <p>before</p>
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isBrowserTabFocused
 
 Returns `true` if the browser tab of the page is focused, `false` otherwise.
@@ -3786,15 +3676,14 @@ isBrowserTabFocused(); // true
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### nodeListToArray
 
 Converts a `NodeList` to an array.
 
-Use `Array.prototype.slice()` and `Function.prototype.call()` to convert a `NodeList` to an array.
+Use spread operator inside new array to convert a `NodeList` to an array.
 
 ```js
-const nodeListToArray = nodeList => Array.prototype.slice.call(nodeList);
+const nodeListToArray = nodeList => [...nodeList];
 ```
 
 <details>
@@ -3807,7 +3696,6 @@ nodeListToArray(document.childNodes); // [ <!DOCTYPE html>, html ]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### observeMutations ![advanced](/advanced.svg)
 
@@ -3850,7 +3738,6 @@ obs.disconnect(); // Disconnects the observer and stops logging mutations on the
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### off
 
 Removes an event listener from an element.
@@ -3874,7 +3761,6 @@ off(document.body, 'click', fn); // no longer logs '!' upon clicking on the page
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### on
 
@@ -3905,7 +3791,6 @@ on(document.body, 'click', fn, { options: true }); // use capturing instead of b
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### onUserInputChange ![advanced](/advanced.svg)
 
@@ -3945,7 +3830,6 @@ onUserInputChange(type => {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### prefix
 
 Returns the prefixed version (if necessary) of a CSS property that the browser supports.
@@ -3974,7 +3858,6 @@ prefix('appearance'); // 'appearance' on a supported browser, otherwise 'webkitA
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### recordAnimationFrames
 
@@ -4023,7 +3906,6 @@ const recorder2 = recordAnimationFrames(cb, false); // `start` needs to be expli
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### redirect
 
 Redirects to a specified URL.
@@ -4046,7 +3928,6 @@ redirect('https://google.com');
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### runAsync ![advanced](/advanced.svg)
 
@@ -4104,7 +3985,6 @@ runAsync(() => typeof outsideVariable).then(console.log); // 'undefined'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### scrollToTop
 
 Smooth-scrolls to the top of the page.
@@ -4133,7 +4013,6 @@ scrollToTop();
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### setStyle
 
 Sets the value of a CSS rule for the specified element.
@@ -4155,7 +4034,6 @@ setStyle(document.querySelector('p'), 'font-size', '20px'); // The first <p> ele
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### show
 
 Shows all the elements specified.
@@ -4176,7 +4054,6 @@ show(...document.querySelectorAll('img')); // Shows all <img> elements on the pa
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### smoothScroll
 
@@ -4204,7 +4081,6 @@ smoothScroll('.fooBar'); // scrolls smoothly to the first element with a class o
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### toggleClass
 
 Toggle a class for an element.
@@ -4225,7 +4101,6 @@ toggleClass(document.querySelector('p.special'), 'special'); // The paragraph wi
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### triggerEvent
 
@@ -4252,7 +4127,6 @@ triggerEvent(document.getElementById('myId'), 'click', { username: 'bob' });
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### UUIDGeneratorBrowser
 
 Generates a UUID in a browser.
@@ -4277,8 +4151,10 @@ UUIDGeneratorBrowser(); // '7982fcfe-5721-4632-bede-6000885be57d'
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## ⏱️ Date
+
+## ⏱️ Date
 
 ### formatDuration
 
@@ -4301,7 +4177,7 @@ const formatDuration = ms => {
   };
   return Object.entries(time)
     .filter(val => val[1] !== 0)
-    .map(val => val[1] + ' ' + (val[1] !== 1 ? val[0] + 's' : val[0]))
+    .map(([key, val]) => `${val} ${key}${val !== 1 ? 's' : ''}`)
     .join(', ');
 };
 ```
@@ -4317,7 +4193,6 @@ formatDuration(34325055574); // '397 days, 6 hours, 44 minutes, 15 seconds, 574 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### getColonTimeFromDate
 
@@ -4340,7 +4215,6 @@ getColonTimeFromDate(new Date()); // "08:38:00"
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### getDaysDiffBetweenDates
 
 Returns the difference (in days) between two dates.
@@ -4362,7 +4236,6 @@ getDaysDiffBetweenDates(new Date('2017-12-13'), new Date('2017-12-22')); // 9
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### getMeridiemSuffixOfInteger
 
@@ -4395,7 +4268,6 @@ getMeridiemSuffixOfInteger(25); // "1pm"
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### tomorrow
 
 Results in a string representation of tomorrow's date.
@@ -4424,8 +4296,10 @@ tomorrow(true); // 2017-12-27T00:00:00 (if current date is 2017-12-26)
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## 🎛️ Function
+
+## 🎛️ Function
 
 ### attempt
 
@@ -4457,7 +4331,6 @@ if (elements instanceof Error) elements = []; // elements = []
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### bind
 
 Creates a function that invokes `fn` with a given context, optionally adding any additional supplied parameters to the beginning of the arguments.
@@ -4484,7 +4357,6 @@ console.log(freddyBound('hi', '!')); // 'hi fred!'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### bindKey
 
@@ -4515,7 +4387,6 @@ console.log(freddyBound('hi', '!')); // 'hi fred!'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### chainAsync
 
@@ -4550,7 +4421,6 @@ chainAsync([
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### compose
 
 Performs right-to-left function composition.
@@ -4579,7 +4449,6 @@ multiplyAndAdd5(5, 2); // 15
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### composeRight
 
 Performs left-to-right function composition.
@@ -4604,7 +4473,6 @@ addAndSquare(1, 2); // 9
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### converge
 
@@ -4632,7 +4500,6 @@ average([1, 2, 3, 4, 5, 6, 7]); // 4
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### curry
 
 Curries a function.
@@ -4658,7 +4525,6 @@ curry(Math.min, 3)(10)(50)(2); // 2
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### debounce
 
@@ -4694,7 +4560,6 @@ window.addEventListener(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### defer
 
 Defers invoking a function until the current call stack has cleared.
@@ -4721,7 +4586,6 @@ defer(longRunningFunction); // Browser will update the HTML then run the functio
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### delay
 
@@ -4751,7 +4615,6 @@ delay(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### functionName
 
 Logs the name of a function.
@@ -4772,7 +4635,6 @@ functionName(Math.max); // max (logged in debug channel of console)
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### hz
 
@@ -4817,8 +4679,7 @@ Math.round(hz(sumForLoop)); // 4784
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### memoize
+### memoize ![advanced](/advanced.svg)
 
 Returns the memoized (cached) function.
 
@@ -4852,7 +4713,6 @@ console.log(anagramsCached.cache); // The cached anagrams map
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### negate
 
 Negates a predicate function.
@@ -4873,7 +4733,6 @@ const negate = func => (...args) => !func(...args);
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### once
 
@@ -4907,7 +4766,6 @@ document.body.addEventListener('click', once(startApp)); // only runs `startApp`
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### partial
 
 Creates a function that invokes `fn` with `partials` prepended to the arguments it receives.
@@ -4930,7 +4788,6 @@ greetHello('John'); // 'Hello John!'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### partialRight
 
@@ -4955,7 +4812,6 @@ greetJohn('Hello'); // 'Hello John!'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### runPromisesInSeries
 
 Runs an array of promises in series.
@@ -4977,7 +4833,6 @@ runPromisesInSeries([() => delay(1000), () => delay(2000)]); // Executes each pr
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### sleep
 
@@ -5004,8 +4859,7 @@ async function sleepyWork() {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### throttle
+### throttle ![advanced](/advanced.svg)
 
 Creates a throttled function that only invokes the provided function at most once per every `wait` milliseconds
 
@@ -5054,7 +4908,6 @@ window.addEventListener(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### times
 
 Iterates over a callback `n` times
@@ -5081,7 +4934,6 @@ console.log(output); // 01234
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### uncurry
 
@@ -5114,7 +4966,6 @@ uncurriedAdd(1, 2, 3); // 6
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### unfold
 
 Builds an array, using an iterator function and an initial seed value.
@@ -5143,7 +4994,6 @@ unfold(f, 10); // [-10, -20, -30, -40, -50]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### when
 
 Tests a value, `x`, against a predicate function. If `true`, return `fn(x)`. Else, return `x`. 
@@ -5167,8 +5017,10 @@ doubleEvenNumbers(1); // 1
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## ➗ Math
+
+## ➗ Math
 
 ### approximatelyEqual
 
@@ -5192,7 +5044,6 @@ approximatelyEqual(Math.PI / 2.0, 1.5708); // true
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### average
 
 Returns the average of two or more numbers.
@@ -5214,7 +5065,6 @@ average(1, 2, 3); // 2
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### averageBy
 
@@ -5239,7 +5089,6 @@ averageBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 5
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### binomialCoefficient
 
@@ -5275,7 +5124,6 @@ binomialCoefficient(8, 2); // 28
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### clampNumber
 
 Clamps `num` within the inclusive range specified by the boundary values `a` and `b`.
@@ -5299,7 +5147,6 @@ clampNumber(1, -1, -5); // -1
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### degreesToRads
 
 Converts an angle from degrees to radians.
@@ -5320,7 +5167,6 @@ degreesToRads(90.0); // ~1.5708
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### digitize
 
@@ -5344,7 +5190,6 @@ digitize(123); // [1, 2, 3]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### distance
 
 Returns the distance between two points.
@@ -5365,7 +5210,6 @@ distance(1, 1, 2, 3); // 2.23606797749979
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### elo ![advanced](/advanced.svg)
 
@@ -5418,7 +5262,6 @@ own individual rating by supplying it as the third argument.
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### factorial
 
 Calculates the factorial of a number.
@@ -5450,7 +5293,6 @@ factorial(6); // 720
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### fibonacci
 
 Generates an array, containing the Fibonacci sequence, up until the nth term.
@@ -5476,7 +5318,6 @@ fibonacci(6); // [0, 1, 1, 2, 3, 5]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### gcd
 
@@ -5504,7 +5345,6 @@ gcd(...[12, 8, 32]); // 4
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### geometricProgression
 
@@ -5535,7 +5375,6 @@ geometricProgression(256, 1, 4); // [1, 4, 16, 64, 256]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### hammingDistance
 
 Calculates the Hamming distance between two values.
@@ -5558,7 +5397,6 @@ hammingDistance(2, 3); // 1
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### inRange
 
 Checks if the given number falls within the given range.
@@ -5568,7 +5406,7 @@ If the second parameter, `end`, is not specified, the range is considered to be 
 
 ```js
 const inRange = (n, start, end = null) => {
-  if (end && start > end) end = [start, (start = end)][0];
+  if (end && start > end) [end, start] = [start, end];
   return end == null ? n >= 0 && n < start : n >= start && n < end;
 };
 ```
@@ -5580,13 +5418,12 @@ const inRange = (n, start, end = null) => {
 inRange(3, 2, 5); // true
 inRange(3, 4); // true
 inRange(2, 3, 5); // false
-inrange(3, 2); // false
+inRange(3, 2); // false
 ```
 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isDivisible
 
@@ -5609,7 +5446,6 @@ isDivisible(6, 3); // true
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isEven
 
 Returns `true` if the given number is even, `false` otherwise.
@@ -5631,7 +5467,6 @@ isEven(3); // false
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isPrime
 
@@ -5658,7 +5493,6 @@ isPrime(11); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### lcm
 
@@ -5687,8 +5521,7 @@ lcm(...[1, 3, 4, 5]); // 60
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### luhnCheck
+### luhnCheck ![advanced](/advanced.svg)
 
 Implementation of the [Luhn Algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm) used to validate a variety of identification numbers, such as credit card numbers, IMEI numbers, National Provider Identifier numbers etc.
 
@@ -5724,7 +5557,6 @@ luhnCheck(123456789); // false
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### maxBy
 
 Returns the maximum value of an array, after mapping each element to a value using the provided function.
@@ -5746,7 +5578,6 @@ maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 8
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### median
 
@@ -5774,7 +5605,6 @@ median([5, 6, 50, 1, -5]); // 5
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### minBy
 
 Returns the minimum value of an array, after mapping each element to a value using the provided function.
@@ -5796,7 +5626,6 @@ minBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 2
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### percentile
 
@@ -5820,7 +5649,6 @@ percentile([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 6); // 55
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### powerset
 
 Returns the powerset of a given array of numbers.
@@ -5841,7 +5669,6 @@ powerset([1, 2]); // [[], [1], [2], [2,1]]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### primes
 
@@ -5870,7 +5697,6 @@ primes(10); // [2,3,5,7]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### radsToDegrees
 
 Converts an angle from radians to degrees.
@@ -5891,7 +5717,6 @@ radsToDegrees(Math.PI / 2); // 90
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### randomIntArrayInRange
 
@@ -5915,7 +5740,6 @@ randomIntArrayInRange(12, 35, 10); // [ 34, 14, 27, 17, 30, 27, 20, 26, 21, 14 ]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### randomIntegerInRange
 
 Returns a random integer in the specified range.
@@ -5936,7 +5760,6 @@ randomIntegerInRange(0, 5); // 2
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### randomNumberInRange
 
@@ -5959,7 +5782,6 @@ randomNumberInRange(2, 10); // 6.0211363285087005
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### round
 
 Rounds a number to a specified amount of digits.
@@ -5981,7 +5803,6 @@ round(1.005, 2); // 1.01
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### sdbm
 
@@ -6010,7 +5831,6 @@ sdbm('name'); // -3521204949
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### standardDeviation
 
@@ -6042,7 +5862,6 @@ standardDeviation([10, 2, 38, 23, 38, 23, 21], true); // 12.29899614287479 (popu
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### sum
 
 Returns the sum of two or more numbers/arrays.
@@ -6063,7 +5882,6 @@ sum(...[1, 2, 3, 4]); // 10
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### sumBy
 
@@ -6087,7 +5905,6 @@ sumBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], 'n'); // 20
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### sumPower
 
@@ -6118,7 +5935,6 @@ sumPower(10, 3, 5); //2925
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### toSafeInteger
 
 Converts a value to a safe integer.
@@ -6143,8 +5959,10 @@ toSafeInteger(Infinity); // 9007199254740991
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## 📦 Node
+
+## 📦 Node
 
 ### atob
 
@@ -6167,7 +5985,6 @@ atob('Zm9vYmFy'); // 'foobar'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### btoa
 
 Creates a base-64 encoded ASCII string from a String object in which each character in the string is treated as a byte of binary data.
@@ -6188,7 +6005,6 @@ btoa('foobar'); // 'Zm9vYmFy'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### colorize
 
@@ -6231,7 +6047,6 @@ console.log(colorize(colorize('foo').yellow, colorize('foo').green).bgWhite); //
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### hasFlags
 
 Check if the current process's arguments contain the specified flags.
@@ -6257,7 +6072,6 @@ hasFlags('special'); // false
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### hashNode
 
@@ -6293,7 +6107,6 @@ hashNode(JSON.stringify({ a: 'a', b: [1, 2, 3, 4], foo: { c: 'bar' } })).then(co
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isTravisCI
 
 Checks if the current environment is [Travis CI](https://travis-ci.org/).
@@ -6314,7 +6127,6 @@ isTravisCI(); // true (if code is running on Travis CI)
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### JSONToFile
 
@@ -6338,7 +6150,6 @@ JSONToFile({ test: 'is passed' }, 'testJsonFile'); // writes the object to 'test
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### readFileLines
 
@@ -6377,7 +6188,6 @@ console.log(arr); // ['line1', 'line2', 'line3']
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### untildify
 
 Converts a tilde path to an absolute path.
@@ -6398,7 +6208,6 @@ untildify('~/node'); // '/Users/aUser/node'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### UUIDGeneratorNode
 
@@ -6425,8 +6234,10 @@ UUIDGeneratorNode(); // '79c7c136-60ee-40a2-beb2-856f1feabefc'
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## 🗃️ Object
+
+## 🗃️ Object
 
 ### bindAll
 
@@ -6464,7 +6275,6 @@ jQuery(element).on('click', view.click); // Logs 'clicked docs' when clicked.
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### deepClone
 
 Creates a deep clone of an object.
@@ -6495,6 +6305,35 @@ const b = deepClone(a); // a !== b, a.obj !== b.obj
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### deepFreeze
+
+Deep freezes an object.
+
+Calls `Object.freeze(obj)` recursively on all unfrozen properties of passed object that are `instanceof` object.
+
+```js
+const deepFreeze = obj =>
+  Object.keys(obj).forEach(
+    prop =>
+      !obj[prop] instanceof Object || Object.isFrozen(obj[prop]) ? null : deepFreeze(obj[prop])
+  ) || Object.freeze(obj);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+'use strict';
+
+const o = deepFreeze([1, [2, 3]]);
+
+o[0] = 3; // not allowed
+o[1][0] = 4; // not allowed as well
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### defaults
 
@@ -6516,7 +6355,6 @@ defaults({ a: 1 }, { b: 2 }, { b: 6 }, { a: 3 }); // { a: 1, b: 2 }
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### dig
 
@@ -6554,7 +6392,6 @@ dig(data, 'level4'); // undefined
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### equals ![advanced](/advanced.svg)
 
 Performs a deep comparison between two values to determine if they are equivalent.
@@ -6587,7 +6424,6 @@ equals({ a: [2, { e: 3 }], b: [4], c: 'foo' }, { a: [2, { e: 3 }], b: [4], c: 'f
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### findKey
 
 Returns the first key that satisfies the provided testing function. Otherwise `undefined` is returned.
@@ -6615,7 +6451,6 @@ findKey(
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### findLastKey
 
@@ -6648,7 +6483,6 @@ findLastKey(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### flattenObject
 
 Flatten an object with the paths for keys.
@@ -6680,7 +6514,6 @@ flattenObject({ a: { b: { c: 1 } }, d: 1 }); // { 'a.b.c': 1, d: 1 }
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### forOwn
 
 Iterates over all own properties of an object, running a callback for each one.
@@ -6701,7 +6534,6 @@ forOwn({ foo: 'bar', a: 1 }, v => console.log(v)); // 'bar', 1
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### forOwnRight
 
@@ -6726,7 +6558,6 @@ forOwnRight({ foo: 'bar', a: 1 }, v => console.log(v)); // 1, 'bar'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### functions
 
@@ -6762,7 +6593,6 @@ functions(new Foo(), true); // ['a', 'b', 'c']
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### get
 
 Retrieve a set of properties indicated by the given selectors from an object.
@@ -6791,7 +6621,6 @@ get(obj, 'selector.to.val', 'target[0]', 'target[2].a'); // ['val to select', 1,
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### invertKeyValues
 
@@ -6822,7 +6651,6 @@ invertKeyValues({ a: 1, b: 2, c: 1 }, value => 'group' + value); // { group1: [ 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### lowercaseKeys
 
 Creates a new object from the specified object, where all the keys are in lowercase.
@@ -6850,7 +6678,6 @@ const myObjLower = lowercaseKeys(myObj); // {name: 'Adam', surname: 'Smith'};
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### mapKeys
 
 Creates an object with keys generated by running the provided function for each key and the same values as the provided object.
@@ -6876,7 +6703,6 @@ mapKeys({ a: 1, b: 2 }, (val, key) => key + val); // { a1: 1, b2: 2 }
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### mapValues
 
@@ -6908,7 +6734,6 @@ mapValues(users, u => u.age); // { fred: 40, pebbles: 1 }
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### matches
 
 Compares two objects to determine if the first one contains equivalent property values to the second one.
@@ -6931,7 +6756,6 @@ matches({ hair: 'long', beard: true }, { age: 25, hair: 'long', beard: true }); 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### matchesWith
 
@@ -6965,7 +6789,6 @@ matchesWith(
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### merge
 
@@ -7006,7 +6829,6 @@ merge(object, other); // { a: [ { x: 2 }, { y: 4 }, { z: 3 } ], b: [ 1, 2, 3 ], 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### nest
 
 Given a flat array of objects linked to one another, it will nest them recursively.
@@ -7044,7 +6866,6 @@ const nestedComments = nest(comments); // [{ id: 1, parent_id: null, children: [
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### objectFromPairs
 
 Creates an object from the given key-value pairs.
@@ -7052,7 +6873,7 @@ Creates an object from the given key-value pairs.
 Use `Array.reduce()` to create and combine key-value pairs.
 
 ```js
-const objectFromPairs = arr => arr.reduce((a, v) => ((a[v[0]] = v[1]), a), {});
+const objectFromPairs = arr => arr.reduce((a, [key, val]) => ((a[key] = val), a), {});
 ```
 
 <details>
@@ -7065,7 +6886,6 @@ objectFromPairs([['a', 1], ['b', 2]]); // {a: 1, b: 2}
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### objectToPairs
 
@@ -7087,7 +6907,6 @@ objectToPairs({ a: 1, b: 2 }); // [['a',1],['b',2]]
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### omit
 
@@ -7114,7 +6933,6 @@ omit({ a: 1, b: '2', c: 3 }, ['b']); // { 'a': 1, 'c': 3 }
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### omitBy
 
 Creates an object composed of the properties the given function returns falsey for. The function is invoked with two arguments: (value, key).
@@ -7139,7 +6957,6 @@ omitBy({ a: 1, b: '2', c: 3 }, x => typeof x === 'number'); // { b: '2' }
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### orderBy
 
@@ -7174,7 +6991,6 @@ orderBy(users, ['name', 'age']); // [{name: 'barney', age: 36}, {name: 'fred', a
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### pick
 
 Picks the key-value pairs corresponding to the given keys from an object.
@@ -7196,7 +7012,6 @@ pick({ a: 1, b: '2', c: 3 }, ['a', 'c']); // { 'a': 1, 'c': 3 }
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### pickBy
 
@@ -7222,7 +7037,6 @@ pickBy({ a: 1, b: '2', c: 3 }, x => typeof x === 'number'); // { 'a': 1, 'c': 3 
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### renameKeys
 
@@ -7253,7 +7067,6 @@ renameKeys({ name: 'firstName', job: 'passion' }, obj); // { firstName: 'Bobo', 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### shallowClone
 
 Creates a shallow clone of an object.
@@ -7275,7 +7088,6 @@ const b = shallowClone(a); // a !== b
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### size
 
@@ -7312,7 +7124,6 @@ size({ one: 1, two: 2, three: 3 }); // 3
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### transform
 
 Applies a function against an accumulator and each key in the object (from left to right).
@@ -7341,7 +7152,6 @@ transform(
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### truthCheckCollection
 
 Checks if the predicate (second argument) is truthy on all elements of a collection (first argument).
@@ -7362,7 +7172,6 @@ truthCheckCollection([{ user: 'Tinky-Winky', sex: 'male' }, { user: 'Dipsy', sex
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### unflattenObject ![advanced](/advanced.svg)
 
@@ -7402,8 +7211,10 @@ unflattenObject({ 'a.b.c': 1, d: 1 }); // { a: { b: { c: 1 } }, d: 1 }
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## 📜 String
+
+## 📜 String
 
 ### byteSize
 
@@ -7426,7 +7237,6 @@ byteSize('Hello World'); // 11
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### capitalize
 
@@ -7452,7 +7262,6 @@ capitalize('fooBar', true); // 'Foobar'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### capitalizeEveryWord
 
 Capitalizes the first letter of every word in a string.
@@ -7473,7 +7282,6 @@ capitalizeEveryWord('hello world!'); // 'Hello World!'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### CSVToArray
 
@@ -7504,7 +7312,6 @@ CSVToArray('col1,col2\na,b\nc,d', ',', true); // [['a','b'],['c','d']];
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### CSVToJSON ![advanced](/advanced.svg)
 
@@ -7541,7 +7348,6 @@ CSVToJSON('col1;col2\na;b\nc;d', ';'); // [{'col1': 'a', 'col2': 'b'}, {'col1': 
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### decapitalize
 
 Decapitalizes the first letter of a string.
@@ -7565,7 +7371,6 @@ decapitalize('FooBar', true); // 'fOOBAR'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### escapeHTML
 
@@ -7599,7 +7404,6 @@ escapeHTML('<a href="#">Me & you</a>'); // '&lt;a href=&quot;#&quot;&gt;Me &amp;
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### escapeRegExp
 
 Escapes a string to use in a regular expression.
@@ -7620,7 +7424,6 @@ escapeRegExp('(test)'); // \\(test\\)
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### fromCamelCase
 
@@ -7650,7 +7453,6 @@ fromCamelCase('someJavascriptProperty', '_'); // 'some_javascript_property'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isAbsoluteURL
 
 Returns `true` if the given string is an absolute URL, `false` otherwise.
@@ -7673,7 +7475,6 @@ isAbsoluteURL('/foo/bar'); // false
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isAnagram
 
@@ -7705,7 +7506,6 @@ isAnagram('iceman', 'cinema'); // true
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isLowerCase
 
 Checks if a string is lower case.
@@ -7728,7 +7528,6 @@ isLowerCase('Ab4'); // false
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isUpperCase
 
@@ -7753,7 +7552,6 @@ isLowerCase('aB4'); // false
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### mapString
 
@@ -7782,7 +7580,6 @@ mapString('lorem ipsum', c => c.toUpperCase()); // 'LOREM IPSUM'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### mask
 
 Replaces all but the last `num` of characters with the specified mask character.
@@ -7810,7 +7607,6 @@ mask(1234567890, -4, '$'); // '$$$$567890'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### pad
 
 Pads a string on both sides with the specified character, if it's shorter than the specified length.
@@ -7836,7 +7632,6 @@ pad('foobar', 3); // 'foobar'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### palindrome
 
 Returns `true` if the given string is a palindrome, `false` otherwise.
@@ -7861,7 +7656,6 @@ palindrome('taco cat'); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### pluralize
 
@@ -7899,7 +7693,6 @@ autoPluralize(2, 'person'); // 'people'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### removeNonASCII
 
 Removes non-printable ASCII characters.
@@ -7920,7 +7713,6 @@ removeNonASCII('äÄçÇéÉêlorem-ipsumöÖÐþúÚ'); // 'lorem-ipsum'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### reverseString
 
@@ -7944,7 +7736,6 @@ reverseString('foobar'); // 'raboof'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### sortCharactersInString
 
 Alphabetically sorts the characters in a string.
@@ -7965,7 +7756,6 @@ sortCharactersInString('cabbage'); // 'aabbceg'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### splitLines
 
@@ -7988,8 +7778,7 @@ splitLines('This\nis a\nmultiline\nstring.\n'); // ['This', 'is a', 'multiline',
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### stringPermutations
+### stringPermutations ![advanced](/advanced.svg)
 
 ⚠️ **WARNING**: This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.
 
@@ -8024,7 +7813,6 @@ stringPermutations('abc'); // ['abc','acb','bac','bca','cab','cba']
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### stripHTMLTags
 
 Removes HTML/XML tags from string.
@@ -8045,7 +7833,6 @@ stripHTMLTags('<p><em>lorem</em> <strong>ipsum</strong></p>'); // 'lorem ipsum'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### toCamelCase
 
@@ -8079,7 +7866,6 @@ toCamelCase('some-mixed_string with spaces_underscores-and-hyphens'); // 'someMi
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### toKebabCase
 
 Converts a string to kebab case.
@@ -8109,7 +7895,6 @@ toKebabCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSo
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### toSnakeCase
 
@@ -8141,7 +7926,6 @@ toSnakeCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSo
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### truncateString
 
 Truncates a string up to a specified length.
@@ -8164,7 +7948,6 @@ truncateString('boomerang', 7); // 'boom...'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### unescapeHTML
 
@@ -8198,8 +7981,7 @@ unescapeHTML('&lt;a href=&quot;#&quot;&gt;Me &amp; you&lt;/a&gt;'); // '<a href=
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### URLJoin
+### URLJoin ![advanced](/advanced.svg)
 
 Joins all given URL segments together, then normalizes the resulting URL.
 
@@ -8228,7 +8010,6 @@ URLJoin('http://www.google.com', 'a', '/b/cd', '?foo=123', '?bar=foo'); // 'http
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### words
 
 Converts a given string into an array of words.
@@ -8252,8 +8033,10 @@ words('python, javaScript & coffee'); // ["python", "javaScript", "coffee"]
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## 📃 Type
+
+## 📃 Type
 
 ### getType
 
@@ -8276,7 +8059,6 @@ getType(new Set([1, 2, 3])); // 'set'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### is
 
@@ -8311,7 +8093,6 @@ is(Boolean, new Boolean(true)); // true
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isArrayLike
 
 Checks if the provided argument is array-like (i.e. is iterable).
@@ -8335,7 +8116,6 @@ isArrayLike(null); // false
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isBoolean
 
 Checks if the given argument is a native boolean element.
@@ -8357,7 +8137,6 @@ isBoolean(false); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isEmpty
 
@@ -8389,7 +8168,6 @@ isEmpty(true); // true - type is not considered a collection
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isFunction
 
 Checks if the given argument is a function.
@@ -8411,7 +8189,6 @@ isFunction(x => x); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isNil
 
@@ -8435,7 +8212,6 @@ isNil(undefined); // true
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isNull
 
 Returns `true` if the specified value is `null`, `false` otherwise.
@@ -8456,7 +8232,6 @@ isNull(null); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isNumber
 
@@ -8479,7 +8254,6 @@ isNumber(1); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isObject
 
@@ -8508,7 +8282,6 @@ isObject(true); // false
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isObjectLike
 
 Checks if a value is object-like.
@@ -8533,7 +8306,6 @@ isObjectLike(null); // false
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isPlainObject
 
 Checks if the provided value is an object created by the Object constructor.
@@ -8555,7 +8327,6 @@ isPlainObject(new Map()); // false
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isPrimitive
 
@@ -8584,7 +8355,6 @@ isPrimitive([]); // false
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isPromiseLike
 
@@ -8616,7 +8386,6 @@ isPromiseLike({}); // false
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isString
 
 Checks if the given argument is a string.
@@ -8637,7 +8406,6 @@ isString('10'); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isSymbol
 
@@ -8660,7 +8428,6 @@ isSymbol(Symbol('x')); // true
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isUndefined
 
 Returns `true` if the specified value is `undefined`, `false` otherwise.
@@ -8681,7 +8448,6 @@ isUndefined(undefined); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### isValidJSON
 
@@ -8713,8 +8479,10 @@ isValidJSON(null); // true
 
 <br>[⬆ Back to top](#table-of-contents)
 
+
 ---
- ## 🔧 Utility
+
+## 🔧 Utility
 
 ### castArray
 
@@ -8738,7 +8506,6 @@ castArray([1]); // [1]
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### cloneRegExp
 
 Clones a regular expression.
@@ -8761,7 +8528,6 @@ const regExp2 = cloneRegExp(regExp); // /lorem ipsum/gi
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### coalesce
 
 Returns the first non-null/undefined argument.
@@ -8782,7 +8548,6 @@ coalesce(null, undefined, '', NaN, 'Waldo'); // ""
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### coalesceFactory
 
@@ -8805,7 +8570,6 @@ customCoalesce(undefined, null, NaN, '', 'Waldo'); // "Waldo"
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### extendHex
 
@@ -8836,7 +8600,6 @@ extendHex('05a'); // '#0055aa'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### getURLParameters
 
 Returns an object containing the parameters of the current URL.
@@ -8863,7 +8626,6 @@ getURLParameters('google.com'); // {}
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### hexToRGB ![advanced](/advanced.svg)
 
@@ -8906,7 +8668,6 @@ hexToRGB('#fff'); // 'rgb(255, 255, 255)'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### httpGet
 
 Makes a `GET` request to the passed URL.
@@ -8946,7 +8707,6 @@ Logs: {
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### httpPost
 
@@ -9008,7 +8768,6 @@ Logs: {
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### isBrowser
 
 Determines if the current runtime environment is a browser so that front-end modules can run on the server (Node) without throwing errors.
@@ -9032,7 +8791,6 @@ isBrowser(); // false (Node)
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### mostPerformant
 
@@ -9073,7 +8831,6 @@ mostPerformant([
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### nthArg
 
 Creates a function that gets the argument at index `n`. If `n` is negative, the nth argument from the end is returned.
@@ -9098,7 +8855,6 @@ last(1, 2, 3, 4, 5); // 5
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### parseCookie
 
@@ -9130,8 +8886,7 @@ parseCookie('foo=bar; equation=E%3Dmc%5E2'); // { foo: 'bar', equation: 'E=mc^2'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
-### prettyBytes
+### prettyBytes ![advanced](/advanced.svg)
 
 Converts a number in bytes to a human-readable string.
 
@@ -9164,7 +8919,6 @@ prettyBytes(123456789, 3, false); // "123MB"
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### randomHexColorCode
 
 Generates a random hexadecimal color code.
@@ -9189,7 +8943,6 @@ randomHexColorCode(); // "#e34155"
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### RGBToHex
 
 Converts the values of RGB components to a color code.
@@ -9211,7 +8964,6 @@ RGBToHex(255, 165, 1); // 'ffa501'
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### serializeCookie
 
 Serialize a cookie name-value pair into a Set-Cookie header string.
@@ -9232,7 +8984,6 @@ serializeCookie('foo', 'bar'); // 'foo=bar'
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### timeTaken
 
@@ -9260,7 +9011,6 @@ timeTaken(() => Math.pow(2, 10)); // 1024, (logged): timeTaken: 0.02099609375ms
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### toCurrency
 
 Take a number and return specified currency formatting.
@@ -9287,7 +9037,6 @@ toCurrency(322342436423.2435, 'JPY', 'fi'); // 322 342 436 423 ¥ | currency: Ja
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### toDecimalMark
 
 Use `toLocaleString()` to convert a float-point arithmetic to the [Decimal mark](https://en.wikipedia.org/wiki/Decimal_mark) form. It makes a comma separated string from a number.
@@ -9306,7 +9055,6 @@ toDecimalMark(12305030388.9087); // "12,305,030,388.909"
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### toOrdinalSuffix
 
@@ -9340,7 +9088,6 @@ toOrdinalSuffix('123'); // "123rd"
 
 <br>[⬆ Back to top](#table-of-contents)
 
-
 ### validateNumber
 
 Returns `true` if the given value is a number, `false` otherwise.
@@ -9363,7 +9110,6 @@ validateNumber('10'); // true
 </details>
 
 <br>[⬆ Back to top](#table-of-contents)
-
 
 ### yesNo
 

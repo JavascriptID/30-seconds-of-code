@@ -6,7 +6,6 @@
 // Load modules
 const fs = require('fs-extra');
 const path = require('path');
-const chalk = require('chalk');
 const util = require('./util');
 
 const LOCALE_PATH = 'locale';
@@ -26,11 +25,11 @@ locales.forEach(locale => {
     if (locData.hasOwnProperty(snippetName)) {
       if (locData[snippetName].hash !== snippetHash) {
         existingData =
-          existingData.indexOf(' => ' + snippetHash) !== -1
+          existingData.indexOf(` => ${snippetHash}`) !== -1
             ? existingData
             : existingData.replace(
                 locData[snippetName].hash,
-                locData[snippetName].hash + ' => ' + snippetHash
+                `${locData[snippetName].hash} => ${snippetHash}`
               );
         hashChanges.push({
           snippetName,
@@ -44,36 +43,25 @@ locales.forEach(locale => {
   'comments': [${(snippets[snippet].match(COMMENT_REGEX) || []).map(
     v => '`' + v.replace(/`/g, '\\`') + '`'
   )}],
-  'hash': '${snippetHash}'
-}`);
+  'hash': '${snippetHash}'\n}`);
     }
   });
   if (!fs.existsSync(path.join(LOCALE_PATH, locale + '.js')) || !existingData.length)
     existingData = `module.exports = {
 'locale': {
-  'locale': '${locale}'
-}};`;
+  'locale': '${locale}'\n}};`;
   fs.writeFileSync(
     path.join(LOCALE_PATH, locale + '.js'),
     newData.length ? `${existingData.trim().slice(0, -2)},${newData.join(',')}};` : existingData
   );
   fs.writeFileSync(
     path.join(LOCALE_PATH, locale + '_log'),
-    `${new Date()}
-Hash changes: ${hashChanges.length}
-
-${
+    `${new Date()}\nHash changes: ${hashChanges.length}\n${
       hashChanges.length
         ? hashChanges
             .map(
               v =>
-                'Snippet name:' +
-                v.snippetName +
-                '\n  Old hash: ' +
-                v.oldHash +
-                '\n  New hash: ' +
-                v.newHash +
-                '\n'
+                `Snippet name: ${v.snippetName}\n Old hash: ${v.oldHash}\n New hash: ${v.newHash}\n`
             )
             .join('\n')
         : ''
