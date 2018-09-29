@@ -15,17 +15,22 @@
     <link rel="icon" type="image/png" href="./logos/logo_128.png"><link rel="manifest" href="manifest.json">
     <script>
       const search = (node) => {
+        if(node.value.toLowerCase().trim() === ''){
+          document.querySelector('nav').querySelectorAll('li > a').forEach(x => x.style.display = ''); 
+          document.querySelector('nav').querySelectorAll('h4:not(.static-link)').forEach(x => x.classList = 'collapse');
+          return;
+        }
         let matchingTags = [];
-        Array.from(node.parentElement.getElementsByTagName('a')).forEach(x => {
-          let data = [x.textContent.toLowerCase(), ...x.getAttribute('tags').split(',')].map(v => !!(v.indexOf(node.value.toLowerCase()) + 1));
+        Array.from(document.querySelector('nav').querySelectorAll('li')).forEach(x => {
+          let data = [x.textContent.toLowerCase(), ...x.querySelector('a').getAttribute('tags').split(',')].map(v => !!(v.indexOf(node.value.toLowerCase()) + 1));
           if(data.includes(true)){
             x.style.display = '';
-            matchingTags.push(x.getAttribute('tags').split(',')[0]);
+            matchingTags.push(x.querySelector('a').getAttribute('tags').split(',')[0]);
           }
           else x.style.display = 'none';
         });
-        Array.from(node.parentElement.getElementsByTagName('h4')).forEach(x => {
-          x.style.display = matchingTags.includes(x.textContent.toLowerCase()) ? '' : 'none';
+        Array.from(document.querySelector('nav').querySelectorAll('h4:not(.static-link)')).forEach(x => {
+          x.classList = matchingTags.includes(x.textContent.toLowerCase()) ? 'collapse toggled' : 'collapse';
         })
       }
       function scrollToTop(){
@@ -63,11 +68,27 @@
           }
           else if (event.target.classList.contains('menu-button')) {
             document.querySelector('nav').classList = event.target.classList.contains('toggled') ? '' : 'col-nav';
+            document.querySelector('[type="search"]').classList = event.target.classList.contains('toggled') ? '' : 'col-nav';
             event.target.classList = event.target.classList.contains('toggled') ? 'menu-button' : 'menu-button toggled';
           }
-          else if (!document.querySelector('nav').contains(event.target) && window.innerWidth < '768') {
+          else if (!document.querySelector('nav').contains(event.target) && !document.querySelector('[type="search"]').contains(event.target) && window.innerWidth < '768') {
             document.querySelector('nav').classList = '';
+            document.querySelector('[type="search"]').classList = '';
             document.querySelector('.menu-button').classList = 'menu-button';
+          }
+          else if (event.target.classList.contains('social')){
+            if (event.target.classList.contains('fb')){
+              setTimeout(function () { window.location = "https://www.facebook.com/30secondsofcode"; }, 25);
+              window.location = "fb://30secondsofcode";
+            }
+            else if (event.target.classList.contains('instagram')) {
+              setTimeout(function () { window.location = "https://www.instagram.com/30secondsofcode"; }, 25);
+              window.location = "instagram://30secondsofcode";
+            }
+            else if (event.target.classList.contains('twitter')) {
+              setTimeout(function () { window.location = "https://twitter.com/30secondsofcode"; }, 25);
+              window.location = "twitter://30secondsofcode";
+            } 
           }
           else if (event.target.classList.contains('copy-button')) {
             const text = event.target.parentElement.parentElement.querySelector(':not(pre) + pre').textContent;
@@ -101,5 +122,5 @@
       </a></h1>
     </header>
     <div class="container card-container">
+      <input class="search" type="search" id="searchInput" onkeyup="search(this)" placeholder="Search..." aria-label="Snippet search">
       <nav>
-        <input class="search" type="search" id="searchInput" onkeyup="search(this)" placeholder="Search..."  aria-label="Snippet search">

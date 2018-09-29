@@ -169,12 +169,12 @@ try {
   // Loop over tags and snippets to create the table of contents
   for (let tag of taggedData) {
     output +=
-      '<h4>' +
+      '<h4 class="collapse">' +
       md
         .render(`${util.capitalize(tag, true)}\n`)
         .replace(/<p>/g, '')
         .replace(/<\/p>/g, '') +
-      '</h4>';
+      '</h4><ul>';
     for (let taggedSnippet of Object.entries(tagDbData).filter(v => v[1][0] === tag))
       output += md
         .render(
@@ -183,11 +183,16 @@ try {
           }#${taggedSnippet[0].toLowerCase()})\n`
         )
         .replace(/<p>/g, '')
-        .replace(/<\/p>/g, '')
-        .replace(/<a/g, `<a tags="${taggedSnippet[1].join(',')}"`);
-    output += '\n';
+        .replace(/<\/p>/g, '</li>')
+        .replace(/<a/g, `<li><a tags="${taggedSnippet[1].join(',')}"`);
+    output += '</ul>\n';
   }
-  output += '</nav><main class="col-centered"><span id="top"><br/><br/></span>';
+  output += `<h4 class="static-link"><a href="./archive">Archive</a></h4>
+  <h4 class="static-link"><a href="./glossary">Glossary</a></h4>
+  <h4 class="static-link"><a href="./contributing">Contributing</a></h4>
+  <h4 class="static-link"><a href="./about">About</a></h4>
+  <div><button class="social fb"></button><button class="social instagram"></button><button class="social twitter"></button></div>
+  </nav><main class="col-centered"><span id="top"><br/><br/></span>`;
   // Loop over tags and snippets to create the list of snippets
   for (let tag of taggedData) {
     let localOutput = output
