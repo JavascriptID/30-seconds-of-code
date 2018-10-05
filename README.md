@@ -353,7 +353,11 @@ average(1, 2, 3);
 * [`colorize`](#colorize)
 * [`hasFlags`](#hasflags)
 * [`hashNode`](#hashnode)
+* [`isDuplexStream`](#isduplexstream)
+* [`isReadableStream`](#isreadablestream)
+* [`isStream`](#isstream)
 * [`isTravisCI`](#istravisci)
+* [`isWritableStream`](#iswritablestream)
 * [`JSONToFile`](#jsontofile)
 * [`readFileLines`](#readfilelines)
 * [`untildify`](#untildify)
@@ -6154,7 +6158,7 @@ Decodes a string of data which has been encoded using base-64 encoding.
 Create a `Buffer` for the given string with base-64 encoding and use `Buffer.toString('binary')` to return the decoded string.
 
 ```js
-const atob = str => new Buffer(str, 'base64').toString('binary');
+const atob = str => Buffer.from(str, 'base64').toString('binary');
 ```
 
 <details>
@@ -6175,7 +6179,7 @@ Creates a base-64 encoded ASCII string from a String object in which each charac
 Create a `Buffer` for the given string with binary encoding and use `Buffer.toString('base64')` to return the encoded string.
 
 ```js
-const btoa = str => new Buffer(str, 'binary').toString('base64');
+const btoa = str => Buffer.from(str, 'binary').toString('base64');
 ```
 
 <details>
@@ -6290,6 +6294,86 @@ hashNode(JSON.stringify({ a: 'a', b: [1, 2, 3, 4], foo: { c: 'bar' } })).then(co
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### isDuplexStream
+
+Checks if the given argument is a duplex (readable and writable) stream.
+
+Check if the value is different from `null`, use `typeof` to check if a value is of type `object` and the `pipe` property is of type `function`.
+Additionally check if the `typeof` the `_read`, `_write` and `_readableState`, `_writableState` properties are `function` and `object` respectively.
+
+```js
+const isDuplexStream = val =>
+  val !== null &&
+  typeof val === 'object' &&
+  typeof val.pipe === 'function' &&
+  typeof val._read === 'function' &&
+  typeof val._readableState === 'object' &&
+  typeof val._write === 'function' &&
+  typeof val._writableState === 'object';
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const Stream = require('stream');
+isDuplexStream(new Stream.Duplex()); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### isReadableStream
+
+Checks if the given argument is a readable stream.
+
+Check if the value is different from `null`, use `typeof` to check if the value is of type `object` and the `pipe` property is of type `function`.
+Additionally check if the `typeof` the `_read` and `_readableState` properties are `function` and `object` respectively.
+
+```js
+const isReadableStream = val =>
+  val !== null &&
+  typeof val === 'object' &&
+  typeof val.pipe === 'function' &&
+  typeof val._read === 'function' &&
+  typeof val._readableState === 'object';
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const fs = require('fs');
+isReadableStream(fs.createReadStream('test.txt')); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### isStream
+
+Checks if the given argument is a stream.
+
+Check if the value is different from `null`, use `typeof` to check if the value is of type `object` and the `pipe` property is of type `function`.
+
+```js
+const isStream = val => val !== null && typeof val === 'object' && typeof val.pipe === 'function';
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const fs = require('fs');
+isStream(fs.createReadStream('test.txt')); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### isTravisCI
 
 Checks if the current environment is [Travis CI](https://travis-ci.org/).
@@ -6305,6 +6389,34 @@ const isTravisCI = () => 'TRAVIS' in process.env && 'CI' in process.env;
 
 ```js
 isTravisCI(); // true (if code is running on Travis CI)
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### isWritableStream
+
+Checks if the given argument is a writable stream.
+
+Check if the value is different from `null`, use `typeof` to check if the value is of type `object` and the `pipe` property is of type `function`.
+Additionally check if the `typeof` the `_write` and `_writableState` properties are `function` and `object` respectively.
+
+```js
+const isWritableStream = val =>
+  val !== null &&
+  typeof val === 'object' &&
+  typeof val.pipe === 'function' &&
+  typeof val._write === 'function' &&
+  typeof val._writableState === 'object';
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+const fs = require('fs');
+isWritableStream(fs.createWriteStream('test.txt')); // true
 ```
 
 </details>
