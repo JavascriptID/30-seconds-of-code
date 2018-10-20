@@ -31,7 +31,8 @@ const getFilesInDir = (directoryPath, withPath, exclude = null) => {
       }, []);
     }
     return directoryFilenames;
-  } catch (err) {
+  }
+  catch (err) {
     console.log(`${chalk.red('ERROR!')} During snippet loading: ${err}`);
     process.exit(1);
   }
@@ -45,7 +46,8 @@ const readSnippets = snippetsPath => {
   try {
     for (let snippet of snippetFilenames)
       snippets[snippet] = fs.readFileSync(path.join(snippetsPath, snippet), 'utf8');
-  } catch (err) {
+  }
+  catch (err) {
     console.log(`${chalk.red('ERROR!')} During snippet loading: ${err}`);
     process.exit(1);
   }
@@ -68,7 +70,8 @@ const readTags = () => {
           return data;
         })
     );
-  } catch (err) {
+  }
+  catch (err) {
     // Handle errors (hopefully not!)
     console.log(`${chalk.red('ERROR!')} During tag database loading: ${err}`);
     process.exit(1);
@@ -82,9 +85,9 @@ const optimizeNodes = (data, regexp, replacer) => {
   do {
     output = output.replace(regexp, replacer);
     count = 0;
-    while (regexp.exec(output) !== null) {
+    while (regexp.exec(output) !== null)
       ++count;
-    }
+
   } while (count > 0);
   return output;
 };
@@ -102,8 +105,9 @@ const capitalize = (str, lowerRest = false) =>
   str.slice(0, 1).toUpperCase() + (lowerRest ? str.slice(1).toLowerCase() : str.slice(1));
 // Checks if current environment is Travis CI
 const isTravisCI = () => 'TRAVIS' in process.env && 'CI' in process.env;
-const isNotTravisCronOrAPI = () =>
-  process.env['TRAVIS_EVENT_TYPE'] !== 'cron' && process.env['TRAVIS_EVENT_TYPE'] !== 'api';
+const isTravisCronOrAPI = () =>
+  process.env['TRAVIS_EVENT_TYPE'] === 'cron' || process.env['TRAVIS_EVENT_TYPE'] === 'api';
+const isNotTravisCronOrAPI = () => !isTravisCronOrAPI();
 // Creates a hash for a value using the SHA-256 algorithm.
 const hashData = val =>
   crypto
@@ -116,9 +120,9 @@ const getCodeBlocks = str => {
   const results = [];
   let m = null;
   while ((m = regex.exec(str)) !== null) {
-    if (m.index === regex.lastIndex) {
+    if (m.index === regex.lastIndex)
       regex.lastIndex += 1;
-    }
+
     m.forEach((match, groupIndex) => {
       results.push(match);
     });
@@ -131,9 +135,9 @@ const getTextualContent = str => {
   const results = [];
   let m = null;
   while ((m = regex.exec(str)) !== null) {
-    if (m.index === regex.lastIndex) {
+    if (m.index === regex.lastIndex)
       regex.lastIndex += 1;
-    }
+
     m.forEach((match, groupIndex) => {
       results.push(match);
     });
@@ -164,6 +168,7 @@ module.exports = {
   shuffle,
   getCodeBlocks,
   getTextualContent,
+  isTravisCronOrAPI,
   isNotTravisCronOrAPI,
   prepTaggedData
 };
