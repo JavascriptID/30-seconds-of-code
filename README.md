@@ -11,8 +11,7 @@
 * Use <kbd>Ctrl</kbd> + <kbd>F</kbd> or <kbd>command</kbd> + <kbd>F</kbd> to search for a snippet.
 * Contributions welcome, please read the [contribution guide](CONTRIBUTING.md).
 * Snippets are written in ES6, use the [Babel transpiler](https://babeljs.io/) to ensure backwards-compatibility.
-* You can import these snippets into your text editor of choice (VSCode, Atom, Sublime), using the files found in [this repo](https://github.com/Rob-Rychs/30-seconds-of-code-texteditorsnippets).
-* You can import these snippets into Alfred 3, using [this file](https://github.com/lslvxy/30-seconds-of-code-alfredsnippets).
+* You can import these snippets into VSCode, by following the instructions found [here](https://github.com/30-seconds/30-seconds-of-code/tree/master/vscode_snippets).
 * You can search, view and copy these snippets from a terminal, using the CLI application from [this repo](https://github.com/sQVe/30s).
 * If you want to follow 30-seconds-of-code on social media, you can find us on [Facebook](https://www.facebook.com/30secondsofcode), [Instagram](https://www.instagram.com/30secondsofcode) and [Twitter](https://twitter.com/30secondsofcode).
 
@@ -38,10 +37,7 @@ npm install 30-seconds-of-code
 yarn add 30-seconds-of-code
 ```
 
-CDN links
-
-* [ES2017 Full (UMD)](https://unpkg.com/30-seconds-of-code)
-* [ES5 Minified (UMD)](https://unpkg.com/30-seconds-of-code/dist/_30s.es5.min.js)
+[CDN link](https://unpkg.com/30-seconds-of-code/)
 
 <details>
 <summary>Details</summary>
@@ -443,6 +439,7 @@ average(1, 2, 3);
 * [`toCamelCase`](#tocamelcase)
 * [`toKebabCase`](#tokebabcase)
 * [`toSnakeCase`](#tosnakecase)
+* [`toTitleCase`](#totitlecase)
 * [`truncateString`](#truncatestring)
 * [`unescapeHTML`](#unescapehtml)
 * [`URLJoin`](#urljoin-)
@@ -681,7 +678,7 @@ const sum = pipeAsyncFunctions(
   x => x + 3,
   async x => (await x) + 4
 );
-(async() => {
+(async () => {
   console.log(await sum(5)); // 15 (after one second)
 })();
 ```
@@ -2305,9 +2302,9 @@ The `func` is invoked with three arguments (`value, index, array`).
 const remove = (arr, func) =>
   Array.isArray(arr)
     ? arr.filter(func).reduce((acc, val) => {
-      arr.splice(arr.indexOf(val), 1);
-      return acc.concat(val);
-    }, [])
+        arr.splice(arr.indexOf(val), 1);
+        return acc.concat(val);
+      }, [])
     : [];
 ```
 
@@ -5484,8 +5481,8 @@ Throws an exception if `n` is a negative number.
 const factorial = n =>
   n < 0
     ? (() => {
-      throw new TypeError('Negative numbers are not allowed!');
-    })()
+        throw new TypeError('Negative numbers are not allowed!');
+      })()
     : n <= 1
       ? 1
       : n * factorial(n - 1);
@@ -6685,9 +6682,9 @@ const dig = (obj, target) =>
   target in obj
     ? obj[target]
     : Object.values(obj).reduce((acc, val) => {
-      if (acc !== undefined) return acc;
-      if (typeof val === 'object') return dig(val, target);
-    }, undefined);
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);
 ```
 
 <details>
@@ -8266,6 +8263,34 @@ toSnakeCase('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSo
 
 <br>[⬆ Back to top](#table-of-contents)
 
+### toTitleCase
+
+Converts a string to title case.
+
+Break the string into words, using a regexp, and combine them capitalizing the first letter of each word and adding a whitespace between them.
+
+```js
+const toTitleCase = str =>
+  str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.charAt(0).toUpperCase() + x.slice(1))
+    .join(' ');
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+toTitleCase('some_database_field_name'); // 'Some Database Field Name'
+toTitleCase('Some label that needs to be title-cased'); // 'Some Label That Needs To Be Title Cased'
+toTitleCase('some-package-name'); // 'Some Package Name'
+toTitleCase('some-mixed_string with spaces_underscores-and-hyphens'); // 'Some Mixed String With Spaces Underscores And Hyphens'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
 ### truncateString
 
 Truncates a string up to a specified length.
@@ -9485,5 +9510,6 @@ yesNo('Foo', true); // true
 
 ## Credits
 
+*Logos made by [Angelos Chalaris](https://github.com/Chalarangelo) are licensed under the [MIT](https://opensource.org/licenses/MIT) license.*
 *This README is built using [markdown-builder](https://github.com/30-seconds/markdown-builder).*
 
