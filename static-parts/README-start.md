@@ -46,10 +46,8 @@ yarn add 30-seconds-of-code
 
 **Browser**
 
-> IMPORTANT: replace the `src` with the full version link and desired target spec (such as ES5 minified)):
-
 ```html
-<script src="https://unpkg.com/30-seconds-of-code"></script>
+<script src="https://unpkg.com/30-seconds-of-code@1/dist/_30s.es5.min.js"></script>
 <script>
   _30s.average(1, 2, 3);
 </script>
@@ -65,18 +63,6 @@ _30s.average(1, 2, 3);
 // ES Modules
 import _30s from '30-seconds-of-code';
 _30s.average(1, 2, 3);
-```
-
-To import snippets directly:
-
-```js
-// CommonJS
-const { average } = require('30-seconds-of-code');
-average(1, 2, 3);
-
-// ES Modules
-import { average } from '30-seconds-of-code';
-average(1, 2, 3);
 ```
 
 </details>
