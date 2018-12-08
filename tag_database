@@ -75,6 +75,7 @@ everyNth:array,beginner
 extendHex:utility,string,intermediate
 factorial:math,recursion,beginner
 fibonacci:math,array,beginner
+filterFalsy:array,beginner
 filterNonUnique:array,beginner
 filterNonUniqueBy:array,function,intermediate
 findKey:object,function,intermediate
@@ -187,6 +188,7 @@ maxN:array,math,beginner
 median:math,array,intermediate
 memoize:function,advanced
 merge:object,array,intermediate
+midpoint:math,array,beginner
 minBy:math,array,function,beginner
 minDate:date,math,beginner
 minN:array,math,beginner

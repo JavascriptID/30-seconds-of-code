@@ -113,6 +113,7 @@ _30s.average(1, 2, 3);
 * [`dropRightWhile`](#droprightwhile)
 * [`dropWhile`](#dropwhile)
 * [`everyNth`](#everynth)
+* [`filterFalsy`](#filterfalsy)
 * [`filterNonUnique`](#filternonunique)
 * [`filterNonUniqueBy`](#filternonuniqueby)
 * [`findLast`](#findlast)
@@ -313,6 +314,7 @@ _30s.average(1, 2, 3);
 * [`luhnCheck`](#luhncheck-)
 * [`maxBy`](#maxby)
 * [`median`](#median)
+* [`midpoint`](#midpoint)
 * [`minBy`](#minby)
 * [`percentile`](#percentile)
 * [`powerset`](#powerset)
@@ -667,7 +669,7 @@ const sum = pipeAsyncFunctions(
   x => x + 3,
   async x => (await x) + 4
 );
-(async () => {
+(async() => {
   console.log(await sum(5)); // 15 (after one second)
 })();
 ```
@@ -1240,6 +1242,27 @@ const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
 
 ```js
 everyNth([1, 2, 3, 4, 5, 6], 2); // [ 2, 4, 6 ]
+```
+
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### filterFalsy
+
+Filters out the falsy values in an array.
+
+Use `Array.prototype.filter()` to get an array containing only truthy values.
+
+```js
+const filterFalsy = arr => arr.filter(Boolean);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+filterFalsy(['', true, {}, false, 'sample', 1, 0]); // [true, {}, 'sample', 1]
 ```
 
 </details>
@@ -2291,9 +2314,9 @@ The `func` is invoked with three arguments (`value, index, array`).
 const remove = (arr, func) =>
   Array.isArray(arr)
     ? arr.filter(func).reduce((acc, val) => {
-        arr.splice(arr.indexOf(val), 1);
-        return acc.concat(val);
-      }, [])
+      arr.splice(arr.indexOf(val), 1);
+      return acc.concat(val);
+    }, [])
     : [];
 ```
 
@@ -5816,6 +5839,30 @@ const median = arr => {
 ```js
 median([5, 6, 50, 1, -5]); // 5
 ```
+
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### midpoint
+
+Calculates the midpoint between two pairs of (x,y) points.
+
+Destructure the array to get `x1`, `y1`, `x2` and `y2`, calculate the midpoint for each dimension by dividing the sum of the two endpoints by `2`.
+
+```js
+const midpoint = ([x1, y1], [x2, y2]) => [(x1 + x2) / 2, (y1 + y2) / 2];
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+midpoint([2, 2], [4, 4]); // [3, 3]
+midpoint([4, 4], [6, 6]); // [5, 5]
+midpoint([1, 3], [2, 4]); // [1.5, 3.5]
+```
+
 
 </details>
 
