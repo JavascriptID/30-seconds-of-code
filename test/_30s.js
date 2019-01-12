@@ -223,7 +223,11 @@ const deepClone = obj => {
   Object.keys(clone).forEach(
     key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])
   );
-  return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
+  return Array.isArray(obj) && obj.length
+    ? (clone.length = obj.length) && Array.from(clone)
+    : Array.isArray(obj)
+      ? Array.from(obj)
+      : clone;
 };
 const deepFlatten = arr => [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));
 const deepFreeze = obj =>
@@ -263,9 +267,9 @@ const dig = (obj, target) =>
   target in obj
     ? obj[target]
     : Object.values(obj).reduce((acc, val) => {
-        if (acc !== undefined) return acc;
-        if (typeof val === 'object') return dig(val, target);
-      }, undefined);
+      if (acc !== undefined) return acc;
+      if (typeof val === 'object') return dig(val, target);
+    }, undefined);
 const digitize = n => [...`${n}`].map(i => parseInt(i));
 const distance = (x0, y0, x1, y1) => Math.hypot(x1 - x0, y1 - y0);
 const drop = (arr, n = 1) => arr.slice(n);
@@ -337,8 +341,8 @@ const extendHex = shortHex =>
 const factorial = n =>
   n < 0
     ? (() => {
-        throw new TypeError('Negative numbers are not allowed!');
-      })()
+      throw new TypeError('Negative numbers are not allowed!');
+    })()
     : n <= 1
       ? 1
       : n * factorial(n - 1);
@@ -981,7 +985,6 @@ const reducedFilter = (data, keys, fn) =>
     }, {})
   );
 const reject = (pred, array) => array.filter((...args) => !pred(...args));
-
 const remove = (arr, func) =>
   Array.isArray(arr)
     ? arr.filter(func).reduce((acc, val) => {
