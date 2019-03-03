@@ -4260,7 +4260,7 @@
       "type": "snippet",
       "attributes": {
         "fileName": "minBy.md",
-        "text": "Returns the minimum value of an array, after mapping each element to a value using the provided function.\n\nUse `Array.prototype.map()` to map each element to the value returned by `fn`, `Math.min()` to get the maximum value.",
+        "text": "Returns the minimum value of an array, after mapping each element to a value using the provided function.\n\nUse `Array.prototype.map()` to map each element to the value returned by `fn`, `Math.min()` to get the minimum value.",
         "codeBlocks": {
           "es6": "const minBy = (arr, fn) => Math.min(...arr.map(typeof fn === 'function' ? fn : val => val[fn]));",
           "es5": "function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }\n\nfunction _nonIterableSpread() { throw new TypeError(\"Invalid attempt to spread non-iterable instance\"); }\n\nfunction _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === \"[object Arguments]\") return Array.from(iter); }\n\nfunction _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }\n\nvar minBy = function minBy(arr, fn) {\n  return Math.min.apply(Math, _toConsumableArray(arr.map(typeof fn === 'function' ? fn : function (val) {\n    return val[fn];\n  })));\n};",
@@ -4275,7 +4275,7 @@
       },
       "meta": {
         "archived": false,
-        "hash": "58be8a0dc3e56ec09b0bb927c2c575c033c70ac3a8b612e993fdcbf6d5a99d51"
+        "hash": "bc285c62d2db31d2dd1a45623dab38e57eb85ca9a7cc83bda7ad286b302ec405"
       }
     },
     {
