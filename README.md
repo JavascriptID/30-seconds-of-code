@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/30-seconds/30-seconds-of-code/blob/master/LICENSE) [![npm Downloads](https://img.shields.io/npm/dt/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![npm Version](https://img.shields.io/npm/v/30-seconds-of-code.svg)](https://www.npmjs.com/package/30-seconds-of-code) [![Known Vulnerabilities](https://snyk.io/test/github/30-seconds/30-seconds-of-code/badge.svg?targetFile=package.json)](https://snyk.io/test/github/30-seconds/30-seconds-of-code?targetFile=package.json) <br/> 
 [![Travis Build](https://travis-ci.com/30-seconds/30-seconds-of-code.svg?branch=master)](https://travis-ci.com/30-seconds/30-seconds-of-code) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ab7791fb1ea40b4a576d658fb96807f)](https://www.codacy.com/app/Chalarangelo/30-seconds-of-code?utm_source=github.com&utm_medium=referral&utm_content=30-seconds/30-seconds-of-code&utm_campaign=Badge_Grade) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard) <br/>
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code) [![Gitter chat](https://img.shields.io/badge/chat-on%20gitter-4FB999.svg)](https://gitter.im/30-seconds-of-code/Lobby) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![ProductHunt](https://img.shields.io/badge/producthunt-vote-orange.svg)](https://www.producthunt.com/posts/30-seconds-of-code) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 > Curated collection of useful JavaScript snippets that you can understand in 30 seconds or less.
 
@@ -264,6 +264,7 @@ _30s.average(1, 2, 3);
 * [`bind`](#bind)
 * [`bindKey`](#bindkey)
 * [`chainAsync`](#chainasync)
+* [`checkProp`](#checkprop)
 * [`compose`](#compose)
 * [`composeRight`](#composeright)
 * [`converge`](#converge)
@@ -670,7 +671,6 @@ const pipeAsyncFunctions = (...fns) => arg => fns.reduce((p, f) => p.then(f), Pr
 <summary>Examples</summary>
 
 ```js
-
 const sum = pipeAsyncFunctions(
   x => x + 1,
   x => new Promise(resolve => setTimeout(() => resolve(x + 2), 1000)),
@@ -892,7 +892,9 @@ Omit the second argument, `delimiter`, to use a default delimiter of `,`.
 
 ```js
 const arrayToCSV = (arr, delimiter = ',') =>
-  arr.map(v => v.map(x => `"${x}"`).join(delimiter)).join('\n');
+  arr
+    .map(v => v.map(x => (isNaN(x) ? `"${x.replace(/"/g, '""')}"` : x)).join(delimiter))
+    .join('\n');
 ```
 
 <details>
@@ -901,6 +903,7 @@ const arrayToCSV = (arr, delimiter = ',') =>
 ```js
 arrayToCSV([['a', 'b'], ['c', 'd']]); // '"a","b"\n"c","d"'
 arrayToCSV([['a', 'b'], ['c', 'd']], ';'); // '"a";"b"\n"c";"d"'
+arrayToCSV([['a', '"b" great'], ['c', 3.1415]]); // '"a","""b"" great"\n"c",3.1415'
 ```
 
 </details>
@@ -2319,7 +2322,6 @@ Use `Array.prototype.filter()` to find array elements that return truthy values 
 The `func` is invoked with three arguments (`value, index, array`).
 
 ```js
-
 const remove = (arr, func) =>
   Array.isArray(arr)
     ? arr.filter(func).reduce((acc, val) => {
@@ -4653,6 +4655,46 @@ chainAsync([
 
 <br>[⬆ Back to top](#contents)
 
+### checkProp
+
+Given a `predicate` function and a `prop` string, this curried function will then take an `object` to inspect by calling the property and passing it to the predicate.
+
+Summon `prop` on `obj`, pass it to a provided `predicate` function and return a masked boolean.
+
+```js
+const checkProp = (predicate, prop) => obj => !!predicate(obj[prop]);
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+
+
+
+const lengthIs4 = checkProp(l => l === 4, 'length');
+lengthIs4([]); // false
+lengthIs4([1,2,3,4]); // true
+lengthIs4(new Set([1,2,3,4])); // false (Set uses Size, not length)
+
+const session = { user: {} };
+const validUserSession = checkProps(u => u.active && !u.disabled, 'user');
+
+validUserSession(session); // false
+
+session.user.active = true;
+validUserSession(session); // true
+
+const noLength(l => l === undefined, 'length');
+noLength([]); // false
+noLength({}); // true
+noLength(new Set()); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#contents)
+
 ### compose
 
 Performs right-to-left function composition.
@@ -6811,11 +6853,11 @@ const deepMapKeys = (obj, f) =>
     ? obj.map(val => deepMapKeys(val, f))
     : typeof obj === 'object'
       ? Object.keys(obj).reduce((acc, current) => {
-        const val = obj[current];
-        acc[f(current)] =
+          const val = obj[current];
+          acc[f(current)] =
             val !== null && typeof val === 'object' ? deepMapKeys(val, f) : (acc[f(current)] = val);
-        return acc;
-      }, {})
+          return acc;
+        }, {})
       : obj;
 ```
 
@@ -6889,9 +6931,9 @@ const dig = (obj, target) =>
   target in obj
     ? obj[target]
     : Object.values(obj).reduce((acc, val) => {
-      if (acc !== undefined) return acc;
-      if (typeof val === 'object') return dig(val, target);
-    }, undefined);
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);
 ```
 
 <details>
@@ -8831,18 +8873,20 @@ isNull(null); // true
 
 Checks if the given argument is a number.
 
-Use `typeof` to check if a value is classified as a number primitive.
+Use `typeof` to check if a value is classified as a number primitive. 
+To safeguard against `NaN`, check if `val === val` (as `NaN` has a `typeof` equal to `number` and is the only value not equal to itself).
 
 ```js
-const isNumber = val => typeof val === 'number';
+const isNumber = val => typeof val === 'number' && val === val;
 ```
 
 <details>
 <summary>Examples</summary>
 
 ```js
-isNumber('1'); // false
 isNumber(1); // true
+isNumber('1'); // false
+isNumber(NaN); // false
 ```
 
 </details>

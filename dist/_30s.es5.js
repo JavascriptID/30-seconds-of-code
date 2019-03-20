@@ -187,7 +187,7 @@
     var delimiter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ',';
     return arr.map(function (v) {
       return v.map(function (x) {
-        return "\"".concat(x, "\"");
+        return isNaN(x) ? "\"".concat(x.replace(/"/g, '""'), "\"") : x;
       }).join(delimiter);
     }).join('\n');
   };
@@ -342,6 +342,11 @@
     };
 
     next();
+  };
+  var checkProp = function checkProp(predicate, prop) {
+    return function (obj) {
+      return !!predicate(obj[prop]);
+    };
   };
   var chunk = function chunk(arr, size) {
     return Array.from({
@@ -1214,7 +1219,7 @@
     return val === null;
   };
   var isNumber = function isNumber(val) {
-    return typeof val === 'number';
+    return typeof val === 'number' && val === val;
   };
   var isObject = function isObject(obj) {
     return obj === Object(obj);
@@ -2649,6 +2654,7 @@
   exports.capitalizeEveryWord = capitalizeEveryWord;
   exports.castArray = castArray;
   exports.chainAsync = chainAsync;
+  exports.checkProp = checkProp;
   exports.chunk = chunk;
   exports.clampNumber = clampNumber;
   exports.cloneRegExp = cloneRegExp;
