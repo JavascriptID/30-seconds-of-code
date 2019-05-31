@@ -205,6 +205,7 @@ const createEventHub = () => ({
   off(event, handler) {
     const i = (this.hub[event] || []).findIndex(h => h === handler);
     if (i > -1) this.hub[event].splice(i, 1);
+    if (this.hub[event].length === 0) delete this.hub[event];
   }
 });
 const currentURL = () => window.location.href;
@@ -271,9 +272,9 @@ const dig = (obj, target) =>
   target in obj
     ? obj[target]
     : Object.values(obj).reduce((acc, val) => {
-      if (acc !== undefined) return acc;
-      if (typeof val === 'object') return dig(val, target);
-    }, undefined);
+        if (acc !== undefined) return acc;
+        if (typeof val === 'object') return dig(val, target);
+      }, undefined);
 const digitize = n => [...`${n}`].map(i => parseInt(i));
 const distance = (x0, y0, x1, y1) => Math.hypot(x1 - x0, y1 - y0);
 const drop = (arr, n = 1) => arr.slice(n);
@@ -346,8 +347,8 @@ const extendHex = shortHex =>
 const factorial = n =>
   n < 0
     ? (() => {
-      throw new TypeError('Negative numbers are not allowed!');
-    })()
+        throw new TypeError('Negative numbers are not allowed!');
+      })()
     : n <= 1
       ? 1
       : n * factorial(n - 1);
